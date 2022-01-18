@@ -1,0 +1,256 @@
+\documentclass{article}
+\usepackage[hmargin={0.5in, 0.5in}, vmargin={0.8in, 0.8in}]{geometry}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage[anythingbreaks]{breakurl}
+\usepackage{multicol}
+
+\usepackage[compact]{titlesec}
+
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\let\proglang=\textsf
+\let\code=\texttt
+
+\usepackage{color}
+\newcommand{\jy}[1]{\textcolor{red}{Updated: (#1)}}
+
+\usepackage{enumitem}
+\setlist{parsep=0pt, leftmargin=4mm, topsep=0pt, itemsep=8pt}
+% \setlist{nolistsep}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\lhead{\sf STAT 5255/3255}
+\rhead{Spring 2022}
+\lfoot{\sf jun.yan@uconn.edu}
+\rfoot{\url{http://www.stat.uconn.edu/~jyan/}}
+
+\begin{document}
+% \maketitle
+
+\title{STAT 5255/3255: Introduction to Data Science}
+\date{January 18, 2022}
+
+\maketitle
+
+\thispagestyle{fancy}
+
+\begin{multicols}{2}
+\begin{description}
+\item[Instructor:]
+  Jun Yan\\
+  % Austin 328\\
+  % 860/486-3416\\
+  jun.yan@uconn.edu
+
+\item[Lectures:] 
+  TuTh 3:30--4:45 pm\\
+  FSB 202 (if in-person)\\
+  WebEx (if online):  
+  Log into HuskyCT; Go into the course; Click on WebEx on the left menu and
+  then you will see the lecture meetings. Recordings will be here too when
+  they are available.
+
+\item[Office Hours:] 
+  W 12:30 -- 1:30 pm @ WebEx virtual office
+  \url{https://uconn-cmr.webex.com/meet/juy07002}
+  or by appointment.
+
+item[Grader:] Yifan Li (\href{mailto:
+   yifan.3.li@uconn.edu}{yifan.3.li@uconn.edu})
+  
+\item[Prerequisites:]
+  STAT 5255: Open to graduate students in Statistics, others with
+  permission. Not open for credit to students who have passed STAT
+  3255.
+
+  STAT 3255: STAT 2255 and STAT 3115Q, or instructor consent.
+    
+\item[Course Description:]
+  Introduction to data science for effectively storing, processing,
+  visualizing, analyzing and making inferences from data to enable
+  decision making. Topics include project management, data
+  preparation, data visualization, statistical modeling, machine
+  learning, distributed computing and ethics.
+  
+\item[Course Materials:]
+  Lecture notes, assignments, sample code, datasets, and other course
+  material will be posted on the HuskyCT course website (available at
+  \url{https://lms.uconn.edu/}).
+  
+  Please visit this site often to ensure timely obtainment of materials.
+  
+%{\red The lecture notes will be available online before each class.}
+\item[Recommended Textbooks:]\hspace{0pt}
+  \begin{enumerate}
+  \item 
+    ``Python Data Science Handbook: Essential Tools for Working with
+    Data,'' First Edition, by Jake VanderPlas, O’Reilly Media, 2016.
+ 
+  \item
+    ``Python for Data Analysis: Data Wrangling with Pandas, NumPy, and
+    IPython.''  Second Edition by Wes McKinney, O’Reilly Media, 2018.
+  \item
+    \href{https://www.practicaldatascience.org/html/not_a_mids_student.html}{Practical
+    Data Science at Duke}.
+  \end{enumerate}
+
+\item[Computing:]
+  \proglang{Python} will be the primary computing environment. You are
+  free to choose any interactive development environment (Jupyter
+  Notebook, VS Code, Emacs, etc.). Checkout
+  \href{https://google.github.io/styleguide/pyguide.html}{Google
+  Python Style Guide} and practice the recommendations.
+
+  Git will be used for project management and work flows, and GitHub
+  Classroom will be used for homework submission and grading. Learn
+  and practice \href{https://gitexercises.fracz.com}{online}.
+
+  Command line operation is essential. Point-and-clicks are enemies or
+  replicability and automation. Pick the basics from any tutorial
+  (e.g.,
+  \href{https://ubuntu.com/tutorials/command-line-for-beginners}{Ubuntu}).
+
+  Always be ready to learn new things.
+
+\item[Grading:]
+The grade for this course will be based on:
+\begin{center}
+  \rowcolors{2}{blue!20}{gray!20}
+  \begin{tabular}{lrr}
+    \toprule
+    Category                & 3255   & 5255\\
+    \midrule
+    Style                       &  5\%   & 5\%\\
+    Participation           &  5\%   & 5\%\\
+    Homework              &  10\% & 10\%\\
+    Topic Presentations&  20\% & 20\%\\
+    Midterm Project       &  20\% & 20\%\\
+    Final Presentation    &  30\% & 0\%\\
+    Final Report             &  0\% & 30\%\\
+    \bottomrule
+  \end{tabular}
+\end{center} 
+
+\item[Style:]
+  If the grader or instructor has to reread a solution several times
+  to find the train of thought, or if a solution was illegible,
+  ambiguous, or incoherent, or if explicitly stated styles are
+  violated, one point of style is deducted at each occurrence until
+  the 5 points are exhausted.
+
+\item[Participation:]  Participation in the remote setting includes
+  active use of HuskyCT Discussion Boards, answering questions posed
+  during lecture, and evaluation of presentations (required) from the
+  undergraduate students.
+
+\item[Homework:]\hspace{0pt}
+\begin{itemize}
+\item Homeworks will be assigned roughly weekly throughout the
+  semester.  Students may consult amongst themselves or with the
+  instructor, but each student must submit his/her own work.
+  
+\item All completed assignments are to be submitted by the due date
+  unless extra flexibility is allowed.. 
+Assignments will be accepted up to 48 hours late, but with penalty.  If the
+submission is within 48 hours of the due date and time, total amount of credit
+available will be a linear function of time-beyond-due, ranging from 95\%--50\%
+of the total points. Submissions over 48 hours late will not be graded and will
+receive no credit.
+		
+\item No credit will be given for submitted assignments exhibiting
+  duplication or copying of solutions (from peers or existing
+  solutions).
+\end{itemize}
+
+\item[Topic Presentations:]
+  Students pick up presentation topics from a task board set up by the
+  class, prepare for it, and present to the class. All the materials will be part
+  of a Git repository for a class-note co-developed by all class members.
+
+\item[Midterm Project:]
+  The midterm project will be an assigned one. It requires completion
+  of the analysis component of a full data science project
+  and presenting results in a talk (undergraduates) or report (graduates).
+  
+\item[Final Project:]
+  The topic will be of your choice. It should show
+  the whole cycle of a real data science project. Consider projects at
+  data science competition sites (e.g., \url{https://kaggle.com},
+  \url{https://community.amstat.org/dataexpo/home}).
+  A proposal is due 11:59 pm, Friday, April 1.
+
+  Undergraduates in 3255 will give 15-minutes presentations in an
+  order to be randomly determined by the class.
+  
+  Graduate students in 5255 will submit a final written report by
+  11:59pm, Friday, May 6, 2022.
+
+\end{description}
+\end{multicols}
+
+\section*{COVID Guidelines}
+  See \url{https://covid.uconn.edu/campus-guidelines}.
+
+  The classes may become in-person as university policies allow.
+
+\section*{University Policies and Academic Integrity}
+  University Policies and Academic Integrity
+This course adheres to the policies from the University Senate, the
+Office of Institutional Equity, the Office of the Provost, Community
+Standards, and the Graduate School. See
+\url{http://provost.uconn.edu/syllabi-references}
+for more infor- mation. In particular, the policy on Academic
+Integrity state:
+\begin{quote}
+A fundamental tenet of all educational institutions is academic
+honesty; academic work depends upon respect for and acknowledgement of
+the research and ideas of others. Mis- representing someone else’s
+work as one’s own is a serious offense in any academic setting and it
+will not be condoned. Academic misconduct includes, but is not limited
+to, providing or receiving assistance in a manner not authorized by
+the instructor in the creation of work to be submitted for academic
+evaluation (e.g. papers, projects, and examinations); any attempt to
+influence improperly (e.g. bribery, threats) any member of the
+faculty, staff, or administration of the University in any matter
+pertaining to academics or research; presenting, as one’s own,the
+ideas or words of another for academic evaluation; doing
+unauthorized academic work for which another person will receive
+credit or be evaluated; and presenting the same or substantially the
+same papers or projects in two or more courses without the explicit
+permission of the instructors involved. A student who knowingly
+assists another student in committing an act of academic misconduct
+shall be equally accountable for the violation, and shall be subject
+to the sanctions and other remedies described in The Student Code.
+\end{quote}
+
+\section*{Recording Lectures}
+On-line classes will be conducted over WebEx Meetings. The online
+lectures will be recorded by default and available automatically
+afterwards. The recording feature for others in attendance will be
+disabled so that no one else will be able to record a session. In
+order to protect student privacy and intellectual property rights,
+students are prohibited from recording any session, or any portion of
+a session, by other means. The sharing of any
+recorded content without my written permission is prohibited. If you
+would like to ensure your likeness is not captured during an online
+class, please turn your camera off. For recordings conducted in
+person, please alert me to any concerns so that I may take steps to
+help ensure you are not recorded.
+
+Please remember that unauthorized recording or sharing of course
+content may be considered a violation the law, University policy,
+and/or The Student Code.
+
+\section*{Disclaimer}
+The professor reserves the right to make changes to the syllabus as
+necessitated by circumstances.
+
+
+% \label{LastPage}
+\end{document}
