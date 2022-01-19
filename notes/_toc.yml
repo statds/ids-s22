@@ -1,0 +1,9 @@
+format: jb-book
+root: docs/index
+options:
+  numbered: true
+chapters:
+- file: docs/intro
+- file: docs/tasks
+# backmatter
+# - file: docs/back

@@ -1,0 +1,38 @@
+title : Introduction to Data Science
+author: Jun Yan and students in STAT 5255/3255, Spring 2022
+logo: 'images/tricircle.pdf'
+
+# Short description about the book
+description: >-
+  A collection of notes for jump starting in data science with Python.
+
+execute:
+  execute_notebooks           : cache
+  timeout                     : 200
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+
+# Interact link settings
+notebook_interface            : "notebook"
+
+# Launch button settings
+repository:
+  url                         : https://github.com/jun-yan/ids
+  path_to_book                : "notes"
+
+binder:
+  binderhub_url               : "https://mybinder.org"
+  text                        : "Launch binder"
+
+# LaTeX settings
+bibtex_bibfiles:
+   - _bibliography/references.bib
+latex:
+  latex_engine                : "xelatex"
+  latex_documents:
+    targetname: book.tex
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
