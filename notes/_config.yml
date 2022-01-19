@@ -1,4 +1,4 @@
-title : Introduction to Data Science
+title : Introduction to Data Science, Spring 2022
 author: Jun Yan and students in STAT 5255/3255, Spring 2022
 logo: 'images/tricircle.pdf'
 
@@ -18,7 +18,7 @@ notebook_interface            : "notebook"
 
 # Launch button settings
 repository:
-  url                         : https://github.com/jun-yan/ids
+  url                         : https://github.com/statds/ids-s22
   path_to_book                : "notes"
 
 binder:

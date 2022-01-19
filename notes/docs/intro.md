@@ -38,7 +38,7 @@ need it).
 
 ### Command line interface
 
-[Ubunto Linux for beginners]({https://ubuntu.com/tutorials/command-line-for-beginners).
+[Ubunto Linux for beginners]{https://ubuntu.com/tutorials/command-line-for-beginners).
 
 
 ### Python
