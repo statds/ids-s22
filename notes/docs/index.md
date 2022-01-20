@@ -33,6 +33,9 @@ Here at UConn, instead of a 'flipped' class, we co-develop the
 classnotes, take turns to present topics of interest, and learn from
 one another.
 
+The classnotes from Fall 2021 are here:
+<https://github.com/jun-yan/ids>
+
 # Jump Start
 
 - Command line jump start from Dr. Eubank:
