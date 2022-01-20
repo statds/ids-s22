@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.3
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -13,7 +13,7 @@ kernelspec:
 
 # Problem 1: Gamma MLE Simulation Study
 
-1. First, we define the negative loglikelihood function give the gamma parameters `theta` and data vector `x`.
+First, we define the negative loglikelihood function give the gamma parameters `theta` and data vector `x`.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -24,7 +24,7 @@ def nllk_gamma(theta, x):
     return(- np.sum(gamma.logpdf(x, a = theta[0], scale = theta[1])))
 ```
 
-1. Let's test it out.
+Let's test it out.
 
 ```{code-cell} ipython3
 n = 100
@@ -124,3 +124,7 @@ sumsim(sim_200)
 The results suggest that the MLEs recover the true parameter values and that the standard errors of the MLEs mathch their empirical standard errors. The agreement improves as sample size increases.
 
 __The title and author field did not show. I haven't figured this out. Some help would be appreciated.__
+
+```{code-cell} ipython3
+
+```
