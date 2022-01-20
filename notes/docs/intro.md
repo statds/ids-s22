@@ -53,6 +53,9 @@ need it).
 - Jupytext has nice features handling markdown source
 - Install `jupyter-boook` with  `pip install jupeter-book`
 
+To build the book, go to the source directory of the book. under
+`notes`,  run `jb build .`
+
 ### MyST Markdown
 
 Markedly Structured Text (MyST) examples:
