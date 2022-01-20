@@ -4,6 +4,6 @@ options:
   numbered: true
 chapters:
 - file: docs/intro
-- file: docs/tasks
+- file: docs/prman
 # backmatter
 # - file: docs/back

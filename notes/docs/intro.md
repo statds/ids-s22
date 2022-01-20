@@ -112,7 +112,46 @@ label: quadratic
 The basic quadratic equation, {math:numref}`quadratic`, allows for the 
 construction of all kinds of parabolas
 
-### Git and GitHub
 
-See documentations at [GitHub Docs](https://docs.github.com/).
+## Wish List
+
+This is a wish list from all members of the class (alphabetical
+order). Add yours; note the syntax of nested list in Markdown.
+
++ Last, First
+    - wish 1
+    - wish 2
++ Yan, Jun
+    - Make data science accessible to undergraduates
+    - Co-develop a notebook with Jupyter-book in collaboration with students
+
+## Task Board
+
++ Project management 
+    - Markdown basics
+    - Jupyter notebook
+    - Jupyter book
+    - Jun Yan ~~Git basics~~
++ Python refreshment
+    - Vectors, matrices, and arrays
+    - Distributions
++ Optimization
+    - Unrestricted
+    - Restricted
++ Visualization
+    - Package matplotlib
+    - Package seaborn
++ Statistical tests and models
+    - Hypothesis tests
+    - Generalized linear models (specifically logistic)
++ Tree-based models
+    - Tree models
+    - Random forest
++ Boosting and XGBoost
+    - Gradient boosting and its variants
+    - XGBoost in action
++ Unsupervised learning
+    - K-means clustering
+    - Model-based
++ Neural networks and deep learning
 
