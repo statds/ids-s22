@@ -5,12 +5,13 @@ The notes are a joint effort of the instructor and the students in
 STAT 5255, Spring 2022, through experimental learning.
 ```
 
-
 These notes are built using Jupyter Book 2.0.  
 
 # I Understand
 
-(From Dr. Nicholas Eubank)
+Dr. Nicholas Eubank taught data science at Duke with the following
+style:
+
 > Data science is an applied discipline, and so this will be an
 > intensely applied class with lots of hands-on exercises.
 > 
@@ -28,8 +29,9 @@ These notes are built using Jupyter Book 2.0.
 > readings and tutorials before each class should not expect to receive
 > good grades, regardless of performance on project assignments. 
 
-We will supplement the in-class exercises with topic presentations.
-
+Here at UConn, instead of a 'flipped' class, we co-develop the
+classnotes, take turns to present topics of interest, and learn from
+one another.
 
 # Jump Start
 
@@ -39,4 +41,3 @@ We will supplement the in-class exercises with topic presentations.
 - [Git and GitHub](https://www.practicaldatascience.org/html/git_and_github.html) from Dr. Eubank
 - [Writing a book with Jupyter](https://jupyterbook.org/intro.html)
 - [MyST notebook with Jupytext](https://jupyterbook.org/file-types/myst-notebooks.html)
-

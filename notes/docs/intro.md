@@ -40,7 +40,6 @@ need it).
 
 [Ubunto Linux for beginners](https://ubuntu.com/tutorials/command-line-for-beginners).
 
-
 ### Python
 
 - Install Python package manager __miniconda__ or __pip__.
@@ -51,7 +50,8 @@ need it).
 
 - Markdown for text
 - Jupyter notebook for code demo
-- Jupytext
+- Jupytext has nice features handling markdown source
+- Install `jupyter-boook` with  `pip install jupeter-book`
 
 ### MyST Markdown
 
