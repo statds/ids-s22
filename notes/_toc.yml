@@ -9,5 +9,6 @@ chapters:
 #  sections:
 #  - file: xwalk
 - file: docs/exercises
+- file: docs/fixedit
 # backmatter
-# - file: docs/back
+
