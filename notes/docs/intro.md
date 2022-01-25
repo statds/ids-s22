@@ -3,8 +3,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -127,6 +129,9 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Yan, Jun
     - Make data science accessible to undergraduates
     - Co-develop a notebook with Jupyter-book in collaboration with students
++ Zeimbekakis, Anthony
+    - Become proficient in using command line with tools such as GitHub or even just file management
+    - Apply past knowledge of Python to be comfortable performing data science tasks
 
 ## Task Board
 
@@ -157,4 +162,3 @@ order). Add yours; note the syntax of nested list in Markdown.
     - K-means clustering
     - Model-based
 + Neural networks and deep learning
-
