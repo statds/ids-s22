@@ -31,3 +31,16 @@ kernelspec:
 
 + See documentations at [GitHub Docs](https://docs.github.com/).
 + Demonstration with homework template
+
+## Styles
+
++ Naming
+    - file/folder
+    - variables
+    - functions
+    - modules/packages
++ Spacing
++ Indentation
+
+Google code recommendations:
+<https://code.google.com/archive/p/soc/wikis/PythonStyleGuide.wiki>
