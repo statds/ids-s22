@@ -13,16 +13,21 @@ kernelspec:
 
 # Project Management
 
-## Reproducible data science project with Python-Markdown
+## Reproducible Data Science Project
 
-+ Markdown cheatsheet (Google it).
-+ Test and edit until the code runs
-+ Add texts to explain the code
-+ Save the results into a pdf file (for GitHub project release).
+### Using Jupeter Notebook
++ File name extension `.ipynb`
++ Separate code chunks and companion texts
++ Test and edit until the whole notebook runs as expected
++ Save the results into a pdf file (for GitHub project release)
+
+###  Using `python` Engine in `RMarkdown`
++ Find a Markdown cheatsheet
++ Install R `reticulate` package
++ See example in `hw-rmkdn.Rmd` in the repo
+
 
 ## Setting up a Git Repo
 
 + See documentations at [GitHub Docs](https://docs.github.com/).
 + Demonstration with homework template
-
-
