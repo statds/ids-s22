@@ -5,5 +5,9 @@ options:
 chapters:
 - file: docs/intro
 - file: docs/prman
+# - file: docs/refresh
+#  sections:
+#  - file: xwalk
+- file: docs/exercises
 # backmatter
 # - file: docs/back
