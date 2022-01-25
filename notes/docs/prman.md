@@ -15,11 +15,11 @@ kernelspec:
 
 ## Reproducible Data Science Project
 
-### Using Jupeter Notebook
+### Using Jupyter Notebook
 + File name extension `.ipynb`
 + Separate code chunks and companion texts
 + Test and edit until the whole notebook runs as expected
-+ Save the results into a pdf file (for GitHub project release)
++ Download the notebook into a pdf file (for GitHub project release)
 
 ###  Using `python` Engine in `RMarkdown`
 + Find a Markdown cheatsheet
