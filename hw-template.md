@@ -9,6 +9,9 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+title: Homework 100
+author: Jun Yan
+date: February, 1, 2022
 ---
 
 # Problem 1: Gamma MLE Simulation Study
@@ -124,7 +127,3 @@ sumsim(sim_200)
 The results suggest that the MLEs recover the true parameter values and that the standard errors of the MLEs mathch their empirical standard errors. The agreement improves as sample size increases.
 
 __The title and author field did not show. I haven't figured this out. Some help would be appreciated.__
-
-```{code-cell} ipython3
-
-```
