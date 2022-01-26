@@ -127,15 +127,15 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Learn the fundamentals of data science
     - Become more comfortable with command line interface
     - Work on a data science project involving a meaningful topic
-+ Yan, Jun
-    - Make data science accessible to undergraduates
-    - Co-develop a notebook with Jupyter-book in collaboration with students
 + McClurg, Taelor
     - Gain hands on experience using data science tools to analyze real data and answer interesting questions.
     - Improve my comfort level with Python.
     - Explore data visualization tools available in Python.
     - Become proficient in git.
-+Zeimbekakis, Anthony
++ Yan, Jun
+    - Make data science accessible to undergraduates
+    - Co-develop a notebook with Jupyter-book in collaboration with students
++ Zeimbekakis, Anthony
     - Become proficient in using command line with tools such as GitHub or even just file management
     - Apply past knowledge of Python to be comfortable performing data science tasks
 
