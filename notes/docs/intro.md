@@ -123,9 +123,10 @@ construction of all kinds of parabolas
 This is a wish list from all members of the class (alphabetical
 order). Add yours; note the syntax of nested list in Markdown.
 
-+ Last, First
-    - wish 1
-    - wish 2
++ Chandy, Mathew
+    - Learn the fundamentals of data science
+    - Become more comfortable with command line interface
+    - Work on a data science project involving a meaningful topic
 + Yan, Jun
     - Make data science accessible to undergraduates
     - Co-develop a notebook with Jupyter-book in collaboration with students
