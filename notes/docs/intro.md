@@ -122,7 +122,8 @@ construction of all kinds of parabolas
 
 This is a wish list from all members of the class (alphabetical
 order). Add yours; note the syntax of nested list in Markdown.
-
++ Aimandi, Sakeena
+    - Complete a data science project to gain some meaningful insight and solve a real-world problem
 + Chandy, Mathew
     - Learn the fundamentals of data science
     - Become more comfortable with command line interface
