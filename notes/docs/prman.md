@@ -34,6 +34,8 @@ kernelspec:
 
 ## Styles
 
+### Programming
+
 + Naming
     - file/folder
     - variables
@@ -44,3 +46,10 @@ kernelspec:
 
 Google code recommendations:
 <https://code.google.com/archive/p/soc/wikis/PythonStyleGuide.wiki>
+
+### Git Repo
+
++ Frequent commit (more snapshots)
++ Informative message
++ Keep it clean (no temporary or generated files)
++ Make it reproducible (e.g., relative path)

@@ -47,4 +47,3 @@ In my case I had to use pip3 install, but the idea should be the
 same. Then, run `jb build .` again and the book should build without
 error. This solution worked for me so hopefully it works for anyone
 else who runs into this error!
-
