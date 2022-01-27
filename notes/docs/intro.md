@@ -127,6 +127,10 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Learn the fundamentals of data science
     - Become more comfortable with command line interface
     - Work on a data science project involving a meaningful topic
++ Hughes, Sam
+    - Become comfortable with git
+    - Learn data visualization techniques in Python
+    - Learn reinforcement learning through Python
 + McClurg, Taelor
     - Gain hands on experience using data science tools to analyze real data and answer interesting questions.
     - Improve my comfort level with Python.
