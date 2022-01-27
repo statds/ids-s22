@@ -30,15 +30,21 @@ which could be helpful for others with the same problems.
 
     TypeError: asdict() got an unexpected keyword argument 'value_serializer'
 
-### Solution: Update your packages
-The solution that worked for me came from this forum: https://githubhelp.com/executablebooks/sphinx-external-toc/issues/49. In the forum, it's suggested that the package "sphinx-external-toc" may be outdated and the current version does not meet the requirements to build the book.
-To solve this, you can use pip to update this package. Enter the following into the command line:
+### Solution: Upgrade a package
+The solution that worked for me came from this forum: 
+<https://githubhelp.com/executablebooks/sphinx-external-toc/issues/49>.
+In the forum, it's suggested that the package `sphinx-external-toc`
+may be outdated and the current version does not meet the requirements
+to build the book.
+
+To solve this, you can use pip to update this package. Enter the
+following into the command line:
 
     pip install --upgrade sphinx-external-toc
 
 
-In my case I had to use pip3 install, but the idea should be the same. Then, run "jb build ." again and the book should build without error. This solution worked for me so hopefully it works for anyone else who runs into this error!
+In my case I had to use pip3 install, but the idea should be the
+same. Then, run `jb build .` again and the book should build without
+error. This solution worked for me so hopefully it works for anyone
+else who runs into this error!
 
-```{code-cell} ipython3
-
-```
