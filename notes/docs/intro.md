@@ -139,6 +139,9 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Zeimbekakis, Anthony
     - Become proficient in using command line with tools such as GitHub or even just file management
     - Apply past knowledge of Python to be comfortable performing data science tasks
++ Campman, Benjamin
+    - Develop more concrete ability and knowledge of Python
+    - Understand basics of Git
 
 ## Task Board
 
