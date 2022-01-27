@@ -122,7 +122,8 @@ construction of all kinds of parabolas
 
 This is a wish list from all members of the class (alphabetical
 order). Add yours; note the syntax of nested list in Markdown.
-
++ Aimandi, Sakeena
+    - Complete a data science project to gain some meaningful insight and solve a real-world problem
 + Chandy, Mathew
     - Learn the fundamentals of data science
     - Become more comfortable with command line interface
@@ -142,6 +143,12 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Zeimbekakis, Anthony
     - Become proficient in using command line with tools such as GitHub or even just file management
     - Apply past knowledge of Python to be comfortable performing data science tasks
++ Campman, Benjamin
+    - Develop more concrete ability and knowledge of Python
+    - Understand basics of Git
++ Shamirian, Robbie
+    - Continue to grow my Python skills in relation to data science
+    - Understand the fundamentals of Git
 
 ## Task Board
 
