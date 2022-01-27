@@ -142,6 +142,9 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Campman, Benjamin
     - Develop more concrete ability and knowledge of Python
     - Understand basics of Git
++ Shamirian, Robbie
+    - Continue to grow my Python skills in relation to data science
+    - Understand the fundamentals of Git
 
 ## Task Board
 
