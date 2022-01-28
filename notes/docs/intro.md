@@ -149,6 +149,10 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Shamirian, Robbie
     - Continue to grow my Python skills in relation to data science
     - Understand the fundamentals of Git
++ Sharma, Sinchan
+	- Become adept at using Git and GitHub for projects
+	- Become more comfortable with using Python
+	- Learn data analysis and visualization techniques using Python
 
 ## Task Board
 
