@@ -179,3 +179,13 @@ order). Add yours; note the syntax of nested list in Markdown.
     - K-means clustering
     - Model-based
 + Neural networks and deep learning
+
+## Data Challenges in Action
+
++ [When Will the Cherry Trees
+  Bloom](https://competition.statistics.gmu.edu/)
+  
++ [ASA Data Challenge
+  Expo](https://community.amstat.org/dataexpo/home)
+  
+  
