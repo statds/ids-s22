@@ -155,6 +155,10 @@ order). Add yours; note the syntax of nested list in Markdown.
 	- Become adept at using Git and GitHub for projects
 	- Become more comfortable with using Python
 	- Learn data analysis and visualization techniques using Python
++ Xu, Zhenyu
+    - Get familiar with Git and Github like a professional data scientist
+    - Learn more Python skills
+    - Participate in a practical data science competition
 
 ## Task Board
 
@@ -193,5 +197,7 @@ order). Add yours; note the syntax of nested list in Markdown.
   
 + [ASA Data Challenge
   Expo](https://community.amstat.org/dataexpo/home)
-  
-  
+
+```{code-cell} ipython3
+
+```
