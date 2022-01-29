@@ -137,6 +137,8 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Improve my comfort level with Python.
     - Explore data visualization tools available in Python.
     - Become proficient in git.
++ Taffe, Thalia
+    - Better understand cmd functionality
 + Yan, Jun
     - Make data science accessible to undergraduates
     - Co-develop a notebook with Jupyter-book in collaboration with students
