@@ -174,7 +174,8 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Unrestricted
     - Restricted
 + Visualization
-    - Package matplotlib
+    - Package matplotlib (Tu, Feb. 8)
+    - Package basemap (Th, Feb. 10)
     - Package seaborn
 + Statistical tests and models
     - Hypothesis tests
@@ -198,6 +199,22 @@ order). Add yours; note the syntax of nested list in Markdown.
 + [ASA Data Challenge
   Expo](https://community.amstat.org/dataexpo/home)
 
-```{code-cell} ipython3
+## NYC Open Data Week Event
 
-```
+### My Proposal Was Accepted
+The NYC Open Data provides opportunities for data scientists to
+demonstrate what data science can do in real life. Students taking
+Introduction to Data Science (STAT3255/5255) in Spring 2022 at UConn
+are required to work on a project of their choice with any dataset on
+NYC Open Data. The topics will be a mix of instructor recommendations
+and self selections, covering transportation, construction, education,
+finance, and health, among others. Examples are the motor vehicle
+collisions crashes; DOB job application filling. NYC leading causes of
+death. and for students in data science. data science education. Five
+students will be selected from the class to present their works in a
+virtual panel. The presented project will be made public in
+crowd-sourced open class notes, facilitating real-life open data
+projects in data science education.
+
+### Dates 
+Tuesday, March 8, 2022 or Thursday, March 10, 2022

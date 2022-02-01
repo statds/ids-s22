@@ -8,6 +8,10 @@ chapters:
 - file: docs/refresh
 #  sections:
 #  - file: xwalk
+- file: docs/visual
+  sections:
+  - file: docs/matplotlib
+  - file: docs/basemap
 - file: docs/exercises
 - file: docs/fixedit
 # backmatter

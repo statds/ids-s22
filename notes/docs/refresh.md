@@ -191,4 +191,116 @@ append_42(x)
 ```
 Note that both `x` and `y` have been appended by $42$.
 
+## Number Representation
+
+Numers in a computer's memory are represented by binary styles (on and
+off of bits). 
+
+### Integers
+If not careful, It is easy to be bitten by overflow with integers when
+using Numpy and Pandas in Python.
+
+
+```{code-cell} ipython3
+import numpy as np
+
+x = np.array(2**63 - 1 , dtype='int')
+x
+# This should be the largest number numpy can display, with
+# the default int8 type (64 bits)
+```
+
+What if we increment it by 1?
+```{code-cell} ipython3
+y = np.array(x + 1, dtype='int')
+y
+# Because of the overflow, it becomes negative!
+```
+For vanilla Python, the overflow errors are checked and more digits
+are allocated when needed, at the cost of being slow.
+```{code-cell} ipython3
+2**63 * 1000 
+```
+This number is 1000 times largger than the prior number, 
+but still displayed perfectly without any overflows 
+
+### Floating Number
+
+Standard double-precision floating point number uses 64 bits. Among
+them, 1 is for sign, 11 is for exponent, and 52 are fraction significand, 
+See <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>.
+The bottom line is that, of course, not every real number is exactly
+representable.
+
+
+```{code-cell} ipython3
+0.1 + 0.1 + 0.1 == 0.3
+```
+
+```{code-cell} ipython3
+0.3 - 0.2 == 0.1
+```
+What is really going on?
+```{code-cell} ipython3
+import decimal
+decimal.Decimal(0.1)
+```
+
+
+Because the mantissa bits are limited, it can not represent a floating point 
+that's both very big and very precise. Most computers can represent all integers
+up to $2^53$, after that it starts skipping numbers.
+
+```{code-cell} ipython3
+2.1**53 +1 == 2.1**53
+
+# Find a number larger than 2 to the 53rd
+```
+
+```{code-cell} ipython3
+x = 2.1**53
+for i in range(1000000):
+    x = x + 1
+x == 2.1**53
+```
+We add 1 to `x` by 1000000 times, but it still equal to its initial
+value,  2.1**53. This is because this number is too big that computer
+can't handle it with precision like add 1.
+
+Machine epsilon is the smallest positive floating-point number `x` such that
+`1 + x != 1`.
+```{code-cell} ipython3
+print(np.finfo(float).eps)
+print(np.finfo(np.float32).eps)
+
+```
+
+## Data Importation
+
+NYC Open Data is great resource of open data. One specific dataset of
+interest is the [Motor Vehicle
+Collisons-Crashes](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95).
+
+
+> The Motor Vehicle Collisions crash table contains details on the
+> crash event. Each row represents a crash event. The Motor Vehicle
+> Collisions data tables contain information from all police reported
+> motor vehicle collisions in NYC. The police report (MV104-AN) is
+> required to be filled out for collisions where someone is injured or
+> killed, or where there is at least $1000 worth of damage
+
+The data is big. I only downloaded the data from January 1 to 25,
+2022.
+
+```{code-cell} ipython3
+import pandas as pd
+
+nyc_crash = pd.read_csv("../data/nyc_mv_collisons_202201.csv")
+nyc_crash.head(10)
+```
+
+There are 29 variables.
+```{code-cell} ipython3
+nyc_crash.columns
+```
 
