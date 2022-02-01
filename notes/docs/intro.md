@@ -128,6 +128,9 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Learn the fundamentals of data science
     - Become more comfortable with command line interface
     - Work on a data science project involving a meaningful topic
++ Campman, Benjamin
+    - Develop more concrete ability and knowledge of Python
+    - Understand basics of Git
 + Hughes, Sam
     - Become comfortable with git
     - Learn data visualization techniques in Python
@@ -137,17 +140,6 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Improve my comfort level with Python.
     - Explore data visualization tools available in Python.
     - Become proficient in git.
-+ Taffe, Thalia
-    - Better understand cmd functionality
-+ Yan, Jun
-    - Make data science accessible to undergraduates
-    - Co-develop a notebook with Jupyter-book in collaboration with students
-+ Zeimbekakis, Anthony
-    - Become proficient in using command line with tools such as GitHub or even just file management
-    - Apply past knowledge of Python to be comfortable performing data science tasks
-+ Campman, Benjamin
-    - Develop more concrete ability and knowledge of Python
-    - Understand basics of Git
 + Shamirian, Robbie
     - Continue to grow my Python skills in relation to data science
     - Understand the fundamentals of Git
@@ -155,10 +147,18 @@ order). Add yours; note the syntax of nested list in Markdown.
 	- Become adept at using Git and GitHub for projects
 	- Become more comfortable with using Python
 	- Learn data analysis and visualization techniques using Python
++ Taffe, Thalia
+    - Better understand cmd functionality
 + Xu, Zhenyu
     - Get familiar with Git and Github like a professional data scientist
     - Learn more Python skills
     - Participate in a practical data science competition
++ Yan, Jun
+    - Make data science accessible to undergraduates
+    - Co-develop a notebook with Jupyter-book in collaboration with students
++ Zeimbekakis, Anthony
+    - Become proficient in using command line with tools such as GitHub or even just file management
+    - Apply past knowledge of Python to be comfortable performing data science tasks
 
 ## Task Board
 
