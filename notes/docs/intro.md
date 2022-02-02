@@ -132,9 +132,10 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Develop more concrete ability and knowledge of Python
     - Understand basics of Git
 + Hughes, Sam
-    - Become comfortable with git
+    - Become proficient with git
     - Learn data visualization techniques in Python
     - Learn reinforcement learning through Python
+    - Learn K Nearest Neighbors Algorithm
 + McClurg, Taelor
     - Gain hands on experience using data science tools to analyze real data and answer interesting questions.
     - Improve my comfort level with Python.
