@@ -249,7 +249,7 @@ decimal.Decimal(0.1)
 
 Because the mantissa bits are limited, it can not represent a floating point 
 that's both very big and very precise. Most computers can represent all integers
-up to $2^53$, after that it starts skipping numbers.
+up to $2^{53}$, after that it starts skipping numbers.
 
 ```{code-cell} ipython3
 2.1**53 +1 == 2.1**53

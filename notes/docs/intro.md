@@ -53,7 +53,7 @@ need it).
 - Markdown for text
 - Jupyter notebook for code demo
 - Jupytext has nice features handling markdown source
-- Install `jupyter-boook` with  `pip install jupyter-book`
+- Install `jupyter-book` with  `pip install jupyter-book`
 
 To build the book, go to the source directory of the book. under
 `notes`,  run `jb build .`
