@@ -6,6 +6,7 @@ chapters:
 - file: docs/intro
 - file: docs/prman
 - file: docs/refresh
+- file: docs/scipy
 - file: docs/visual
   sections:
   - file: docs/matplotlib
