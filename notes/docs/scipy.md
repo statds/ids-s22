@@ -107,7 +107,7 @@ def rosen(x, a = 1, b = 100):
 The important arguments of `minimize()` are:
 
 + `fun`: objective function
-+ `x0`: initial gues
++ `x0`: initial guess
 + `args`: extra arguments to the objective function (and its
   derivatives)
 + `method`: type of solver, including `Nelder-Mead`, `BFGS`, etc.
