@@ -83,6 +83,10 @@ genextreme.logcdf(x, c = xi) # for loglikelihood
 genextreme.ppf(genextreme.cdf(x, c = xi), c = xi) == x
 ```
 
+```{code-cell} ipython3
+genextreme.logpdf(x, c = xi)
+```
+
 See
 [documentation](https://scipy.github.io/devdocs/reference/stats.html#statsrefmanual)
 for more.
@@ -95,10 +99,9 @@ minimizations with the function `minimize()`.
 For illustration, consider the $n$-variate [Rosenbrook function](https://en.wikipedia.org/wiki/Rosenbrock_function).
 
 ```{code-cell} ipython3
-def rosen(x, a = 100, b = 1):
+def rosen(x, a = 1, b = 100):
     """The Rosenbrock function"""
-    return sum(b*(x[1:]- x[:-1]**2.0)**2.0 + a*(1-x[:-1])**2.0)
-
+    return sum(b*(x[1:]- x[:-1]**2.0)**2.0 + (a-x[:-1])**2.0)
 ```
 
 The important arguments of `minimize()` are:
@@ -119,23 +122,36 @@ need these attributes:
   likelihood estimation problem, negative loglikelihood)
 + `hess_inv`: inverse of the Hessian matrix (in a likelihood
   estimation problem it is the variance matrix of the MLE)
-  
+
 ```{code-cell} ipython3
 import numpy as np
 from scipy.optimize import minimize
 
-x0 = np.array([1.3, 0.7, 0.8, 1.9, 1.2])
-res = minimize(rosen, x0, args=(10, 1), 
+x0 = np.array([1.3, 0.7]) # , 0.8, 1.9, 1.2])
+res = minimize(rosen, x0,
                method='Nelder-Mead', 
                options={'xatol': 1e-8, 'disp': True})
 res.x
 ```
 
 The Hessian matrix is not available from the Nelder-Mead method, but
-from the BFGS method.
+from the BFGS method. Now we use `res.x` as initial value and apply
+the BFGS method to get `hess_inv`.
+
+
 ```{code-cell} ipython3
 res2 = minimize(rosen, res.x, method='BFGS',
-                options={'maxiter': 1})
+                options={'maxiter': 0})
 res2.x
 ```
 
+```{code-cell} ipython3
+res2.hess_inv
+```
+
+Let's change the value of `a` and `b`.
+```{code-cell} ipython3
+res2 = minimize(rosen, res.x, args(3, 100),
+                method='Nelder-Mead')
+res2.x
+```
