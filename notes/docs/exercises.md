@@ -31,15 +31,20 @@ kernelspec:
    digits of $e$. This was a
    [Google recruiting ad](http://mathworld.wolfram.com/news/2004-10-13/google/).
 
-1. Write a function to obtain the MLE of the parameters of a
-   generalized extreme value distribution with a random sample. 
-   The input is the random sample vector `x`. and the outputs are the
-   MLE vector of the three parameters and the vector of their standard
-   errors. Let $\thta$ be the true parameter vector containing the
-   location, scale, and the shape parameters. Write a function to
-   conduct a simulation study; the inputs are $\theta$, sample size
-   $n$, and the number of replicates `nrep`. Conduct the simulation
-   study with $\theta = (0, 1, 0.2)$, sample size $n \in {100, 200}$,
-   with 1000 replicates. Summarize your results; commenting on whether
-   your MLE on average recover the true $\theta$ and whether your
-   standard errors on average reflect the true standard error of the MLE.
+1. This is simulation study for the MLE.
+    1. Write a function to obtain the MLE of the parameters of a
+      generalized extreme value distribution with a random sample. 
+      The input is the random sample vector `x`. The outputs are the
+	  MLE vector of the three parameters and the vector of their
+      standard errors. 
+    1. Let $\theta$ be the true parameter vector containing the
+      location, scale, and the shape parameters. Write a function to
+      conduct a simulation study; the inputs are $\theta$, sample size
+	  $n$, and the number of replicates `nrep`. 
+	1. Conduct the simulation study with $\theta = (0, 1, 0.2)$, sample
+      size $n \in \{100, 200\}$, with `nrep = 200`.
+    1. Summarize your results; commenting on whether your MLE on
+      average recover the true $\theta$ and whether your standard
+      errors on average reflect the true standard error of the MLE.
+
+1. NYC MV
