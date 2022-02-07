@@ -16,11 +16,12 @@ kernelspec:
 # Basemap
 
 An executive summary ... its functions ... authors ... and history ...
+
 Basemap is a python library that can be used in combination with matplotlib to create two dimensional maps. 
 
 The library was originally created by Jeff Whitaker. It has since been contributed to by many people across multiple subject areas.
 
-Starting in 2016, The Cartopy Project began development as a replacement of Basemap.
+Starting in 2016, The Cartopy Project began development as a replacement for Basemap.
 
 The last documented contributor to Basemap was Ben Root, who agreed to maintain the library until 2020.
 
