@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install git+https://github.com/ipython/ipython
+          pip install jedi==0.17.2
           pip install jupyter-book
 
       # Build the book
