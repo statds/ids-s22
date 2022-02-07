@@ -22,6 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install git+https://github.com/ipython/ipython
           pip install jupyter-book
 
       # Build the book
