@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install jupyter-book
+          conda install jedi==0.17.1
 
       # Build the book
       - name: Build the book
