@@ -7,6 +7,7 @@ chapters:
 - file: docs/prman
 - file: docs/refresh
 - file: docs/scipy
+- file: docs/pandas
 - file: docs/visual
   sections:
   - file: docs/matplotlib
