@@ -20,10 +20,11 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install dependencies
+      - name: Set Up Virtual Environment and Install dependencies
         run: |
-          pip install jedi==0.17.2
-          pip install jupyter-book
+          python -m venv env
+          source env/bin/activate
+          pip install -r requirements.txt
 
       # Build the book
       - name: Build the book
