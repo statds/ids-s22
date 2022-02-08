@@ -101,7 +101,7 @@ Convert the time string to numeric for later processing:
 nyc_crash["time"] = [x.split(":")[0] for x in nyc_crash["CRASH TIME"]]
 nyc_crash["time"] = [int(x) for x in nyc_crash["time"]]
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 plt.hist(nyc_crash["time"])
 ```
 
