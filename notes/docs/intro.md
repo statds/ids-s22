@@ -171,25 +171,29 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Python refreshment
     - Vectors, matrices, and arrays
     - Distributions
-+ Optimization
-    - Unrestricted
-    - Restricted
+    - Optimization
+    - Data manipulation
 + Visualization
-    - Package matplotlib (Tu, Feb. 8)
-    - Package basemap (Th, Feb. 10)
-    - Package seaborn
+    - Package matplotlib (Tu, Feb. 8: Taelor McClurg)
+    - Package cartopy/basemap (Th, Feb. 10: Sam Hugh)
+    - Package plotnine (ggplot2 equivalent) (Tu. Feb. 15: Mathew Chandy)
 + Statistical tests and models
-    - Hypothesis tests
-    - Generalized linear models (specifically logistic)
-+ Tree-based models
-    - Tree models
-    - Random forest
-+ Boosting and XGBoost
-    - Gradient boosting and its variants
-    - XGBoost in action
+    - Desribing statistical models with package `patsy`  (Th. Feb. 17:
+      Anthony Zeimbekakis) 
+    - Statistical models and hypothesis tests with package
+      `statsmodels`
++ Supervised learning
+    - Decision trees
+    - Random forests
+    - Support vector machine
+    - Nearest neighbor
+    - Ensembool methods
+        + Bagging
+        + Boosting
+        + XGBoost
 + Unsupervised learning
     - K-means clustering
-    - Model-based
+    - Gaussian mixture models
 + Neural networks and deep learning
 
 ## Data Challenges in Action
@@ -202,7 +206,7 @@ order). Add yours; note the syntax of nested list in Markdown.
 
 ## NYC Open Data Week Event
 
-### My Proposal Was Accepted
+### Open Data in a Classroom
 The NYC Open Data provides opportunities for data scientists to
 demonstrate what data science can do in real life. Students taking
 Introduction to Data Science (STAT3255/5255) in Spring 2022 at UConn
@@ -218,4 +222,6 @@ crowd-sourced open class notes, facilitating real-life open data
 projects in data science education.
 
 ### Dates
-Tuesday, March 8, 2022 or Thursday, March 10, 2022
+Four students will present during our lecture hour on
+Tuesday, March 8, 2022, to the general public as part of the NYC Open
+Data Week.
