@@ -47,4 +47,14 @@ kernelspec:
       average recover the true $\theta$ and whether your standard
       errors on average reflect the true standard error of the MLE.
 
-1. NYC MV
+1. The NYC motor vehicle collisions crash table contains details on
+   the crashes. The dataset we are using contains the crashes in
+   January 2022.
+    1. Create a frequency table of the number of crashes by borough.
+	1. Create a `hour` variable with integer values from 0 to 23, and
+       plot of the histogram of crashes by hour.
+    1. Take Brooklyn as an example, overlay the locations of the
+       crashes on the map of Brooklyn.
+    1. Make the same map but by every 3 hours in a day.
+
+   
