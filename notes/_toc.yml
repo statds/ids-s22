@@ -11,6 +11,7 @@ chapters:
   sections:
   - file: docs/matplotlib
   - file: docs/basemap
+  - file: docs/cartopy
 - file: docs/exercises
 - file: docs/fixedit
 
