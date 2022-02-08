@@ -15,6 +15,11 @@ kernelspec:
 
 ## Reproducible Data Science Project
 
+### Using Virtual Environment for Python
+
+It is a good practice to set up and use virtual environments for Python (or R) projects.
+See a tutorial of virtual environments at [Python Docs](https://docs.python.org/3/tutorial/venv.html).
+
 ### Using Jupyter Notebook
 + File name extension `.ipynb`
 + Separate code chunks and companion texts

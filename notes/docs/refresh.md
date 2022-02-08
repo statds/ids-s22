@@ -29,7 +29,7 @@ do some refreshing.
   reusable chunk of code that we can use by importing it in our
   program, we can just use it by importing that library and calling
   the method of that library with period(.).
-  
+
 See, for example, [how to build a Python
 libratry](https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5aea80cc3f).
 
@@ -37,13 +37,13 @@ libratry](https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5
 Question: How to get the constant $e$ to an arbitary precision?
 
 The constant is only represented by a given double precision.
-```{code-cell} ipython3
+```{code-cell}
 import math
 print("%0.20f" % math.e)
 print("%0.80f" % math.e)
 ```
 Now use package `decimal` to export with an arbitary precision.
-```{code-cell} ipython3
+```{code-cell}
 import decimal  # for what?
 
 ## set the required number digits to 150
@@ -54,7 +54,7 @@ decimal.Decimal(1).exp().to_eng_string()[2:]
 
 Question: how to draw a random sample from a normal distribution and
 evaluate the density and distributions at these points?
-```{code-cell} ipython3
+```{code-cell}
 from scipy.stats import norm
 
 mu, sigma = 2, 4
@@ -64,7 +64,7 @@ x = norm.rvs(loc = mu, scale = sigma, size = 10)
 x
 ```
 The pdf and cdf can be evaluated:
-```{code-cell} ipython3
+```{code-cell}
 norm.pdf(x, loc = mu, scale = sigma)
 ```
 
@@ -77,7 +77,7 @@ We are going to use 3 ways to solve the problems.
 
 
 The first is a recursive solution.
-```{code-cell} ipython3
+```{code-cell}
 def fib_rs(n):
     if (n==1 or n==2):
         return 1
@@ -88,7 +88,7 @@ def fib_rs(n):
 ```
 
 The second uses dynamic programming memoization.
-```{code-cell} ipython3
+```{code-cell}
 def fib_dm_helper(n, mem):
     if mem[n] is not None:
         return mem[n]
@@ -107,7 +107,7 @@ def fib_dm(n):
 ```
 
 The third is still dynamic programming but bottom-up.
-```{code-cell} ipython3
+```{code-cell}
 def fib_dbu(n):
     mem = [None] * (n + 1)
     mem[1]=1;
@@ -115,7 +115,7 @@ def fib_dbu(n):
     for i in range(3,n+1):
         mem[i] = mem[i-1] + mem[i-2]
     return mem[n]
-        
+
 
 %timeit fib_dbu(500)
 ```
@@ -131,14 +131,14 @@ two different places in the computer memory. Think of variables as
 pointers to the objects they’re associated with, rather than being
 those objects. This matters when multiple variables point to the same
 object.
-```{code-cell} ipython3
+```{code-cell}
 x = [1, 2, 3]  # create a list; x points to the list
 y = x          # y also points to the same list in the memory
 y.append(4)    # append to y
 x              # x changed!
 ```
 Now check their addresses
-```{code-cell} ipython3
+```{code-cell}
 print(id(x))   # address of x
 print(id(y))   # address of y
 ```
@@ -146,7 +146,7 @@ print(id(y))   # address of y
 
 Nonetheless, some data types in Python are "immutable", meaning that
 their values cannot be changed in place. One such example is strings.
-```{code-cell} ipython3
+```{code-cell}
 x = "abc"
 y = x
 y = "xyz"
@@ -154,7 +154,7 @@ x
 ```
 
 Now check their addresses
-```{code-cell} ipython3
+```{code-cell}
 print(id(x))   # address of x
 print(id(y))   # address of y
 ```
@@ -179,7 +179,7 @@ object-reference”). So if you pass a list to a function, and that
 function manipulates that list using an in-place mutation, that change
 will affect any variable that was pointing to that same object outside
 the function.
-```{code-cell} ipython3
+```{code-cell}
 x = [1, 2, 3]
 y = x
 
@@ -194,14 +194,14 @@ Note that both `x` and `y` have been appended by $42$.
 ## Number Representation
 
 Numers in a computer's memory are represented by binary styles (on and
-off of bits). 
+off of bits).
 
 ### Integers
 If not careful, It is easy to be bitten by overflow with integers when
 using Numpy and Pandas in Python.
 
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
 
 x = np.array(2**63 - 1 , dtype='int')
@@ -211,53 +211,53 @@ x
 ```
 
 What if we increment it by 1?
-```{code-cell} ipython3
+```{code-cell}
 y = np.array(x + 1, dtype='int')
 y
 # Because of the overflow, it becomes negative!
 ```
 For vanilla Python, the overflow errors are checked and more digits
 are allocated when needed, at the cost of being slow.
-```{code-cell} ipython3
-2**63 * 1000 
+```{code-cell}
+2**63 * 1000
 ```
-This number is 1000 times largger than the prior number, 
-but still displayed perfectly without any overflows 
+This number is 1000 times largger than the prior number,
+but still displayed perfectly without any overflows
 
 ### Floating Number
 
 Standard double-precision floating point number uses 64 bits. Among
-them, 1 is for sign, 11 is for exponent, and 52 are fraction significand, 
+them, 1 is for sign, 11 is for exponent, and 52 are fraction significand,
 See <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>.
 The bottom line is that, of course, not every real number is exactly
 representable.
 
 
-```{code-cell} ipython3
+```{code-cell}
 0.1 + 0.1 + 0.1 == 0.3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 0.3 - 0.2 == 0.1
 ```
 What is really going on?
-```{code-cell} ipython3
+```{code-cell}
 import decimal
 decimal.Decimal(0.1)
 ```
 
 
-Because the mantissa bits are limited, it can not represent a floating point 
+Because the mantissa bits are limited, it can not represent a floating point
 that's both very big and very precise. Most computers can represent all integers
 up to $2^{53}$, after that it starts skipping numbers.
 
-```{code-cell} ipython3
+```{code-cell}
 2.1**53 +1 == 2.1**53
 
 # Find a number larger than 2 to the 53rd
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x = 2.1**53
 for i in range(1000000):
     x = x + 1
@@ -269,7 +269,7 @@ can't handle it with precision like add 1.
 
 Machine epsilon is the smallest positive floating-point number `x` such that
 `1 + x != 1`.
-```{code-cell} ipython3
+```{code-cell}
 print(np.finfo(float).eps)
 print(np.finfo(np.float32).eps)
 
@@ -292,7 +292,7 @@ Collisons-Crashes](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Col
 The data is big. I only downloaded the data from January 1 to 25,
 2022.
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 
 nyc_crash = pd.read_csv("../data/nyc_mv_collisons_202201.csv")
@@ -300,7 +300,6 @@ nyc_crash.head(10)
 ```
 
 There are 29 variables.
-```{code-cell} ipython3
+```{code-cell}
 nyc_crash.columns
 ```
-

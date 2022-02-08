@@ -79,7 +79,7 @@ warning
    A note written in reStructuredText.
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 other:
   more: true
@@ -88,13 +88,13 @@ tags: [hide-output, show-input]
 print("Hello!")
 ```
 
-```{code-block} python
+```{code-block}
 ---
 lineno-start: 10
 emphasize-lines: 1, 3
 caption: |
     This is my
-    multi-line caption. It is *pretty nifty* 
+    multi-line caption. It is *pretty nifty*
 ---
 a = 2
 print('my 1st line')
@@ -114,7 +114,7 @@ label: quadratic
 ---
 ```
 
-The basic quadratic equation, {math:numref}`quadratic`, allows for the 
+The basic quadratic equation, {math:numref}`quadratic`, allows for the
 construction of all kinds of parabolas
 
 
@@ -145,9 +145,9 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Continue to grow my Python skills in relation to data science
     - Understand the fundamentals of Git
 + Sharma, Sinchan
-	- Become adept at using Git and GitHub for projects
-	- Become more comfortable with using Python
-	- Learn data analysis and visualization techniques using Python
+    - Become adept at using Git and GitHub for projects
+    - Become more comfortable with using Python
+    - Learn data analysis and visualization techniques using Python
 + Taffe, Thalia
     - Better understand cmd functionality
 + Xu, Zhenyu
@@ -163,7 +163,7 @@ order). Add yours; note the syntax of nested list in Markdown.
 
 ## Task Board
 
-+ Project management 
++ Project management
     - Markdown basics
     - Jupyter notebook
     - Jupyter book
@@ -196,7 +196,7 @@ order). Add yours; note the syntax of nested list in Markdown.
 
 + [When Will the Cherry Trees
   Bloom](https://competition.statistics.gmu.edu/)
-  
+
 + [ASA Data Challenge
   Expo](https://community.amstat.org/dataexpo/home)
 
@@ -217,5 +217,5 @@ virtual panel. The presented project will be made public in
 crowd-sourced open class notes, facilitating real-life open data
 projects in data science education.
 
-### Dates 
+### Dates
 Tuesday, March 8, 2022 or Thursday, March 10, 2022

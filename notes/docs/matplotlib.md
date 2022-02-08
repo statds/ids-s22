@@ -9,7 +9,7 @@ kernelspec: {display_name: Python 3, language: python, name: python3}
 # Matplotlib: Visualization with Python
 
 From matplotlib.org:
-> Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible. 
+> Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.
 - Create publication quality plots.
 - Make interactive figures that can zoom, pan, update.
 - Customize visual style and layout.
@@ -23,7 +23,7 @@ To instally Matplotlib using pip, type the following command into the terminal:
 
 Then, put the following code at the start of any code that uses Matplotlib.
 
-```{code-cell} ipython3
+```{code-cell}
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,7 +32,7 @@ import numpy as np
 ## A Simple Example
 The following examples were taken from https://matplotlib.org/stable/tutorials/introductory/usage.html:
 
-```{code-cell} ipython3
+```{code-cell}
 fig, ax = plt.subplots()  # Create a figure containing a single axes.
 ax.plot([1, 2, 3, 4], [1, 4, 2, 3]);  # Plot some data on the axes.
 ```
@@ -43,7 +43,7 @@ In the above example a figure and one set of axes are created using the plt.subp
 
 Here's a more comlex example, taken from the same tutorial:
 
-```{code-cell} ipython3
+```{code-cell}
 np.random.seed(19680801)  # seed the random number generator.
 data = {'a': np.arange(50),
         'c': np.random.randint(0, 50, 50),
@@ -66,7 +66,7 @@ The above examples utilized an object oriented style of programming: objects wer
 
 Here's an example:
 
-```{code-cell} ipython3
+```{code-cell}
 x = np.linspace(0, 2, 100)  # Sample data.
 
 plt.figure(figsize=(10, 5))
@@ -84,7 +84,7 @@ Here, the plt.plot function was used called three times to graph a linear, quadr
 ## Arranging Multiple Axes in a Figure
 Multiple axes can be plotted to the same figure. A nxm grid can be created by specifying the number of columns and rows when plt.subplots is called.
 
-```{code-cell} ipython3
+```{code-cell}
 fig, axs = plt.subplots(ncols=2, nrows=2, figsize=(10, 5),
                         constrained_layout=True)
 axs[0,0].scatter('a', 'b', c='c', s='d', data=data)
@@ -93,12 +93,12 @@ axs[0,0].set_ylabel('entry b');
 
 axs[0,1].plot([1, 2, 3, 4], [1, 4, 2, 3])
 
-axs[1,0].plot(x, x, label='linear')  
-axs[1,0].plot(x, x**2, label='quadratic')  
-axs[1,0].plot(x, x**3, label='cubic')  
-axs[1,0].set_xlabel('x label')  
-axs[1,0].set_ylabel('y label')  
-axs[1,0].set_title("Simple Plot")  
+axs[1,0].plot(x, x, label='linear')
+axs[1,0].plot(x, x**2, label='quadratic')
+axs[1,0].plot(x, x**3, label='cubic')
+axs[1,0].set_xlabel('x label')
+axs[1,0].set_ylabel('y label')
+axs[1,0].set_title("Simple Plot")
 axs[1,0].legend()
 ```
 
@@ -107,7 +107,7 @@ The following example creates some basic visualizations using the NYC Crash data
 
 One question that comes to mind is: "how often do crashes in the data set involve fatalities, and if so, how many fatalities?" Countplot to the rescue!
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 import seaborn as sns
 
@@ -117,7 +117,7 @@ sns.countplot(x ='NUMBER OF PERSONS KILLED', data = nyc_crash)
 
 As we see, almost all of the incidents in the data set were non-fatal. That's objectively a good thing, but it makes for a rather boring visualization. Now, let's do the same, but this time, let's look at the number of persons injured -- not just the number of fatalities.
 
-```{code-cell} ipython3
+```{code-cell}
 sns.countplot(x ='NUMBER OF PERSONS INJURED', data = nyc_crash)
 ```
 
@@ -125,13 +125,9 @@ As we can see, most of the crashes didn't involve any injuries. Surely this is a
 
 We can display both of these visualizations on the same plotting grid by making a 1x2 figure with the subplots function from Matplotlib, and then supplying the desired axes to countplot using the ax argument.
 
-```{code-cell} ipython3
+```{code-cell}
 fig, axs = plt.subplots(ncols=2, nrows=1, figsize=(10, 5),
                         constrained_layout=True)
 sns.countplot(x ='NUMBER OF PERSONS KILLED', data = nyc_crash, ax=axs[0])
 sns.countplot(x ='NUMBER OF PERSONS INJURED', data = nyc_crash, ax=axs[1])
-```
-
-```{code-cell} ipython3
-
 ```

@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -66,11 +66,11 @@ For example, the generalized extreme value (GEV) distribution is
 available as `scipy.stats.genextreme`. See
 [Wiki](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution).
 
-```{code-cell} ipython3
+```{code-cell}
 from scipy.stats import genextreme
 
 xi = -0.2
-n  = 10 
+n  = 10
 ## a random sample of size n
 x = genextreme.rvs(xi, size = n)
 ## density
@@ -83,7 +83,7 @@ genextreme.logcdf(x, c = xi) # for loglikelihood
 genextreme.ppf(genextreme.cdf(x, c = xi), c = xi) == x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 genextreme.logpdf(x, c = xi)
 ```
 
@@ -98,7 +98,7 @@ minimizations with the function `minimize()`.
 
 For illustration, consider the $n$-variate [Rosenbrook function](https://en.wikipedia.org/wiki/Rosenbrock_function).
 
-```{code-cell} ipython3
+```{code-cell}
 def rosen(x, a = 1, b = 100):
     """The Rosenbrock function"""
     return sum(b*(x[1:] - x[:-1]**2.0)**2.0 + (a-x[:-1])**2.0)
@@ -123,13 +123,13 @@ need these attributes:
 + `hess_inv`: inverse of the Hessian matrix (in a likelihood
   estimation problem it is the variance matrix of the MLE)
 
-```{code-cell} ipython3
+```{code-cell}
 import numpy as np
 from scipy.optimize import minimize
 
 x0 = np.array([1.3, 0.7]) # , 0.8, 1.9, 1.2])
 res = minimize(rosen, x0,
-               method = 'Nelder-Mead', 
+               method = 'Nelder-Mead',
                options = {'xatol': 1e-8, 'disp': True})
 res.x
 ```
@@ -139,18 +139,18 @@ from the BFGS method. Now we use `res.x` as initial value and apply
 the BFGS method to get `hess_inv`.
 
 
-```{code-cell} ipython3
+```{code-cell}
 res2 = minimize(rosen, res.x, method='BFGS',
                 options = {'maxiter': 0})
 res2.x
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 res2.hess_inv
 ```
 
 Let's change the value of `a` and `b`.
-```{code-cell} ipython3
+```{code-cell}
 res2 = minimize(rosen, res.x, args=(3, 100),
                 method = 'Nelder-Mead')
 res2.x
