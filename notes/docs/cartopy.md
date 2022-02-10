@@ -44,12 +44,13 @@ import cartopy.feature as cfeature
 import cartopy.io.shapereader as shpreader
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import seaborn as sns
 ```
 
 ## Basic Plot
 
-To create a cartopy plot, simply set a variable (m for map) to `plt.axes()` with a projection argument. Then add coastlines so the graph has a visible element. 
+To create a cartopy plot, simply set a variable (m for map) to `plt.axes()` with a projection argument. Then add coastlines so the graph has a visible element.
 
 ```{code-cell} ipython3
 m = plt.axes(projection=ccrs.PlateCarree())
@@ -76,7 +77,7 @@ m.gridlines(draw_labels=True, color = "gray")
 
 ## Projection Comparison
 
-Here are some examples of different projections. 
+Here are some examples of different projections.
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(20,20))
@@ -96,7 +97,7 @@ for index, projection in enumerate(projections.items()):
 
 ## Plotting Specific Locations
 
-If you only want to plot a certain area of the map, you can specify `set_extent`. To do this, specify a list of points `[lowest longitude, highest longitude, lowest latidude, highest latitude]` as well as the projection (optionally). 
+If you only want to plot a certain area of the map, you can specify `set_extent`. To do this, specify a list of points `[lowest longitude, highest longitude, lowest latidude, highest latitude]` as well as the projection (optionally).
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(14, 14))
@@ -127,7 +128,7 @@ m.set_extent([-130, -60, 20, 50])
 m.add_feature(STATES, facecolor='none', edgecolor='black')
 ```
 
-Here is a plot of New York City that we will use later. 
+Here is a plot of New York City that we will use later.
 
 ```{code-cell} ipython3
 # get shape file
@@ -147,7 +148,7 @@ m.add_feature(GEOM, facecolor='none', edgecolor='black')
 
 ## Data Cleaning
 
-Before we can work with the NYC Collisions Dataset, we need to do some data cleaning. 
+Before we can work with the NYC Collisions Dataset, we need to do some data cleaning.
 
 ```{code-cell} ipython3
 df = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
@@ -155,18 +156,17 @@ print(df.shape)
 df.head()
 ```
 
-As we can see from the plot below, there are some issues with our dataset. 
+As we can see from the plot below, there are some issues with our dataset.
 
 ```{code-cell} ipython3
 sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df, hue = "BOROUGH")
 ```
 
-Some points have the coordinates `(0, 0)` so we need to remove them from the dataset. We can also remove the rows in which the longitude/latitude data is missing. 
+Some points have the coordinates `(0, 0)` so we need to remove them from the dataset. We can also remove the rows in which the longitude/latitude data is missing.
 
 ```{code-cell} ipython3
-# drop rows with longitude == 0 and longitude as NaN
-df = df.loc[df.LONGITUDE != 0]
-df = df[df.LONGITUDE.notna()]
+# drop rows with longitude == 0
+df[df.LONGITUDE == 0] = np.nan
 
 # make sure bad latitude values are all removed now
 print(df.LATITUDE.isna().sum())
@@ -179,7 +179,7 @@ df.head()
 df.info()
 ```
 
-We can create a plot to show that our data has been successfully cleaned. 
+We can create a plot to show that our data has been successfully cleaned.
 
 ```{code-cell} ipython3
 # specify the size of the plot
@@ -192,14 +192,15 @@ fig = plt.figure(figsize=(14, 14))
 # alpha = 0.5 makes the markers 50% transparent
 # size changes the size of the point based on the amount of injuries
 # for sizes, I used list concatenation to make each point 25 times bigger
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
                 hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
-                size = "NUMBER OF PERSONS INJURED", sizes = [(i+1)*25 for i in range(max(df["NUMBER OF PERSONS INJURED"] + 1))])
+                size = "NUMBER OF PERSONS INJURED",
+                sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))])
 ```
 
 ## Plotting On Cartopy Map
 
-Using our dataset, we can plot the car crashes on their geographical location. 
+Using our dataset, we can plot the car crashes on their geographical location.
 
 ```{code-cell} ipython3
 # specify the size of the plot
@@ -212,8 +213,8 @@ m = plt.axes(projection=ccrs.PlateCarree())
 plt.title("Crashes in New York City (January 2022)")
 
 # set geographical location of graph
-m.set_extent([min(df.LONGITUDE) - 0.01, max(df.LONGITUDE) + 0.01,
-              min(df.LATITUDE) - 0.01, max(df.LATITUDE) + 0.01], ccrs.PlateCarree())
+m.set_extent([np.nanmin(df.LONGITUDE) - 0.01, np.nanmax(df.LONGITUDE) + 0.01,
+              np.nanmin(df.LATITUDE) - 0.01, np.nanmax(df.LATITUDE) + 0.01], ccrs.PlateCarree())
 
 # color in the land (the color is just a hex code for a yellow that I though looked good as land)
 m.add_feature(cfeature.LAND, color = "#F3E5AB")
@@ -222,9 +223,10 @@ m.add_feature(cfeature.LAND, color = "#F3E5AB")
 m.add_feature(cfeature.OCEAN)
 
 # use seaborn to plot the points
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
-                hue = df['BOROUGH'], style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
-                size = "NUMBER OF PERSONS INJURED", sizes = [(i+1)*25 for i in range(max(df["NUMBER OF PERSONS INJURED"] + 1))])
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
+                hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
+                size = "NUMBER OF PERSONS INJURED",
+                sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))])
 
 # if needed, you can add plt.legend(loc = "...") to change the location of the legend
 
@@ -234,7 +236,7 @@ m.coastlines()
 
 ## Plotting On Cartopy Map Using Shapefile
 
-By making use of a shapefile, we can map with greater precision and omit the locations that are not included in our graph. 
+By making use of a shapefile, we can map with greater precision and omit the locations that are not included in our graph.
 
 ```{code-cell} ipython3
 # get shape file
@@ -257,18 +259,19 @@ m.set_facecolor("gray")
 plt.title("Crashes in New York City (January 2022)")
 
 # set geographical location of graph
-m.set_extent([min(df.LONGITUDE) - 0.01, max(df.LONGITUDE) + 0.01,
-              min(df.LATITUDE) - 0.01, max(df.LATITUDE) + 0.01], ccrs.PlateCarree())
+m.set_extent([np.nanmin(df.LONGITUDE) - 0.01, np.nanmax(df.LONGITUDE) + 0.01,
+              np.nanmin(df.LATITUDE) - 0.01, np.nanmax(df.LATITUDE) + 0.01], ccrs.PlateCarree())
 
 # add the in the New York City geography that was originally read in as a shape file
 m.add_feature(GEOM, facecolor = "#F3E5AB", edgecolor='black')
 
 # use seaborn to plot the points
 # setting zorder to a high number makes it so the geography does not cover up the points
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
-                hue = df['BOROUGH'], style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
-                size = "NUMBER OF PERSONS INJURED", sizes = [(i+1)*25 for i in range(max(df["NUMBER OF PERSONS INJURED"] + 1))], 
-               zorder = 100)
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
+                hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
+                size = "NUMBER OF PERSONS INJURED",
+                sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))],
+                zorder = 100)
 
 # if needed, you can add plt.legend(loc = "...") to change the location of the legend
 ```
