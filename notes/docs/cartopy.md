@@ -192,7 +192,7 @@ fig = plt.figure(figsize=(14, 14))
 # alpha = 0.5 makes the markers 50% transparent
 # size changes the size of the point based on the amount of injuries
 # for sizes, I used list concatenation to make each point 25 times bigger
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
                 hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
                 size = "NUMBER OF PERSONS INJURED",
                 sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))])
@@ -223,7 +223,7 @@ m.add_feature(cfeature.LAND, color = "#F3E5AB")
 m.add_feature(cfeature.OCEAN)
 
 # use seaborn to plot the points
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
                 hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
                 size = "NUMBER OF PERSONS INJURED",
                 sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))])
@@ -267,11 +267,15 @@ m.add_feature(GEOM, facecolor = "#F3E5AB", edgecolor='black')
 
 # use seaborn to plot the points
 # setting zorder to a high number makes it so the geography does not cover up the points
-sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df[df.LONGITUDE.notna()],
+sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df,
                 hue = 'BOROUGH', style = "NUMBER OF PERSONS KILLED", alpha = 0.5,
                 size = "NUMBER OF PERSONS INJURED",
                 sizes = [(i+1)*25 for i in range(int(max(df["NUMBER OF PERSONS INJURED"] + 1)))],
                 zorder = 100)
 
 # if needed, you can add plt.legend(loc = "...") to change the location of the legend
+```
+
+```{code-cell} ipython3
+
 ```
