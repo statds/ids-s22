@@ -21,3 +21,14 @@ kernelspec:
 
 To install plotnine with pip, use the command: 
 > pip install plotnine
+
+## Import Plotnine
+First we need to import pandas, numpy, and plotnine with the following code:
+```{code-cell}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+nyc = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
+nyc_crash.info()
+```
