@@ -295,7 +295,7 @@ The data is big. I only downloaded the data from January 1 to 25,
 ```{code-cell}
 import pandas as pd
 
-nyc_crash = pd.read_csv("../data/nyc_mv_collisons_202201.csv")
+nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
 nyc_crash.head(10)
 ```
 
