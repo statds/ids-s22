@@ -29,6 +29,56 @@ import pandas as pd
 import numpy as np
 from plotnine import *
 
-nyc = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
+url = 'https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv'
+nyc = pd.read_csv(url)
 nyc_crash.info()
+```
+
+## Histograms
+With plotnine, we can create histogram plots.
+```{code-cell}
+nyc['hour'] = [x.split(':')[0] for x in nyc['CRASH TIME']]
+nyc['hour'] = [int(x) for x in nyc['hour']]
+(
+    ggplot(nyc, aes(x = 'hour', y = after_stat('count')))
+    + geom_histogram(binwidth = 1, bins = 24)
+    + ggtitle("Hourly Crash Count")
+)
+```
+
+We can easily add multiple plots.
+```{code-cell}
+(
+    ggplot(nyc, aes(x = 'hour', y = after_stat('count')))
+    + geom_histogram(binwidth = 1, alpha = 0.5)
+    + geom_histogram(binwidth = 2, alpha = 0.5, fill = 'green')
+    + ggtitle("Hourly and Bihourly Crash Count")
+)
+```
+
+We can visualize the plots with respect to other variables.
+```{code-cell}
+(
+    ggplot(nyc, aes(x = 'hour', y = after_stat('count'), fill = 'BOROUGH'))
+    + geom_histogram(binwidth = 4)
+    + ggtitle("Hourly Crash Count for each Borough")
+)
+```
+
+## Boxplot
+```{code-cell}
+(
+    ggplot(nyc)
+    + geom_boxplot(aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS INJURED'))
+    + ggtitle("Boxplot of # of Persons Injured for each Borough")
+)
+```
+
+## Violin Plot
+```{code-cell}
+(
+  ggplot(nyc, aes('BOROUGH', 'NUMBER OF PERSONS KILLED'))
+  + geom_violin(nyc)
+  + geom_point()
+)
 ```
