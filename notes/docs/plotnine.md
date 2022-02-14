@@ -28,9 +28,7 @@ To install plotnine with conda, use the command:
 > conda install -c conda-forge plotnine
 
 ## Import Plotnine
-First, we need to import pandas, numpy, and plotnine with the following code. We also need to read the actual data.
-
-
+First, we need to import pandas, numpy, and plotnine with the following code. 
 ```{code-cell}
 import pandas as pd
 import numpy as np
@@ -41,12 +39,8 @@ nyc = pd.read_csv(url)
 nyc.info()
 ```
 
-It is easy to add elements of a plot with plotnine. We can write each necessary function one by one with a '+' sign.
-
 ## Histograms
-With plotnine, we can create histogram plots. We can change how the count is visualized. By default it is the raw count, but it can be set to ncount (raw count normalized to 1), density, proportion (width*density), and percent_format. We must set either binwidth or the number of bins. 
-
-
+With plotnine, we can create histogram plots. We can change how the count is visualized. By default it is the raw count, but it can be set to ncount (raw count normalized to 1), density, proportion (width*density), and percent_format.
 ```{code-cell}
 nyc['hour'] = [x.split(':')[0] for x in nyc['CRASH TIME']]
 nyc['hour'] = [int(x) for x in nyc['hour']]
@@ -57,21 +51,17 @@ nyc['hour'] = [int(x) for x in nyc['hour']]
 )
 ```
 
-We can easily add multiple plots. Here we add a plot of the same data with wider bins. We can make the histograms transparent with alpha. We can also set the color of the plot with fill.
-
-
+We can easily add multiple plots. Here we add a plot of the same data with wider bins. We can make the histograms transparent with alpha.
 ```{code-cell}
 (
     ggplot(nyc, aes(x = 'hour', y = after_stat('count')))
-    + geom_histogram(binwidth = 2, alpha = 0.5, fill = 'green')
     + geom_histogram(binwidth = 1, alpha = 0.5)
+    + geom_histogram(binwidth = 2, alpha = 0.5, fill = 'green')
     + ggtitle("Hourly and Bihourly Crash Count")
 )
 ```
 
 We can visualize the plots with respect to other variables. For the NYC example, we can fill each bin with respect to NYC boroughs.
-
-
 ```{code-cell}
 (
     ggplot(nyc, aes(x = 'hour', y = after_stat('count'), fill = 'BOROUGH'))
@@ -81,9 +71,7 @@ We can visualize the plots with respect to other variables. For the NYC example,
 ```
 
 Alternatively, we can split one plot into multiple plots using facet_wrap.
-
-
-```{code-cell}
+```
 (
     ggplot(nyc, aes(x = 'hour', y = after_stat('count')))
     + geom_histogram(binwidth = 4)
@@ -93,56 +81,28 @@ Alternatively, we can split one plot into multiple plots using facet_wrap.
 ```
 
 ## Boxplot
-We can make boxplots with plotnine very easily. In this example, we adjust the angle of the x labels so that they do not overlap.
-
-
+We can make boxplots with plotnine very easily.
 ```{code-cell}
-theme_update(axis_text_x = element_text(angle = 45))
 (
-    ggplot(nyc, aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS INJURED'))
-    + geom_boxplot()
+    ggplot(nyc)
+    + geom_boxplot(aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS INJURED'))
     + ggtitle("Boxplot of # of Persons Injured for each Borough")
 )
 ```
 
 ## Violin Plot
-Violin plots are similar to boxplots, but they also display the density for the numeric data. 
-
-
+Violin plots are similar to boxplots, but they also display the density for the numeric data.
 ```{code-cell}
-theme_set(theme_xkcd)
-theme_update(figure_size = (10, 4))
 (
-  ggplot(nyc, aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS KILLED'))
+  ggplot(nyc, aes('BOROUGH', 'NUMBER OF PERSONS KILLED'))
   + geom_violin(nyc)
   + geom_point()
 )
 ```
 
-We can also make time series with plotnine. In our example we need to group the data by day and borough, and then reset the index to use both as a column variable.
-
-
-```{code-cell}
-theme_set(theme_classic)
-nyc['day'] = [x.split('/')[1] for x in nyc['CRASH DATE']]
-nyc['day'] = [int(x) for x in nyc['day']]
-daily_counts = nyc.groupby(['day', 'BOROUGH'])['BOROUGH'].count()
-daily_counts = daily_counts.reset_index(name = 'counts')
-
-(
-    ggplot(daily_counts, aes(x = 'day', y = 'counts', color = "BOROUGH"))
-#     + geom_histogram(binwidth = 1, bins = 24)
-    + geom_line()
-    + ggtitle("Daily Crash Count for Each Borough")
-)
-```
-
 ## Scatter Plot
 With geom_point, we can make a simple scatter plot of our data. We can set LONGITUDE as X, LATITUDE as y, and we can color each point by BOROUGH. We can also set alpha so that we can visualize the density of the points.
-
-
 ```{code-cell}
-  theme_update(figure_size = (8, 8))  
   nyc[nyc.LONGITUDE == 0] = np.nan
   nyc_plot = ggplot(nyc, aes(x = 'LONGITUDE', y = 'LATITUDE', color = 'BOROUGH'))
   nyc_plot + geom_point(alpha = 0.1) + ggtitle("Coordinates of Car Crashes")
