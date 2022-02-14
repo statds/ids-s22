@@ -82,3 +82,13 @@ We can visualize the plots with respect to other variables.
   + geom_point()
 )
 ```
+
+## Scatter Plot
+```{code-cell}
+(
+  nyc[nyc.LONGITUDE == 0] = np.nan
+nyc_plot = ggplot(nyc, aes(x = 'LONGITUDE', y = 'LATITUDE', color = 'BOROUGH'))
+nyc_plot + geom_point(alpha = 0.1) + ggtitle("Coordinates of Car Crashes")
+)
+```
+)
