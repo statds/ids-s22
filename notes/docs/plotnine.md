@@ -36,7 +36,7 @@ from plotnine import *
 
 url = 'https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv'
 nyc = pd.read_csv(url)
-nyc_crash.info()
+nyc.info()
 ```
 
 ## Histograms
