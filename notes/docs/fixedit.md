@@ -47,3 +47,17 @@ In my case I had to use pip3 install, but the idea should be the
 same. Then, run `jb build .` again and the book should build without
 error. This solution worked for me so hopefully it works for anyone
 else who runs into this error!
+
++++
+
+## ModuleNotFoundError when importing Cartopy into Jupyter Notebook
+
+### Error in Question
+Sometimes when importing Cartopy into jupyter notebook after installing it, we will have an error message:
+
+    ModuleNotFoundError: No module named 'cartopy'
+    
+This might be due to a conflict between different environments.
+
+### Solution: Enter into a new environment
+The simplest way is to use `conda activate base` to enter into the base environment of conda and reinstall Cartopy into that environment. (Use `conda install -c conda-forge cartopy` instead of `pip`. `pip` won't install all the required dependencies of Cartopy so it will be a mess.) Then you can launch Jupyter Notebook in that environment and hopefully Cartopy can be imported now.
