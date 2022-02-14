@@ -70,6 +70,16 @@ We can visualize the plots with respect to other variables. For the NYC example,
 )
 ```
 
+Alternatively, we can split one plot into multiple plots using facet_wrap.
+```
+(
+    ggplot(nyc, aes(x = 'hour', y = after_stat('count')))
+    + geom_histogram(binwidth = 4)
+    + facet_wrap("BOROUGH")
+    + ggtitle("Hourly Crash Count for each Borough")
+)
+```
+
 ## Boxplot
 We can make boxplots with plotnine very easily.
 ```{code-cell}
