@@ -119,6 +119,7 @@ theme_update(figure_size = (10, 4))
 )
 ```
 
+## Time Series
 We can also make time series with plotnine. In our example we need to group the data by day and borough, and then reset the index to use both as a column variable.
 
 
