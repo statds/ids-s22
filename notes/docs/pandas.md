@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -40,7 +40,7 @@ From [`pandas` documentation](https://pandas.pydata.org/pandas-docs/stable/getti
 
 ## Import/Export
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 
 nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
@@ -49,7 +49,7 @@ nyc_crash.info()
 
 Exporting data out of pandas is provided by different `to_*`methods.
 
-```{code-cell}
+```{code-cell} ipython3
 nyc_crash.to_csv("my_nyc.csv", index=False)
 ```
 
@@ -60,60 +60,73 @@ for a first check.
 
 
 Descriptive statistics for numeric variables:
-```{code-cell}
+
+```{code-cell} ipython3
 nyc_crash_desc = nyc_crash.describe()
 nyc_crash_desc
 ```
 
 Transpose the data:
-```{code-cell}
+
+```{code-cell} ipython3
 nyc_crash_desc.T
 ```
 
 Frequency table:
-```{code-cell}
+
+```{code-cell} ipython3
 pd.crosstab(index=nyc_crash["BOROUGH"], columns = "freq")
 ```
 
 ## Subsetting
 
 Selection by row:
-```{code-cell}
-brooklyn_crash = nyc_crash[nyc_crash["BOROUGH"] == "BROOKLYN"]
-bronx_crash    = nyc_crash[nyc_crash["BOROUGH"] == "BRONX"]
+
+```{code-cell} ipython3
+brooklyn_crash = nyc_crash.loc[nyc_crash["BOROUGH"] == "BROOKLYN"]
+
+bronx_crash    = nyc_crash.loc[nyc_crash["BOROUGH"] == "BRONX"]
 ```
 
 Selection by column:
-```{code-cell}
+
+```{code-cell} ipython3
 bronx_crash[["CRASH DATE", "CRASH TIME"]]
 ```
 
 By both
-```{code-cell}
-bronx_crash.iloc[0:9, 0:2]
-```
 
+```{code-cell} ipython3
+bronx_long = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
+                           ["CRASH DATE", "CRASH TIME", "LONGITUDE"]]
+bronx_lat  = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
+                           ["CRASH DATE", "CRASH TIME", "LATITUDE"]]
+bronx_lat.head(5)
+```
 
 ## Creating new columns
 
 Convert the time string to numeric for later processing:
-```{code-cell}
+
+```{code-cell} ipython3
 nyc_crash["time"] = [x.split(":")[0] for x in nyc_crash["CRASH TIME"]]
 nyc_crash["time"] = [int(x) for x in nyc_crash["time"]]
 
 import matplotlib.pyplot as plt
-plt.hist(nyc_crash["time"])
+plt.hist(nyc_crash["time"], bins=range(24))
 ```
 
 ## Reshape
 
 Sort table rows
-```{code-cell}
+
+```{code-cell} ipython3
 nyc_crash.sort_values(by="time").head()
 ```
 
 Pivot table (long to wide)
-```{code-cell}
+
+```{code-cell} ipython3
 nyc_crash.pivot_table(
     values  = ["LATITUDE", "LONGITUDE"],
 	index   = "BOROUGH",
@@ -123,16 +136,51 @@ nyc_crash.pivot_table(
 
 Melting (wide to long)
 
+
+
 ## Combining
 
 Row bind
-```{code-cell}
+
+```{code-cell} ipython3
 pd.concat([bronx_crash, brooklyn_crash], axis = 0).head(5)
 ```
 
 Also can use `append()` method.
-```{code-cell}
+
+```{code-cell} ipython3
 bronx_crash.append(brooklyn_crash).tail(5)
 ```
 
 Column bind
+
+```{code-cell} ipython3
+mybronx = pd.merge(bronx_lat, bronx_long)
+```
+
+```{code-cell} ipython3
+bronx_lat.shape
+```
+
+```{code-cell} ipython3
+bronx_long.shape
+```
+
+### Aggregation
+
+```{code-cell} ipython3
+mybronx.dropna()
+```
+
+```{code-cell} ipython3
+mybronx.groupby('CRASH DATE')["LATITUDE"].median()
+```
+
+```{code-cell} ipython3
+for (date, group) in mybronx.groupby('CRASH DATE'):
+    print("{0:12s} shape = {1}".format(date, group.shape))
+```
+
+```{code-cell} ipython3
+
+```

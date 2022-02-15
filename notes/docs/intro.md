@@ -182,9 +182,9 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Desribing statistical models with package `patsy`  (Th. Feb. 17:
       Anthony Zeimbekakis) 
     - Statistical models and hypothesis tests with package
-      `statsmodels`
+      `statsmodels` (Tu. Feb. 22: )
 + Supervised learning
-    - Decision trees
+    - Decision trees (Th. Feb. 24: )
     - Random forests
     - Support vector machine
     - Nearest neighbor

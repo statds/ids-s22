@@ -21,18 +21,28 @@ Starting in 2016, The Cartopy Project began development as a replacement for Bas
 
 Cartopy has 28 people listed as contributors.
 
-To install cartopy use either `conda install -c conda-forge cartopy` or `pip install cartopy` depending on your python setup. 
+If you use `conda`,  cartopy can be installed with 
+`conda install -c conda-forge cartopy`, which takes care of the
+dependencies such as `proj`, `geos`, `pyshp`, `shapely`, etc.
+
+If you use `pip`, the system dependencies need to be installed first
+before running `pip install cartopy`. See
+<https://scitools.org.uk/cartopy/docs/latest/installing.html>
+for detailed instructions.
 
 Pros of Cartopy:
+
 - Relatively easy to learn
 - Many different types of mapping projections
 - Great options to color in the map
 
 Cons of Cartopy:
+
 - Slow loading times for complex maps
 - Alternate files often required for high precision mapping
 
 Sources: 
+
 - https://matplotlib.org/basemap/
 - https://scitools.org.uk/cartopy/docs/latest/
 - https://www.youtube.com/watch?v=4M2aiHvhr5Y
