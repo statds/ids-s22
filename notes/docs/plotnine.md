@@ -116,7 +116,7 @@ theme_update(figure_size = (10, 4))
   ggplot(nyc, aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS INJURED'))
   + geom_violin(nyc)
   + geom_point()
-  + ggtitle("Boxplot of # of Persons Injured for each Borough")
+  + ggtitle("Violin Plot of # of Persons Injured for each Borough")
 )
 ```
 
