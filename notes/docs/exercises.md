@@ -87,4 +87,3 @@ kernelspec:
        the job applications on a Google map.
     1. Based on the data, come up a meaningful question that can be
        answered by the data, and report your findings.
-Something different
