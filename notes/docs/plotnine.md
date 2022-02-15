@@ -113,9 +113,10 @@ Violin plots are similar to boxplots, but they also display the density for the 
 theme_set(theme_xkcd)
 theme_update(figure_size = (10, 4))
 (
-  ggplot(nyc, aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS KILLED'))
+  ggplot(nyc, aes(x = 'BOROUGH', y = 'NUMBER OF PERSONS INJURED'))
   + geom_violin(nyc)
   + geom_point()
+  + ggtitle("Boxplot of # of Persons Injured for each Borough")
 )
 ```
 
