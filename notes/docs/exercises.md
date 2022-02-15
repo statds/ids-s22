@@ -57,4 +57,33 @@ kernelspec:
        crashes on the map of Brooklyn.
     1. Make the same map but by every 3 hours in a day.
 
-   
+1. The most accessed dataset at the NYC Open Data is DOB Job
+   Application Fillings
+   <https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2>.
+   This dataset contains all job applications submitted through the
+   Borough Offices, through eFiling, or through the HUB, which have a
+   "Latest Action Date" since January 1, 2000.   The data dictionary
+   contains the [variable
+   definitions](https://data.cityofnewyork.us/api/views/ic3t-wcy2/files/9bb3688e-1bf8-4f8f-9541-ce936f1d00f4?download=true&filename=DD_DOB%20Job%20Application%20Filings_2019-06-19.xlsx).
+   We downloaded a subset containing jobs with a fully permitted date
+   in the calendar year of 2021.
+    1. Use the raw data to create a data frame containing those jobs
+       of type `A2` (an application with multiple types of work that
+       do not affect the use, egress, or occupancy of the building)
+       and building type `1-2-3 FAMILY`, 
+	   with the following columns:
+        + `borough`, the burough where the job will take place;
+		+ `entry_date`, the date on which the data entry is complete
+          and payment has been made;
+        + `approved_date`, the date on which the job has been approved
+          by the plan examiner;
+        + `latitude`, geographical latitude of the building;
+		+ `longitude`, geographical longitude of the building;
+		+ `cost_est`, dollar amount of the cost estimate.
+    1. Plot the distribution of the number of days that it take to
+       approve a job application; do it by borough. Comment on your
+       findings.
+    1. Take brooklyn as an example, overlay the building locations of
+       the job applications on a Google map.
+    1. Based on the data, come up a meaningful question that can be
+       answered by the data, and report your findings.
