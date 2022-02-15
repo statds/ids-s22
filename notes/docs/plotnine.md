@@ -132,7 +132,6 @@ daily_counts = daily_counts.reset_index(name = 'counts')
 
 (
     ggplot(daily_counts, aes(x = 'day', y = 'counts', color = "BOROUGH"))
-#     + geom_histogram(binwidth = 1, bins = 24)
     + geom_line()
     + ggtitle("Daily Crash Count for Each Borough")
 )
