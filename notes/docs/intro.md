@@ -196,6 +196,10 @@ order). Add yours; note the syntax of nested list in Markdown.
     - K-means clustering
     - Gaussian mixture models
 + Neural networks and deep learning
++ Further interests
+    - MIT App Inventor turorial
+    - Using R from Python and vice versa
+    - Building a Python module
 
 ## Data Challenges in Action
 
