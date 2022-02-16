@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Exercises &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. I Fixed It" href="fixedit.html" />
+    <link rel="prev" title="6.5. 6.6. GM Plot" href="gmplot.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   2. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   3. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   4. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   5. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   6. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     6.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     6.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     6.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     6.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     6.5. 6.6. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   8. I Fixed It
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/exercises.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/exercises.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises">
+<span id="id1"></span><h1><span class="section-number">7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Write a function to demonstrate the Monty Hall problem through
+simulation. The function takes two arguments <code class="docutils literal notranslate"><span class="pre">ndoors</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ntrials</span></code>, representing the number of doors in the experiment and
+the number of trails in a simulation, respectively. The function
+should return the proportion of wins for both the switch and
+no-switch strategy. Apply your function with 3 doors and 5 doors,
+both with 1000 trials.</p></li>
+<li><p>Write a function to do a Monte Carlo approximation of <span class="math notranslate nohighlight">\(\pi\)</span>. The
+function takes a Monte Carlo sample size <code class="docutils literal notranslate"><span class="pre">n</span></code> as input, and returns
+a point estimate of <span class="math notranslate nohighlight">\(\pi\)</span> and a 95% confidence interval. Apply your
+function with sample size 1000, 2000, 4000, and 8000. Comment on
+the results.</p></li>
+<li><p>Find the first 10-digit prime number occurring in consecutive
+digits of <span class="math notranslate nohighlight">\(e\)</span>. This was a
+<a class="reference external" href="http://mathworld.wolfram.com/news/2004-10-13/google/">Google recruiting ad</a>.</p></li>
+<li><p>This is simulation study for the MLE.</p>
+<ol class="simple">
+<li><p>Write a function to obtain the MLE of the parameters of a
+generalized extreme value distribution with a random sample.
+The input is the random sample vector <code class="docutils literal notranslate"><span class="pre">x</span></code>. The outputs are the
+MLE vector of the three parameters and the vector of their
+standard errors.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\theta\)</span> be the true parameter vector containing the
+location, scale, and the shape parameters. Write a function to
+conduct a simulation study; the inputs are <span class="math notranslate nohighlight">\(\theta\)</span>, sample size
+<span class="math notranslate nohighlight">\(n\)</span>, and the number of replicates <code class="docutils literal notranslate"><span class="pre">nrep</span></code>.</p></li>
+<li><p>Conduct the simulation study with <span class="math notranslate nohighlight">\(\theta = (0, 1, 0.2)\)</span>, sample
+size <span class="math notranslate nohighlight">\(n \in \{100, 200\}\)</span>, with <code class="docutils literal notranslate"><span class="pre">nrep</span> <span class="pre">=</span> <span class="pre">200</span></code>.</p></li>
+<li><p>Summarize your results; commenting on whether your MLE on
+average recover the true <span class="math notranslate nohighlight">\(\theta\)</span> and whether your standard
+errors on average reflect the true standard error of the MLE.</p></li>
+</ol>
+</li>
+<li><p>The NYC motor vehicle collisions crash table contains details on
+the crashes. The dataset we are using contains the crashes in
+January 2022.</p>
+<ol class="simple">
+<li><p>Create a frequency table of the number of crashes by borough.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">hour</span></code> variable with integer values from 0 to 23, and
+plot of the histogram of crashes by hour.</p></li>
+<li><p>Take Brooklyn as an example, overlay the locations of the
+crashes on the map of Brooklyn.</p></li>
+<li><p>Make the same map but by every 3 hours in a day.</p></li>
+</ol>
+</li>
+<li><p>The most accessed dataset at the NYC Open Data is DOB Job
+Application Fillings
+<a class="reference external" href="https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2">https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2</a>.
+This dataset contains all job applications submitted through the
+Borough Offices, through eFiling, or through the HUB, which have a
+“Latest Action Date” since January 1, 2000.   The data dictionary
+contains the <a class="reference external" href="https://data.cityofnewyork.us/api/views/ic3t-wcy2/files/9bb3688e-1bf8-4f8f-9541-ce936f1d00f4?download=true&amp;filename=DD_DOB%20Job%20Application%20Filings_2019-06-19.xlsx">variable
+definitions</a>.
+We downloaded a subset containing jobs with a fully permitted date
+in the calendar year of 2021.</p>
+<ol class="simple">
+<li><p>Use the raw data to create a data frame containing those jobs
+of type <code class="docutils literal notranslate"><span class="pre">A2</span></code> (an application with multiple types of work that
+do not affect the use, egress, or occupancy of the building)
+and building type <code class="docutils literal notranslate"><span class="pre">1-2-3</span> <span class="pre">FAMILY</span></code>,
+with the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">borough</span></code>, the burough where the job will take place;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">entry_date</span></code>, the date on which the data entry is complete
+and payment has been made;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">approved_date</span></code>, the date on which the job has been approved
+by the plan examiner;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code>, geographical latitude of the building;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code>, geographical longitude of the building;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost_est</span></code>, dollar amount of the cost estimate.</p></li>
+</ul>
+</li>
+<li><p>Plot the distribution of the number of days that it take to
+approve a job application; do it by borough. Comment on your
+findings.</p></li>
+<li><p>Take brooklyn as an example, overlay the building locations of
+the job applications on a Google map.</p></li>
+<li><p>Based on the data, come up a meaningful question that can be
+answered by the data, and report your findings.</p></li>
+</ol>
+</li>
+</ol>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="gmplot.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.5. </span>6.6. GM Plot</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="fixedit.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>I Fixed It</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

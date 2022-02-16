@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Introduction &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Project Management" href="prman.html" />
+    <link rel="prev" title="Preface" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   2. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   3. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   4. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   5. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   6. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     6.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     6.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     6.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     6.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     6.5. 6.6. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   7. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   8. I Fixed It
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-science">
+   1.1. What is Data Science?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   1.2. Computing Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#command-line-interface">
+     1.2.1. Command line interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     1.2.2. Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-book-project-with-jupyter-book">
+     1.2.3. A book project with Jupyter-book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#myst-markdown">
+     1.2.4. MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wish-list">
+   1.3. Wish List
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-board">
+   1.4. Task Board
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-challenges-in-action">
+   1.5. Data Challenges in Action
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nyc-open-data-week-event">
+   1.6. NYC Open Data Week Event
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-data-in-a-classroom">
+     1.6.1. Open Data in a Classroom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dates">
+     1.6.2. Dates
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-science">
+   1.1. What is Data Science?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   1.2. Computing Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#command-line-interface">
+     1.2.1. Command line interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     1.2.2. Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-book-project-with-jupyter-book">
+     1.2.3. A book project with Jupyter-book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#myst-markdown">
+     1.2.4. MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wish-list">
+   1.3. Wish List
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-board">
+   1.4. Task Board
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-challenges-in-action">
+   1.5. Data Challenges in Action
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nyc-open-data-week-event">
+   1.6. NYC Open Data Week Event
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-data-in-a-classroom">
+     1.6.1. Open Data in a Classroom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dates">
+     1.6.2. Dates
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<span id="intro"></span><h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-data-science">
+<h2><span class="section-number">1.1. </span>What is Data Science?<a class="headerlink" href="#what-is-data-science" title="Permalink to this headline">¶</a></h2>
+<p>One widely accepted concept is the three pillars of data science:
+mathematics/statistics, computer science, and domain knowledge.</p>
+<p>In her 2014 Presidential Address, Prof. Bin Yu, then President of the
+Institute of Mathematical Statistics, gave an interesting definition:</p>
+<div class="math notranslate nohighlight">
+\[\mbox{Data Science} =
+\mbox{S}\mbox{D}\mbox{C}^3,\]</div>
+<p>where S is Statistics, D is domain/science knowledge, and
+the three C’s are computing, collaboration/teamwork, and communication
+to outsiders.</p>
+</div>
+<div class="section" id="computing-environment">
+<h2><span class="section-number">1.2. </span>Computing Environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<p>All setups are operating system dependent.</p>
+<p>As soon as possible, stay away from Windows. Otherwise, good luck (you
+need it).</p>
+<div class="section" id="command-line-interface">
+<h3><span class="section-number">1.2.1. </span>Command line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://ubuntu.com/tutorials/command-line-for-beginners">Ubunto Linux for beginners</a>.</p>
+</div>
+<div class="section" id="python">
+<h3><span class="section-number">1.2.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Install Python package manager <strong>miniconda</strong> or <strong>pip</strong>.</p></li>
+<li><p>Install Python</p></li>
+<li><p>Install an IDE (Jupyter Notebook or VS Code)</p></li>
+</ul>
+</div>
+<div class="section" id="a-book-project-with-jupyter-book">
+<h3><span class="section-number">1.2.3. </span>A book project with Jupyter-book<a class="headerlink" href="#a-book-project-with-jupyter-book" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Markdown for text</p></li>
+<li><p>Jupyter notebook for code demo</p></li>
+<li><p>Jupytext has nice features handling markdown source</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> with  <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter-book</span></code></p></li>
+</ul>
+<p>To build the book, go to the source directory of the book. under
+<code class="docutils literal notranslate"><span class="pre">notes</span></code>,  run <code class="docutils literal notranslate"><span class="pre">jb</span> <span class="pre">build</span> <span class="pre">.</span></code></p>
+</div>
+<div class="section" id="myst-markdown">
+<h3><span class="section-number">1.2.4. </span>MyST Markdown<a class="headerlink" href="#myst-markdown" title="Permalink to this headline">¶</a></h3>
+<p>Markedly Structured Text (MyST) examples:</p>
+<div class="admonition-add-my-admonition admonition">
+<p class="admonition-title">Add my admonition</p>
+<p>Adding my little admonition</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Initial</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>warning</p>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A note written in reStructuredText.</p>
+</div>
+<div class="cell tag_hide-output tag_show-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 1.1 </span><span class="caption-text">This is my
+multi-line caption. It is <em>pretty nifty</em></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">10</span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Here’s my title</p>
+<p>Here’s my admonition content</p>
+</div>
+<div class="math notranslate nohighlight" id="equation-quadratic">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-quadratic" title="Permalink to this equation">¶</a></span>\[ax^{2} + bx + c\]</div>
+<p>The basic quadratic equation, <a class="reference internal" href="#equation-quadratic">(1.1)</a>, allows for the
+construction of all kinds of parabolas</p>
+</div>
+</div>
+<div class="section" id="wish-list">
+<h2><span class="section-number">1.3. </span>Wish List<a class="headerlink" href="#wish-list" title="Permalink to this headline">¶</a></h2>
+<p>This is a wish list from all members of the class (alphabetical
+order). Add yours; note the syntax of nested list in Markdown.</p>
+<ul class="simple">
+<li><p>Aimandi, Sakeena</p>
+<ul>
+<li><p>Complete a data science project to gain some meaningful insight and solve a real-world problem</p></li>
+</ul>
+</li>
+<li><p>Chandy, Mathew</p>
+<ul>
+<li><p>Learn the fundamentals of data science</p></li>
+<li><p>Become more comfortable with command line interface</p></li>
+<li><p>Work on a data science project involving a meaningful topic</p></li>
+</ul>
+</li>
+<li><p>Campman, Benjamin</p>
+<ul>
+<li><p>Develop more concrete ability and knowledge of Python</p></li>
+<li><p>Understand basics of Git</p></li>
+</ul>
+</li>
+<li><p>Hughes, Sam</p>
+<ul>
+<li><p>Become proficient with git</p></li>
+<li><p>Learn data visualization techniques in Python</p></li>
+<li><p>Learn reinforcement learning through Python</p></li>
+<li><p>Learn K Nearest Neighbors Algorithm</p></li>
+</ul>
+</li>
+<li><p>McClurg, Taelor</p>
+<ul>
+<li><p>Gain hands on experience using data science tools to analyze real data and answer interesting questions.</p></li>
+<li><p>Improve my comfort level with Python.</p></li>
+<li><p>Explore data visualization tools available in Python.</p></li>
+<li><p>Become proficient in git.</p></li>
+</ul>
+</li>
+<li><p>Shamirian, Robbie</p>
+<ul>
+<li><p>Continue to grow my Python skills in relation to data science</p></li>
+<li><p>Understand the fundamentals of Git</p></li>
+</ul>
+</li>
+<li><p>Sharma, Sinchan</p>
+<ul>
+<li><p>Become adept at using Git and GitHub for projects</p></li>
+<li><p>Become more comfortable with using Python</p></li>
+<li><p>Learn data analysis and visualization techniques using Python</p></li>
+</ul>
+</li>
+<li><p>Taffe, Thalia</p>
+<ul>
+<li><p>Better understand cmd functionality</p></li>
+</ul>
+</li>
+<li><p>Xu, Zhenyu</p>
+<ul>
+<li><p>Get familiar with Git and Github like a professional data scientist</p></li>
+<li><p>Learn more Python skills</p></li>
+<li><p>Participate in a practical data science competition</p></li>
+</ul>
+</li>
+<li><p>Yan, Jun</p>
+<ul>
+<li><p>Make data science accessible to undergraduates</p></li>
+<li><p>Co-develop a notebook with Jupyter-book in collaboration with students</p></li>
+</ul>
+</li>
+<li><p>Zeimbekakis, Anthony</p>
+<ul>
+<li><p>Become proficient in using command line with tools such as GitHub or even just file management</p></li>
+<li><p>Apply past knowledge of Python to be comfortable performing data science tasks</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="task-board">
+<h2><span class="section-number">1.4. </span>Task Board<a class="headerlink" href="#task-board" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Project management</p>
+<ul>
+<li><p>Markdown basics</p></li>
+<li><p>Jupyter notebook</p></li>
+<li><p>Jupyter book</p></li>
+<li><p>Jun Yan ~~Git basics~~</p></li>
+</ul>
+</li>
+<li><p>Python refreshment</p>
+<ul>
+<li><p>Vectors, matrices, and arrays</p></li>
+<li><p>Distributions</p></li>
+<li><p>Optimization</p></li>
+<li><p>Data manipulation</p></li>
+</ul>
+</li>
+<li><p>Visualization</p>
+<ul>
+<li><p>Package matplotlib (Tu, Feb. 8: Taelor McClurg)</p></li>
+<li><p>Package cartopy/basemap (Th, Feb. 10: Sam Hugh)</p></li>
+<li><p>Package plotnine (ggplot2 equivalent) (Tu. Feb. 15: Mathew Chandy)</p></li>
+<li><p>Google Maps Plot (Thurs. Feb 17: Robbie Shamirian)</p></li>
+</ul>
+</li>
+<li><p>Statistical tests and models</p>
+<ul>
+<li><p>Desribing statistical models with package <code class="docutils literal notranslate"><span class="pre">patsy</span></code>  (Th. Feb. 17:
+Anthony Zeimbekakis)</p></li>
+<li><p>Statistical models and hypothesis tests with package
+<code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> (Tu. Feb. 22: )</p></li>
+</ul>
+</li>
+<li><p>Supervised learning</p>
+<ul>
+<li><p>Decision trees (Th. Feb. 24: )</p></li>
+<li><p>Random forests</p></li>
+<li><p>Support vector machine</p></li>
+<li><p>Nearest neighbor</p></li>
+<li><p>Ensembool methods</p>
+<ul>
+<li><p>Bagging</p></li>
+<li><p>Boosting</p></li>
+<li><p>XGBoost</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Unsupervised learning</p>
+<ul>
+<li><p>K-means clustering</p></li>
+<li><p>Gaussian mixture models</p></li>
+</ul>
+</li>
+<li><p>Neural networks and deep learning</p></li>
+<li><p>Further interests</p>
+<ul>
+<li><p>MIT App Inventor turorial</p></li>
+<li><p>Using R from Python and vice versa</p></li>
+<li><p>Building a Python module</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data-challenges-in-action">
+<h2><span class="section-number">1.5. </span>Data Challenges in Action<a class="headerlink" href="#data-challenges-in-action" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://competition.statistics.gmu.edu/">When Will the Cherry Trees
+Bloom</a></p></li>
+<li><p><a class="reference external" href="https://community.amstat.org/dataexpo/home">ASA Data Challenge
+Expo</a></p></li>
+</ul>
+</div>
+<div class="section" id="nyc-open-data-week-event">
+<h2><span class="section-number">1.6. </span>NYC Open Data Week Event<a class="headerlink" href="#nyc-open-data-week-event" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="open-data-in-a-classroom">
+<h3><span class="section-number">1.6.1. </span>Open Data in a Classroom<a class="headerlink" href="#open-data-in-a-classroom" title="Permalink to this headline">¶</a></h3>
+<p>The NYC Open Data provides opportunities for data scientists to
+demonstrate what data science can do in real life. Students taking
+Introduction to Data Science (STAT3255/5255) in Spring 2022 at UConn
+are required to work on a project of their choice with any dataset on
+NYC Open Data. The topics will be a mix of instructor recommendations
+and self selections, covering transportation, construction, education,
+finance, and health, among others. Examples are the motor vehicle
+collisions crashes; DOB job application filling. NYC leading causes of
+death. and for students in data science. data science education. Five
+students will be selected from the class to present their works in a
+virtual panel. The presented project will be made public in
+crowd-sourced open class notes, facilitating real-life open data
+projects in data science education.</p>
+</div>
+<div class="section" id="dates">
+<h3><span class="section-number">1.6.2. </span>Dates<a class="headerlink" href="#dates" title="Permalink to this headline">¶</a></h3>
+<p>Four students will present during our lecture hour on
+Tuesday, March 8, 2022, to the general public as part of the NYC Open
+Data Week.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preface</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="prman.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Project Management</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

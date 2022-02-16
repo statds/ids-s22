@@ -1,0 +1,1957 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Data Manipulation with Pandas &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Visualization" href="visual.html" />
+    <link rel="prev" title="4. SciPy for Data Science" href="scipy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   2. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   3. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   4. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   6. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     6.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     6.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     6.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     6.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     6.5. 6.6. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   7. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   8. I Fixed It
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/pandas.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/pandas.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-export">
+   5.1. Import/Export
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#view-and-description">
+   5.2. View and Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting">
+   5.3. Subsetting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-new-columns">
+   5.4. Creating new columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reshape">
+   5.5. Reshape
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining">
+   5.6. Combining
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregation">
+     5.6.1. Aggregation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Manipulation with Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-export">
+   5.1. Import/Export
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#view-and-description">
+   5.2. View and Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting">
+   5.3. Subsetting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-new-columns">
+   5.4. Creating new columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reshape">
+   5.5. Reshape
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining">
+   5.6. Combining
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregation">
+     5.6.1. Aggregation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-manipulation-with-pandas">
+<span id="pandas"></span><h1><span class="section-number">5. </span>Data Manipulation with Pandas<a class="headerlink" href="#data-manipulation-with-pandas" title="Permalink to this headline">¶</a></h1>
+<p>From <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html"><code class="docutils literal notranslate"><span class="pre">pandas</span></code> documentation</a>:</p>
+<blockquote>
+<div><p>pandas is a Python package providing fast, flexible, and expressive
+data structures designed to make working with “relational” or
+“labeled” data both easy and intuitive. It aims to be the
+fundamental high-level building block for doing practical,
+real-world data analysis in Python. Additionally, it has the broader
+goal of becoming the most powerful and flexible open source data
+analysis/manipulation tool available in any language. It is already
+well on its way toward this goal.</p>
+</div></blockquote>
+<blockquote>
+<div><p>pandas is well suited for many different kinds of data:</p>
+<ul class="simple">
+<li><p>Tabular data with heterogeneously-typed columns, as in an SQL
+table or Excel spreadsheet</p></li>
+<li><p>Ordered and unordered (not necessarily fixed-frequency) time
+series data</p></li>
+<li><p>Arbitrary matrix data (homogeneously typed or heterogeneous) with
+row and column labels</p></li>
+<li><p>Any other form of observational / statistical data sets. The data
+need not be labeled at all to be placed into a pandas data
+structure</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="import-export">
+<h2><span class="section-number">5.1. </span>Import/Export<a class="headerlink" href="#import-export" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_mv_collisions_202201.csv&quot;</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 7659 entries, 0 to 7658
+Data columns (total 29 columns):
+ #   Column                         Non-Null Count  Dtype  
+---  ------                         --------------  -----  
+ 0   CRASH DATE                     7659 non-null   object 
+ 1   CRASH TIME                     7659 non-null   object 
+ 2   BOROUGH                        5025 non-null   object 
+ 3   ZIP CODE                       5025 non-null   float64
+ 4   LATITUDE                       7097 non-null   float64
+ 5   LONGITUDE                      7097 non-null   float64
+ 6   LOCATION                       7097 non-null   object 
+ 7   ON STREET NAME                 5625 non-null   object 
+ 8   CROSS STREET NAME              3620 non-null   object 
+ 9   OFF STREET NAME                2034 non-null   object 
+ 10  NUMBER OF PERSONS INJURED      7659 non-null   int64  
+ 11  NUMBER OF PERSONS KILLED       7659 non-null   int64  
+ 12  NUMBER OF PEDESTRIANS INJURED  7659 non-null   int64  
+ 13  NUMBER OF PEDESTRIANS KILLED   7659 non-null   int64  
+ 14  NUMBER OF CYCLIST INJURED      7659 non-null   int64  
+ 15  NUMBER OF CYCLIST KILLED       7659 non-null   int64  
+ 16  NUMBER OF MOTORIST INJURED     7659 non-null   int64  
+ 17  NUMBER OF MOTORIST KILLED      7659 non-null   int64  
+ 18  CONTRIBUTING FACTOR VEHICLE 1  7615 non-null   object 
+ 19  CONTRIBUTING FACTOR VEHICLE 2  5624 non-null   object 
+ 20  CONTRIBUTING FACTOR VEHICLE 3  824 non-null    object 
+ 21  CONTRIBUTING FACTOR VEHICLE 4  225 non-null    object 
+ 22  CONTRIBUTING FACTOR VEHICLE 5  80 non-null     object 
+ 23  COLLISION_ID                   7659 non-null   int64  
+ 24  VEHICLE TYPE CODE 1            7539 non-null   object 
+ 25  VEHICLE TYPE CODE 2            4748 non-null   object 
+ 26  VEHICLE TYPE CODE 3            752 non-null    object 
+ 27  VEHICLE TYPE CODE 4            207 non-null    object 
+ 28  VEHICLE TYPE CODE 5            78 non-null     object 
+dtypes: float64(3), int64(9), object(17)
+memory usage: 1.7+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exporting data out of pandas is provided by different <code class="docutils literal notranslate"><span class="pre">to_*</span></code>methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;my_nyc.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="view-and-description">
+<h2><span class="section-number">5.2. </span>View and Description<a class="headerlink" href="#view-and-description" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">head/tail/info</span></code> methods and the <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute are convenient
+for a first check.</p>
+<p>Descriptive statistics for numeric variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash_desc</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">nyc_crash_desc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>NUMBER OF PERSONS INJURED</th>
+      <th>NUMBER OF PERSONS KILLED</th>
+      <th>NUMBER OF PEDESTRIANS INJURED</th>
+      <th>NUMBER OF PEDESTRIANS KILLED</th>
+      <th>NUMBER OF CYCLIST INJURED</th>
+      <th>NUMBER OF CYCLIST KILLED</th>
+      <th>NUMBER OF MOTORIST INJURED</th>
+      <th>NUMBER OF MOTORIST KILLED</th>
+      <th>COLLISION_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5025.000000</td>
+      <td>7097.000000</td>
+      <td>7097.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.0</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7.659000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10908.957015</td>
+      <td>40.609463</td>
+      <td>-73.705503</td>
+      <td>0.404753</td>
+      <td>0.002350</td>
+      <td>0.084345</td>
+      <td>0.001306</td>
+      <td>0.021935</td>
+      <td>0.0</td>
+      <td>0.287505</td>
+      <td>0.000914</td>
+      <td>4.495510e+06</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>514.740028</td>
+      <td>2.160598</td>
+      <td>3.919451</td>
+      <td>0.726622</td>
+      <td>0.048425</td>
+      <td>0.290332</td>
+      <td>0.036113</td>
+      <td>0.149131</td>
+      <td>0.0</td>
+      <td>0.692545</td>
+      <td>0.030220</td>
+      <td>2.338111e+03</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>10000.000000</td>
+      <td>0.000000</td>
+      <td>-74.249980</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.491064e+06</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>10459.000000</td>
+      <td>40.665085</td>
+      <td>-73.960370</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.493532e+06</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>11209.000000</td>
+      <td>40.712505</td>
+      <td>-73.917310</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.495533e+06</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11354.000000</td>
+      <td>40.786957</td>
+      <td>-73.862274</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.497480e+06</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>11697.000000</td>
+      <td>40.909206</td>
+      <td>0.000000</td>
+      <td>8.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>0.0</td>
+      <td>8.000000</td>
+      <td>1.000000</td>
+      <td>4.500594e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Transpose the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash_desc</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ZIP CODE</th>
+      <td>5025.0</td>
+      <td>1.090896e+04</td>
+      <td>514.740028</td>
+      <td>1.000000e+04</td>
+      <td>1.045900e+04</td>
+      <td>1.120900e+04</td>
+      <td>1.135400e+04</td>
+      <td>1.169700e+04</td>
+    </tr>
+    <tr>
+      <th>LATITUDE</th>
+      <td>7097.0</td>
+      <td>4.060946e+01</td>
+      <td>2.160598</td>
+      <td>0.000000e+00</td>
+      <td>4.066508e+01</td>
+      <td>4.071251e+01</td>
+      <td>4.078696e+01</td>
+      <td>4.090921e+01</td>
+    </tr>
+    <tr>
+      <th>LONGITUDE</th>
+      <td>7097.0</td>
+      <td>-7.370550e+01</td>
+      <td>3.919451</td>
+      <td>-7.424998e+01</td>
+      <td>-7.396037e+01</td>
+      <td>-7.391731e+01</td>
+      <td>-7.386227e+01</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF PERSONS INJURED</th>
+      <td>7659.0</td>
+      <td>4.047526e-01</td>
+      <td>0.726622</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>8.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF PERSONS KILLED</th>
+      <td>7659.0</td>
+      <td>2.350176e-03</td>
+      <td>0.048425</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF PEDESTRIANS INJURED</th>
+      <td>7659.0</td>
+      <td>8.434521e-02</td>
+      <td>0.290332</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>3.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF PEDESTRIANS KILLED</th>
+      <td>7659.0</td>
+      <td>1.305653e-03</td>
+      <td>0.036113</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF CYCLIST INJURED</th>
+      <td>7659.0</td>
+      <td>2.193498e-02</td>
+      <td>0.149131</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>2.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF CYCLIST KILLED</th>
+      <td>7659.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF MOTORIST INJURED</th>
+      <td>7659.0</td>
+      <td>2.875049e-01</td>
+      <td>0.692545</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>8.000000e+00</td>
+    </tr>
+    <tr>
+      <th>NUMBER OF MOTORIST KILLED</th>
+      <td>7659.0</td>
+      <td>9.139574e-04</td>
+      <td>0.030220</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>COLLISION_ID</th>
+      <td>7659.0</td>
+      <td>4.495510e+06</td>
+      <td>2338.111464</td>
+      <td>4.491064e+06</td>
+      <td>4.493532e+06</td>
+      <td>4.495533e+06</td>
+      <td>4.497480e+06</td>
+      <td>4.500594e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Frequency table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;BOROUGH&quot;</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="s2">&quot;freq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>col_0</th>
+      <th>freq</th>
+    </tr>
+    <tr>
+      <th>BOROUGH</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BRONX</th>
+      <td>948</td>
+    </tr>
+    <tr>
+      <th>BROOKLYN</th>
+      <td>1744</td>
+    </tr>
+    <tr>
+      <th>MANHATTAN</th>
+      <td>737</td>
+    </tr>
+    <tr>
+      <th>QUEENS</th>
+      <td>1393</td>
+    </tr>
+    <tr>
+      <th>STATEN ISLAND</th>
+      <td>203</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="subsetting">
+<h2><span class="section-number">5.3. </span>Subsetting<a class="headerlink" href="#subsetting" title="Permalink to this headline">¶</a></h2>
+<p>Selection by row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brooklyn_crash</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;BOROUGH&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;BROOKLYN&quot;</span><span class="p">]</span>
+
+<span class="n">bronx_crash</span>    <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;BOROUGH&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;BRONX&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Selection by column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_crash</span><span class="p">[[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>01/01/2022</td>
+      <td>16:40</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>01/01/2022</td>
+      <td>15:19</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>01/01/2022</td>
+      <td>18:21</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>01/01/2022</td>
+      <td>1:50</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7628</th>
+      <td>01/31/2022</td>
+      <td>10:32</td>
+    </tr>
+    <tr>
+      <th>7642</th>
+      <td>01/31/2022</td>
+      <td>16:00</td>
+    </tr>
+    <tr>
+      <th>7643</th>
+      <td>01/31/2022</td>
+      <td>4:54</td>
+    </tr>
+    <tr>
+      <th>7646</th>
+      <td>01/31/2022</td>
+      <td>14:58</td>
+    </tr>
+    <tr>
+      <th>7657</th>
+      <td>01/31/2022</td>
+      <td>6:50</td>
+    </tr>
+  </tbody>
+</table>
+<p>948 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>By both</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_long</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]]</span>
+<span class="n">bronx_lat</span>  <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LATITUDE&quot;</span><span class="p">]]</span>
+<span class="n">bronx_lat</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>LATITUDE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>01/01/2022</td>
+      <td>16:40</td>
+      <td>40.806107</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>01/01/2022</td>
+      <td>15:19</td>
+      <td>40.833750</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+      <td>40.858790</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>01/01/2022</td>
+      <td>18:21</td>
+      <td>40.890648</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>01/01/2022</td>
+      <td>1:50</td>
+      <td>40.895718</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="creating-new-columns">
+<h2><span class="section-number">5.4. </span>Creating new columns<a class="headerlink" href="#creating-new-columns" title="Permalink to this headline">¶</a></h2>
+<p>Convert the time string to numeric for later processing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;CRASH TIME&quot;</span><span class="p">]]</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]]</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([330., 164., 172., 131., 195., 186., 267., 304., 460., 345., 329.,
+        353., 357., 333., 451., 473., 447., 468., 430., 360., 306., 270.,
+        528.]),
+ array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+        17, 18, 19, 20, 21, 22, 23]),
+ &lt;BarContainer object of 23 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/pandas_17_1.png" src="../_images/pandas_17_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="reshape">
+<h2><span class="section-number">5.5. </span>Reshape<a class="headerlink" href="#reshape" title="Permalink to this headline">¶</a></h2>
+<p>Sort table rows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>BOROUGH</th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>LOCATION</th>
+      <th>ON STREET NAME</th>
+      <th>CROSS STREET NAME</th>
+      <th>OFF STREET NAME</th>
+      <th>...</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 3</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 4</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 5</th>
+      <th>COLLISION_ID</th>
+      <th>VEHICLE TYPE CODE 1</th>
+      <th>VEHICLE TYPE CODE 2</th>
+      <th>VEHICLE TYPE CODE 3</th>
+      <th>VEHICLE TYPE CODE 4</th>
+      <th>VEHICLE TYPE CODE 5</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6873</th>
+      <td>01/28/2022</td>
+      <td>0:42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ROOSEVELT AVENUE</td>
+      <td>SUBWAY QUEENS YARD</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4498387</td>
+      <td>Bike</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2140</th>
+      <td>01/09/2022</td>
+      <td>0:30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.709633</td>
+      <td>-73.767815</td>
+      <td>(40.709633, -73.767815)</td>
+      <td>HOLLIS AVENUE</td>
+      <td>99 AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4493304</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5036</th>
+      <td>01/21/2022</td>
+      <td>0:45</td>
+      <td>BROOKLYN</td>
+      <td>11238.0</td>
+      <td>40.681780</td>
+      <td>-73.958740</td>
+      <td>(40.68178, -73.95874)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1079      FULTON STREET</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4496106</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5026</th>
+      <td>01/21/2022</td>
+      <td>0:34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.741447</td>
+      <td>-73.846030</td>
+      <td>(40.741447, -73.84603)</td>
+      <td>GRAND CENTRAL PKWY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4496199</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5016</th>
+      <td>01/21/2022</td>
+      <td>0:15</td>
+      <td>BROOKLYN</td>
+      <td>11215.0</td>
+      <td>40.660576</td>
+      <td>-73.990650</td>
+      <td>(40.660576, -73.99065)</td>
+      <td>6 AVENUE</td>
+      <td>20 STREET</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4496310</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div></div></div>
+</div>
+<p>Pivot table (long to wide)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">,</span> <span class="s2">&quot;LONGITUDE&quot;</span><span class="p">],</span>
+	<span class="n">index</span>   <span class="o">=</span> <span class="s2">&quot;BOROUGH&quot;</span><span class="p">,</span>
+	<span class="n">aggfunc</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+	<span class="n">margins</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+    </tr>
+    <tr>
+      <th>BOROUGH</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BRONX</th>
+      <td>40.715739</td>
+      <td>-73.639080</td>
+    </tr>
+    <tr>
+      <th>BROOKLYN</th>
+      <td>40.562493</td>
+      <td>-73.774724</td>
+    </tr>
+    <tr>
+      <th>MANHATTAN</th>
+      <td>40.716458</td>
+      <td>-73.865181</td>
+    </tr>
+    <tr>
+      <th>QUEENS</th>
+      <td>40.597138</td>
+      <td>-73.613842</td>
+    </tr>
+    <tr>
+      <th>STATEN ISLAND</th>
+      <td>39.967678</td>
+      <td>-72.991762</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <td>40.599550</td>
+      <td>-73.686697</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Melting (wide to long)</p>
+</div>
+<div class="section" id="combining">
+<h2><span class="section-number">5.6. </span>Combining<a class="headerlink" href="#combining" title="Permalink to this headline">¶</a></h2>
+<p>Row bind</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bronx_crash</span><span class="p">,</span> <span class="n">brooklyn_crash</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>BOROUGH</th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>LOCATION</th>
+      <th>ON STREET NAME</th>
+      <th>CROSS STREET NAME</th>
+      <th>OFF STREET NAME</th>
+      <th>...</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 2</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 3</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 4</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 5</th>
+      <th>COLLISION_ID</th>
+      <th>VEHICLE TYPE CODE 1</th>
+      <th>VEHICLE TYPE CODE 2</th>
+      <th>VEHICLE TYPE CODE 3</th>
+      <th>VEHICLE TYPE CODE 4</th>
+      <th>VEHICLE TYPE CODE 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>01/01/2022</td>
+      <td>16:40</td>
+      <td>BRONX</td>
+      <td>10454.0</td>
+      <td>40.806107</td>
+      <td>-73.917990</td>
+      <td>(40.806107, -73.91799)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>520       EAST 137 STREET</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491478</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>01/01/2022</td>
+      <td>15:19</td>
+      <td>BRONX</td>
+      <td>10456.0</td>
+      <td>40.833750</td>
+      <td>-73.900490</td>
+      <td>(40.83375, -73.90049)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1342      FRANKLIN AVENUE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491440</td>
+      <td>Taxi</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+      <td>BRONX</td>
+      <td>10453.0</td>
+      <td>40.858790</td>
+      <td>-73.907364</td>
+      <td>(40.85879, -73.907364)</td>
+      <td>AQUEDUCT AVENUE</td>
+      <td>BUCHANAN PLACE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491694</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>01/01/2022</td>
+      <td>18:21</td>
+      <td>BRONX</td>
+      <td>10466.0</td>
+      <td>40.890648</td>
+      <td>-73.848750</td>
+      <td>(40.890648, -73.84875)</td>
+      <td>EAST 233 STREET</td>
+      <td>GUNTHER AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491488</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>01/01/2022</td>
+      <td>1:50</td>
+      <td>BRONX</td>
+      <td>10466.0</td>
+      <td>40.895718</td>
+      <td>-73.849525</td>
+      <td>(40.895718, -73.849525)</td>
+      <td>PITMAN AVENUE</td>
+      <td>WICKHAM AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491166</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Also can use <code class="docutils literal notranslate"><span class="pre">append()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_crash</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brooklyn_crash</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2513/939351689.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  bronx_crash.append(brooklyn_crash).tail(5)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>BOROUGH</th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>LOCATION</th>
+      <th>ON STREET NAME</th>
+      <th>CROSS STREET NAME</th>
+      <th>OFF STREET NAME</th>
+      <th>...</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 2</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 3</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 4</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 5</th>
+      <th>COLLISION_ID</th>
+      <th>VEHICLE TYPE CODE 1</th>
+      <th>VEHICLE TYPE CODE 2</th>
+      <th>VEHICLE TYPE CODE 3</th>
+      <th>VEHICLE TYPE CODE 4</th>
+      <th>VEHICLE TYPE CODE 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7645</th>
+      <td>01/31/2022</td>
+      <td>12:00</td>
+      <td>BROOKLYN</td>
+      <td>11220.0</td>
+      <td>40.640630</td>
+      <td>-74.025734</td>
+      <td>(40.64063, -74.025734)</td>
+      <td>65 STREET</td>
+      <td>2 AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4499700</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7650</th>
+      <td>01/31/2022</td>
+      <td>8:30</td>
+      <td>BROOKLYN</td>
+      <td>11216.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>486       GATES AVENUE</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4500316</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7652</th>
+      <td>01/31/2022</td>
+      <td>10:12</td>
+      <td>BROOKLYN</td>
+      <td>11212.0</td>
+      <td>40.664436</td>
+      <td>-73.922100</td>
+      <td>(40.664436, -73.9221)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>699       RALPH AVENUE</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4500537</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Motorcycle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7655</th>
+      <td>01/31/2022</td>
+      <td>21:50</td>
+      <td>BROOKLYN</td>
+      <td>11217.0</td>
+      <td>40.675250</td>
+      <td>-73.973350</td>
+      <td>(40.67525, -73.97335)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>209       LINCOLN PLACE</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4500477</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7656</th>
+      <td>01/31/2022</td>
+      <td>9:40</td>
+      <td>BROOKLYN</td>
+      <td>11249.0</td>
+      <td>40.701130</td>
+      <td>-73.960870</td>
+      <td>(40.70113, -73.96087)</td>
+      <td>WYTHE AVENUE</td>
+      <td>WILLIAMSBURG STREET EAST</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4500516</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Box Truck</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Column bind</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bronx_lat</span><span class="p">,</span> <span class="n">bronx_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_lat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(948, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_long</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(948, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="aggregation">
+<h3><span class="section-number">5.6.1. </span>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01/01/2022</td>
+      <td>16:40</td>
+      <td>40.806107</td>
+      <td>-73.917990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01/01/2022</td>
+      <td>15:19</td>
+      <td>40.833750</td>
+      <td>-73.900490</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+      <td>40.858790</td>
+      <td>-73.907364</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+      <td>40.858790</td>
+      <td>-73.919550</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01/01/2022</td>
+      <td>15:00</td>
+      <td>40.816550</td>
+      <td>-73.907364</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1044</th>
+      <td>01/31/2022</td>
+      <td>15:00</td>
+      <td>40.886295</td>
+      <td>-73.847916</td>
+    </tr>
+    <tr>
+      <th>1045</th>
+      <td>01/31/2022</td>
+      <td>10:32</td>
+      <td>40.819336</td>
+      <td>-73.913700</td>
+    </tr>
+    <tr>
+      <th>1046</th>
+      <td>01/31/2022</td>
+      <td>16:00</td>
+      <td>40.815937</td>
+      <td>-73.909134</td>
+    </tr>
+    <tr>
+      <th>1048</th>
+      <td>01/31/2022</td>
+      <td>14:58</td>
+      <td>40.868847</td>
+      <td>-73.902626</td>
+    </tr>
+    <tr>
+      <th>1049</th>
+      <td>01/31/2022</td>
+      <td>6:50</td>
+      <td>40.851097</td>
+      <td>-73.892810</td>
+    </tr>
+  </tbody>
+</table>
+<p>1016 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">)[</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRASH DATE
+01/01/2022    40.837643
+01/02/2022    40.859297
+01/03/2022    40.837574
+01/04/2022    40.831024
+01/05/2022    40.865475
+01/06/2022    40.830143
+01/07/2022    40.840114
+01/08/2022    40.844177
+01/09/2022    40.843715
+01/10/2022    40.857130
+01/11/2022    40.842747
+01/12/2022    40.854292
+01/13/2022    40.850704
+01/14/2022    40.847494
+01/15/2022    40.845562
+01/16/2022    40.846600
+01/17/2022    40.865258
+01/18/2022    40.833218
+01/19/2022    40.850893
+01/20/2022    40.841927
+01/21/2022    40.836138
+01/22/2022    40.859184
+01/23/2022    40.859430
+01/24/2022    40.826973
+01/25/2022    40.841188
+01/26/2022    40.842854
+01/27/2022    40.847794
+01/28/2022    40.847680
+01/29/2022    40.859306
+01/30/2022    40.843916
+01/31/2022    40.841087
+Name: LATITUDE, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span> <span class="ow">in</span> <span class="n">mybronx</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:12s}</span><span class="s2"> shape = </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">group</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>01/01/2022   shape = (36, 4)
+01/02/2022   shape = (19, 4)
+01/03/2022   shape = (26, 4)
+01/04/2022   shape = (29, 4)
+01/05/2022   shape = (47, 4)
+01/06/2022   shape = (36, 4)
+01/07/2022   shape = (54, 4)
+01/08/2022   shape = (36, 4)
+01/09/2022   shape = (26, 4)
+01/10/2022   shape = (28, 4)
+01/11/2022   shape = (32, 4)
+01/12/2022   shape = (34, 4)
+01/13/2022   shape = (33, 4)
+01/14/2022   shape = (28, 4)
+01/15/2022   shape = (42, 4)
+01/16/2022   shape = (24, 4)
+01/17/2022   shape = (27, 4)
+01/18/2022   shape = (34, 4)
+01/19/2022   shape = (29, 4)
+01/20/2022   shape = (28, 4)
+01/21/2022   shape = (32, 4)
+01/22/2022   shape = (33, 4)
+01/23/2022   shape = (24, 4)
+01/24/2022   shape = (24, 4)
+01/25/2022   shape = (21, 4)
+01/26/2022   shape = (50, 4)
+01/27/2022   shape = (35, 4)
+01/28/2022   shape = (59, 4)
+01/29/2022   shape = (60, 4)
+01/30/2022   shape = (24, 4)
+01/31/2022   shape = (40, 4)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="scipy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>SciPy for Data Science</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="visual.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Visualization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
