@@ -29,7 +29,7 @@ jobs:
           pip install --upgrade pyshp
           pip3 install shapely --no-binary shapely
           export PKG_CONFIG_PATH=/usr/local/bin/pkgconfig
-          pip install cartopy
+          pip install cartopy==0.19.0.post1 #https://github.com/SciTools/iris/issues/4468
           pip install -r requirements.txt
 
       # Build the book
