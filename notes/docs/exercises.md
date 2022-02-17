@@ -83,7 +83,25 @@ kernelspec:
     1. Plot the distribution of the number of days that it take to
        approve a job application; do it by borough. Comment on your
        findings.
-    1. Take brooklyn as an example, overlay the building locations of
+    1. Take Brooklyn as an example, overlay the building locations of
        the job applications on a Google map.
     1. Based on the data, come up a meaningful question that can be
        answered by the data, and report your findings.
+
+1. The NYC MV collisions data contains a column of the number of
+   persons killed and a column of the number of persons killed.
+    1. Check if the number of persons killed is the summation of the
+       number of pedestrians killed, cyclist killed, and motorists
+       killed. 
+    1. Construct the number of persons killed as the sum of the
+       pedestrians, cyclists, and motorists killed. Let $Y$ be one if
+       the number of persons killed is greater than zero; and zero
+       otherwise. Fit a logistic model with $Y$ as the outcome
+       variable and covariates that are available in the data or can
+       be engineered from the data. Example covariates are crash hour,
+       borough, number of vehicles involved, etc.
+    1. Construct a cross table for the number of persons killed by the
+       contributing factors of vehicle one. Collapse the contributing
+       factors with a count of less than 100 to "other". Is there any
+       association between the contributing factors and the number of
+       persons killed? 
