@@ -184,7 +184,7 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Statistical models and hypothesis tests with package
       `statsmodels` (Tu. Feb. 22: )
 + Supervised learning
-    - Decision trees (Th. Feb. 24: )
+    - Decision trees (Th. Feb. 24: Ryan Schoenfeld)
     - Random forests
     - Support vector machine
     - Nearest neighbor
