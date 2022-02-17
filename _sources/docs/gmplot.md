@@ -19,7 +19,12 @@ To install `gmplot`, we can use pip by running pip or conda
 
 `conda install -c mlgill gmplot`
 
-After installing the package, we can now use it in Jupyter Notebook. `gmplot`'s most unique use is it's ability to save geographical coordinates on Google Maps to a local file. Additionally, it has a similar interface to matplotlib in regards to its generation of the HTML to deliver all the additional data on top of Google Maps.
+After installing the package, we can now use it in Jupyter
+Notebook. `gmplot`'s most unique use is it's ability to save
+geographical coordinates on Google Maps to a local file. Additionally,
+it has a similar interface to matplotlib in regards to its generation
+of the HTML to deliver all the additional data on top of Google Maps.
+
 
 First, we have to `import gmplot`
 
@@ -29,22 +34,33 @@ import gmplot
 
 ## Basic Plot
 
-After doing so, we can generate a simple map using `gmplot.GoogleMapPlotter`. This will create an `.html` file. I saved mine to Jupyter Notebook but you can set your path to save it to anywhere you choose.
+After doing so, we can generate a simple map using
+`gmplot.GoogleMapPlotter`. This will create an `.html` file. I saved
+mine to Jupyter Notebook but you can set your path to save it to
+anywhere you choose.
+
 
 ```{code-cell}
-#first two arguments are longitude and latitude and the third one is zoom resolution
+# first two arguments are longitude and latitude and the third one is
+# zoom resolution
+
+
 gmap = gmplot.GoogleMapPlotter(17.438139, 78.39583, 18)
 
-#Location where you want to save your file.
+# Location where you want to save your file.
 gmap.draw("map.html")
 ```
 
 ## Polygon
 
-Next we can draw a polygon on Google Maps to highlight a specific area of interest. By using `.polygon`, we can create a highlighted border around a specific area. The inputs are the longitude and latitude points of the shape
+Next we can draw a polygon on Google Maps to highlight a specific area
+of interest. By using `.polygon`, we can create a highlighted border
+around a specific area. The inputs are the longitude and latitude
+points of the shape.
+
 
 ```{code-cell}
-latitude_list = [ 17.4567417, 17.5587901, 17.6245545]
+latitude_list  = [ 17.4567417, 17.5587901, 17.6245545]
 longitude_list = [ 78.2913637, 78.007699, 77.9266135 ]
 gmap = gmplot.GoogleMapPlotter(17.438139, 78.3936413, 11)
 gmap.polygon(latitude_list, longitude_list, color = 'cornflowerblue')

@@ -354,7 +354,11 @@
 <p>To install <code class="docutils literal notranslate"><span class="pre">gmplot</span></code>, we can use pip by running pip or conda</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">gmplot</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">mlgill</span> <span class="pre">gmplot</span></code></p>
-<p>After installing the package, we can now use it in Jupyter Notebook. <code class="docutils literal notranslate"><span class="pre">gmplot</span></code>’s most unique use is it’s ability to save geographical coordinates on Google Maps to a local file. Additionally, it has a similar interface to matplotlib in regards to its generation of the HTML to deliver all the additional data on top of Google Maps.</p>
+<p>After installing the package, we can now use it in Jupyter
+Notebook. <code class="docutils literal notranslate"><span class="pre">gmplot</span></code>’s most unique use is it’s ability to save
+geographical coordinates on Google Maps to a local file. Additionally,
+it has a similar interface to matplotlib in regards to its generation
+of the HTML to deliver all the additional data on top of Google Maps.</p>
 <p>First, we have to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">gmplot</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -365,13 +369,19 @@
 </div>
 <div class="section" id="basic-plot">
 <h2><span class="section-number">6.5.1. </span>Basic Plot<a class="headerlink" href="#basic-plot" title="Permalink to this headline">¶</a></h2>
-<p>After doing so, we can generate a simple map using <code class="docutils literal notranslate"><span class="pre">gmplot.GoogleMapPlotter</span></code>. This will create an <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. I saved mine to Jupyter Notebook but you can set your path to save it to anywhere you choose.</p>
+<p>After doing so, we can generate a simple map using
+<code class="docutils literal notranslate"><span class="pre">gmplot.GoogleMapPlotter</span></code>. This will create an <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. I saved
+mine to Jupyter Notebook but you can set your path to save it to
+anywhere you choose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#first two arguments are longitude and latitude and the third one is zoom resolution</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># first two arguments are longitude and latitude and the third one is</span>
+<span class="c1"># zoom resolution</span>
+
+
 <span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">17.438139</span><span class="p">,</span> <span class="mf">78.39583</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
 
-<span class="c1">#Location where you want to save your file.</span>
+<span class="c1"># Location where you want to save your file.</span>
 <span class="n">gmap</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;map.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -380,10 +390,13 @@
 </div>
 <div class="section" id="polygon">
 <h2><span class="section-number">6.5.2. </span>Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h2>
-<p>Next we can draw a polygon on Google Maps to highlight a specific area of interest. By using <code class="docutils literal notranslate"><span class="pre">.polygon</span></code>, we can create a highlighted border around a specific area. The inputs are the longitude and latitude points of the shape</p>
+<p>Next we can draw a polygon on Google Maps to highlight a specific area
+of interest. By using <code class="docutils literal notranslate"><span class="pre">.polygon</span></code>, we can create a highlighted border
+around a specific area. The inputs are the longitude and latitude
+points of the shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_list</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">17.4567417</span><span class="p">,</span> <span class="mf">17.5587901</span><span class="p">,</span> <span class="mf">17.6245545</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_list</span>  <span class="o">=</span> <span class="p">[</span> <span class="mf">17.4567417</span><span class="p">,</span> <span class="mf">17.5587901</span><span class="p">,</span> <span class="mf">17.6245545</span><span class="p">]</span>
 <span class="n">longitude_list</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">78.2913637</span><span class="p">,</span> <span class="mf">78.007699</span><span class="p">,</span> <span class="mf">77.9266135</span> <span class="p">]</span>
 <span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">17.438139</span><span class="p">,</span> <span class="mf">78.3936413</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="n">gmap</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">latitude_list</span><span class="p">,</span> <span class="n">longitude_list</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cornflowerblue&#39;</span><span class="p">)</span>
