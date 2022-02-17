@@ -39,7 +39,7 @@ To install `patsy`, use a simple pip command.
 
     pip install patsy
    
-Then, you should be able to import the package. The dmatrices and dmatrix objects are the most important.
+Then, you should be able to import the package. The `dmatrices` and `dmatrix` objects are the most important.
 
 ```{code-cell} ipython3
 from patsy import dmatrices, dmatrix
@@ -70,7 +70,7 @@ Now we can create a new matrix with `patsy`'s `dmatrices`.
 dmatrices("cost ~ zoning_diff", nyc_jobs_zoning)
 ```
 
-The return value is a Python tuple containing two DesignMatrix objects. The first dmatrix is the left-hand side of the formula, and the second is the right-hand side. They're just oridinary numpy arrays with extra metadata. We can pass these to a regression function to perform some analysis.
+The return value is a Python tuple containing two `DesignMatrix` objects. The first dmatrix is the left-hand side of the formula, and the second is the right-hand side. They're just oridinary numpy arrays with extra metadata. We can pass these to a regression function to perform some analysis.
 
 ```{code-cell} ipython3
 outcome, predictors = dmatrices("cost ~ zoning_diff", nyc_jobs_zoning)
