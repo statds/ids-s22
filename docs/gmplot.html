@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.5. 6.6. GM Plot &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>6.5. GM Plot &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -147,7 +147,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.5. 6.6. GM Plot
+     6.5. GM Plot
     </a>
    </li>
   </ul>
@@ -255,27 +255,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-plot">
-   6.5.1. 6.6.1. Basic Plot
+   6.5.1. Basic Plot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#polygon">
-   6.5.2. 6.6.2 Polygon
+   6.5.2. Polygon
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#complete-map">
-   6.5.3. 6.6.3 Complete Map
+   6.5.3. Complete Map
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heat-map">
-   6.5.4. 6.6.4 Heat Map
+   6.5.4. Heat Map
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nyc-data">
-   6.5.5. 6.6.5 NYC Data
+   6.5.5. NYC Data
   </a>
  </li>
 </ul>
@@ -288,7 +288,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>6.6. GM Plot</h1>
+                <h1>GM Plot</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -300,27 +300,27 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-plot">
-   6.5.1. 6.6.1. Basic Plot
+   6.5.1. Basic Plot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#polygon">
-   6.5.2. 6.6.2 Polygon
+   6.5.2. Polygon
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#complete-map">
-   6.5.3. 6.6.3 Complete Map
+   6.5.3. Complete Map
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heat-map">
-   6.5.4. 6.6.4 Heat Map
+   6.5.4. Heat Map
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nyc-data">
-   6.5.5. 6.6.5 NYC Data
+   6.5.5. NYC Data
   </a>
  </li>
 </ul>
@@ -333,66 +333,128 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="gm-plot">
-<h1><span class="section-number">6.5. </span>6.6. GM Plot<a class="headerlink" href="#gm-plot" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.5. </span>GM Plot<a class="headerlink" href="#gm-plot" title="Permalink to this headline">¶</a></h1>
 <p>To install <code class="docutils literal notranslate"><span class="pre">gmplot</span></code>, we can use pip by running pip or conda</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">gmplot</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">mlgill</span> <span class="pre">gmplot</span></code></p>
 <p>After installing the package, we can now use it in Jupyter Notebook. <code class="docutils literal notranslate"><span class="pre">gmplot</span></code>’s most unique use is it’s ability to save geographical coordinates on Google Maps to a local file. Additionally, it has a similar interface to matplotlib in regards to its generation of the HTML to deliver all the additional data on top of Google Maps.</p>
 <p>First, we have to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">gmplot</span></code></p>
-<p>import gmplot</p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>import gmplot
+</pre></div>
+</div>
 <div class="section" id="basic-plot">
-<h2><span class="section-number">6.5.1. </span>6.6.1. Basic Plot<a class="headerlink" href="#basic-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.1. </span>Basic Plot<a class="headerlink" href="#basic-plot" title="Permalink to this headline">¶</a></h2>
 <p>After doing so, we can generate a simple map using <code class="docutils literal notranslate"><span class="pre">gmplot.GoogleMapPlotter</span></code>. This will create an <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. I saved mine to Jupyter Notebook but you can set your path to save it to anywhere you choose.</p>
-<p>#first two arguments are longitude and latitude and the third one is zoom resolution</p>
-<p>gmap = gmplot.GoogleMapPlotter(17.438139, 78.39583, 18)</p>
-<p>#Location where you want to save your file.</p>
-<p>gmap.draw(“map.html”)</p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>#first two arguments are longitude and latitude and the third one is zoom resolution
+gmap = gmplot.GoogleMapPlotter(17.438139, 78.39583, 18)
+
+#Location where you want to save your file.
+gmap.draw(&quot;map.html&quot;)
+</pre></div>
+</div>
 </div>
 <div class="section" id="polygon">
-<h2><span class="section-number">6.5.2. </span>6.6.2 Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.2. </span>Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h2>
 <p>Next we can draw a polygon on Google Maps to highlight a specific area of interest. By using <code class="docutils literal notranslate"><span class="pre">.polygon</span></code>, we can create a highlighted border around a specific area. The inputs are the longitude and latitude points of the shape</p>
-<p>latitude_list = [ 17.4567417, 17.5587901, 17.6245545]</p>
-<p>longitude_list = [ 78.2913637, 78.007699, 77.9266135 ]</p>
-<p>gmap = gmplot.GoogleMapPlotter(17.438139, 78.3936413, 11)</p>
-<p>gmap.polygon(latitude_list, longitude_list, color = ‘cornflowerblue’)</p>
-<p>gmap.draw( “poly.html” )</p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>latitude_list = [ 17.4567417, 17.5587901, 17.6245545]
+longitude_list = [ 78.2913637, 78.007699, 77.9266135 ]
+gmap = gmplot.GoogleMapPlotter(17.438139, 78.3936413, 11)
+gmap.polygon(latitude_list, longitude_list, color = &#39;cornflowerblue&#39;)
+gmap.draw( &quot;poly.html&quot; )
+</pre></div>
+</div>
 </div>
 <div class="section" id="complete-map">
-<h2><span class="section-number">6.5.3. </span>6.6.3 Complete Map<a class="headerlink" href="#complete-map" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.3. </span>Complete Map<a class="headerlink" href="#complete-map" title="Permalink to this headline">¶</a></h2>
 <p>A more complete map is shown below by using many longitude and latitude points to highlight specific areas of the map. First, we create a zip of the outline of Golden Gate Park and use <code class="docutils literal notranslate"><span class="pre">.polygon</span></code> as we did previously. Next, we add some attraction points use <code class="docutils literal notranslate"><span class="pre">.scatter</span></code>. Lastly, we can add a marker to give attention to a specific spot using <code class="docutils literal notranslate"><span class="pre">.marker</span></code>.</p>
-<p>#Create the map plotter:
-gmap = gmplot.GoogleMapPlotter(37.766956, -122.448481, 14)</p>
-<p><img alt="Screen Shot 2022-02-16 at 1 39 32 PM" src="https://user-images.githubusercontent.com/98053064/154333387-65665133-e799-4c29-903f-51537601e9c3.png" /></p>
-<p>#Mark a hidden gem:
-gmap.marker(37.770776, -122.461689, color=’cornflowerblue’)</p>
-<p>#Draw the map:
-gmap.draw(‘GGP.html’)</p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>#Create the map plotter:
+gmap = gmplot.GoogleMapPlotter(37.766956, -122.448481, 14)
+
+#Outline the Golden Gate Park:
+golden_gate_park = zip(*[
+    (37.771269, -122.511015),
+    (37.773495, -122.464830),
+    (37.774797, -122.454538),
+    (37.771988, -122.454018),
+    (37.773646, -122.440979),
+    (37.772742, -122.440797),
+    (37.771096, -122.453889),
+    (37.768669, -122.453518),
+    (37.766227, -122.460213),
+    (37.764028, -122.510347)
+])
+gmap.polygon(*golden_gate_park, color=&#39;cornflowerblue&#39;, edge_width=10)
+
+#Highlight some attractions:
+attractions_lats, attractions_lngs = zip(*[
+    (37.769901, -122.498331),
+    (37.768645, -122.475328),
+    (37.771478, -122.468677),
+    (37.769867, -122.466102),
+    (37.767187, -122.467496),
+    (37.770104, -122.470436)
+])
+gmap.scatter(attractions_lats, attractions_lngs, color=&#39;#3B0B39&#39;, size=40, marker=False)
+
+#Mark a hidden gem:
+gmap.marker(37.770776, -122.461689, color=&#39;cornflowerblue&#39;)
+
+#Draw the map:
+gmap.draw(&#39;GGP.html&#39;)
+</pre></div>
+</div>
 </div>
 <div class="section" id="heat-map">
-<h2><span class="section-number">6.5.4. </span>6.6.4 Heat Map<a class="headerlink" href="#heat-map" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.4. </span>Heat Map<a class="headerlink" href="#heat-map" title="Permalink to this headline">¶</a></h2>
 <p>Another cool aspect of <code class="docutils literal notranslate"><span class="pre">gmplot</span></code> is the ability to create a heatmap. In this, I randomly generated 700 points around the world. Then I used <code class="docutils literal notranslate"><span class="pre">.heatmap</span></code>, which generates the points. You have the option to add markers to them, but it looks bad since so many points were generated in this specific example.</p>
-<p><img alt="Screen Shot 2022-02-16 at 1 40 30 PM" src="https://user-images.githubusercontent.com/98053064/154333567-3928d2a1-d540-4199-95eb-e8e4f395ade0.png" /></p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>#Import libraries
+import gmplot
+import numpy as np
+
+#generate the random points for heat map
+latitude = (np.random.random_sample(size = 500) - 0.5) * 180
+longitude = (np.random.random_sample(size = 500) - 0.5) * 360
+
+#center of the map and zoom
+gmap = gmplot.GoogleMapPlotter(0, 0, 2)
+
+#plot heatmap
+gmap.heatmap(latitude, longitude)
+
+#save it to html
+gmap.draw(&quot;heatmap.html&quot;)
+</pre></div>
+</div>
 </div>
 <div class="section" id="nyc-data">
-<h2><span class="section-number">6.5.5. </span>6.6.5 NYC Data<a class="headerlink" href="#nyc-data" title="Permalink to this headline">¶</a></h2>
-<p>nyc_crash = pd.read_csv(“/Users/robbieshamirian/STAT 3255/my_nyc.csv”)
-nyc_crash.info()</p>
-<p>RangeIndex: 7659 entries, 0 to 7658</p>
-<p>nyc_crash_desc = nyc_crash.describe</p>
-<p>nyc_crash_desc = nyc_crash.describe()
-nyc_crash_desc</p>
-<p>bronx_long = nyc_crash.loc[nyc_crash[‘BOROUGH’] == ‘BRONX’,
-[“CRASH DATE”, “CRASH TIME”, “LONGITUDE”]]
-bronx_lat  = nyc_crash.loc[nyc_crash[‘BOROUGH’] == ‘BRONX’,
-[“CRASH DATE”, “CRASH TIME”, “LATITUDE”]]</p>
-<p>mybronx = pd.merge(bronx_lat, bronx_long)
+<h2><span class="section-number">6.5.5. </span>NYC Data<a class="headerlink" href="#nyc-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+nyc_crash = pd.read_csv(&quot;/Users/robbieshamirian/STAT 3255/my_nyc.csv&quot;)
+nyc_crash.info()
+</pre></div>
+</div>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>nyc_crash_desc = nyc_crash.describe()
+nyc_crash_desc
+</pre></div>
+</div>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>bronx_long = nyc_crash.loc[nyc_crash[&#39;BOROUGH&#39;] == &#39;BRONX&#39;,
+                           [&quot;CRASH DATE&quot;, &quot;CRASH TIME&quot;, &quot;LONGITUDE&quot;]]
+bronx_lat  = nyc_crash.loc[nyc_crash[&#39;BOROUGH&#39;] == &#39;BRONX&#39;,
+                           [&quot;CRASH DATE&quot;, &quot;CRASH TIME&quot;, &quot;LATITUDE&quot;]]
+```{code cell}
+mybronx = pd.merge(bronx_lat, bronx_long)
 lat = mybronx.dropna()
-bronx_lat = lat[“LATITUDE”]
-bronx_lngs = lat[“LONGITUDE”]</p>
+bronx_lat = lat[&quot;LATITUDE&quot;]
+bronx_lngs = lat[&quot;LONGITUDE&quot;]
+</pre></div>
+</div>
 <p>I chose to use the data for the Bronx borough as it was already cleaned. I zoomed in on the Bronx, and added in all of the crashes in that burough.</p>
-<p>gmap = gmplot.GoogleMapPlotter(40.844782, -73.864827, 12)
-gmap.scatter(bronx_lat, bronx_lngs, ‘blue’, size = 100, marker = False)
-gmap.draw(‘bronxmap.html’)</p>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>gmap = gmplot.GoogleMapPlotter(40.844782, -73.864827, 12)
+gmap.scatter(bronx_lat, bronx_lngs, &#39;blue&#39;, size = 100, marker = False)
+gmap.draw(&#39;bronxmap.html&#39;)
+</pre></div>
+</div>
 </div>
 </div>
 
