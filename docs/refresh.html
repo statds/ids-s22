@@ -163,7 +163,12 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="patsy.html">
+     7.1. Describing Models with Patsy
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -444,8 +449,8 @@ evaluate the density and distributions at these points?</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 16.0 0.0 0.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.43101172,  4.90999642, -0.66081344, -3.48732886, -2.84402455,
-       -4.75800604,  0.63693357,  2.52738219,  9.92506931,  7.41423307])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.25594882,  8.0394761 , -0.98893968,  5.95125622,  1.87061467,
+        5.51684668,  2.3622546 , -1.15518561, -3.06511247, 11.94916772])
 </pre></div>
 </div>
 </div>
@@ -458,8 +463,8 @@ evaluate the density and distributions at these points?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.06903767, 0.07654623, 0.07993986, 0.03892204, 0.04790666,
-       0.02393435, 0.09410973, 0.09887246, 0.01401057, 0.03990343])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.09802495, 0.03190205, 0.07544036, 0.06122981, 0.09968341,
+       0.06776296, 0.0993274 , 0.07307034, 0.04473661, 0.00452316])
 </pre></div>
 </div>
 </div>
@@ -485,7 +490,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.5 µs ± 5.52 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.2 µs ± 263 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -512,7 +517,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.46 µs ± 1.85 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.58 µs ± 67.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -534,7 +539,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>96.2 µs ± 46.2 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.7 µs ± 1.2 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -573,8 +578,8 @@ object.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140314728681536
-140314728681536
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140624894744320
+140624894744320
 </pre></div>
 </div>
 </div>
@@ -605,8 +610,8 @@ their values cannot be changed in place. One such example is strings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140315718313008
-140314903992432
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140625054811184
+140624218416816
 </pre></div>
 </div>
 </div>

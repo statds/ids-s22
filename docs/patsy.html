@@ -1,0 +1,1579 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.1. Describing Models with Patsy &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Exercises" href="exercises.html" />
+    <link rel="prev" title="7. Statistical Tests and Models" href="statmodels.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   2. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   3. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   4. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   5. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   6. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     6.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     6.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     6.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     6.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     6.5. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="statmodels.html">
+   7. Statistical Tests and Models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.1. Describing Models with Patsy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   8. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   9. I Fixed It
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/patsy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/patsy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/patsy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-patsy">
+   7.1.1. Installing Patsy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-example">
+   7.1.2. Basic example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transforming-code">
+   7.1.3. Transforming Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-transformations">
+   7.1.4. Special Transformations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#categorical-data">
+   7.1.5. Categorical Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interaction-terms">
+   7.1.6. Interaction Terms
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Describing Models with Patsy</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-patsy">
+   7.1.1. Installing Patsy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-example">
+   7.1.2. Basic example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transforming-code">
+   7.1.3. Transforming Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-transformations">
+   7.1.4. Special Transformations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#categorical-data">
+   7.1.5. Categorical Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interaction-terms">
+   7.1.6. Interaction Terms
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="describing-models-with-patsy">
+<span id="patsy"></span><h1><span class="section-number">7.1. </span>Describing Models with Patsy<a class="headerlink" href="#describing-models-with-patsy" title="Permalink to this headline">¶</a></h1>
+<p>From <a class="reference external" href="https://patsy.readthedocs.io/en/latest/overview.html"><code class="docutils literal notranslate"><span class="pre">patsy</span></code> documentation</a>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">patsy</span></code> is a Python package for describing statistical models (especially linear models, or models that have a linear component) and building design matrices. It is closely inspired by and compatible with the formula mini-language used in R and S.</p>
+<p>Patsy’s goal is to become the standard high-level interface to describing statistical models in Python, regardless of what particular model or library is being used underneath.</p>
+<p>Pros of <code class="docutils literal notranslate"><span class="pre">patsy</span></code>:</p>
+<ul class="simple">
+<li><p>Allows data transformations to be specified using arbitrary Python code: instead of x, we can write log(x) or (x &gt; 0)</p></li>
+<li><p>Gives a range of convenient options for coding categorical variables</p></li>
+<li><p>Provides basic built-in transformations</p></li>
+<li><p>Provides a language for easy-to-read specification of linear constraints</p></li>
+<li><p>Features a simple API for integration into statistical packages. Specifically used in <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, which we will be discussing further in the course.</p></li>
+</ul>
+<p>Cons of <code class="docutils literal notranslate"><span class="pre">patsy</span></code>:</p>
+<ul class="simple">
+<li><p>Will not do statistics. Simply allows you to describe models in general terms</p></li>
+</ul>
+<div class="section" id="installing-patsy">
+<h2><span class="section-number">7.1.1. </span>Installing Patsy<a class="headerlink" href="#installing-patsy" title="Permalink to this headline">¶</a></h2>
+<p>To install <code class="docutils literal notranslate"><span class="pre">patsy</span></code>, use a simple pip command.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install patsy
+</pre></div>
+</div>
+<p>Then, you should be able to import the package. The dmatrices and dmatrix objects are the most important.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span><span class="p">,</span> <span class="n">dmatrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-example">
+<h2><span class="section-number">7.1.2. </span>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
+<p>First let’s read in our NYC job data to have something to work with. We’ll first take the <code class="docutils literal notranslate"><span class="pre">Initial</span> <span class="pre">Cost</span></code> column, which has string values in the form of “$XXXX” and turn them into integer values. Then, we’ll calculate the difference in the proposed zoning square feet and the existing zoning square feet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">nyc_jobs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_DobJobApp_2021.csv&quot;</span><span class="p">)</span>
+
+<span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;Initial Cost&quot;</span><span class="p">]]</span>
+<span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]]</span>
+
+<span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;zoning_diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;Proposed Zoning Sqft&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">nyc_jobs</span><span class="p">[</span><span class="s2">&quot;Existing Zoning Sqft&quot;</span><span class="p">]</span>
+
+<span class="n">nyc_jobs_zoning</span> <span class="o">=</span> <span class="n">nyc_jobs</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">nyc_jobs</span><span class="p">[</span><span class="n">nyc_jobs</span><span class="o">.</span><span class="n">zoning_diff</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">nyc_jobs_zoning</span> <span class="o">=</span> <span class="n">nyc_jobs_zoning</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">nyc_jobs_zoning</span><span class="p">[</span><span class="n">nyc_jobs_zoning</span><span class="o">.</span><span class="n">cost</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2695/772679357.py:4: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+  nyc_jobs = pd.read_csv(&quot;../data/nyc_DobJobApp_2021.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can create a new matrix with <code class="docutils literal notranslate"><span class="pre">patsy</span></code>’s <code class="docutils literal notranslate"><span class="pre">dmatrices</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrices</span><span class="p">(</span><span class="s2">&quot;cost ~ zoning_diff&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(DesignMatrix with shape (1016, 1)
+      cost
+    456000
+    205000
+    998000
+    643000
+   1183365
+    527000
+     44000
+    405000
+    705795
+    333000
+    380220
+    242850
+       100
+    426156
+    321000
+    232775
+    670000
+    110000
+    217500
+    119000
+    800000
+    320000
+    721632
+    391300
+     89500
+    337962
+    199980
+    125000
+     45000
+   1000000
+   [986 rows omitted]
+   Terms:
+     &#39;cost&#39; (column 0)
+   (to view full data, use np.asarray(this_obj)),
+ DesignMatrix with shape (1016, 2)
+   Intercept  zoning_diff
+           1         3800
+           1          571
+           1         1505
+           1         2209
+           1         1182
+           1         1894
+           1          436
+           1          600
+           1          987
+           1          227
+           1         1302
+           1          879
+           1         2318
+           1           22
+           1          302
+           1          659
+           1          126
+           1          724
+           1         1678
+           1          786
+           1         5355
+           1           56
+           1         2536
+           1         2506
+           1         1624
+           1         1025
+           1          876
+           1          273
+           1          916
+           1         1422
+   [986 rows omitted]
+   Terms:
+     &#39;Intercept&#39; (column 0)
+     &#39;zoning_diff&#39; (column 1)
+   (to view full data, use np.asarray(this_obj)))
+</pre></div>
+</div>
+</div>
+</div>
+<p>The return value is a Python tuple containing two DesignMatrix objects. The first dmatrix is the left-hand side of the formula, and the second is the right-hand side. They’re just oridinary numpy arrays with extra metadata. We can pass these to a regression function to perform some analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome</span><span class="p">,</span> <span class="n">predictors</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s2">&quot;cost ~ zoning_diff&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">predictors</span><span class="p">,</span> <span class="n">outcome</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">betas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2695/1476851890.py:2: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  betas = np.linalg.lstsq(predictors, outcome)[0]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[218111.1726294 ],
+       [   409.22199844]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The metadata is stored in an extra attribute, <code class="docutils literal notranslate"><span class="pre">.design_info</span></code>, which has valuable information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors</span><span class="o">.</span><span class="n">design_info</span><span class="o">.</span><span class="n">column_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Intercept&#39;, &#39;zoning_diff&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transforming-code">
+<h2><span class="section-number">7.1.3. </span>Transforming Code<a class="headerlink" href="#transforming-code" title="Permalink to this headline">¶</a></h2>
+<p>You can transform code with <code class="docutils literal notranslate"><span class="pre">patsy</span></code>. For instance, you can use simple Python code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;np.log(zoning_diff)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DesignMatrix with shape (1016, 2)
+  Intercept  np.log(zoning_diff)
+          1              8.24276
+          1              6.34739
+          1              7.31655
+          1              7.70030
+          1              7.07496
+          1              7.54645
+          1              6.07764
+          1              6.39693
+          1              6.89467
+          1              5.42495
+          1              7.17166
+          1              6.77878
+          1              7.74846
+          1              3.09104
+          1              5.71043
+          1              6.49072
+          1              4.83628
+          1              6.58479
+          1              7.42536
+          1              6.66696
+          1              8.58579
+          1              4.02535
+          1              7.83834
+          1              7.82644
+          1              7.39265
+          1              6.93245
+          1              6.77537
+          1              5.60947
+          1              6.82002
+          1              7.25982
+  [986 rows omitted]
+  Terms:
+    &#39;Intercept&#39; (column 0)
+    &#39;np.log(zoning_diff)&#39; (column 1)
+  (to view full data, use np.asarray(this_obj))
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are also various built-in transformation functions from <code class="docutils literal notranslate"><span class="pre">patsy</span></code>, such as <code class="docutils literal notranslate"><span class="pre">center</span></code> and <code class="docutils literal notranslate"><span class="pre">standardize</span></code>. The documentation for these and other functions are in the <a class="reference external" href="https://patsy.readthedocs.io/en/latest/builtins-reference.html#module-patsy.builtins"><code class="docutils literal notranslate"><span class="pre">patsy.builtins</span></code> API reference</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;center(zoning_diff) + standardize(zoning_diff)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DesignMatrix with shape (1016, 3)
+  Intercept  center(zoning_diff)  standardize(zoning_diff)
+          1            996.12303                   0.07860
+          1          -2232.87697                  -0.17619
+          1          -1298.87697                  -0.10249
+          1           -594.87697                  -0.04694
+          1          -1621.87697                  -0.12798
+          1           -909.87697                  -0.07180
+          1          -2367.87697                  -0.18684
+          1          -2203.87697                  -0.17390
+          1          -1816.87697                  -0.14337
+          1          -2576.87697                  -0.20334
+          1          -1501.87697                  -0.11851
+          1          -1924.87697                  -0.15189
+          1           -485.87697                  -0.03834
+          1          -2781.87697                  -0.21951
+          1          -2501.87697                  -0.19742
+          1          -2144.87697                  -0.16925
+          1          -2677.87697                  -0.21131
+          1          -2079.87697                  -0.16412
+          1          -1125.87697                  -0.08884
+          1          -2017.87697                  -0.15923
+          1           2551.12303                   0.20130
+          1          -2747.87697                  -0.21683
+          1           -267.87697                  -0.02114
+          1           -297.87697                  -0.02350
+          1          -1179.87697                  -0.09310
+          1          -1778.87697                  -0.14037
+          1          -1927.87697                  -0.15213
+          1          -2530.87697                  -0.19971
+          1          -1887.87697                  -0.14897
+          1          -1381.87697                  -0.10904
+  [986 rows omitted]
+  Terms:
+    &#39;Intercept&#39; (column 0)
+    &#39;center(zoning_diff)&#39; (column 1)
+    &#39;standardize(zoning_diff)&#39; (column 2)
+  (to view full data, use np.asarray(this_obj))
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can define your own transformation functions if you’d like as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;zoning_diff + square(zoning_diff)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DesignMatrix with shape (1016, 3)
+  Intercept  zoning_diff  square(zoning_diff)
+          1         3800                 7600
+          1          571                 1142
+          1         1505                 3010
+          1         2209                 4418
+          1         1182                 2364
+          1         1894                 3788
+          1          436                  872
+          1          600                 1200
+          1          987                 1974
+          1          227                  454
+          1         1302                 2604
+          1          879                 1758
+          1         2318                 4636
+          1           22                   44
+          1          302                  604
+          1          659                 1318
+          1          126                  252
+          1          724                 1448
+          1         1678                 3356
+          1          786                 1572
+          1         5355                10710
+          1           56                  112
+          1         2536                 5072
+          1         2506                 5012
+          1         1624                 3248
+          1         1025                 2050
+          1          876                 1752
+          1          273                  546
+          1          916                 1832
+          1         1422                 2844
+  [986 rows omitted]
+  Terms:
+    &#39;Intercept&#39; (column 0)
+    &#39;zoning_diff&#39; (column 1)
+    &#39;square(zoning_diff)&#39; (column 2)
+  (to view full data, use np.asarray(this_obj))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="special-transformations">
+<h2><span class="section-number">7.1.4. </span>Special Transformations<a class="headerlink" href="#special-transformations" title="Permalink to this headline">¶</a></h2>
+<p>There are other special built-in transformations that <code class="docutils literal notranslate"><span class="pre">patsy</span></code> provides which are particularly useful when dealing with difficult characters. Even though <code class="docutils literal notranslate"><span class="pre">patsy</span></code> uses a “+” in the syntax, the code still needs to be Python code. This means that something like “Existing Zoning Sqft” will produce an error. The <code class="docutils literal notranslate"><span class="pre">Q()</span></code> transformation however can fix that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dmatrix(&quot;Initial Cost&quot;, nyc_jobs)</span>
+<span class="c1"># Produces error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;Q(&#39;Existing Zoning Sqft&#39;)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DesignMatrix with shape (1016, 2)
+  Intercept  Q(&#39;Existing Zoning Sqft&#39;)
+          1                       4310
+          1                       1276
+          1                       1525
+          1                       1713
+          1                       1954
+          1                       1014
+          1                       2711
+          1                       3346
+          1                       5016
+          1                       2136
+          1                       1972
+          1                       2359
+          1                       3739
+          1                       2094
+          1                       1501
+          1                       2117
+          1                       2373
+          1                       1224
+          1                       1015
+          1                       2592
+          1                       1827
+          1                       1743
+          1                       1033
+          1                       5009
+          1                       3043
+          1                       1246
+          1                       2886
+          1                        903
+          1                       2900
+          1                       4098
+  [986 rows omitted]
+  Terms:
+    &#39;Intercept&#39; (column 0)
+    &quot;Q(&#39;Existing Zoning Sqft&#39;)&quot; (column 1)
+  (to view full data, use np.asarray(this_obj))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Though the <code class="docutils literal notranslate"><span class="pre">Q()</span></code> function makes this possible, it is still not recommended. The best option here would be to rename “Initial Cost” to something with better style, such as “initial_cost.”</p>
+<p>Another useful transformation is <code class="docutils literal notranslate"><span class="pre">I()</span></code>. In the case where you actually want to use addition, instead of writing your ownn function, you can use <code class="docutils literal notranslate"><span class="pre">I()</span></code> to tell <code class="docutils literal notranslate"><span class="pre">patsy</span></code> you want to use addition (or subtraction in this case).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;I(Q(&#39;Proposed Zoning Sqft&#39;) - Q(&#39;Existing Zoning Sqft&#39;))&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DesignMatrix with shape (1016, 2)
+  Intercept  I(Q(&#39;Proposed Zoning Sqft&#39;) - Q(&#39;Existing Zoning Sqft&#39;))
+          1                                                      3800
+          1                                                       571
+          1                                                      1505
+          1                                                      2209
+          1                                                      1182
+          1                                                      1894
+          1                                                       436
+          1                                                       600
+          1                                                       987
+          1                                                       227
+          1                                                      1302
+          1                                                       879
+          1                                                      2318
+          1                                                        22
+          1                                                       302
+          1                                                       659
+          1                                                       126
+          1                                                       724
+          1                                                      1678
+          1                                                       786
+          1                                                      5355
+          1                                                        56
+          1                                                      2536
+          1                                                      2506
+          1                                                      1624
+          1                                                      1025
+          1                                                       876
+          1                                                       273
+          1                                                       916
+          1                                                      1422
+  [986 rows omitted]
+  Terms:
+    &#39;Intercept&#39; (column 0)
+    &quot;I(Q(&#39;Proposed Zoning Sqft&#39;) - Q(&#39;Existing Zoning Sqft&#39;))&quot; (column 1)
+  (to view full data, use np.asarray(this_obj))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="categorical-data">
+<h2><span class="section-number">7.1.5. </span>Categorical Data<a class="headerlink" href="#categorical-data" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">patsy</span></code> handles categorical data well. If you include string or boolean type data, it will automatically turn them categorical. In this instance, the T.Borough shows that the data has been transformed into treatment code. You can also add the <code class="docutils literal notranslate"><span class="pre">return_type</span> <span class="pre">=</span> <span class="pre">dataframe</span></code> to have the return value be a <code class="docutils literal notranslate"><span class="pre">pandas.dataframe</span></code> instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrices</span><span class="p">(</span><span class="s2">&quot;cost ~ Borough&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(            cost
+ 48      456000.0
+ 55      205000.0
+ 58      998000.0
+ 62      643000.0
+ 72     1183365.0
+ ...          ...
+ 18693   120000.0
+ 18813   100000.0
+ 18998     1000.0
+ 19007     1000.0
+ 19749   800000.0
+ 
+ [1016 rows x 1 columns],
+        Intercept  Borough[T.BROOKLYN]  Borough[T.MANHATTAN]  \
+ 48           1.0                  0.0                   0.0   
+ 55           1.0                  1.0                   0.0   
+ 58           1.0                  0.0                   0.0   
+ 62           1.0                  0.0                   0.0   
+ 72           1.0                  1.0                   0.0   
+ ...          ...                  ...                   ...   
+ 18693        1.0                  0.0                   0.0   
+ 18813        1.0                  0.0                   1.0   
+ 18998        1.0                  0.0                   0.0   
+ 19007        1.0                  1.0                   0.0   
+ 19749        1.0                  0.0                   0.0   
+ 
+        Borough[T.QUEENS]  Borough[T.STATEN ISLAND]  
+ 48                   1.0                       0.0  
+ 55                   0.0                       0.0  
+ 58                   1.0                       0.0  
+ 62                   1.0                       0.0  
+ 72                   0.0                       0.0  
+ ...                  ...                       ...  
+ 18693                1.0                       0.0  
+ 18813                0.0                       0.0  
+ 18998                1.0                       0.0  
+ 19007                0.0                       0.0  
+ 19749                1.0                       0.0  
+ 
+ [1016 rows x 5 columns])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interaction-terms">
+<h2><span class="section-number">7.1.6. </span>Interaction Terms<a class="headerlink" href="#interaction-terms" title="Permalink to this headline">¶</a></h2>
+<p>Interaction terms are a strong reason to use <code class="docutils literal notranslate"><span class="pre">patsy</span></code>. You can easily apply interaction with <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;0 + Borough:Q(&#39;Building Type&#39;)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Borough[BRONX]:Q('Building Type')[1-2-3 FAMILY]</th>
+      <th>Borough[BROOKLYN]:Q('Building Type')[1-2-3 FAMILY]</th>
+      <th>Borough[MANHATTAN]:Q('Building Type')[1-2-3 FAMILY]</th>
+      <th>Borough[QUEENS]:Q('Building Type')[1-2-3 FAMILY]</th>
+      <th>Borough[STATEN ISLAND]:Q('Building Type')[1-2-3 FAMILY]</th>
+      <th>Borough[BRONX]:Q('Building Type')[OTHERS]</th>
+      <th>Borough[BROOKLYN]:Q('Building Type')[OTHERS]</th>
+      <th>Borough[MANHATTAN]:Q('Building Type')[OTHERS]</th>
+      <th>Borough[QUEENS]:Q('Building Type')[OTHERS]</th>
+      <th>Borough[STATEN ISLAND]:Q('Building Type')[OTHERS]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18693</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18813</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18998</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19007</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19749</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1016 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>With both main effects and interaction effects in the model, <code class="docutils literal notranslate"><span class="pre">patsy</span></code> goes from lower-order effects to higher-order effects. This means that each set of columns is measures the additional contribution of this effect. This removes redundancy. The short-hand is <code class="docutils literal notranslate"><span class="pre">*</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">*</span></code> means the same as <code class="docutils literal notranslate"><span class="pre">x1</span> <span class="pre">+</span> <span class="pre">x2</span> <span class="pre">+</span> <span class="pre">x1:x2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;Borough*Q(&#39;Building Type&#39;)&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Intercept</th>
+      <th>Borough[T.BROOKLYN]</th>
+      <th>Borough[T.MANHATTAN]</th>
+      <th>Borough[T.QUEENS]</th>
+      <th>Borough[T.STATEN ISLAND]</th>
+      <th>Q('Building Type')[T.OTHERS]</th>
+      <th>Borough[T.BROOKLYN]:Q('Building Type')[T.OTHERS]</th>
+      <th>Borough[T.MANHATTAN]:Q('Building Type')[T.OTHERS]</th>
+      <th>Borough[T.QUEENS]:Q('Building Type')[T.OTHERS]</th>
+      <th>Borough[T.STATEN ISLAND]:Q('Building Type')[T.OTHERS]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18693</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18813</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18998</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19007</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19749</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1016 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>You can also write interaction terms between categorical and numerical variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;Borough:zoning_diff&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Intercept</th>
+      <th>Borough[BRONX]:zoning_diff</th>
+      <th>Borough[BROOKLYN]:zoning_diff</th>
+      <th>Borough[MANHATTAN]:zoning_diff</th>
+      <th>Borough[QUEENS]:zoning_diff</th>
+      <th>Borough[STATEN ISLAND]:zoning_diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3800.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>571.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1505.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2209.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1182.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18693</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>456.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18813</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3434.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18998</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1349.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19007</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>498.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19749</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>230.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1016 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>The code below removes some redundancy, similar to earlier. This will have one slope for the Bronx, and then each other slope is difference between the specific borough and the Bronx.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;zoning_diff + Borough:zoning_diff&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Intercept</th>
+      <th>zoning_diff</th>
+      <th>Borough[T.BROOKLYN]:zoning_diff</th>
+      <th>Borough[T.MANHATTAN]:zoning_diff</th>
+      <th>Borough[T.QUEENS]:zoning_diff</th>
+      <th>Borough[T.STATEN ISLAND]:zoning_diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>48</th>
+      <td>1.0</td>
+      <td>3800.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3800.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1.0</td>
+      <td>571.0</td>
+      <td>571.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1.0</td>
+      <td>1505.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1505.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1.0</td>
+      <td>2209.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2209.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>1.0</td>
+      <td>1182.0</td>
+      <td>1182.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18693</th>
+      <td>1.0</td>
+      <td>456.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>456.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18813</th>
+      <td>1.0</td>
+      <td>3434.0</td>
+      <td>0.0</td>
+      <td>3434.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>18998</th>
+      <td>1.0</td>
+      <td>1349.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1349.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19007</th>
+      <td>1.0</td>
+      <td>498.0</td>
+      <td>498.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19749</th>
+      <td>1.0</td>
+      <td>230.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>230.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1016 rows × 6 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="statmodels.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Statistical Tests and Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
