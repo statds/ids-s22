@@ -382,7 +382,7 @@
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install patsy
 </pre></div>
 </div>
-<p>Then, you should be able to import the package. The dmatrices and dmatrix objects are the most important.</p>
+<p>Then, you should be able to import the package. The <code class="docutils literal notranslate"><span class="pre">dmatrices</span></code> and <code class="docutils literal notranslate"><span class="pre">dmatrix</span></code> objects are the most important.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrices</span><span class="p">,</span> <span class="n">dmatrix</span>
@@ -412,7 +412,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2695/772679357.py:4: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2641/772679357.py:4: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
   nyc_jobs = pd.read_csv(&quot;../data/nyc_DobJobApp_2021.csv&quot;)
 </pre></div>
 </div>
@@ -503,7 +503,7 @@
 </div>
 </div>
 </div>
-<p>The return value is a Python tuple containing two DesignMatrix objects. The first dmatrix is the left-hand side of the formula, and the second is the right-hand side. They’re just oridinary numpy arrays with extra metadata. We can pass these to a regression function to perform some analysis.</p>
+<p>The return value is a Python tuple containing two <code class="docutils literal notranslate"><span class="pre">DesignMatrix</span></code> objects. The first dmatrix is the left-hand side of the formula, and the second is the right-hand side. They’re just oridinary numpy arrays with extra metadata. We can pass these to a regression function to perform some analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome</span><span class="p">,</span> <span class="n">predictors</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="s2">&quot;cost ~ zoning_diff&quot;</span><span class="p">,</span> <span class="n">nyc_jobs_zoning</span><span class="p">)</span>
@@ -513,7 +513,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2695/1476851890.py:2: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2641/1476851890.py:2: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
 To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
   betas = np.linalg.lstsq(predictors, outcome)[0]
 </pre></div>
