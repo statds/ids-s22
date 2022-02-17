@@ -15,6 +15,9 @@ chapters:
   - file: docs/cartopy
   - file: docs/plotnine
   - file: docs/gmplot
+- file: docs/statmodels
+  sections:
+  - file: docs/patsy
 - file: docs/exercises
 - file: docs/fixedit
 
