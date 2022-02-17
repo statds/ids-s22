@@ -23,7 +23,7 @@ After installing the package, we can now use it in Jupyter Notebook. `gmplot`'s 
 
 First, we have to `import gmplot`
 
-``` {code cell} 
+```{code-cell} 
 import gmplot
 ```
 
@@ -31,7 +31,7 @@ import gmplot
 
 After doing so, we can generate a simple map using `gmplot.GoogleMapPlotter`. This will create an `.html` file. I saved mine to Jupyter Notebook but you can set your path to save it to anywhere you choose.
 
-```{code cell}
+```{code-cell}
 #first two arguments are longitude and latitude and the third one is zoom resolution
 gmap = gmplot.GoogleMapPlotter(17.438139, 78.39583, 18)
 
@@ -43,7 +43,7 @@ gmap.draw("map.html")
 
 Next we can draw a polygon on Google Maps to highlight a specific area of interest. By using `.polygon`, we can create a highlighted border around a specific area. The inputs are the longitude and latitude points of the shape
 
-```{code cell}
+```{code-cell}
 latitude_list = [ 17.4567417, 17.5587901, 17.6245545]
 longitude_list = [ 78.2913637, 78.007699, 77.9266135 ]
 gmap = gmplot.GoogleMapPlotter(17.438139, 78.3936413, 11)
@@ -55,7 +55,7 @@ gmap.draw( "poly.html" )
 
 A more complete map is shown below by using many longitude and latitude points to highlight specific areas of the map. First, we create a zip of the outline of Golden Gate Park and use `.polygon` as we did previously. Next, we add some attraction points use `.scatter`. Lastly, we can add a marker to give attention to a specific spot using `.marker`.
 
-``` {code cell}
+```{code-cell}
 #Create the map plotter:
 gmap = gmplot.GoogleMapPlotter(37.766956, -122.448481, 14)
 
@@ -96,7 +96,7 @@ gmap.draw('GGP.html')
 
 Another cool aspect of `gmplot` is the ability to create a heatmap. In this, I randomly generated 700 points around the world. Then I used `.heatmap`, which generates the points. You have the option to add markers to them, but it looks bad since so many points were generated in this specific example.
 
-```{code cell}
+```{code-cell}
 #Import libraries
 import gmplot
 import numpy as np
@@ -116,22 +116,22 @@ gmap.draw("heatmap.html")
 ```
 ## NYC Data
 
-```{code cell}
+```{code-cell}
 import pandas as pd
 
-nyc_crash = pd.read_csv("/Users/robbieshamirian/STAT 3255/my_nyc.csv")
+nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
 nyc_crash.info()
 ```
-``` {code cell}
+```{code-cell}
 nyc_crash_desc = nyc_crash.describe()
 nyc_crash_desc
 ```
-```{code cell}
+```{code-cell}
 bronx_long = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
                            ["CRASH DATE", "CRASH TIME", "LONGITUDE"]]
 bronx_lat  = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
                            ["CRASH DATE", "CRASH TIME", "LATITUDE"]]
-```{code cell}
+```{code-cell}
 mybronx = pd.merge(bronx_lat, bronx_long)
 lat = mybronx.dropna()
 bronx_lat = lat["LATITUDE"]
@@ -140,7 +140,7 @@ bronx_lngs = lat["LONGITUDE"]
 
 I chose to use the data for the Bronx borough as it was already cleaned. I zoomed in on the Bronx, and added in all of the crashes in that burough.
 
-```{code cell}
+```{code-cell}
 gmap = gmplot.GoogleMapPlotter(40.844782, -73.864827, 12)
 gmap.scatter(bronx_lat, bronx_lngs, 'blue', size = 100, marker = False)
 gmap.draw('bronxmap.html')
