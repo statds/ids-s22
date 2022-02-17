@@ -468,15 +468,20 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bronx_long = nyc_crash.loc[nyc_crash[&#39;BOROUGH&#39;] == &#39;BRONX&#39;,
-                           [&quot;CRASH DATE&quot;, &quot;CRASH TIME&quot;, &quot;LONGITUDE&quot;]]
-bronx_lat  = nyc_crash.loc[nyc_crash[&#39;BOROUGH&#39;] == &#39;BRONX&#39;,
-                           [&quot;CRASH DATE&quot;, &quot;CRASH TIME&quot;, &quot;LATITUDE&quot;]]
-```{code-cell}
-mybronx = pd.merge(bronx_lat, bronx_long)
-lat = mybronx.dropna()
-bronx_lat = lat[&quot;LATITUDE&quot;]
-bronx_lngs = lat[&quot;LONGITUDE&quot;]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_long</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]]</span>
+<span class="n">bronx_lat</span>  <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LATITUDE&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bronx_lat</span><span class="p">,</span> <span class="n">bronx_long</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">mybronx</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">bronx_lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">]</span>
+<span class="n">bronx_lngs</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>

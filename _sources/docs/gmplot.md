@@ -131,6 +131,7 @@ bronx_long = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
                            ["CRASH DATE", "CRASH TIME", "LONGITUDE"]]
 bronx_lat  = nyc_crash.loc[nyc_crash['BOROUGH'] == 'BRONX',
                            ["CRASH DATE", "CRASH TIME", "LATITUDE"]]
+```
 ```{code-cell}
 mybronx = pd.merge(bronx_lat, bronx_long)
 lat = mybronx.dropna()
