@@ -182,7 +182,7 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Desribing statistical models with package `patsy`  (Th. Feb. 17:
       Anthony Zeimbekakis) 
     - Statistical models and hypothesis tests with package
-      `statsmodels` (Tu. Feb. 22:  Faryal Fodderwala)
+      `statsmodels` 
 + Supervised learning
     - Decision trees (Th. Feb. 24: Ryan Schoenfeld)
     - Support vector machine (Tu. March 1: Peter Busa)
@@ -200,6 +200,23 @@ order). Add yours; note the syntax of nested list in Markdown.
     - MIT App Inventor turorial
     - Using R from Python and vice versa
     - Building a Python module
+
+## Topic Presentation Sign-up
+
+Date    | Presenter            | Topic
+----- | ------------- | -----
+02/08 | Taelor McClurg   | package `matplotlib`
+02/10 | Samuel Hugh      | package `cartopy`
+02/15 | Mathew Chandy  | package `plotnine`
+02/17 | Robert Shamirian | package `ggmap`
+02/17 | Anthony Zeimbekakis | package `patsy`
+02/22 | Jun Yan               | package `statsmodels` 
+02/24 | Ryan Schoenfeld | decision trees
+03/01 | Peter Busa           | support vector machine
+03/03 | Sinchan Sharma  | Random forest
+03/10 |  | 
+03/15 |  |
+
 
 ## Data Challenges in Action
 
