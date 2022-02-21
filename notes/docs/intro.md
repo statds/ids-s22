@@ -215,7 +215,11 @@ Date    | Presenter            | Topic
 03/01 | Peter Busa           | support vector machine
 03/03 | Sinchan Sharma  | Random forest
 03/10 |  | 
-03/15 |  |
+03/10 |  | 
+03/22 |  |
+03/22 |  |
+03/24 |  |
+03/24 |  |
 
 
 ## Data Challenges in Action
