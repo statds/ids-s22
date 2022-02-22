@@ -175,7 +175,7 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Data manipulation
 + Visualization
     - Package matplotlib (Tu, Feb. 8: Taelor McClurg)
-    - Package cartopy/basemap (Th, Feb. 10: Sam Hugh)
+    - Package cartopy/basemap (Th, Feb. 10: Sam Hughes)
     - Package plotnine (ggplot2 equivalent) (Tu. Feb. 15: Mathew Chandy)
     - Google Maps Plot (Thurs. Feb 17: Robbie Shamirian)
 + Statistical tests and models
@@ -206,7 +206,7 @@ order). Add yours; note the syntax of nested list in Markdown.
 Date    | Presenter            | Topic
 ----- | ------------- | -----
 02/08 | Taelor McClurg   | package `matplotlib`
-02/10 | Samuel Hugh      | package `cartopy`
+02/10 | Samuel Hughes      | package `cartopy`
 02/15 | Mathew Chandy  | package `plotnine`
 02/17 | Robert Shamirian | package `ggmap`
 02/17 | Anthony Zeimbekakis | package `patsy`
