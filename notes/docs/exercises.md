@@ -92,16 +92,50 @@ kernelspec:
    persons killed and a column of the number of persons killed.
     1. Check if the number of persons killed is the summation of the
        number of pedestrians killed, cyclist killed, and motorists
-       killed. 
-    1. Construct the number of persons killed as the sum of the
-       pedestrians, cyclists, and motorists killed. Let $Y$ be one if
-       the number of persons killed is greater than zero; and zero
-       otherwise. Fit a logistic model with $Y$ as the outcome
-       variable and covariates that are available in the data or can
-       be engineered from the data. Example covariates are crash hour,
-       borough, number of vehicles involved, etc.
+       killed. From now on, use the number of persons killed as the
+       sum of the pedestrians, cyclists, and motorists killed
     1. Construct a cross table for the number of persons killed by the
        contributing factors of vehicle one. Collapse the contributing
        factors with a count of less than 100 to "other". Is there any
        association between the contributing factors and the number of
        persons killed? 
+    1. Create a new variable `death` which is one if the number of
+       persons killed is 1 or more; and zero otherwise. Construct a
+       cross  table for `death` versus borough. Test the null
+       hypothesis that the two variables are not associated.
+    1.. Fit a logistic model with `death` as the outcome
+       variable and covariates that are available in the data or can
+       be engineered from the data. Example covariates are crash hour,
+       borough, number of vehicles involved, etc. Interprete your
+       results.
+    1. In preparation for the class event at the NYC Open Data Week on
+       March 8, suggest a meaningful question that can be answered by
+       the data (but no need answer it this time; that will be for
+       next week). You may think about comparison
+       with data from other periods, in which case, you will need to
+       download the right data.
+
+1. Consider the NYC DOB job applications dataset. The column
+   "Professional Cert" indicates whether or not the application was
+   submitted as Professionally Certified. A Professional Engineer (PE)
+   or Registered Architect (RA) can certify compliance with applicable
+   laws and codes on applications filed by him/her as
+   applicant. Include this variable in the data frame that was
+   prepared earlier.
+    1. Compare the distribution of the waiting time until approval by
+       professionally certified or not. Test the null hypothesis that
+       the waiting time until approval is independent of whether the
+       application was professionally certified.
+    1. Compare the distribution of the waiting time until approval by
+       borough. Test the null hypothesis that the waiting time are the
+       same across all boroughs.
+    1. Compare the distribution of the waiting time until approval by
+       five equally sized groups ordered by the logarithm of the
+       estimated cost. Test the null hypothesis that the waiting time
+       is independent of the estimated cost.
+    1. Build a linear regression model to predict the waiting time
+       until approval with all the covariates you have
+       created. Interpret your results.
+    1. In preparation for the class event as the NYC Open Data Week on
+       March 8, suggest a meaningful questions that can be answered by
+       the data (again, work on the answer next week). 
