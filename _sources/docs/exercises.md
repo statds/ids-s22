@@ -103,7 +103,7 @@ kernelspec:
        persons killed is 1 or more; and zero otherwise. Construct a
        cross  table for `death` versus borough. Test the null
        hypothesis that the two variables are not associated.
-    1.. Fit a logistic model with `death` as the outcome
+    1. Fit a logistic model with `death` as the outcome
        variable and covariates that are available in the data or can
        be engineered from the data. Example covariates are crash hour,
        borough, number of vehicles involved, etc. Interprete your

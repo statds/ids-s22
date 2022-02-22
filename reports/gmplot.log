@@ -22,7 +22,7 @@ import gmplot
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2628/1196927055.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2556/1196927055.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mimport[0m [0mgmplot[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mModuleNotFoundError[0m: No module named 'gmplot'
