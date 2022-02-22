@@ -250,4 +250,16 @@ projects in data science education.
 ### Dates
 Four students will present during our lecture hour on
 Tuesday, March 8, 2022, to the general public as part of the NYC Open
-Data Week.
+Data Week. A Zoom meeting link will be shared later.
+
+### Preparation Problem
+
+```{code-cell}
+import random
+
+presenters = ["Aimandi",  "Busa", "Campman", "Chandy", "Fodderwala",
+              "Hughes", "Lin", "Mcclurg-Wong", "Schoenfeld", "Shamirian",
+              "Sharma", "Taffe", "Xu", "Zeimbekakis", "Zheng"]
+random.seed(12345)
+random.sample(presenters, 15)
+```
