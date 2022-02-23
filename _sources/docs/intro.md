@@ -214,7 +214,7 @@ Date    | Presenter            | Topic
 02/24 | Ryan Schoenfeld | decision trees
 03/01 | Peter Busa           | support vector machine
 03/03 | Sinchan Sharma  | Random forest
-03/10 |  | 
+03/10 | Thalia Taffe | Nearest neighbor
 03/10 |  | 
 03/22 |  |
 03/22 |  |
