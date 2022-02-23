@@ -79,7 +79,7 @@ warning
    A note written in reStructuredText.
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 other:
   more: true
@@ -216,7 +216,7 @@ Date    | Presenter            | Topic
 03/03 | Sinchan Sharma  | Random forest
 03/10 | Thalia Taffe | Nearest neighbor
 03/10 |  | 
-03/22 |  |
+03/22 | Zhenyu Xu | K-means clustering
 03/22 |  |
 03/24 |  |
 03/24 |  |
@@ -254,7 +254,7 @@ Data Week. A Zoom meeting link will be shared later.
 
 ### Preparation Problem
 
-```{code-cell}
+```{code-cell} ipython3
 import random
 
 presenters = ["Aimandi",  "Busa", "Campman", "Chandy", "Fodderwala",
