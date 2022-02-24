@@ -83,6 +83,8 @@ nyc_collisions.rename(columns={"NUMBER OF PERSONS INJURED": "num_ppl_injured"}, 
 
 nyc_collisions['injury_binary'].value_counts()
 ```
+
+# Classification Decision Tree Model
 Select columns to use in our decision tree model. 
 
 Don't want to use columns such as number of pedestrians injured because that heavily affects our target variable
@@ -104,8 +106,6 @@ y = nyc_collisions.injury_binary # Target variable
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 ```
-
-# Classification Decision Tree Model
 
 We then set up our decision tree and use it to predict on the test set. This example is a classification
 example so it will predict a 0 or 1 based on if someone was injured or not in the crash (1=injured)
