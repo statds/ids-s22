@@ -18,6 +18,8 @@ chapters:
 - file: docs/statmodels
   sections:
   - file: docs/patsy
+  - file: docs/tests
+  - file: docs/models
   - file: docs/decisiontrees
 - file: docs/exercises
 - file: docs/fixedit
