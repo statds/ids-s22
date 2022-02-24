@@ -285,36 +285,29 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   7.5. Decision Trees
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-packages">
+   7.5.1. Installing Packages
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-packages">
-     7.5.1. Installing Packages
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-classification-example">
-   7.6. Simple Classification Example:
+   7.5.2. Simple Classification Example:
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   7.7. Data Cleaning:
+   7.5.3. Data Cleaning:
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   7.8. Classification Decision Tree Model
+   7.5.4. Classification Decision Tree Model
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   7.9. Regression Decision Tree Model
+   7.5.5. Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -337,36 +330,29 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   7.5. Decision Trees
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-packages">
+   7.5.1. Installing Packages
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-packages">
-     7.5.1. Installing Packages
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-classification-example">
-   7.6. Simple Classification Example:
+   7.5.2. Simple Classification Example:
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   7.7. Data Cleaning:
+   7.5.3. Data Cleaning:
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   7.8. Classification Decision Tree Model
+   7.5.4. Classification Decision Tree Model
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   7.9. Regression Decision Tree Model
+   7.5.5. Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -401,9 +387,8 @@
 <p>Then we need to install graphviz in order to make better looking visualizations
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code></p>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="simple-classification-example">
-<h1><span class="section-number">7.6. </span>Simple Classification Example:<a class="headerlink" href="#simple-classification-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-classification-example">
+<h2><span class="section-number">7.5.2. </span>Simple Classification Example:<a class="headerlink" href="#simple-classification-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -418,8 +403,8 @@
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="data-cleaning">
-<h1><span class="section-number">7.7. </span>Data Cleaning:<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-cleaning">
+<h2><span class="section-number">7.5.3. </span>Data Cleaning:<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
 <p>Import data and add a binary column for if a person was injured or not</p>
 <p>Can’t use strings in decision trees so to fix this we can change each borough to a number
 EX: Bronx = 1, Brooklyn = 2</p>
@@ -451,8 +436,8 @@ EX: Bronx = 1, Brooklyn = 2</p>
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="classification-decision-tree-model">
-<h1><span class="section-number">7.8. </span>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="classification-decision-tree-model">
+<h2><span class="section-number">7.5.4. </span>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h2>
 <p>Select columns to use in our decision tree model.</p>
 <p>Don’t want to use columns such as number of pedestrians injured because that heavily affects our target variable</p>
 <p>We also split our dataset into a training set and a test set to avoid overfitting the data</p>
@@ -567,8 +552,8 @@ such as max_depth to set how many layers our tree is able to go until</p>
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="regression-decision-tree-model">
-<h1><span class="section-number">7.9. </span>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="regression-decision-tree-model">
+<h2><span class="section-number">7.5.5. </span>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h2>
 <p>In this example instead of classying a target variable into 0 or 1 we will use a decision tree for regression</p>
 <p>The set-up is exactly the same as classification where we select feature columns, a target variable
 and split the data into a training and test data set</p>
@@ -636,6 +621,7 @@ the actual and predicted values.</p>
 <span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span> 
 <span class="n">graph</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
