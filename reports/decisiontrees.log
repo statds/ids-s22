@@ -17,14 +17,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import gmplot
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris = load_iris()
+X, y = iris.data, iris.target
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(X, y)
+tree.plot_tree(clf)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2448/1196927055.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mimport[0m [0mgmplot[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;31mModuleNotFoundError[0m: No module named 'gmplot'
-ModuleNotFoundError: No module named 'gmplot'
+[0;32m/tmp/ipykernel_2743/1068932325.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mdatasets[0m [0;32mimport[0m [0mload_iris[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mfrom[0m [0msklearn[0m [0;32mimport[0m [0mtree[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0miris[0m [0;34m=[0m [0mload_iris[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mX[0m[0;34m,[0m [0my[0m [0;34m=[0m [0miris[0m[0;34m.[0m[0mdata[0m[0;34m,[0m [0miris[0m[0;34m.[0m[0mtarget[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mclf[0m [0;34m=[0m [0mtree[0m[0;34m.[0m[0mDecisionTreeClassifier[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'sklearn'
+ModuleNotFoundError: No module named 'sklearn'
 
