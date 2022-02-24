@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Project Management &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>7.2. Hypothesis Tests &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Python Refreshment" href="refresh.html" />
-    <link rel="prev" title="1. Introduction" href="intro.html" />
+    <link rel="next" title="7.3. Linear Regression" href="models.html" />
+    <link rel="prev" title="7.1. Describing Models with Patsy" href="patsy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,8 +95,8 @@
    1. Introduction
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
    2. Project Management
   </a>
  </li>
@@ -152,23 +152,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="statmodels.html">
    7. Statistical Tests and Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="patsy.html">
      7.1. Describing Models with Patsy
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="tests.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      7.2. Hypothesis Tests
     </a>
    </li>
@@ -234,11 +234,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/prman.ipynb"><button type="button"
+            href="../_sources/docs/tests.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/prman.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/tests.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -263,7 +263,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/prman.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/tests.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -286,59 +286,14 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducible-data-science-project">
-   2.1. Reproducible Data Science Project
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-virtual-environment-for-python">
-     2.1.1. Using Virtual Environment for Python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-jupyter-notebook">
-     2.1.2. Using Jupyter Notebook
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-python-engine-in-rmarkdown">
-     2.1.3. Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       python
-      </span>
-     </code>
-     Engine in
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       RMarkdown
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-a-git-repo">
-   2.2. Setting up a Git Repo
+  <a class="reference internal nav-link" href="#zero-correlation-tests">
+   7.2.1. Zero-Correlation Tests
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#styles">
-   2.3. Styles
+  <a class="reference internal nav-link" href="#association-test-for-categorical-variables">
+   7.2.2. Association Test for Categorical Variables
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#programming">
-     2.3.1. Programming
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-repo">
-     2.3.2. Git Repo
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -350,7 +305,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Project Management</h1>
+                <h1>Hypothesis Tests</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -361,59 +316,14 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducible-data-science-project">
-   2.1. Reproducible Data Science Project
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-virtual-environment-for-python">
-     2.1.1. Using Virtual Environment for Python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-jupyter-notebook">
-     2.1.2. Using Jupyter Notebook
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-python-engine-in-rmarkdown">
-     2.1.3. Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       python
-      </span>
-     </code>
-     Engine in
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       RMarkdown
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-a-git-repo">
-   2.2. Setting up a Git Repo
+  <a class="reference internal nav-link" href="#zero-correlation-tests">
+   7.2.1. Zero-Correlation Tests
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#styles">
-   2.3. Styles
+  <a class="reference internal nav-link" href="#association-test-for-categorical-variables">
+   7.2.2. Association Test for Categorical Variables
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#programming">
-     2.3.1. Programming
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-repo">
-     2.3.2. Git Repo
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -424,67 +334,63 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="project-management">
-<span id="prman"></span><h1><span class="section-number">2. </span>Project Management<a class="headerlink" href="#project-management" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="reproducible-data-science-project">
-<h2><span class="section-number">2.1. </span>Reproducible Data Science Project<a class="headerlink" href="#reproducible-data-science-project" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-virtual-environment-for-python">
-<h3><span class="section-number">2.1.1. </span>Using Virtual Environment for Python<a class="headerlink" href="#using-virtual-environment-for-python" title="Permalink to this headline">¶</a></h3>
-<p>It is a good practice to set up and use virtual environments for Python (or R) projects.
-See a tutorial of virtual environments at <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">Python Docs</a>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-tests">
+<span id="statmodels"></span><h1><span class="section-number">7.2. </span>Hypothesis Tests<a class="headerlink" href="#hypothesis-tests" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="zero-correlation-tests">
+<h2><span class="section-number">7.2.1. </span>Zero-Correlation Tests<a class="headerlink" href="#zero-correlation-tests" title="Permalink to this headline">¶</a></h2>
+<p>This is the same as independence test.</p>
+<p>Correlation tests
+<code class="docutils literal notranslate"><span class="pre">scipy.stats.pearsonr()</span></code>
+<code class="docutils literal notranslate"><span class="pre">scipy.stats.spearmanr()</span></code>
+<code class="docutils literal notranslate"><span class="pre">scipy.stats.kendalltau()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">nobs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x3</span>
+
+<span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="using-jupyter-notebook">
-<h3><span class="section-number">2.1.2. </span>Using Jupyter Notebook<a class="headerlink" href="#using-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>File name extension <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code></p></li>
-<li><p>Separate code chunks and companion texts</p></li>
-<li><p>Test and edit until the whole notebook runs as expected</p></li>
-<li><p>Download the notebook into a pdf file (for GitHub project release)</p></li>
-</ul>
 </div>
-<div class="section" id="using-python-engine-in-rmarkdown">
-<h3><span class="section-number">2.1.3. </span>Using <code class="docutils literal notranslate"><span class="pre">python</span></code> Engine in <code class="docutils literal notranslate"><span class="pre">RMarkdown</span></code><a class="headerlink" href="#using-python-engine-in-rmarkdown" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Find a Markdown cheatsheet</p></li>
-<li><p>Install R <code class="docutils literal notranslate"><span class="pre">reticulate</span></code> package</p></li>
-<li><p>See example in <code class="docutils literal notranslate"><span class="pre">hw-rmkdn.Rmd</span></code> in the repo</p></li>
-</ul>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KendalltauResult(correlation=0.48202020202020207, pvalue=1.1963910638301972e-12)
+</pre></div>
 </div>
 </div>
-<div class="section" id="setting-up-a-git-repo">
-<h2><span class="section-number">2.2. </span>Setting up a Git Repo<a class="headerlink" href="#setting-up-a-git-repo" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>See documentations at <a class="reference external" href="https://docs.github.com/">GitHub Docs</a>.</p></li>
-<li><p>Demonstration with homework template</p></li>
-</ul>
 </div>
-<div class="section" id="styles">
-<h2><span class="section-number">2.3. </span>Styles<a class="headerlink" href="#styles" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="programming">
-<h3><span class="section-number">2.3.1. </span>Programming<a class="headerlink" href="#programming" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Naming</p>
-<ul>
-<li><p>file/folder</p></li>
-<li><p>variables</p></li>
-<li><p>functions</p></li>
-<li><p>modules/packages</p></li>
-</ul>
-</li>
-<li><p>Spacing</p></li>
-<li><p>Indentation</p></li>
-</ul>
-<p>Google code recommendations:
-<a class="reference external" href="https://code.google.com/archive/p/soc/wikis/PythonStyleGuide.wiki">https://code.google.com/archive/p/soc/wikis/PythonStyleGuide.wiki</a></p>
 </div>
-<div class="section" id="git-repo">
-<h3><span class="section-number">2.3.2. </span>Git Repo<a class="headerlink" href="#git-repo" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Frequent commit (more snapshots)</p></li>
-<li><p>Informative message</p></li>
-<li><p>Keep it clean (no temporary or generated files)</p></li>
-<li><p>Make it reproducible (e.g., relative path)</p></li>
-</ul>
+<div class="section" id="association-test-for-categorical-variables">
+<h2><span class="section-number">7.2.2. </span>Association Test for Categorical Variables<a class="headerlink" href="#association-test-for-categorical-variables" title="Permalink to this headline">¶</a></h2>
+<p>Pearson’s Chi-squared test
+<code class="docutils literal notranslate"><span class="pre">scipy.stats.chi2_contingency()</span></code></p>
+<p>Fisher’s exact tests
+<code class="docutils literal notranslate"><span class="pre">scipy.stats.fisher_exact()</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## y&#39;s are dependent</span>
+<span class="n">ybins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="n">y1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">y2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">ytab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y1b</span><span class="p">,</span> <span class="n">y2b</span><span class="p">)</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">ytab</span><span class="p">)</span>
+<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">ytab</span><span class="p">)</span>
+
+<span class="c1">## x&#39;s are independent</span>
+<span class="n">xbins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">x1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">x2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">x1b</span><span class="p">,</span> <span class="n">x2b</span><span class="p">)</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
+<span class="c1">## only for 2x2 tables</span>
+<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -514,17 +420,17 @@ See a tutorial of virtual environments at <a class="reference external" href="ht
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="patsy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Describing Models with Patsy</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="refresh.html" title="next page">
+    <a class='right-next' id="next-link" href="models.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Python Refreshment</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>Linear Regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
