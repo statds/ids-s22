@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Decision Trees &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>7.2. Decision Trees &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Exercises" href="exercises.html" />
+    <link rel="prev" title="7.1. Describing Models with Patsy" href="patsy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +89,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    1. Introduction
@@ -150,19 +152,24 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="statmodels.html">
    7. Statistical Tests and Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="patsy.html">
      7.1. Describing Models with Patsy
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Decision Trees
     </a>
    </li>
   </ul>
@@ -270,33 +277,34 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Decision Trees
+   7.2. Decision Trees
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-packages">
-     Installing Packages
+     7.2.1. Installing Packages
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
+   7.3.
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   Data Cleaning:
+   7.4. Data Cleaning:
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   Classification Decision Tree Model
+   7.5. Classification Decision Tree Model
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   Regression Decision Tree Model
+   7.6. Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -321,33 +329,34 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Decision Trees
+   7.2. Decision Trees
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-packages">
-     Installing Packages
+     7.2.1. Installing Packages
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
+   7.3.
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   Data Cleaning:
+   7.4. Data Cleaning:
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   Classification Decision Tree Model
+   7.5. Classification Decision Tree Model
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   Regression Decision Tree Model
+   7.6. Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -360,7 +369,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="decision-trees">
-<h1>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.2. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
 <p>Decision trees are a predictive modeling approach that uses probability trees to either predict a continous value or predict a classification that the data fits into.</p>
 <p><strong>Pros:</strong></p>
 <ul class="simple">
@@ -375,7 +384,7 @@
 </ul>
 <p>There are many packages in Python for tree-based prediction models but we will focus on <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p>
 <div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2.1. </span>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p>
 <p>Then you are able to import the package with the <code class="docutils literal notranslate"><span class="pre">tree</span></code> function</p>
 <p>Note: sklearn and scikit-learn both refer to the same package</p>
@@ -384,7 +393,7 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.3. </span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>.2 Simple Classification Example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -401,7 +410,7 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="data-cleaning">
-<h1>Data Cleaning:<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.4. </span>Data Cleaning:<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h1>
 <p>Import data and add a binary column for if a person was injured or not</p>
 <p>Can’t use strings in decision trees so to fix this we can change each borough to a number
 EX: Bronx = 1, Brooklyn = 2</p>
@@ -455,7 +464,7 @@ EX: Bronx = 1, Brooklyn = 2</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="classification-decision-tree-model">
-<h1>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.5. </span>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h1>
 <p>We then set up our decision tree and use it to predict on the test set. This example is a classification
 example so it will predict a 0 or 1 based on if someone was injured or not in the crash (1=injured)</p>
 <p>We then can print out the accuracy of our model and a confusion matrix to see its predictions</p>
@@ -550,7 +559,7 @@ such as max_depth to set how many layers our tree is able to go until</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="regression-decision-tree-model">
-<h1>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.6. </span>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h1>
 <p>In this example instead of classying a target variable into 0 or 1 we will use a decision tree for regression</p>
 <p>The set-up is exactly the same as classification where we select feature columns, a target variable
 and split the data into a training and test data set</p>
@@ -647,7 +656,21 @@ the actual and predicted values.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="patsy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Describing Models with Patsy</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
