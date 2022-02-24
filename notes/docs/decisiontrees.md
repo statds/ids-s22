@@ -158,7 +158,7 @@ feature_cols = ['time', 'num_borough', 'NUMBER OF MOTORIST KILLED','NUMBER OF CY
 x = nyc_collisions[feature_cols] # Features
 y = nyc_collisions.injury_binary # Target variable
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 70% training and 30% test
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 
 clf = tree.DecisionTreeClassifier(max_depth=3)
 
