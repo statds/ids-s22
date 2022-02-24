@@ -38,8 +38,7 @@ Note: sklearn and scikit-learn both refer to the same package
 Then we need to install graphviz in order to make better looking visualizations
 `conda install python-graphviz`
 
-# 
-.2 Simple Classification Example:
+# Simple Classification Example:
 
 ```{code-cell} ipython3
 from sklearn.datasets import load_iris
