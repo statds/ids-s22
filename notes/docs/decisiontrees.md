@@ -38,7 +38,7 @@ Note: sklearn and scikit-learn both refer to the same package
 Then we need to install graphviz in order to make better looking visualizations
 `conda install python-graphviz`
 
-# Simple Classification Example:
+## Simple Classification Example:
 
 ```{code-cell} ipython3
 from sklearn.datasets import load_iris
@@ -50,7 +50,7 @@ clf = clf.fit(X, y)
 tree.plot_tree(clf)
 ```
 
-# Data Cleaning:
+## Data Cleaning:
 
 Import data and add a binary column for if a person was injured or not
 
@@ -83,7 +83,7 @@ nyc_collisions.rename(columns={"NUMBER OF PERSONS INJURED": "num_ppl_injured"}, 
 nyc_collisions['injury_binary'].value_counts()
 ```
 
-# Classification Decision Tree Model
+## Classification Decision Tree Model
 Select columns to use in our decision tree model. 
 
 Don't want to use columns such as number of pedestrians injured because that heavily affects our target variable
@@ -187,7 +187,7 @@ dot_data = tree.export_graphviz(clf, out_file=None,
 graph = graphviz.Source(dot_data, format="png") 
 graph
 ```
-# Regression Decision Tree Model
+## Regression Decision Tree Model
 
 In this example instead of classying a target variable into 0 or 1 we will use a decision tree for regression
 
