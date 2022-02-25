@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.3. Linear Regression" href="models.html" />
+    <link rel="next" title="7.3. Linear and Generalized Linear Models" href="models.html" />
     <link rel="prev" title="7.1. Describing Models with Patsy" href="patsy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -174,7 +176,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="models.html">
-     7.3. Linear Regression
+     7.3. Linear and Generalized Linear Models
     </a>
    </li>
    <li class="toctree-l2">
@@ -361,7 +363,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KendalltauResult(correlation=0.5010101010101011, pvalue=1.5161961124603773e-13)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KendalltauResult(correlation=0.4008080808080809, pvalue=3.450614653995682e-09)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.07627198037292245, 0.45071104460622385)
 </pre></div>
 </div>
 </div>
@@ -373,24 +387,62 @@
 <code class="docutils literal notranslate"><span class="pre">scipy.stats.chi2_contingency()</span></code></p>
 <p>Fisher’s exact tests
 <code class="docutils literal notranslate"><span class="pre">scipy.stats.fisher_exact()</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## y&#39;s are dependent</span>
+<p>Let’s create categorical variables by cutting continuous variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for pd.cut</span>
+<span class="c1">## y&#39;s are dependent</span>
 <span class="n">ybins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
-<span class="n">y1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
-<span class="n">y2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
-<span class="n">ytab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y1b</span><span class="p">,</span> <span class="n">y2b</span><span class="p">)</span>
+<span class="n">y1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">y2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We know <code class="docutils literal notranslate"><span class="pre">y1</span></code> and <code class="docutils literal notranslate"><span class="pre">y2</span></code> are dependent. Let’s test it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ytab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y1b</span><span class="p">,</span> <span class="n">y2b</span><span class="p">)</span>
 <span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">ytab</span><span class="p">)</span>
-<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">ytab</span><span class="p">)</span>
-
-<span class="c1">## x&#39;s are independent</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.034222116801789e-06
+</pre></div>
+</div>
+</div>
+</div>
+<p>We know <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> are independent. Let’s test it by dichotomizing
+them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## x&#39;s are independent</span>
 <span class="n">xbins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">x1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
-<span class="n">x2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">x1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">x2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
 <span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">x1b</span><span class="p">,</span> <span class="n">x2b</span><span class="p">)</span>
 <span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
-<span class="c1">## only for 2x2 tables</span>
-<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+<p>Since this is a <span class="math notranslate nohighlight">\(2\times 2\)</span> table, we can use Fisher’s exact test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## only for 2x2 tables</span>
+<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16688805262845718
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -430,7 +482,7 @@
     <a class='right-next' id="next-link" href="models.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>Linear Regression</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>Linear and Generalized Linear Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

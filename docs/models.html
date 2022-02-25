@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.3. Linear Regression &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>7.3. Linear and Generalized Linear Models &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -176,7 +176,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.3. Linear Regression
+     7.3. Linear and Generalized Linear Models
     </a>
    </li>
    <li class="toctree-l2">
@@ -289,7 +289,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   7.3. Linear Regression
+   7.3. Linear and Generalized Linear Models
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -307,7 +307,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Linear Regression</h1>
+                <h1>Linear and Generalized Linear Models</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -319,7 +319,7 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   7.3. Linear Regression
+   7.3. Linear and Generalized Linear Models
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -336,8 +336,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression">
-<span id="models"></span><h1><span class="section-number">7.3. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-and-generalized-linear-models">
+<span id="models"></span><h1><span class="section-number">7.3. </span>Linear and Generalized Linear Models<a class="headerlink" href="#linear-and-generalized-linear-models" title="Permalink to this headline">¶</a></h1>
 <p>Let’s simulate some data for illustrations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -354,7 +354,31 @@
 </div>
 </div>
 </div>
-<p>That is, the true regression model is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(200,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(200, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is, the true linear regression model is</p>
 <div class="math notranslate nohighlight">
 \[y = 2 + x_1 + x_2 + x_3 + x_4 + x_5 + \epsilon.\]</div>
 <p>A regression model for the observed data can be fitted as</p>
@@ -380,10 +404,10 @@
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   17.38</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 24 Feb 2022</td> <th>  Prob (F-statistic):</th> <td>3.31e-14</td>
+  <th>Date:</th>             <td>Fri, 25 Feb 2022</td> <th>  Prob (F-statistic):</th> <td>3.31e-14</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:48:41</td>     <th>  Log-Likelihood:    </th> <td> -272.91</td>
+  <th>Time:</th>                 <td>01:08:10</td>     <th>  Log-Likelihood:    </th> <td> -272.91</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   200</td>      <th>  AIC:               </th> <td>   557.8</td>
@@ -501,10 +525,10 @@ a robust linear model (<code class="docutils literal notranslate"><span class="p
   <th>Cov Type:</th>              <td>H1</td>        <th>                     </th>    <td> </td>  
 </tr>
 <tr>
-  <th>Date:</th>           <td>Thu, 24 Feb 2022</td> <th>                     </th>    <td> </td>  
+  <th>Date:</th>           <td>Fri, 25 Feb 2022</td> <th>                     </th>    <td> </td>  
 </tr>
 <tr>
-  <th>Time:</th>               <td>19:48:41</td>     <th>                     </th>    <td> </td>  
+  <th>Time:</th>               <td>01:08:10</td>     <th>                     </th>    <td> </td>  
 </tr>
 <tr>
   <th>No. Iterations:</th>        <td>16</td>        <th>                     </th>    <td> </td>  
@@ -550,7 +574,7 @@ a robust linear model (<code class="docutils literal notranslate"><span class="p
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eval_env: 1
 </pre></div>
 </div>
-<img alt="../_images/models_9_1.png" src="../_images/models_9_1.png" />
+<img alt="../_images/models_11_1.png" src="../_images/models_11_1.png" />
 </div>
 </div>
 <p>See more on <a class="reference external" href="https://www.statsmodels.org/stable/stats.html#residual-diagnostics-and-specification-tests">residual diagnostics and specification
@@ -564,10 +588,11 @@ count data.</p>
 framework. Consider a binary or count variable <span class="math notranslate nohighlight">\(Y\)</span> with possible
 covariates <span class="math notranslate nohighlight">\(X\)</span>.  A generalized model describes a transformation <span class="math notranslate nohighlight">\(g\)</span>
 of the conditional mean <span class="math notranslate nohighlight">\(E[Y | X]\)</span> by a linear predictor
-<span class="math notranslate nohighlight">\(X^{\top}\beta\)</span>. That is</p>
-<div class="math notranslate nohighlight">
-\[g( E[Y | X] ) = X^{\top} \beta.\]</div>
-<p>The transformation <span class="math notranslate nohighlight">\(g\)</span> is known as the link function.</p>
+<span class="math notranslate nohighlight">\(X^{\top}\beta\)</span>. That is
+[
+g( E[Y | X] ) = X^{\top} \beta.
+]
+The transformation <span class="math notranslate nohighlight">\(g\)</span> is known as the link function.</p>
 <p>For logistic regression with binary outcomes, the link function is
 the logit function</p>
 <div class="math notranslate nohighlight">
@@ -612,10 +637,10 @@ logistic regression? Intercept?</p>
   <th>Method:</th>                <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td>  36.627</td>
 </tr>
 <tr>
-  <th>Date:</th>            <td>Thu, 24 Feb 2022</td> <th>  Deviance:          </th> <td>  8.1187</td>
+  <th>Date:</th>            <td>Fri, 25 Feb 2022</td> <th>  Deviance:          </th> <td>  8.1187</td>
 </tr>
 <tr>
-  <th>Time:</th>                <td>19:48:43</td>     <th>  Pearson chi2:      </th>  <td>  8.12</td> 
+  <th>Time:</th>                <td>01:08:12</td>     <th>  Pearson chi2:      </th>  <td>  8.12</td> 
 </tr>
 <tr>
   <th>No. Iterations:</th>          <td>3</td>        <th>  Pseudo R-squ. (CS):</th>  <td>0.05575</td>
