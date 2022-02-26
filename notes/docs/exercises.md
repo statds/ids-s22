@@ -147,7 +147,7 @@ kernelspec:
    analysis/visualization and the other on analytics.
     1. Cretate your presentation slides using `Jupyter Notebook`.  One
        tutorial that may be useful is this [Medium
-       article](https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0fL). No
+       article](https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f). No
        powerpoint please. Target your presentations for 15 minutes plus
        5 minutes for questions.
     1. Keep in mind that the audience are the general public. So
