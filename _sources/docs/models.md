@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-(models)=
+(regmodels)=
 
 # Linear and Generalized Linear Models
 
