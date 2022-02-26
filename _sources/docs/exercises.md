@@ -139,3 +139,20 @@ kernelspec:
     1. In preparation for the class event as the NYC Open Data Week on
        March 8, suggest a meaningful questions that can be answered by
        the data (again, work on the answer next week). 
+
+1. Open data preparation for the NYC Open Data Week event on Tuesday,
+   March 8. Coordinate among the groups who worked on the NYC
+   collision data and the NYC DOB job application data so that each
+   data is analyzed by two teams, one on exploratory
+   analysis/visualization and the other on analytics.
+    1. Cretate your presentation slides using `Jupyter Notebook`.  One
+       tutorial that may be useful is this [Medium
+       article](https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0fL). No
+       powerpoint please. Target your presentations for 15 minutes plus
+       5 minutes for questions.
+    1. Keep in mind that the audience are the general public. So
+       please make your presentation accessible and attractive.
+    1. In a separate markdown file named `contributions.md`, document
+       the contributions of each team member.
+
+	   

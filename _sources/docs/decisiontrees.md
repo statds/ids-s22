@@ -57,9 +57,7 @@ Import data and add a binary column for if a person was injured or not
 Can't use strings in decision trees so to fix this we can change each borough to a number
 EX: Bronx = 1, Brooklyn = 2
 
-
 ```{code-cell} ipython3
-
 import pandas as pd
 import numpy as np
 
@@ -110,6 +108,7 @@ We then set up our decision tree and use it to predict on the test set. This exa
 example so it will predict a 0 or 1 based on if someone was injured or not in the crash (1=injured)
 
 We then can print out the accuracy of our model and a confusion matrix to see its predictions
+
 ```{code-cell} ipython3
 clf = tree.DecisionTreeClassifier()
 
@@ -123,11 +122,13 @@ print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
 
 print(confusion_matrix(y_test, y_pred))
 ```
+
 We can plot this model using the sklearn plotting function
 
 ```{code-cell} ipython3
 tree.plot_tree(clf)
 ```
+
 We can plot this same exact model using the graphviz package and we see it looks much better
 
 ```{code-cell} ipython3
@@ -174,8 +175,6 @@ print(confusion_matrix(y_test, y_pred))
 
 We can see this change visually by re-running our code to graph the tree
 
-
-
 ```{code-cell} ipython3
 dot_data = tree.export_graphviz(clf, out_file=None, 
                                 feature_names=feature_cols,  
@@ -187,6 +186,7 @@ dot_data = tree.export_graphviz(clf, out_file=None,
 graph = graphviz.Source(dot_data, format="png") 
 graph
 ```
+
 ## Regression Decision Tree Model
 
 In this example instead of classying a target variable into 0 or 1 we will use a decision tree for regression
@@ -206,13 +206,14 @@ y = nyc_collisions.num_ppl_injured  #Target variable
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 ```
+
 In a classification problem we can use accuracy and a confusion matrix to gauge a model's effectiveness but 
 that is not the case in a regression problem. 
 
 Here we use mean absolute error to judge our model
 
 To show what the model is doing, we create another variable for the absolute value of the difference between
-the actual and predicted values. 
+the actual and predicted values.
 
 ```{code-cell} ipython3
 rgr = tree.DecisionTreeRegressor()
@@ -233,12 +234,14 @@ df.head()
 ```
 
 Here we can sort by descending order to show which of our predictions were the worst.
+
 ```{code-cell} ipython3
 df.sort_values(by=['diff'], ascending=False,inplace=True)
 df.head()
 ```
 
 Similarly to a classification problem we can still plot the resulting decision tree
+
 ```{code-cell} ipython3
 dot_data = tree.export_graphviz(rgr, out_file=None, 
                                 feature_names=feature_cols2,  
@@ -250,4 +253,3 @@ dot_data = tree.export_graphviz(rgr, out_file=None,
 graph = graphviz.Source(dot_data, format="png") 
 graph)
 ```
-
