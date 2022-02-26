@@ -153,6 +153,7 @@ kernelspec:
     1. Keep in mind that the audience are the general public. So
        please make your presentation accessible and attractive.
     1. In a separate markdown file named `contributions.md`, document
-       the contributions of each team member.
+       the contributions of each team member. The team leaders will be
+       finalized on Tuesday, March 1.
 
 	   
