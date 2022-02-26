@@ -36,11 +36,19 @@ Then you are able to import the package with the `tree` function
 Note: sklearn and scikit-learn both refer to the same package
 
 Then we need to install graphviz in order to make better looking visualizations
-`conda install python-graphviz`
+`conda install python-graphviz`. 
+
+To install with `pip`, the system library `graphviz` needs to be
+installed first. On a Mac, for example, one could do so with `brew
+install graphviz`. Then the Python package can be installed with 
+`pip install graphviz`.
 
 ## Simple Classification Example:
 
 ```{code-cell} ipython3
+## configure the inline figures to of svg format
+%config InlineBackend.figure_formats = ['svg']
+
 from sklearn.datasets import load_iris
 from sklearn import tree
 iris = load_iris()
@@ -140,7 +148,7 @@ dot_data = tree.export_graphviz(clf, out_file=None,
                       special_characters=True)
 
 # Draw graph
-graph = graphviz.Source(dot_data, format="png") 
+graph = graphviz.Source(dot_data, format="svg") 
 graph
 ```
 
@@ -183,7 +191,7 @@ dot_data = tree.export_graphviz(clf, out_file=None,
                       special_characters=True)
 
 # Draw graph
-graph = graphviz.Source(dot_data, format="png") 
+graph = graphviz.Source(dot_data, format="svg") 
 graph
 ```
 
@@ -250,6 +258,6 @@ dot_data = tree.export_graphviz(rgr, out_file=None,
                       special_characters=True)
 
 # Draw graph
-graph = graphviz.Source(dot_data, format="png") 
-graph)
+graph = graphviz.Source(dot_data, format="svg") 
+graph
 ```
