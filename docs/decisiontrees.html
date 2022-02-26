@@ -385,13 +385,19 @@
 <p>Then you are able to import the package with the <code class="docutils literal notranslate"><span class="pre">tree</span></code> function</p>
 <p>Note: sklearn and scikit-learn both refer to the same package</p>
 <p>Then we need to install graphviz in order to make better looking visualizations
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code>.</p>
+<p>To install with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, the system library <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> needs to be
+installed first. On a Mac, for example, one could do so with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>. Then the Python package can be installed with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>.</p>
 </div>
 <div class="section" id="simple-classification-example">
 <h2><span class="section-number">7.5.2. </span>Simple Classification Example:<a class="headerlink" href="#simple-classification-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## configure the inline figures to of svg format</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = [&#39;svg&#39;]
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
@@ -401,6 +407,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0.9166666666666666, &#39;X[2] &lt;= 2.45\ngini = 0.667\nsamples = 150\nvalue = [50, 50, 50]&#39;),
+ Text(0.4230769230769231, 0.75, &#39;gini = 0.0\nsamples = 50\nvalue = [50, 0, 0]&#39;),
+ Text(0.5769230769230769, 0.75, &#39;X[3] &lt;= 1.75\ngini = 0.5\nsamples = 100\nvalue = [0, 50, 50]&#39;),
+ Text(0.3076923076923077, 0.5833333333333334, &#39;X[2] &lt;= 4.95\ngini = 0.168\nsamples = 54\nvalue = [0, 49, 5]&#39;),
+ Text(0.15384615384615385, 0.4166666666666667, &#39;X[3] &lt;= 1.65\ngini = 0.041\nsamples = 48\nvalue = [0, 47, 1]&#39;),
+ Text(0.07692307692307693, 0.25, &#39;gini = 0.0\nsamples = 47\nvalue = [0, 47, 0]&#39;),
+ Text(0.23076923076923078, 0.25, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 0, 1]&#39;),
+ Text(0.46153846153846156, 0.4166666666666667, &#39;X[3] &lt;= 1.55\ngini = 0.444\nsamples = 6\nvalue = [0, 2, 4]&#39;),
+ Text(0.38461538461538464, 0.25, &#39;gini = 0.0\nsamples = 3\nvalue = [0, 0, 3]&#39;),
+ Text(0.5384615384615384, 0.25, &#39;X[0] &lt;= 6.95\ngini = 0.444\nsamples = 3\nvalue = [0, 2, 1]&#39;),
+ Text(0.46153846153846156, 0.08333333333333333, &#39;gini = 0.0\nsamples = 2\nvalue = [0, 2, 0]&#39;),
+ Text(0.6153846153846154, 0.08333333333333333, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 0, 1]&#39;),
+ Text(0.8461538461538461, 0.5833333333333334, &#39;X[2] &lt;= 4.85\ngini = 0.043\nsamples = 46\nvalue = [0, 1, 45]&#39;),
+ Text(0.7692307692307693, 0.4166666666666667, &#39;X[1] &lt;= 3.1\ngini = 0.444\nsamples = 3\nvalue = [0, 1, 2]&#39;),
+ Text(0.6923076923076923, 0.25, &#39;gini = 0.0\nsamples = 2\nvalue = [0, 0, 2]&#39;),
+ Text(0.8461538461538461, 0.25, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 1, 0]&#39;),
+ Text(0.9230769230769231, 0.4166666666666667, &#39;gini = 0.0\nsamples = 43\nvalue = [0, 0, 43]&#39;)]
+</pre></div>
+</div>
+<img alt="../_images/decisiontrees_1_1.svg" src="../_images/decisiontrees_1_1.svg" /></div>
 </div>
 </div>
 <div class="section" id="data-cleaning">
@@ -410,7 +437,7 @@
 EX: Bronx = 1, Brooklyn = 2</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">nyc_collisions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_mv_collisions_202201.csv&quot;</span><span class="p">)</span>
@@ -434,6 +461,13 @@ EX: Bronx = 1, Brooklyn = 2</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    5311
+1    2348
+Name: injury_binary, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="classification-decision-tree-model">
@@ -444,7 +478,7 @@ EX: Bronx = 1, Brooklyn = 2</p>
 <p>We are trying to predict if someone was injured or not in a crash using all of the columns in <code class="docutils literal notranslate"><span class="pre">feature_cols</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
@@ -464,7 +498,7 @@ example so it will predict a 0 or 1 based on if someone was injured or not in th
 <p>We then can print out the accuracy of our model and a confusion matrix to see its predictions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 
 <span class="c1"># Train Decision Tree Classifer</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
@@ -478,19 +512,133 @@ example so it will predict a 0 or 1 based on if someone was injured or not in th
 </pre></div>
 </div>
 </div>
-</div>
-<p>We can plot this model using the sklearn plotting function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.6977806788511749
+[[1064    3]
+ [ 460    5]]
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can plot this model using the sklearn plotting function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.6271067415730337, 0.9583333333333334, &#39;X[0] &lt;= 16.5\ngini = 0.426\nsamples = 6127\nvalue = [4244, 1883]&#39;),
+ Text(0.46207865168539325, 0.875, &#39;X[2] &lt;= 0.5\ngini = 0.405\nsamples = 4226\nvalue = [3035, 1191]&#39;),
+ Text(0.351123595505618, 0.7916666666666666, &#39;X[1] &lt;= 2.5\ngini = 0.404\nsamples = 4222\nvalue = [3034, 1188]&#39;),
+ Text(0.19662921348314608, 0.7083333333333334, &#39;X[0] &lt;= 5.5\ngini = 0.403\nsamples = 4110\nvalue = [2962, 1148]&#39;),
+ Text(0.1348314606741573, 0.625, &#39;X[0] &lt;= 4.5\ngini = 0.386\nsamples = 940\nvalue = [694, 246]&#39;),
+ Text(0.11235955056179775, 0.5416666666666666, &#39;X[0] &lt;= 3.5\ngini = 0.391\nsamples = 792\nvalue = [581, 211]&#39;),
+ Text(0.0898876404494382, 0.4583333333333333, &#39;X[0] &lt;= 2.5\ngini = 0.385\nsamples = 641\nvalue = [474, 167]&#39;),
+ Text(0.06741573033707865, 0.375, &#39;X[0] &lt;= 1.5\ngini = 0.393\nsamples = 535\nvalue = [391, 144]&#39;),
+ Text(0.0449438202247191, 0.2916666666666667, &#39;X[0] &lt;= 0.5\ngini = 0.389\nsamples = 405\nvalue = [298, 107]&#39;),
+ Text(0.02247191011235955, 0.20833333333333334, &#39;gini = 0.397\nsamples = 271\nvalue = [197, 74]&#39;),
+ Text(0.06741573033707865, 0.20833333333333334, &#39;gini = 0.371\nsamples = 134\nvalue = [101, 33]&#39;),
+ Text(0.0898876404494382, 0.2916666666666667, &#39;gini = 0.407\nsamples = 130\nvalue = [93, 37]&#39;),
+ Text(0.11235955056179775, 0.375, &#39;gini = 0.34\nsamples = 106\nvalue = [83, 23]&#39;),
+ Text(0.1348314606741573, 0.4583333333333333, &#39;gini = 0.413\nsamples = 151\nvalue = [107, 44]&#39;),
+ Text(0.15730337078651685, 0.5416666666666666, &#39;gini = 0.361\nsamples = 148\nvalue = [113, 35]&#39;),
+ Text(0.25842696629213485, 0.625, &#39;X[0] &lt;= 8.5\ngini = 0.407\nsamples = 3170\nvalue = [2268, 902]&#39;),
+ Text(0.20224719101123595, 0.5416666666666666, &#39;X[4] &lt;= 0.5\ngini = 0.437\nsamples = 820\nvalue = [556, 264]&#39;),
+ Text(0.1797752808988764, 0.4583333333333333, &#39;X[0] &lt;= 7.5\ngini = 0.437\nsamples = 818\nvalue = [554, 264]&#39;),
+ Text(0.15730337078651685, 0.375, &#39;X[0] &lt;= 6.5\ngini = 0.431\nsamples = 461\nvalue = [316, 145]&#39;),
+ Text(0.1348314606741573, 0.2916666666666667, &#39;gini = 0.437\nsamples = 223\nvalue = [151, 72]&#39;),
+ Text(0.1797752808988764, 0.2916666666666667, &#39;gini = 0.425\nsamples = 238\nvalue = [165, 73]&#39;),
+ Text(0.20224719101123595, 0.375, &#39;gini = 0.444\nsamples = 357\nvalue = [238, 119]&#39;),
+ Text(0.2247191011235955, 0.4583333333333333, &#39;gini = 0.0\nsamples = 2\nvalue = [2, 0]&#39;),
+ Text(0.3146067415730337, 0.5416666666666666, &#39;X[0] &lt;= 10.5\ngini = 0.396\nsamples = 2350\nvalue = [1712, 638]&#39;),
+ Text(0.2696629213483146, 0.4583333333333333, &#39;X[0] &lt;= 9.5\ngini = 0.335\nsamples = 516\nvalue = [406, 110]&#39;),
+ Text(0.24719101123595505, 0.375, &#39;gini = 0.335\nsamples = 263\nvalue = [207, 56]&#39;),
+ Text(0.29213483146067415, 0.375, &#39;gini = 0.336\nsamples = 253\nvalue = [199, 54]&#39;),
+ Text(0.3595505617977528, 0.4583333333333333, &#39;X[0] &lt;= 15.5\ngini = 0.41\nsamples = 1834\nvalue = [1306, 528]&#39;),
+ Text(0.33707865168539325, 0.375, &#39;X[0] &lt;= 14.5\ngini = 0.416\nsamples = 1476\nvalue = [1040, 436]&#39;),
+ Text(0.3146067415730337, 0.2916666666666667, &#39;X[0] &lt;= 12.5\ngini = 0.409\nsamples = 1132\nvalue = [808, 324]&#39;),
+ Text(0.2696629213483146, 0.20833333333333334, &#39;X[0] &lt;= 11.5\ngini = 0.422\nsamples = 520\nvalue = [363, 157]&#39;),
+ Text(0.24719101123595505, 0.125, &#39;gini = 0.404\nsamples = 256\nvalue = [184, 72]&#39;),
+ Text(0.29213483146067415, 0.125, &#39;gini = 0.437\nsamples = 264\nvalue = [179, 85]&#39;),
+ Text(0.3595505617977528, 0.20833333333333334, &#39;X[0] &lt;= 13.5\ngini = 0.397\nsamples = 612\nvalue = [445, 167]&#39;),
+ Text(0.33707865168539325, 0.125, &#39;gini = 0.379\nsamples = 256\nvalue = [191, 65]&#39;),
+ Text(0.38202247191011235, 0.125, &#39;gini = 0.409\nsamples = 356\nvalue = [254, 102]&#39;),
+ Text(0.3595505617977528, 0.2916666666666667, &#39;gini = 0.439\nsamples = 344\nvalue = [232, 112]&#39;),
+ Text(0.38202247191011235, 0.375, &#39;gini = 0.382\nsamples = 358\nvalue = [266, 92]&#39;),
+ Text(0.5056179775280899, 0.7083333333333334, &#39;X[0] &lt;= 3.5\ngini = 0.459\nsamples = 112\nvalue = [72, 40]&#39;),
+ Text(0.449438202247191, 0.625, &#39;X[0] &lt;= 2.5\ngini = 0.5\nsamples = 8\nvalue = [4, 4]&#39;),
+ Text(0.42696629213483145, 0.5416666666666666, &#39;X[0] &lt;= 0.5\ngini = 0.444\nsamples = 6\nvalue = [4, 2]&#39;),
+ Text(0.4044943820224719, 0.4583333333333333, &#39;gini = 0.5\nsamples = 2\nvalue = [1, 1]&#39;),
+ Text(0.449438202247191, 0.4583333333333333, &#39;X[0] &lt;= 1.5\ngini = 0.375\nsamples = 4\nvalue = [3, 1]&#39;),
+ Text(0.42696629213483145, 0.375, &#39;gini = 0.0\nsamples = 1\nvalue = [1, 0]&#39;),
+ Text(0.47191011235955055, 0.375, &#39;gini = 0.444\nsamples = 3\nvalue = [2, 1]&#39;),
+ Text(0.47191011235955055, 0.5416666666666666, &#39;gini = 0.0\nsamples = 2\nvalue = [0, 2]&#39;),
+ Text(0.5617977528089888, 0.625, &#39;X[0] &lt;= 8.5\ngini = 0.453\nsamples = 104\nvalue = [68, 36]&#39;),
+ Text(0.5168539325842697, 0.5416666666666666, &#39;X[0] &lt;= 4.5\ngini = 0.405\nsamples = 39\nvalue = [28, 11]&#39;),
+ Text(0.4943820224719101, 0.4583333333333333, &#39;gini = 0.0\nsamples = 2\nvalue = [2, 0]&#39;),
+ Text(0.5393258426966292, 0.4583333333333333, &#39;X[0] &lt;= 5.5\ngini = 0.418\nsamples = 37\nvalue = [26, 11]&#39;),
+ Text(0.5168539325842697, 0.375, &#39;gini = 0.444\nsamples = 6\nvalue = [4, 2]&#39;),
+ Text(0.5617977528089888, 0.375, &#39;X[0] &lt;= 7.5\ngini = 0.412\nsamples = 31\nvalue = [22, 9]&#39;),
+ Text(0.5393258426966292, 0.2916666666666667, &#39;X[0] &lt;= 6.5\ngini = 0.408\nsamples = 14\nvalue = [10, 4]&#39;),
+ Text(0.5168539325842697, 0.20833333333333334, &#39;gini = 0.408\nsamples = 7\nvalue = [5, 2]&#39;),
+ Text(0.5617977528089888, 0.20833333333333334, &#39;gini = 0.408\nsamples = 7\nvalue = [5, 2]&#39;),
+ Text(0.5842696629213483, 0.2916666666666667, &#39;gini = 0.415\nsamples = 17\nvalue = [12, 5]&#39;),
+ Text(0.6067415730337079, 0.5416666666666666, &#39;X[0] &lt;= 9.5\ngini = 0.473\nsamples = 65\nvalue = [40, 25]&#39;),
+ Text(0.5842696629213483, 0.4583333333333333, &#39;gini = 0.5\nsamples = 8\nvalue = [4, 4]&#39;),
+ Text(0.6292134831460674, 0.4583333333333333, &#39;X[0] &lt;= 10.5\ngini = 0.465\nsamples = 57\nvalue = [36, 21]&#39;),
+ Text(0.6067415730337079, 0.375, &#39;gini = 0.0\nsamples = 3\nvalue = [3, 0]&#39;),
+ Text(0.651685393258427, 0.375, &#39;X[0] &lt;= 11.5\ngini = 0.475\nsamples = 54\nvalue = [33, 21]&#39;),
+ Text(0.6292134831460674, 0.2916666666666667, &#39;gini = 0.5\nsamples = 12\nvalue = [6, 6]&#39;),
+ Text(0.6741573033707865, 0.2916666666666667, &#39;X[0] &lt;= 14.5\ngini = 0.459\nsamples = 42\nvalue = [27, 15]&#39;),
+ Text(0.6292134831460674, 0.20833333333333334, &#39;X[0] &lt;= 13.5\ngini = 0.413\nsamples = 24\nvalue = [17, 7]&#39;),
+ Text(0.6067415730337079, 0.125, &#39;X[0] &lt;= 12.5\ngini = 0.444\nsamples = 15\nvalue = [10, 5]&#39;),
+ Text(0.5842696629213483, 0.041666666666666664, &#39;gini = 0.444\nsamples = 9\nvalue = [6, 3]&#39;),
+ Text(0.6292134831460674, 0.041666666666666664, &#39;gini = 0.444\nsamples = 6\nvalue = [4, 2]&#39;),
+ Text(0.651685393258427, 0.125, &#39;gini = 0.346\nsamples = 9\nvalue = [7, 2]&#39;),
+ Text(0.7191011235955056, 0.20833333333333334, &#39;X[0] &lt;= 15.5\ngini = 0.494\nsamples = 18\nvalue = [10, 8]&#39;),
+ Text(0.6966292134831461, 0.125, &#39;gini = 0.496\nsamples = 11\nvalue = [6, 5]&#39;),
+ Text(0.7415730337078652, 0.125, &#39;gini = 0.49\nsamples = 7\nvalue = [4, 3]&#39;),
+ Text(0.5730337078651685, 0.7916666666666666, &#39;X[0] &lt;= 7.5\ngini = 0.375\nsamples = 4\nvalue = [1, 3]&#39;),
+ Text(0.550561797752809, 0.7083333333333334, &#39;gini = 0.0\nsamples = 3\nvalue = [0, 3]&#39;),
+ Text(0.5955056179775281, 0.7083333333333334, &#39;gini = 0.0\nsamples = 1\nvalue = [1, 0]&#39;),
+ Text(0.7921348314606742, 0.875, &#39;X[0] &lt;= 18.5\ngini = 0.463\nsamples = 1901\nvalue = [1209, 692]&#39;),
+ Text(0.6853932584269663, 0.7916666666666666, &#39;X[0] &lt;= 17.5\ngini = 0.478\nsamples = 722\nvalue = [437, 285]&#39;),
+ Text(0.6404494382022472, 0.7083333333333334, &#39;X[1] &lt;= 2.5\ngini = 0.459\nsamples = 378\nvalue = [243, 135]&#39;),
+ Text(0.6179775280898876, 0.625, &#39;gini = 0.456\nsamples = 367\nvalue = [238, 129]&#39;),
+ Text(0.6629213483146067, 0.625, &#39;gini = 0.496\nsamples = 11\nvalue = [5, 6]&#39;),
+ Text(0.7303370786516854, 0.7083333333333334, &#39;X[1] &lt;= 2.5\ngini = 0.492\nsamples = 344\nvalue = [194, 150]&#39;),
+ Text(0.7078651685393258, 0.625, &#39;X[4] &lt;= 0.5\ngini = 0.49\nsamples = 329\nvalue = [188, 141]&#39;),
+ Text(0.6853932584269663, 0.5416666666666666, &#39;gini = 0.489\nsamples = 328\nvalue = [188, 140]&#39;),
+ Text(0.7303370786516854, 0.5416666666666666, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 1]&#39;),
+ Text(0.7528089887640449, 0.625, &#39;gini = 0.48\nsamples = 15\nvalue = [6, 9]&#39;),
+ Text(0.898876404494382, 0.7916666666666666, &#39;X[1] &lt;= 2.5\ngini = 0.452\nsamples = 1179\nvalue = [772, 407]&#39;),
+ Text(0.8426966292134831, 0.7083333333333334, &#39;X[4] &lt;= 0.5\ngini = 0.456\nsamples = 1150\nvalue = [746, 404]&#39;),
+ Text(0.8202247191011236, 0.625, &#39;X[0] &lt;= 19.5\ngini = 0.456\nsamples = 1147\nvalue = [743, 404]&#39;),
+ Text(0.7752808988764045, 0.5416666666666666, &#39;X[2] &lt;= 0.5\ngini = 0.441\nsamples = 286\nvalue = [192, 94]&#39;),
+ Text(0.7528089887640449, 0.4583333333333333, &#39;gini = 0.442\nsamples = 285\nvalue = [191, 94]&#39;),
+ Text(0.797752808988764, 0.4583333333333333, &#39;gini = 0.0\nsamples = 1\nvalue = [1, 0]&#39;),
+ Text(0.8651685393258427, 0.5416666666666666, &#39;X[0] &lt;= 22.5\ngini = 0.461\nsamples = 861\nvalue = [551, 310]&#39;),
+ Text(0.8426966292134831, 0.4583333333333333, &#39;X[0] &lt;= 20.5\ngini = 0.466\nsamples = 666\nvalue = [420, 246]&#39;),
+ Text(0.8202247191011236, 0.375, &#39;gini = 0.467\nsamples = 245\nvalue = [154, 91]&#39;),
+ Text(0.8651685393258427, 0.375, &#39;X[0] &lt;= 21.5\ngini = 0.465\nsamples = 421\nvalue = [266, 155]&#39;),
+ Text(0.8426966292134831, 0.2916666666666667, &#39;gini = 0.465\nsamples = 207\nvalue = [131, 76]&#39;),
+ Text(0.8876404494382022, 0.2916666666666667, &#39;gini = 0.466\nsamples = 214\nvalue = [135, 79]&#39;),
+ Text(0.8876404494382022, 0.4583333333333333, &#39;gini = 0.441\nsamples = 195\nvalue = [131, 64]&#39;),
+ Text(0.8651685393258427, 0.625, &#39;gini = 0.0\nsamples = 3\nvalue = [3, 0]&#39;),
+ Text(0.9550561797752809, 0.7083333333333334, &#39;X[0] &lt;= 20.5\ngini = 0.185\nsamples = 29\nvalue = [26, 3]&#39;),
+ Text(0.9325842696629213, 0.625, &#39;X[0] &lt;= 19.5\ngini = 0.337\nsamples = 14\nvalue = [11, 3]&#39;),
+ Text(0.9101123595505618, 0.5416666666666666, &#39;gini = 0.198\nsamples = 9\nvalue = [8, 1]&#39;),
+ Text(0.9550561797752809, 0.5416666666666666, &#39;gini = 0.48\nsamples = 5\nvalue = [3, 2]&#39;),
+ Text(0.9775280898876404, 0.625, &#39;gini = 0.0\nsamples = 15\nvalue = [15, 0]&#39;)]
+</pre></div>
+</div>
+<img alt="../_images/decisiontrees_9_1.svg" src="../_images/decisiontrees_9_1.svg" /></div>
+</div>
 <p>We can plot this same exact model using the graphviz package and we see it looks much better</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
 <span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                 <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_cols</span><span class="p">,</span>  
                                 <span class="n">class_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -498,17 +646,19 @@ example so it will predict a 0 or 1 based on if someone was injured or not in th
                       <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Draw graph</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span> 
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
 <span class="n">graph</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/decisiontrees_11_0.svg" src="../_images/decisiontrees_11_0.svg" /></div>
 </div>
 <p>We can run this exact same decision tree but try to optimize its performance by changing parameters
 such as max_depth to set how many layers our tree is able to go until</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
@@ -534,22 +684,31 @@ such as max_depth to set how many layers our tree is able to go until</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.6971279373368147
+[[1067    0]
+ [ 464    1]]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can see this change visually by re-running our code to graph the tree</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                 <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_cols</span><span class="p">,</span>  
                                 <span class="n">class_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                 <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
                       <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Draw graph</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span> 
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
 <span class="n">graph</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/decisiontrees_15_0.svg" src="../_images/decisiontrees_15_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="regression-decision-tree-model">
@@ -559,7 +718,7 @@ such as max_depth to set how many layers our tree is able to go until</p>
 and split the data into a training and test data set</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 
@@ -580,7 +739,7 @@ that is not the case in a regression problem.</p>
 the actual and predicted values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rgr</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgr</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">()</span>
 
 <span class="c1"># Train Decision Tree Regressor</span>
 <span class="n">rgr</span> <span class="o">=</span> <span class="n">rgr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
@@ -598,31 +757,152 @@ the actual and predicted values.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5601416714129356
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual</th>
+      <th>Predicted</th>
+      <th>diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4880</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4058</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5954</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2226</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6532</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Here we can sort by descending order to show which of our predictions were the worst.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual</th>
+      <th>Predicted</th>
+      <th>diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7258</th>
+      <td>5</td>
+      <td>0.512077</td>
+      <td>4.487923</td>
+    </tr>
+    <tr>
+      <th>5363</th>
+      <td>5</td>
+      <td>0.518293</td>
+      <td>4.481707</td>
+    </tr>
+    <tr>
+      <th>1901</th>
+      <td>5</td>
+      <td>1.000000</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>3360</th>
+      <td>4</td>
+      <td>0.339844</td>
+      <td>3.660156</td>
+    </tr>
+    <tr>
+      <th>6313</th>
+      <td>4</td>
+      <td>0.373596</td>
+      <td>3.626404</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Similarly to a classification problem we can still plot the resulting decision tree</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">rgr</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">rgr</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                 <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_cols2</span><span class="p">,</span>  
                                 <span class="n">class_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                 <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
                       <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Draw graph</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span> 
-<span class="n">graph</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
+<span class="n">graph</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/decisiontrees_23_0.svg" src="../_images/decisiontrees_23_0.svg" /></div>
 </div>
 </div>
 </div>

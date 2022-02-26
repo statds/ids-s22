@@ -377,7 +377,7 @@ of the HTML to deliver all the additional data on top of Google Maps.</p>
 <p>First, we have to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">gmplot</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gmplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gmplot</span>
 </pre></div>
 </div>
 </div>
@@ -390,7 +390,7 @@ mine to Jupyter Notebook but you can set your path to save it to
 anywhere you choose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># first two arguments are longitude and latitude and the third one is</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first two arguments are longitude and latitude and the third one is</span>
 <span class="c1"># zoom resolution</span>
 
 
@@ -411,7 +411,7 @@ around a specific area. The inputs are the longitude and latitude
 points of the shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_list</span>  <span class="o">=</span> <span class="p">[</span> <span class="mf">17.4567417</span><span class="p">,</span> <span class="mf">17.5587901</span><span class="p">,</span> <span class="mf">17.6245545</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_list</span>  <span class="o">=</span> <span class="p">[</span> <span class="mf">17.4567417</span><span class="p">,</span> <span class="mf">17.5587901</span><span class="p">,</span> <span class="mf">17.6245545</span><span class="p">]</span>
 <span class="n">longitude_list</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">78.2913637</span><span class="p">,</span> <span class="mf">78.007699</span><span class="p">,</span> <span class="mf">77.9266135</span> <span class="p">]</span>
 <span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">17.438139</span><span class="p">,</span> <span class="mf">78.3936413</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="n">gmap</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">latitude_list</span><span class="p">,</span> <span class="n">longitude_list</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cornflowerblue&#39;</span><span class="p">)</span>
@@ -426,7 +426,7 @@ points of the shape.</p>
 <p>A more complete map is shown below by using many longitude and latitude points to highlight specific areas of the map. First, we create a zip of the outline of Golden Gate Park and use <code class="docutils literal notranslate"><span class="pre">.polygon</span></code> as we did previously. Next, we add some attraction points use <code class="docutils literal notranslate"><span class="pre">.scatter</span></code>. Lastly, we can add a marker to give attention to a specific spot using <code class="docutils literal notranslate"><span class="pre">.marker</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the map plotter:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the map plotter:</span>
 <span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">37.766956</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.448481</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
 
 <span class="c1">#Outline the Golden Gate Park:</span>
@@ -470,7 +470,7 @@ points of the shape.</p>
 <p>Another cool aspect of <code class="docutils literal notranslate"><span class="pre">gmplot</span></code> is the ability to create a heatmap. In this, I randomly generated 700 points around the world. Then I used <code class="docutils literal notranslate"><span class="pre">.heatmap</span></code>, which generates the points. You have the option to add markers to them, but it looks bad since so many points were generated in this specific example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import libraries</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import libraries</span>
 <span class="kn">import</span> <span class="nn">gmplot</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -495,25 +495,222 @@ points of the shape.</p>
 <h2><span class="section-number">6.5.5. </span>NYC Data<a class="headerlink" href="#nyc-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_mv_collisions_202201.csv&quot;</span><span class="p">)</span>
 <span class="n">nyc_crash</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash_desc</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-<span class="n">nyc_crash_desc</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 7659 entries, 0 to 7658
+Data columns (total 29 columns):
+ #   Column                         Non-Null Count  Dtype  
+---  ------                         --------------  -----  
+ 0   CRASH DATE                     7659 non-null   object 
+ 1   CRASH TIME                     7659 non-null   object 
+ 2   BOROUGH                        5025 non-null   object 
+ 3   ZIP CODE                       5025 non-null   float64
+ 4   LATITUDE                       7097 non-null   float64
+ 5   LONGITUDE                      7097 non-null   float64
+ 6   LOCATION                       7097 non-null   object 
+ 7   ON STREET NAME                 5625 non-null   object 
+ 8   CROSS STREET NAME              3620 non-null   object 
+ 9   OFF STREET NAME                2034 non-null   object 
+ 10  NUMBER OF PERSONS INJURED      7659 non-null   int64  
+ 11  NUMBER OF PERSONS KILLED       7659 non-null   int64  
+ 12  NUMBER OF PEDESTRIANS INJURED  7659 non-null   int64  
+ 13  NUMBER OF PEDESTRIANS KILLED   7659 non-null   int64  
+ 14  NUMBER OF CYCLIST INJURED      7659 non-null   int64  
+ 15  NUMBER OF CYCLIST KILLED       7659 non-null   int64  
+ 16  NUMBER OF MOTORIST INJURED     7659 non-null   int64  
+ 17  NUMBER OF MOTORIST KILLED      7659 non-null   int64  
+ 18  CONTRIBUTING FACTOR VEHICLE 1  7615 non-null   object 
+ 19  CONTRIBUTING FACTOR VEHICLE 2  5624 non-null   object 
+ 20  CONTRIBUTING FACTOR VEHICLE 3  824 non-null    object 
+ 21  CONTRIBUTING FACTOR VEHICLE 4  225 non-null    object 
+ 22  CONTRIBUTING FACTOR VEHICLE 5  80 non-null     object 
+ 23  COLLISION_ID                   7659 non-null   int64  
+ 24  VEHICLE TYPE CODE 1            7539 non-null   object 
+ 25  VEHICLE TYPE CODE 2            4748 non-null   object 
+ 26  VEHICLE TYPE CODE 3            752 non-null    object 
+ 27  VEHICLE TYPE CODE 4            207 non-null    object 
+ 28  VEHICLE TYPE CODE 5            78 non-null     object 
+dtypes: float64(3), int64(9), object(17)
+memory usage: 1.7+ MB
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_long</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash_desc</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">nyc_crash_desc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>NUMBER OF PERSONS INJURED</th>
+      <th>NUMBER OF PERSONS KILLED</th>
+      <th>NUMBER OF PEDESTRIANS INJURED</th>
+      <th>NUMBER OF PEDESTRIANS KILLED</th>
+      <th>NUMBER OF CYCLIST INJURED</th>
+      <th>NUMBER OF CYCLIST KILLED</th>
+      <th>NUMBER OF MOTORIST INJURED</th>
+      <th>NUMBER OF MOTORIST KILLED</th>
+      <th>COLLISION_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5025.000000</td>
+      <td>7097.000000</td>
+      <td>7097.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7659.0</td>
+      <td>7659.000000</td>
+      <td>7659.000000</td>
+      <td>7.659000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10908.957015</td>
+      <td>40.609463</td>
+      <td>-73.705503</td>
+      <td>0.404753</td>
+      <td>0.002350</td>
+      <td>0.084345</td>
+      <td>0.001306</td>
+      <td>0.021935</td>
+      <td>0.0</td>
+      <td>0.287505</td>
+      <td>0.000914</td>
+      <td>4.495510e+06</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>514.740028</td>
+      <td>2.160598</td>
+      <td>3.919451</td>
+      <td>0.726622</td>
+      <td>0.048425</td>
+      <td>0.290332</td>
+      <td>0.036113</td>
+      <td>0.149131</td>
+      <td>0.0</td>
+      <td>0.692545</td>
+      <td>0.030220</td>
+      <td>2.338111e+03</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>10000.000000</td>
+      <td>0.000000</td>
+      <td>-74.249980</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.491064e+06</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>10459.000000</td>
+      <td>40.665085</td>
+      <td>-73.960370</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.493532e+06</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>11209.000000</td>
+      <td>40.712505</td>
+      <td>-73.917310</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.495533e+06</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11354.000000</td>
+      <td>40.786957</td>
+      <td>-73.862274</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.497480e+06</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>11697.000000</td>
+      <td>40.909206</td>
+      <td>0.000000</td>
+      <td>8.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>0.0</td>
+      <td>8.000000</td>
+      <td>1.000000</td>
+      <td>4.500594e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronx_long</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
                            <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]]</span>
 <span class="n">bronx_lat</span>  <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
                            <span class="p">[</span><span class="s2">&quot;CRASH DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;CRASH TIME&quot;</span><span class="p">,</span> <span class="s2">&quot;LATITUDE&quot;</span><span class="p">]]</span>
@@ -523,7 +720,7 @@ points of the shape.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bronx_lat</span><span class="p">,</span> <span class="n">bronx_long</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mybronx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bronx_lat</span><span class="p">,</span> <span class="n">bronx_long</span><span class="p">)</span>
 <span class="n">lat</span> <span class="o">=</span> <span class="n">mybronx</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">bronx_lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">]</span>
 <span class="n">bronx_lngs</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span>
@@ -534,7 +731,7 @@ points of the shape.</p>
 <p>I chose to use the data for the Bronx borough as it was already cleaned. I zoomed in on the Bronx, and added in all of the crashes in that burough.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">40.844782</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.864827</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmap</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="mf">40.844782</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.864827</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">gmap</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bronx_lat</span><span class="p">,</span> <span class="n">bronx_lngs</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">gmap</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bronxmap.html&#39;</span><span class="p">)</span>
 </pre></div>
