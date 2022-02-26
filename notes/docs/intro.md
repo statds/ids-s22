@@ -217,9 +217,8 @@ Date    | Presenter            | Topic
 03/10 | Thalia Taffe | Nearest neighbor
 03/10 |  | 
 03/22 | Zhenyu Xu | K-means clustering
-03/22 | Juncheng Zheng |Neural networks and deep learning
-03/24 |  |
-03/24 |  |
+03/22 | Juncheng Zheng |Neural networks
+
 
 
 ## Data Challenges in Action
@@ -254,6 +253,9 @@ Data Week. A Zoom meeting link will be shared later.
 
 ### Preparation Problem
 
+The random seed was set by the class on Tuesday, Feb. 22. The first
+seven after the random permutation work on the NYC collision data and
+the rest eight work on the DOB job application data.
 ```{code-cell} ipython3
 import random
 
