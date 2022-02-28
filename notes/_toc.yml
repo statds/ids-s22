@@ -21,6 +21,7 @@ chapters:
   - file: docs/tests
   - file: docs/models
   - file: docs/decisiontrees
+  - file: docs/randomforests
 - file: docs/exercises
 - file: docs/fixedit
 
