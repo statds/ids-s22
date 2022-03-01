@@ -22,28 +22,74 @@ Decision trees are a predictive modeling approach that uses probability trees to
 * Doesn't need as much data preparation as other prediction methods
 
 **Cons:**
+
 * Sometimes decision trees can get too complex and overfit the data
 * Small variations in the data could cause different trees to be created which can drastically change the model's output
 
-There are many packages in Python for tree-based prediction models but we will focus on `scikit-learn`
 
-## Installing Packages
 
-`pip install scikit-learn`
+## Concepts
 
-Then you are able to import the package with the `tree` function
+The goal of a decision tree algorithm to create a model that predicts the value
+of a target variable by learning simple decision rules inferred from the data
+features. A tree can be seen as a piecewise constant approximation.
 
-Note: sklearn and scikit-learn both refer to the same package
+### Algorithm Formulation
+At a given node, find the best split that minimizes some impurity or loss
+measure $H$ after the split. Let $Q_m$ be the data at node $m$ with sample size
+$n_m$. Let $\theta$ be a candidate split (which may consists of a candidate
+threshold for candidate feature).  Suppose that after the split, $Q_{m,l}$ is
+the left node data with sample size $n_{m,l}$ and $Q_{m,r}$ is the right node
+data with sample size $n_{m,r}$. The quality of the split is measured by
+\begin{equation*}
+G(Q_m, \theta) = \frac{n_{m, l}}{n_m} H(Q_{m, l}(\theta))
+ + \frac{n_{m,r}}{n_m} H(Q_{m, r}(\theta)).
+\end{equation*}
+The algorithm set
+\begin{equation*}
+\theta^* = \arg\min_{\theta} G(Q_m, \theta).
+\end{equation*}
 
-Then we need to install graphviz in order to make better looking visualizations
-`conda install python-graphviz`. 
+Recursively find the best split for each child node.
 
-To install with `pip`, the system library `graphviz` needs to be
-installed first. On a Mac, for example, one could do so with `brew
-install graphviz`. Then the Python package can be installed with 
-`pip install graphviz`.
++ Stopping: until a the maximum tree depth is reached or all node sample size is
+  below a preset threshold.
++ Pruning: reduces the complexity of the final classifier, and hence improves
+  predictive accuracy by the reduction of overfitting.
 
-## Simple Classification Example:
+
+### Metrics
+
+See `sklearn` documentation for [details](https://scikit-learn.org/stable/modules/tree.html#classification-criteria}.
+
++ Classification
+    - Gini  $$H(Q_m) = \sum_{k=1} p_{mk} (1 - p_{mk})$$
+    - Entropy $$H(Q_m) = - \sum p_{mk} \log p_{mk}$$
+    - Misclassification $$H(Q_m) = 1 - \max_k p_{mk}$$
+
++ Regression
+    - Mean squared error
+    - Half Poisson deviance (for count targets)
+    - Mean absolute error (slower than MSE; more robust)
+	
+### Confusion Matrix
+
+See `sklearn` example for
+[details](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion).
+
+See definitions on [Wiki](https://en.wikipedia.org/wiki/Confusion_matrix).
+
+A confusion matrix is a matrix layout of the results of a classification
+algorithm, where each row of the matrix represents the instances in an actual
+class while each column represents the instances in a predicted class, or vice
+versa.
+
++ True positive
++ False positive
++ True negative
++ False negative
+
+## Simple Classification Example
 
 ```{code-cell} ipython3
 ## configure the inline figures to of svg format
@@ -58,7 +104,7 @@ clf = clf.fit(X, y)
 tree.plot_tree(clf)
 ```
 
-## Data Cleaning:
+## Data Cleaning
 
 Import data and add a binary column for if a person was injured or not
 
