@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.5. Decision Trees &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>Decision Trees &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Exercises" href="exercises.html" />
-    <link rel="prev" title="7.3. Linear and Generalized Linear Models" href="models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,7 +89,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    1. Introduction
@@ -152,16 +152,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="statmodels.html">
    7. Statistical Tests and Models
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="patsy.html">
      7.1. Describing Models with Patsy
@@ -175,11 +175,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="models.html">
      7.3. Linear and Generalized Linear Models
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     7.5. Decision Trees
     </a>
    </li>
   </ul>
@@ -286,28 +281,45 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-packages">
-   7.5.1. Installing Packages
+  <a class="reference internal nav-link" href="#concepts">
+   Concepts
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm-formulation">
+     Algorithm Formulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metrics">
+     Metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion Matrix
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-classification-example">
-   7.5.2. Simple Classification Example:
+   Simple Classification Example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   7.5.3. Data Cleaning:
+   Data Cleaning
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   7.5.4. Classification Decision Tree Model
+   Classification Decision Tree Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   7.5.5. Regression Decision Tree Model
+   Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -331,28 +343,45 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-packages">
-   7.5.1. Installing Packages
+  <a class="reference internal nav-link" href="#concepts">
+   Concepts
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm-formulation">
+     Algorithm Formulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metrics">
+     Metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion Matrix
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-classification-example">
-   7.5.2. Simple Classification Example:
+   Simple Classification Example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleaning">
-   7.5.3. Data Cleaning:
+   Data Cleaning
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-decision-tree-model">
-   7.5.4. Classification Decision Tree Model
+   Classification Decision Tree Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-decision-tree-model">
-   7.5.5. Regression Decision Tree Model
+   Regression Decision Tree Model
   </a>
  </li>
 </ul>
@@ -365,7 +394,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="decision-trees">
-<h1><span class="section-number">7.5. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
+<h1>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
 <p>Decision trees are a predictive modeling approach that uses probability trees to either predict a continous value or predict a classification that the data fits into.</p>
 <p><strong>Pros:</strong></p>
 <ul class="simple">
@@ -378,20 +407,76 @@
 <li><p>Sometimes decision trees can get too complex and overfit the data</p></li>
 <li><p>Small variations in the data could cause different trees to be created which can drastically change the model’s output</p></li>
 </ul>
-<p>There are many packages in Python for tree-based prediction models but we will focus on <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p>
-<div class="section" id="installing-packages">
-<h2><span class="section-number">7.5.1. </span>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p>
-<p>Then you are able to import the package with the <code class="docutils literal notranslate"><span class="pre">tree</span></code> function</p>
-<p>Note: sklearn and scikit-learn both refer to the same package</p>
-<p>Then we need to install graphviz in order to make better looking visualizations
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code>.</p>
-<p>To install with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, the system library <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> needs to be
-installed first. On a Mac, for example, one could do so with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>. Then the Python package can be installed with
-<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>.</p>
+<div class="section" id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
+<p>The goal of a decision tree algorithm to create a model that predicts the value
+of a target variable by learning simple decision rules inferred from the data
+features. A tree can be seen as a piecewise constant approximation.</p>
+<div class="section" id="algorithm-formulation">
+<h3>Algorithm Formulation<a class="headerlink" href="#algorithm-formulation" title="Permalink to this headline">¶</a></h3>
+<p>At a given node, find the best split that minimizes some impurity or loss
+measure <span class="math notranslate nohighlight">\(H\)</span> after the split. Let <span class="math notranslate nohighlight">\(Q_m\)</span> be the data at node <span class="math notranslate nohighlight">\(m\)</span> with sample size
+<span class="math notranslate nohighlight">\(n_m\)</span>. Let <span class="math notranslate nohighlight">\(\theta\)</span> be a candidate split (which may consists of a candidate
+threshold for candidate feature).  Suppose that after the split, <span class="math notranslate nohighlight">\(Q_{m,l}\)</span> is
+the left node data with sample size <span class="math notranslate nohighlight">\(n_{m,l}\)</span> and <span class="math notranslate nohighlight">\(Q_{m,r}\)</span> is the right node
+data with sample size <span class="math notranslate nohighlight">\(n_{m,r}\)</span>. The quality of the split is measured by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+G(Q_m, \theta) = \frac{n_{m, l}}{n_m} H(Q_{m, l}(\theta))
+ + \frac{n_{m,r}}{n_m} H(Q_{m, r}(\theta)).
+\end{equation*}\]</div>
+<p>The algorithm set</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\theta^* = \arg\min_{\theta} G(Q_m, \theta).
+\end{equation*}\]</div>
+<p>Recursively find the best split for each child node.</p>
+<ul class="simple">
+<li><p>Stopping: until a the maximum tree depth is reached or all node sample size is
+below a preset threshold.</p></li>
+<li><p>Pruning: reduces the complexity of the final classifier, and hence improves
+predictive accuracy by the reduction of overfitting.</p></li>
+</ul>
+</div>
+<div class="section" id="metrics">
+<h3>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h3>
+<p>See <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> documentation for [details](https://scikit-learn.org/stable/modules/tree.html#classification-criteria}.</p>
+<ul class="simple">
+<li><p>Classification</p>
+<ul>
+<li><p>Gini  $<span class="math notranslate nohighlight">\(H(Q_m) = \sum_{k=1} p_{mk} (1 - p_{mk})\)</span>$</p></li>
+<li><p>Entropy $<span class="math notranslate nohighlight">\(H(Q_m) = - \sum p_{mk} \log p_{mk}\)</span>$</p></li>
+<li><p>Misclassification $<span class="math notranslate nohighlight">\(H(Q_m) = 1 - \max_k p_{mk}\)</span>$</p></li>
+</ul>
+</li>
+<li><p>Regression</p>
+<ul>
+<li><p>Mean squared error</p></li>
+<li><p>Half Poisson deviance (for count targets)</p></li>
+<li><p>Mean absolute error (slower than MSE; more robust)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="confusion-matrix">
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<p>See <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> example for
+<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion">details</a>.</p>
+<p>See definitions on <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">Wiki</a>.</p>
+<p>A confusion matrix is a matrix layout of the results of a classification
+algorithm, where each row of the matrix represents the instances in an actual
+class while each column represents the instances in a predicted class, or vice
+versa.</p>
+<ul class="simple">
+<li><p>True positive</p></li>
+<li><p>False positive</p></li>
+<li><p>True negative</p></li>
+<li><p>False negative</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="simple-classification-example">
-<h2><span class="section-number">7.5.2. </span>Simple Classification Example:<a class="headerlink" href="#simple-classification-example" title="Permalink to this headline">¶</a></h2>
+<h2>Simple Classification Example<a class="headerlink" href="#simple-classification-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## configure the inline figures to of svg format</span>
@@ -408,7 +493,7 @@ installed first. On a Mac, for example, one could do so with <code class="docuti
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0.9166666666666666, &#39;X[3] &lt;= 0.8\ngini = 0.667\nsamples = 150\nvalue = [50, 50, 50]&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0.9166666666666666, &#39;X[2] &lt;= 2.45\ngini = 0.667\nsamples = 150\nvalue = [50, 50, 50]&#39;),
  Text(0.4230769230769231, 0.75, &#39;gini = 0.0\nsamples = 50\nvalue = [50, 0, 0]&#39;),
  Text(0.5769230769230769, 0.75, &#39;X[3] &lt;= 1.75\ngini = 0.5\nsamples = 100\nvalue = [0, 50, 50]&#39;),
  Text(0.3076923076923077, 0.5833333333333334, &#39;X[2] &lt;= 4.95\ngini = 0.168\nsamples = 54\nvalue = [0, 49, 5]&#39;),
@@ -417,7 +502,7 @@ installed first. On a Mac, for example, one could do so with <code class="docuti
  Text(0.23076923076923078, 0.25, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 0, 1]&#39;),
  Text(0.46153846153846156, 0.4166666666666667, &#39;X[3] &lt;= 1.55\ngini = 0.444\nsamples = 6\nvalue = [0, 2, 4]&#39;),
  Text(0.38461538461538464, 0.25, &#39;gini = 0.0\nsamples = 3\nvalue = [0, 0, 3]&#39;),
- Text(0.5384615384615384, 0.25, &#39;X[0] &lt;= 6.95\ngini = 0.444\nsamples = 3\nvalue = [0, 2, 1]&#39;),
+ Text(0.5384615384615384, 0.25, &#39;X[2] &lt;= 5.45\ngini = 0.444\nsamples = 3\nvalue = [0, 2, 1]&#39;),
  Text(0.46153846153846156, 0.08333333333333333, &#39;gini = 0.0\nsamples = 2\nvalue = [0, 2, 0]&#39;),
  Text(0.6153846153846154, 0.08333333333333333, &#39;gini = 0.0\nsamples = 1\nvalue = [0, 0, 1]&#39;),
  Text(0.8461538461538461, 0.5833333333333334, &#39;X[2] &lt;= 4.85\ngini = 0.043\nsamples = 46\nvalue = [0, 1, 45]&#39;),
@@ -431,7 +516,7 @@ installed first. On a Mac, for example, one could do so with <code class="docuti
 </div>
 </div>
 <div class="section" id="data-cleaning">
-<h2><span class="section-number">7.5.3. </span>Data Cleaning:<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
 <p>Import data and add a binary column for if a person was injured or not</p>
 <p>Can’t use strings in decision trees so to fix this we can change each borough to a number
 EX: Bronx = 1, Brooklyn = 2</p>
@@ -471,7 +556,7 @@ Name: injury_binary, dtype: int64
 </div>
 </div>
 <div class="section" id="classification-decision-tree-model">
-<h2><span class="section-number">7.5.4. </span>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h2>
+<h2>Classification Decision Tree Model<a class="headerlink" href="#classification-decision-tree-model" title="Permalink to this headline">¶</a></h2>
 <p>Select columns to use in our decision tree model.</p>
 <p>Don’t want to use columns such as number of pedestrians injured because that heavily affects our target variable</p>
 <p>We also split our dataset into a training set and a test set to avoid overfitting the data</p>
@@ -712,7 +797,7 @@ such as max_depth to set how many layers our tree is able to go until</p>
 </div>
 </div>
 <div class="section" id="regression-decision-tree-model">
-<h2><span class="section-number">7.5.5. </span>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h2>
+<h2>Regression Decision Tree Model<a class="headerlink" href="#regression-decision-tree-model" title="Permalink to this headline">¶</a></h2>
 <p>In this example instead of classying a target variable into 0 or 1 we will use a decision tree for regression</p>
 <p>The set-up is exactly the same as classification where we select feature columns, a target variable
 and split the data into a training and test data set</p>
@@ -931,21 +1016,7 @@ the actual and predicted values.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="models.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7.3. </span>Linear and Generalized Linear Models</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="exercises.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Exercises</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
