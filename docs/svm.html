@@ -288,6 +288,11 @@
    Install scikit-learn
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages-and-disadvantages">
+   Advantages and Disadvantages
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -318,6 +323,11 @@
    Install scikit-learn
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages-and-disadvantages">
+   Advantages and Disadvantages
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -342,6 +352,17 @@
 <blockquote>
 <div><p>pip install scikit-learn</p>
 </div></blockquote>
+</div>
+<div class="section" id="advantages-and-disadvantages">
+<h1>Advantages and Disadvantages<a class="headerlink" href="#advantages-and-disadvantages" title="Permalink to this headline">¶</a></h1>
+<p>The advantages of support vector machines are:</p>
+<p>-Effective in high dimensional spaces.</p>
+<p>-Still effective in cases where number of dimensions is greater than the number of samples.</p>
+<p>-Uses a subset of training points in the decision function (called support vectors), so it is also memory efficient.</p>
+<p>-Versatile: different Kernel functions can be specified for the decision function. Common kernels are provided, but it is also possible to specify custom kernels.</p>
+<p>The disadvantages of support vector machines include:</p>
+<p>-If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial.</p>
+<p>-SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation (see Scores and probabilities, below).</p>
 </div>
 
     <script type="text/x-thebe-config">
