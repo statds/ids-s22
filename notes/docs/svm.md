@@ -63,3 +63,35 @@ clf.predict([[2., 2.]])
 ## Support Vectors
 
 Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier. Deleting the support vectors will change the position of the hyperplane.
+
+```{code-cell}
+#get support vectors
+clf.support_vectors_
+
+#get indices of support vectors
+clf.support_
+
+#get number of support vectors for each class
+clf.n_support_
+```
+
+## Other Support Vector Machines
+
+There are also other SVMs that can serve other purposes. Another main subset of SVMs is called SVR(Support Vector Regression). It uses the same method as SVC, however it solves regression problems instead of classification.
+
+```{code-cell}
+from sklearn import svm
+X = [[0, 0], [2, 2]]
+y = [0.5, 2.5]
+regr = svm.SVR()
+regr.fit(X, y)
+
+regr.predict([[1, 1]])
+```
+>>> In this case the fit method will still take in argument vectors X and y, but now y will be expected to have floating point values instead of integer values.
+
+## For Additional Info
+
+Visit:
+https://scikit-learn.org/stable/modules/svm.html#svm
+https://towardsdatascience.com/support-vector-machines-explained-with-python-examples-cb65e8172c85
