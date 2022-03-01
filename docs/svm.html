@@ -293,6 +293,11 @@
    Advantages and Disadvantages
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exectution-within-python">
+   Exectution within python
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -326,6 +331,11 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advantages-and-disadvantages">
    Advantages and Disadvantages
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exectution-within-python">
+   Exectution within python
   </a>
  </li>
 </ul>
@@ -367,6 +377,34 @@
 <li><p>If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial.</p></li>
 <li><p>SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation (see Scores and probabilities, below).</p></li>
 </ul>
+<p>Source: https://scikit-learn.org/stable/modules/svm.html#svm</p>
+</div>
+<div class="section" id="exectution-within-python">
+<h1>Exectution within python<a class="headerlink" href="#exectution-within-python" title="Permalink to this headline">¶</a></h1>
+<p>To start off, it is helpful to just dive into the code to show prediction power and then dive into the algorthims that make it possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;#import the package</span>
+
+<span class="go">&gt;&gt;&gt;from sklearn import svm</span>
+
+<span class="go">&gt;&gt;&gt;#set up some data points</span>
+<span class="go">&gt;&gt;&gt;x = [[0,0], [1,1]]</span>
+<span class="go">&gt;&gt;&gt;y = [0,1]</span>
+<span class="go">&gt;&gt;&gt;clf = svm.SVC()</span>
+
+<span class="go">&gt;&gt;&gt;#fit the model</span>
+
+<span class="go">&gt;&gt;&gt;clf.fit(x,y)</span>
+<span class="go">SVC()</span>
+<span class="go">&gt;&gt;&gt;#now predict on some new values</span>
+
+<span class="go">&gt;&gt;&gt;clf.predict([[2., 2.]])</span>
+<span class="go">array([1])</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
