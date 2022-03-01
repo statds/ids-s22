@@ -42,23 +42,24 @@ Source: https://scikit-learn.org/stable/modules/svm.html#svm
 To start off, it is helpful to just dive into the code to show prediction power and then dive into the algorthims that make it possible.
 
 ```{code-cell}
->>>#import the package
+#import the package
 
->>>from sklearn import svm
+from sklearn import svm
 
->>>#set up some data points
->>>x = [[0,0], [1,1]]
->>>y = [0,1]
->>>clf = svm.SVC()
+#set up some data points
+x = [[0,0], [1,1]]
+y = [0,1]
+clf = svm.SVC()
 
->>>#fit the model
+#fit the model
 
->>>clf.fit(x,y)
-SVC()
->>>#now predict on some new values
+clf.fit(x,y)
 
->>>clf.predict([[2., 2.]])
-array([1])
+#now predict on some new values
+
+clf.predict([[2., 2.]])
 ```
 
+## Support Vectors
 
+Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier. Deleting the support vectors will change the position of the hyperplane.
