@@ -309,6 +309,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misclassification">
+   Misclassification
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#for-additional-info">
    For Additional Info
   </a>
@@ -361,6 +366,11 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-support-vector-machines">
    Other Support Vector Machines
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misclassification">
+   Misclassification
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -491,6 +501,11 @@
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
+</div>
+<div class="section" id="misclassification">
+<h1>Misclassification<a class="headerlink" href="#misclassification" title="Permalink to this headline">¶</a></h1>
+<p>SVM allows for misclassifcation. This means that it is acceptable to have some vectors fall inside the margin and on the wrong side of the decision boundary. This is done so the model can do a better job at classifying most vectors in the testing set.</p>
+<p>Slack Variable: Tells us if a test observation is misclassified and where the observation is relative to the decision boundary and the margin. If the value is 0, it means the point is correctly classified. If the slack variable is greater than zero and less than one, then the point is on the wrong side of the margin. Lastly if the variable is greater than 1, then the point is on the wrong side of the hyperplane.</p>
 </div>
 <div class="section" id="for-additional-info">
 <h1>For Additional Info<a class="headerlink" href="#for-additional-info" title="Permalink to this headline">¶</a></h1>
