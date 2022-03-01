@@ -90,6 +90,12 @@ regr.predict([[1, 1]])
 ```
 >>> In this case the fit method will still take in argument vectors X and y, but now y will be expected to have floating point values instead of integer values.
 
+## Misclassification
+
+SVM allows for misclassifcation. This means that it is acceptable to have some vectors fall inside the margin and on the wrong side of the decision boundary. This is done so the model can do a better job at classifying most vectors in the testing set. 
+
+Slack Variable: Tells us if a test observation is misclassified and where the observation is relative to the decision boundary and the margin. If the value is 0, it means the point is correctly classified. If the slack variable is greater than zero and less than one, then the point is on the wrong side of the margin. Lastly if the variable is greater than 1, then the point is on the wrong side of the hyperplane.
+
 ## For Additional Info
 
 Visit:
