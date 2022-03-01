@@ -303,6 +303,16 @@
    Support Vectors
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-support-vector-machines">
+   Other Support Vector Machines
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-additional-info">
+   For Additional Info
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -346,6 +356,16 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vectors">
    Support Vectors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-support-vector-machines">
+   Other Support Vector Machines
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-additional-info">
+   For Additional Info
   </a>
  </li>
 </ul>
@@ -423,6 +443,60 @@
 <div class="section" id="support-vectors">
 <h1>Support Vectors<a class="headerlink" href="#support-vectors" title="Permalink to this headline">¶</a></h1>
 <p>Support vectors are data points that are closer to the hyperplane and influence the position and orientation of the hyperplane. Using these support vectors, we maximize the margin of the classifier. Deleting the support vectors will change the position of the hyperplane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#get support vectors</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span>
+
+<span class="c1">#get indices of support vectors</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">support_</span>
+
+<span class="c1">#get number of support vectors for each class</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">n_support_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="other-support-vector-machines">
+<h1>Other Support Vector Machines<a class="headerlink" href="#other-support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<p>There are also other SVMs that can serve other purposes. Another main subset of SVMs is called SVR(Support Vector Regression). It uses the same method as SVC, however it solves regression problems instead of classification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
+<span class="n">regr</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVR</span><span class="p">()</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.5])
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>In this case the fit method will still take in argument vectors X and y, but now y will be expected to have floating point values instead of integer values.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="for-additional-info">
+<h1>For Additional Info<a class="headerlink" href="#for-additional-info" title="Permalink to this headline">¶</a></h1>
+<p>Visit:
+https://scikit-learn.org/stable/modules/svm.html#svm
+https://towardsdatascience.com/support-vector-machines-explained-with-python-examples-cb65e8172c85</p>
 </div>
 
     <script type="text/x-thebe-config">
