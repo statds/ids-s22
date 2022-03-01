@@ -34,3 +34,31 @@ The advantages of support vector machines are:
 The disadvantages of support vector machines include:
 - If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial.
 - SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation (see Scores and probabilities, below).
+
+Source: https://scikit-learn.org/stable/modules/svm.html#svm
+
+## Exectution within python
+
+To start off, it is helpful to just dive into the code to show prediction power and then dive into the algorthims that make it possible.
+
+```{code-cell}
+>>>#import the package
+
+>>>from sklearn import svm
+
+>>>#set up some data points
+>>>x = [[0,0], [1,1]]
+>>>y = [0,1]
+>>>clf = svm.SVC()
+
+>>>#fit the model
+
+>>>clf.fit(x,y)
+SVC()
+>>>#now predict on some new values
+
+>>>clf.predict([[2., 2.]])
+array([1])
+```
+
+
