@@ -23,3 +23,13 @@ Disadvantages of Random Forests:
 
 - Requires more computational power and resources
 - Consumes more time compared to a decision tree algorithm
+
+## Installing Packages
+
+To utilize random forests in Python, we first need to install the `scikit-learn` package.
+
+- pip: `pip install scikit-learn`
+- conda: `conda install scikit-learn`
+
+We'll also want to install the `graphviz` package to improve the visualizations, which can be 
+done using `conda install python-graphviz`.
