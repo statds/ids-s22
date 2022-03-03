@@ -62,7 +62,7 @@ import pandas as pd
 df = np.concatenate((y.reshape((nobs, 1)), x), axis = 1)
 df = pd.DataFrame(data = df,
                   columns = ["y"] + ["x" + str(i) for i in range(1,
-				  ncov + 1)])
+                  ncov + 1)])
 df.info()
 ```
 
@@ -102,17 +102,17 @@ framework. Consider a binary or count variable $Y$ with possible
 covariates $X$.  A generalized model describes a transformation $g$
 of the conditional mean $E[Y | X]$ by a linear predictor
 $X^{\top}\beta$. That is
-\[
+\begin{equation*}
 g( E[Y | X] ) = X^{\top} \beta.
-\]
+\end{equation*}
 The transformation $g$ is known as the link function.
 
 
 For logistic regression with binary outcomes, the link function is
 the logit function
-```{math}
-g(u) = \log \frac{u}{1 - u}, \quad u \in (0, 1)
-```
+\begin{equation*}
+g(u) = \log \frac{u}{1 - u}, \quad u \in (0, 1).
+\end{equation*}
 
 What is the interpretation of the regression coefficients in a
 logistic regression? Intercept?
@@ -129,8 +129,21 @@ df['x1b'] = np.where(df['x1'] > 0.5, 1, 0)
 Fit a logistic regression for `y1b`.
 
 ```{code-cell} ipython3
-mylogistic = smf.glm(formula = 'yb ~ x1b + x2 + x3 + x4 + x5', data = df)
+mylogistic = smf.glm(formula = 'yb ~ x1b + x2 + x3 + x4 + x5', data = df,
+                     family = sm.families.Binomial())
 mylfit = mylogistic.fit()
 mylfit.summary()
 ```
 
+If we treat `y1b` as count data, a Poisson regression can be fitted.
+
+```{code-cell} ipython3
+myPois = smf.glm(formula = 'yb ~ x1b + x2 + x3 + x4 + x5', data = df,
+                 family = sm.families.Poisson())
+mypfit = myPois.fit()
+mypfit.summary()
+```
+
+```{code-cell} ipython3
+
+```
