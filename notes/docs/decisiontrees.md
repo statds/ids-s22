@@ -150,17 +150,19 @@ We also split our dataset into a training set and a test set to avoid overfittin
 We are trying to predict if someone was injured or not in a crash using all of the columns in `feature_cols`
 
 ```{code-cell} ipython3
-from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 
-feature_cols = ['time', 'num_borough', 'NUMBER OF MOTORIST KILLED','NUMBER OF CYCLIST KILLED',
-               'NUMBER OF PEDESTRIANS KILLED']
+feature_cols = ['time', 'num_borough', 'NUMBER OF MOTORIST KILLED',
+                'NUMBER OF CYCLIST KILLED',
+                'NUMBER OF PEDESTRIANS KILLED']
 x = nyc_collisions[feature_cols] # Features
 y = nyc_collisions.injury_binary # Target variable
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 ```
 
 We then set up our decision tree and use it to predict on the test set. This example is a classification
@@ -207,17 +209,20 @@ We can run this exact same decision tree but try to optimize its performance by 
 such as max_depth to set how many layers our tree is able to go until
 
 ```{code-cell} ipython3
-from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 
-feature_cols = ['time', 'num_borough', 'NUMBER OF MOTORIST KILLED','NUMBER OF CYCLIST KILLED',
-               'NUMBER OF PEDESTRIANS KILLED']
+feature_cols = ['time', 'num_borough', 
+                'NUMBER OF MOTORIST KILLED',
+                'NUMBER OF CYCLIST KILLED',
+                'NUMBER OF PEDESTRIANS KILLED']
 x = nyc_collisions[feature_cols] # Features
 y = nyc_collisions.injury_binary # Target variable
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 
 clf = tree.DecisionTreeClassifier(max_depth=3)
 
@@ -239,7 +244,7 @@ dot_data = tree.export_graphviz(clf, out_file=None,
                                 feature_names=feature_cols,  
                                 class_names=None,
                                 filled=True, rounded=True,  
-                      special_characters=True)
+                                special_characters=True)
 
 # Draw graph
 graph = graphviz.Source(dot_data, format="svg") 
@@ -254,16 +259,19 @@ The set-up is exactly the same as classification where we select feature columns
 and split the data into a training and test data set
 
 ```{code-cell} ipython3
-from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn.model_selection import train_test_split 
 from sklearn import tree
 from sklearn import metrics
 
-feature_cols2 = ['time', 'num_borough', 'NUMBER OF MOTORIST KILLED','NUMBER OF CYCLIST KILLED',
-               'NUMBER OF PEDESTRIANS KILLED']
+feature_cols2 = ['time', 'num_borough', 
+                 'NUMBER OF MOTORIST KILLED',
+                 'NUMBER OF CYCLIST KILLED',
+                 'NUMBER OF PEDESTRIANS KILLED']
 x = nyc_collisions[feature_cols2] # Features
 y = nyc_collisions.num_ppl_injured  #Target variable
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=12) # 80% training and 20% test
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=12) # 80% training and 20% test
 ```
 
 In a classification problem we can use accuracy and a confusion matrix to gauge a model's effectiveness but 
@@ -283,11 +291,12 @@ rgr = rgr.fit(x_train,y_train)
 #Predict the response for test dataset
 y_pred = rgr.predict(x_test)
 
-df=pd.DataFrame({'Actual':y_test, 'Predicted':y_pred})
+df = pd.DataFrame({'Actual':y_test, 'Predicted':y_pred})
 df["diff"] = abs(df["Actual"] - df["Predicted"])
-df.sort_values(by=['diff'], inplace=True)
+df.sort_values(by = ['diff'], inplace = True)
 
-print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Absolute Error:', 
+      metrics.mean_absolute_error(y_test, y_pred))
 
 df.head()
 ```
