@@ -293,6 +293,16 @@
    Random Forest for Classification Using NYC Crash Data
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest-model-for-regression">
+   Random Forest Model for Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-additional-information">
+   Sources and Additional Information:
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -326,6 +336,16 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-forest-for-classification-using-nyc-crash-data">
    Random Forest for Classification Using NYC Crash Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest-model-for-regression">
+   Random Forest Model for Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-additional-information">
+   Sources and Additional Information:
   </a>
  </li>
 </ul>
@@ -530,6 +550,176 @@ we pass in our features of interest.</p>
 </div>
 </div>
 </div>
+<p>Now our categorical features have seperate columns with binary values for each category.
+For example, the <code class="docutils literal notranslate"><span class="pre">borough</span></code> variable now has five seperate columns with either a 1 or 0 for
+each observation, for each borough. Now we can begin building our random forest model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> 
+                                                    <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> 
+                                                    <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="n">rfclf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">rfclf</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Extract a single tree from the random forest</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">33</span><span class="p">]</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                                <span class="n">feature_names</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>  
+                                <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">],</span>
+                                <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>  
+                                <span class="n">proportion</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
+                                <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Draw graph</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This individual decision tree that we selected from the random forest is quite large, with many
+splits occuring from the top node. If we count the number of levels, we can see that this tree
+has a depth of 13 before reaching the bottom. For this particular tree, the initial node splits
+on the <code class="docutils literal notranslate"><span class="pre">num_vehicles_involved</span></code> variable being less than or equal to 1.5 cars.</p>
+<p>Many of these trees are going to look different, and some might suffer from overfitting or be very
+inaccurate, but overall the classification returned by the majority of the decision trees is likely
+to be the most accurate. We can check the accuracy of our random forest model using our test data by
+using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">accuracy_score()</span></code> and <code class="docutils literal notranslate"><span class="pre">confusion_matrix()</span></code> functions.</p>
+<p>We can also limit the depth of our random forest’s trees by passing in the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter in
+the random forest classifier, so that it’s easier to visualize the tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rfclf2</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">rfclf2</span> <span class="o">=</span> <span class="n">rfclf2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Extract a single tree from the random forest</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">rfclf2</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                                <span class="n">feature_names</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>  
+                                <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">],</span>
+                                <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>  
+                                <span class="n">proportion</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
+                                <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Draw graph</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">rfclf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">rfclf</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for Forest with Max Depth </span><span class="si">{i}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="p">),</span> 
+          <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looking at the depth for the trees in our random forest, it appears that the accuracy of our model
+is at its highest for trees with a depth between 4 and 6, with an accuracy of about 70.95%. We can
+also see some other performance metrics using the <code class="docutils literal notranslate"><span class="pre">classifcation_report()</span></code> function in <code class="docutils literal notranslate"><span class="pre">sckiit-learn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We might also want to take a look at the importance of each of the different features our model
+considered when splitting on different nodes. This can be done using the <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>
+attribute, which we can plot in a simple bar graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">importances</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Importance of Each Feature&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="random-forest-model-for-regression">
+<h2>Random Forest Model for Regression<a class="headerlink" href="#random-forest-model-for-regression" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels2</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels2</span><span class="p">,</span> 
+                                                    <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> 
+                                                    <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="n">rfclf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">rfclf</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Extract a single tree from the random forest</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">33</span><span class="p">]</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                                <span class="n">feature_names</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>  
+                                <span class="n">class_names</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>  
+                                <span class="n">proportion</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
+                                <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Draw graph</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Actual&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Predicted&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Error:&#39;</span><span class="p">,</span> 
+      <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sources-and-additional-information">
+<h2>Sources and Additional Information:<a class="headerlink" href="#sources-and-additional-information" title="Permalink to this headline">¶</a></h2>
+<p>https://scikit-learn.org/stable/modules/ensemble.html#forest</p>
+<p>https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76</p>
+<p>https://towardsdatascience.com/random-forest-in-python-24d0893d51c0</p>
+<p>https://towardsdatascience.com/how-to-visualize-a-decision-tree-from-a-random-forest-in-python-using-scikit-learn-38ad2d75f21c</p>
+<p>https://www.section.io/engineering-education/introduction-to-random-forest-in-machine-learning/</p>
 </div>
 </div>
 
