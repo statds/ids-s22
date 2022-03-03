@@ -96,6 +96,39 @@ SVM allows for misclassifcation. This means that it is acceptable to have some v
 
 Slack Variable: Tells us if a test observation is misclassified and where the observation is relative to the decision boundary and the margin. If the value is 0, it means the point is correctly classified. If the slack variable is greater than zero and less than one, then the point is on the wrong side of the margin. Lastly if the variable is greater than 1, then the point is on the wrong side of the hyperplane.
 
+## In Practice
+
+```{code-cell}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split 
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report, confusion_matrix
+
+
+job_app_data = pd.read_csv("nyc_DobJobApp_2021.csv")
+
+job_app_data = job_app_data[['Doc #', 'Borough', 'Block', 'Proposed Height', 'Job Status']]
+
+job_app_data['Borough'].replace(['MANHATTAN', 'BRONX', 'BROOKLYN', 'QUEENS', 'STATEN ISLAND'], [1,2,3,4,5], inplace=True)
+
+
+X = job_app_data.drop('Job Status', axis=1)
+y = job_app_data['Job Status']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+
+svclassifier = SVC(kernel='linear')
+svclassifier.fit(X_train, y_train)
+
+y_pred = svclassifier.predict(X_test)
+
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test))
+
+```
+
 ## For Additional Info
 
 Visit:
