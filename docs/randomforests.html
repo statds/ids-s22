@@ -396,8 +396,8 @@ done using <code class="docutils literal notranslate"><span class="pre">conda</s
 <h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Configure the inline figures to svg format</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_formats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;svg&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Configure the inline figures to svg format</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = [&#39;svg&#39;]
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_wine</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -426,6 +426,8 @@ done using <code class="docutils literal notranslate"><span class="pre">conda</s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/randomforests_1_0.svg" src="../_images/randomforests_1_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="random-forest-for-classification-using-nyc-crash-data">
@@ -444,7 +446,7 @@ we’ll include the following features and outcome variable to predict:</p>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -460,7 +462,7 @@ we’ll include the following features and outcome variable to predict:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create new variables relating to people injured and/or killed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create new variables relating to people injured and/or killed</span>
 <span class="c1">## in a crash</span>
 <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> 
                                                    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;NUMBER OF PERSONS KILLED&#39;</span><span class="p">]</span> <span class="o">+</span>
@@ -478,7 +480,7 @@ we’ll include the following features and outcome variable to predict:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Split crash times by hour</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Split crash times by hour</span>
 <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;CRASH TIME&quot;</span><span class="p">]]</span>
 <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]]</span>
 
@@ -509,7 +511,7 @@ we’ll include the following features and outcome variable to predict:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Convert &#39;CRASH DATE&#39; to datetime format</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Convert &#39;CRASH DATE&#39; to datetime format</span>
 <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">)</span>
 
 <span class="c1">## Column to indicate day of the week</span>
@@ -527,10 +529,177 @@ we’ll include the following features and outcome variable to predict:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>BOROUGH</th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>LOCATION</th>
+      <th>ON STREET NAME</th>
+      <th>CROSS STREET NAME</th>
+      <th>OFF STREET NAME</th>
+      <th>...</th>
+      <th>VEHICLE TYPE CODE 3</th>
+      <th>VEHICLE TYPE CODE 4</th>
+      <th>VEHICLE TYPE CODE 5</th>
+      <th>num_injured_dead</th>
+      <th>injured_dead_status</th>
+      <th>hour</th>
+      <th>timeframe</th>
+      <th>num_vehicles_involved</th>
+      <th>day_of_week</th>
+      <th>time_of_week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022-01-01</td>
+      <td>7:05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>EAST 128 STREET</td>
+      <td>3 AVENUE BRIDGE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Saturday</td>
+      <td>weekend</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2022-01-01</td>
+      <td>14:43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.769993</td>
+      <td>-73.915825</td>
+      <td>(40.769993, -73.915825)</td>
+      <td>GRAND CENTRAL PKWY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>14</td>
+      <td>3</td>
+      <td>1</td>
+      <td>Saturday</td>
+      <td>weekend</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2022-01-01</td>
+      <td>21:20</td>
+      <td>QUEENS</td>
+      <td>11414.0</td>
+      <td>40.657230</td>
+      <td>-73.841380</td>
+      <td>(40.65723, -73.84138)</td>
+      <td>91 STREET</td>
+      <td>160 AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>21</td>
+      <td>4</td>
+      <td>1</td>
+      <td>Saturday</td>
+      <td>weekend</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2022-01-01</td>
+      <td>4:30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Southern parkway</td>
+      <td>Jfk expressway</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Saturday</td>
+      <td>weekend</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2022-01-01</td>
+      <td>7:57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>WESTCHESTER AVENUE</td>
+      <td>SHERIDAN EXPRESSWAY</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Saturday</td>
+      <td>weekend</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 36 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">:</span> <span class="s1">&#39;borough&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">:</span> <span class="s1">&#39;borough&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[[</span><span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="s1">&#39;timeframe&#39;</span><span class="p">,</span> <span class="s1">&#39;num_vehicles_involved&#39;</span><span class="p">,</span> <span class="s1">&#39;time_of_week&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -543,19 +712,131 @@ of data. This can be done very easily in pandas using the <code class="docutils 
 we pass in our features of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">])</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 <span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>num_vehicles_involved</th>
+      <th>borough_BRONX</th>
+      <th>borough_BROOKLYN</th>
+      <th>borough_MANHATTAN</th>
+      <th>borough_QUEENS</th>
+      <th>borough_STATEN ISLAND</th>
+      <th>timeframe_1</th>
+      <th>timeframe_2</th>
+      <th>timeframe_3</th>
+      <th>timeframe_4</th>
+      <th>time_of_week_weekday</th>
+      <th>time_of_week_weekend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Now our categorical features have seperate columns with binary values for each category.
 For example, the <code class="docutils literal notranslate"><span class="pre">borough</span></code> variable now has five seperate columns with either a 1 or 0 for
 each observation, for each borough. Now we can begin building our random forest model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> 
                                                     <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> 
                                                     <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
@@ -577,6 +858,8 @@ each observation, for each borough. Now we can begin building our random forest 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/randomforests_11_0.svg" src="../_images/randomforests_11_0.svg" /></div>
 </div>
 <p>This individual decision tree that we selected from the random forest is quite large, with many
 splits occuring from the top node. If we count the number of levels, we can see that this tree
@@ -590,16 +873,23 @@ using <code class="docutils literal notranslate"><span class="pre">scikit-learn<
 the random forest classifier, so that it’s easier to visualize the tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7003916449086162
+[[1041   41]
+ [ 418   32]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rfclf2</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfclf2</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">rfclf2</span> <span class="o">=</span> <span class="n">rfclf2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Extract a single tree from the random forest</span>
@@ -616,15 +906,47 @@ the random forest classifier, so that it’s easier to visualize the tree.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/randomforests_14_0.svg" src="../_images/randomforests_14_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
     <span class="n">rfclf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">rfclf</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for Forest with Max Depth </span><span class="si">{i}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="p">),</span> 
           <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 1: 0.706266318537859
+Accuracy for Forest with Max Depth 2: 0.706266318537859
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 3: 0.706266318537859
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 4: 0.7095300261096605
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 5: 0.7095300261096605
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 6: 0.7095300261096605
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 7: 0.7056135770234987
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 8: 0.706266318537859
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 9: 0.7043080939947781
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 10: 0.7023498694516971
 </pre></div>
 </div>
 </div>
@@ -634,7 +956,19 @@ is at its highest for trees with a depth between 4 and 6, with an accuracy of ab
 also see some other performance metrics using the <code class="docutils literal notranslate"><span class="pre">classifcation_report()</span></code> function in <code class="docutils literal notranslate"><span class="pre">sckiit-learn</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.71      0.97      0.82      1082
+           1       0.46      0.07      0.12       450
+
+    accuracy                           0.70      1532
+   macro avg       0.58      0.52      0.47      1532
+weighted avg       0.64      0.70      0.61      1532
 </pre></div>
 </div>
 </div>
@@ -644,7 +978,7 @@ considered when splitting on different nodes. This can be done using the <code c
 attribute, which we can plot in a simple bar graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">feature_importances_</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">importances</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
@@ -652,27 +986,32 @@ attribute, which we can plot in a simple bar graph.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Importance of Each Feature&#39;)
+</pre></div>
+</div>
+<img alt="../_images/randomforests_19_1.svg" src="../_images/randomforests_19_1.svg" /></div>
 </div>
 </div>
 <div class="section" id="random-forest-model-for-regression">
 <h2>Random Forest Model for Regression<a class="headerlink" href="#random-forest-model-for-regression" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels2</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels2</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## start building random forest model:</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels2</span><span class="p">,</span> 
                                                     <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> 
                                                     <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
@@ -694,10 +1033,12 @@ attribute, which we can plot in a simple bar graph.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/randomforests_23_0.svg" src="../_images/randomforests_23_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfclf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span><span class="n">y_pred</span><span class="p">})</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Actual&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Predicted&quot;</span><span class="p">])</span>
@@ -711,6 +1052,67 @@ attribute, which we can plot in a simple bar graph.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error: 0.5603409520733241
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual</th>
+      <th>Predicted</th>
+      <th>diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1291</th>
+      <td>5</td>
+      <td>0.642135</td>
+      <td>4.357865</td>
+    </tr>
+    <tr>
+      <th>750</th>
+      <td>4</td>
+      <td>0.327590</td>
+      <td>3.672410</td>
+    </tr>
+    <tr>
+      <th>791</th>
+      <td>4</td>
+      <td>0.330216</td>
+      <td>3.669784</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>0.332213</td>
+      <td>3.667787</td>
+    </tr>
+    <tr>
+      <th>442</th>
+      <td>4</td>
+      <td>0.337047</td>
+      <td>3.662953</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="sources-and-additional-information">
@@ -732,16 +1134,16 @@ attribute, which we can plot in a simple bar graph.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "anaconda-base"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "anaconda-base",
+            kernelName: "python3",
             path: "./docs"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'anaconda-base'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

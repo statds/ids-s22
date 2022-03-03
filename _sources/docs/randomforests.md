@@ -6,9 +6,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.13.7
 kernelspec:
-  display_name: Anaconda (base)
+  display_name: Python 3 (ipykernel)
   language: python
-  name: anaconda-base
+  name: python3
 ---
 
 # Random Forests
