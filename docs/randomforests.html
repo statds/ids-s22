@@ -226,7 +226,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/docs/randomforests.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/docs/randomforests.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -248,11 +251,51 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/randomforests.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-packages">
+   Installing Packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-example">
+   Simple Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest-for-classification-using-nyc-crash-data">
+   Random Forest for Classification Using NYC Crash Data
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -265,6 +308,29 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-packages">
+   Installing Packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-example">
+   Simple Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest-for-classification-using-nyc-crash-data">
+   Random Forest for Classification Using NYC Crash Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -296,6 +362,175 @@ decision trees as opposed to just one.</p>
 <li><p>Requires more computational power and resources</p></li>
 <li><p>Consumes more time compared to a decision tree algorithm</p></li>
 </ul>
+<div class="section" id="installing-packages">
+<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<p>To utilize random forests in Python, we first need to install the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package.</p>
+<ul class="simple">
+<li><p>pip: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p></li>
+<li><p>conda: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p></li>
+</ul>
+<p>We’ll also want to install the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package to improve the visualizations, which can be
+done using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code>.</p>
+</div>
+<div class="section" id="simple-example">
+<h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Configure the inline figures to svg format</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_formats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;svg&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_wine</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_graphviz</span>
+<span class="kn">import</span> <span class="nn">graphviz</span>
+
+<span class="n">wine</span> <span class="o">=</span> <span class="n">load_wine</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">wine</span><span class="o">.</span><span class="n">target</span>
+<span class="c1">## Build a random forest with 50 trees in it</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">99</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1">## Select a single tree from the forest to visualize</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                                <span class="n">feature_names</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>  
+                                <span class="n">class_names</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span>
+                                <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>  
+                                <span class="n">proportion</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">precision</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
+                                <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Draw graph</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="random-forest-for-classification-using-nyc-crash-data">
+<h2>Random Forest for Classification Using NYC Crash Data<a class="headerlink" href="#random-forest-for-classification-using-nyc-crash-data" title="Permalink to this headline">¶</a></h2>
+<p>Using the NYC Motor Vehicle Crash data, we’ll create a random forest model in order to try and
+predict whether a crash results in an injury and/or death to any person. Before fitting the model
+however, we first need to decide which features we’ll want to include in our model. For this example,
+we’ll include the following features and outcome variable to predict:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">injured_dead_status</span></code> (outcome): indicates whether at least person was injured or killed in a crash (1 = yes, 0 = no)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeframe</span></code>: the time of day in which the crash occured, split into 6-hour intervals over 24 hours</p></li>
+<li><p>(1 = 12AM-5:59AM, 2 = 6AM-11:59AM, 3 = 12PM-5:59PM, 4 = 6PM-11:59PM)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">borough</span></code>: which borough the crash took place in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_vehicles_involved</span></code>: number of vehicles involved in a crash</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_of_week</span></code>: day of week of the crash, which we’ll split into weekdays and weekends</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="c1">## Read in NYC crash data</span>
+<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_mv_collisions_202201.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create new variables relating to people injured and/or killed</span>
+<span class="c1">## in a crash</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> 
+                                                   <span class="n">row</span><span class="p">[</span><span class="s1">&#39;NUMBER OF PERSONS KILLED&#39;</span><span class="p">]</span> <span class="o">+</span>
+                                                   <span class="n">row</span><span class="p">[</span><span class="s1">&#39;NUMBER OF PERSONS INJURED&#39;</span><span class="p">],</span>
+                                                   <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span>
+                                                   <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;num_injured_dead&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                                                   <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Split crash times by hour</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;CRASH TIME&quot;</span><span class="p">]]</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]]</span>
+
+<span class="k">def</span> <span class="nf">timeframes</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">17</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">3</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">4</span>
+
+<span class="c1">## Take crash hours and put them into specifc intervals</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;timeframe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">timeframes</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;timeframe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;timeframe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="n">contributing_factors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 1&#39;</span><span class="p">,</span> <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 2&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 3&#39;</span><span class="p">,</span> <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 4&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 5&#39;</span><span class="p">]</span>
+
+<span class="c1">## Number of vehicles involved in any crash</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;num_vehicles_involved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="n">contributing_factors</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="n">nyc_crash</span><span class="p">[</span>
+                                         <span class="n">contributing_factors</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Convert &#39;CRASH DATE&#39; to datetime format</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">)</span>
+
+<span class="c1">## Column to indicate day of the week</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">is_weekend</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Saturday&#39;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Sunday&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;weekend&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;weekday&#39;</span>
+    
+<span class="c1">## Categorize days of week to weekday or weekend  </span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;time_of_week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_weekend</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">:</span> <span class="s1">&#39;borough&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[[</span><span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="s1">&#39;timeframe&#39;</span><span class="p">,</span> <span class="s1">&#39;num_vehicles_involved&#39;</span><span class="p">,</span> <span class="s1">&#39;time_of_week&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now have all of the features we want to include in our model. Before we set up our
+random forest, we’ll want to take our caterogical features and transform them into binary
+data for each category without any arbitrary ordering, a process known as one-hot encoding
+of data. This can be done very easily in pandas using the <code class="docutils literal notranslate"><span class="pre">pd.get_dummies()</span></code> function, where
+we pass in our features of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;injured_dead_status&#39;</span><span class="p">])</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -307,16 +542,16 @@ decision trees as opposed to just one.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "anaconda-base"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "anaconda-base",
             path: "./docs"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'anaconda-base'</script>
 
               </div>
               
