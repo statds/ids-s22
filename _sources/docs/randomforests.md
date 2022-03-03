@@ -11,3 +11,15 @@ For classification:
 For regression:
 
 - The output of the random forest is the average prediction of the individual trees.
+
+Advantages of Random Forests:
+
+- Reduces overfitting that sometimes occurs in decision trees and improves accuracy
+- Can handle large datasets as well as missing data
+- Can perform both classification and regression tasks
+- Produces good predictions that can be easily understood
+
+Disadvantages of Random Forests:
+
+- Requires more computational power and resources
+- Consumes more time compared to a decision tree algorithm
