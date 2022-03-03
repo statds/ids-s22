@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
+(trees)=
+
 # Decision Trees
 
 Decision trees are a predictive modeling approach that uses probability trees to either predict a continous value or predict a classification that the data fits into. 
