@@ -183,3 +183,152 @@ labels = np.array(nyc_crash['injured_dead_status'])
 features = pd.get_dummies(features)
 features.head()
 ```
+
+Now our categorical features have seperate columns with binary values for each category. 
+For example, the `borough` variable now has five seperate columns with either a 1 or 0 for 
+each observation, for each borough. Now we can begin building our random forest model.
+
+```{code-cell} ipython3
+## start building random forest model:
+x_train, x_test, y_train, y_test = train_test_split(features, labels, 
+                                                    test_size = 0.2, 
+                                                    random_state = 42)
+
+rfclf = RandomForestClassifier(n_estimators = 100, random_state = 42)
+rfclf = rfclf.fit(x_train, y_train)
+
+# Extract a single tree from the random forest
+estimator = rfclf.estimators_[33]
+dot_data = tree.export_graphviz(estimator, out_file = None, 
+                                feature_names = features.columns,  
+                                class_names = ['0', '1'],
+                                filled = True, rounded = True,  
+                                proportion = False, precision = 2, 
+                                special_characters=True)
+# Draw graph
+graph = graphviz.Source(dot_data, format = "svg") 
+graph
+```
+
+This individual decision tree that we selected from the random forest is quite large, with many 
+splits occuring from the top node. If we count the number of levels, we can see that this tree 
+has a depth of 13 before reaching the bottom. For this particular tree, the initial node splits 
+on the `num_vehicles_involved` variable being less than or equal to 1.5 cars. 
+
+Many of these trees are going to look different, and some might suffer from overfitting or be very 
+inaccurate, but overall the classification returned by the majority of the decision trees is likely 
+to be the most accurate. We can check the accuracy of our random forest model using our test data by 
+using `scikit-learn`'s `accuracy_score()` and `confusion_matrix()` functions. 
+
+We can also limit the depth of our random forest's trees by passing in the `max_depth` parameter in 
+the random forest classifier, so that it's easier to visualize the tree.
+
+```{code-cell} ipython3
+y_pred = rfclf.predict(x_test)
+print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+```
+
+```{code-cell} ipython3
+rfclf2 = RandomForestClassifier(n_estimators = 100, random_state = 42, max_depth = 4)
+rfclf2 = rfclf2.fit(x_train, y_train)
+
+# Extract a single tree from the random forest
+estimator = rfclf2.estimators_[5]
+dot_data = tree.export_graphviz(estimator, out_file = None, 
+                                feature_names = features.columns,  
+                                class_names = ['0', '1'],
+                                filled = True, rounded = True,  
+                                proportion = False, precision = 2, 
+                                special_characters=True)
+# Draw graph
+graph = graphviz.Source(dot_data, format = "svg") 
+graph
+```
+
+```{code-cell} ipython3
+for i in range (1, 11):
+    rfclf = RandomForestClassifier(n_estimators = 100, random_state = 42, max_depth = i)
+    rfclf = rfclf.fit(x_train, y_train)
+    y_pred = rfclf.predict(x_test)
+    print("Accuracy for Forest with Max Depth {i}:".format(i = i), 
+          metrics.accuracy_score(y_test, y_pred))
+```
+
+Looking at the depth for the trees in our random forest, it appears that the accuracy of our model 
+is at its highest for trees with a depth between 4 and 6, with an accuracy of about 70.95%. We can
+also see some other performance metrics using the `classifcation_report()` function in `sckiit-learn`.
+
+```{code-cell} ipython3
+print(classification_report(y_test, y_pred))
+```
+
+We might also want to take a look at the importance of each of the different features our model
+considered when splitting on different nodes. This can be done using the `feature_importances_`
+attribute, which we can plot in a simple bar graph.
+
+```{code-cell} ipython3
+importances = rfclf.feature_importances_
+
+plt.bar(features.columns, importances)
+plt.xticks(rotation = 90)
+plt.title('Importance of Each Feature')
+```
+
+## Random Forest Model for Regression
+
+```{code-cell} ipython3
+from sklearn.ensemble import RandomForestRegressor
+```
+
+```{code-cell} ipython3
+labels2 = labels = np.array(nyc_crash['num_injured_dead'])
+```
+
+```{code-cell} ipython3
+## start building random forest model:
+x_train, x_test, y_train, y_test = train_test_split(features, labels2, 
+                                                    test_size = 0.2, 
+                                                    random_state = 42)
+
+rfclf = RandomForestRegressor(n_estimators = 100, random_state = 42, max_depth = 4)
+rfclf = rfclf.fit(x_train, y_train)
+
+# Extract a single tree from the random forest
+estimator = rfclf.estimators_[33]
+dot_data = tree.export_graphviz(estimator, out_file = None, 
+                                feature_names = features.columns,  
+                                class_names = None,
+                                filled = True, rounded = True,  
+                                proportion = False, precision = 2, 
+                                special_characters=True)
+# Draw graph
+graph = graphviz.Source(dot_data, format = "svg") 
+graph
+```
+
+```{code-cell} ipython3
+y_pred = rfclf.predict(x_test)
+
+df = pd.DataFrame({'Actual':y_test, 'Predicted':y_pred})
+df["diff"] = abs(df["Actual"] - df["Predicted"])
+df.sort_values(by = ['diff'], inplace = True)
+
+print('Mean Absolute Error:', 
+      metrics.mean_absolute_error(y_test, y_pred))
+
+df.sort_values(by=['diff'], ascending=False,inplace=True)
+df.head()
+```
+
+## Sources and Additional Information:
+
+https://scikit-learn.org/stable/modules/ensemble.html#forest
+
+https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76
+
+https://towardsdatascience.com/random-forest-in-python-24d0893d51c0
+
+https://towardsdatascience.com/how-to-visualize-a-decision-tree-from-a-random-forest-in-python-using-scikit-learn-38ad2d75f21c
+
+https://www.section.io/engineering-education/introduction-to-random-forest-in-machine-learning/
