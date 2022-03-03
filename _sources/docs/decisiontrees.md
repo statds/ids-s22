@@ -62,12 +62,15 @@ Recursively find the best split for each child node.
 
 ### Metrics
 
-See `sklearn` documentation for [details](https://scikit-learn.org/stable/modules/tree.html#classification-criteria}.
+See `sklearn` documentation for [details](https://scikit-learn.org/stable/modules/tree.html#classification-criteria).
 
 + Classification
-    - Gini  $$H(Q_m) = \sum_{k=1} p_{mk} (1 - p_{mk})$$
-    - Entropy $$H(Q_m) = - \sum p_{mk} \log p_{mk}$$
-    - Misclassification $$H(Q_m) = 1 - \max_k p_{mk}$$
+    - Gini  
+	$$H(Q_m) = \sum_{k=1} p_{mk} (1 - p_{mk})$$
+    - Entropy 
+	$$H(Q_m) = - \sum p_{mk} \log p_{mk}$$
+    - Misclassification 
+	$$H(Q_m) = 1 - \max_k p_{mk}$$
 
 + Regression
     - Mean squared error
