@@ -136,9 +136,14 @@ mylfit.summary()
 ```
 
 If we treat `y1b` as count data, a Poisson regression can be fitted.
+
 ```{code-cell} ipython3
 myPois = smf.glm(formula = 'yb ~ x1b + x2 + x3 + x4 + x5', data = df,
                  family = sm.families.Poisson())
 mypfit = myPois.fit()
 mypfit.summary()
+```
+
+```{code-cell} ipython3
+
 ```
