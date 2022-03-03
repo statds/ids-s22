@@ -23,6 +23,7 @@ chapters:
 - file: docs/supervised
   sections:
   - file: docs/decisiontrees
+  - file: docs/randomforests
 - file: docs/exercises
 - file: docs/fixedit
 
