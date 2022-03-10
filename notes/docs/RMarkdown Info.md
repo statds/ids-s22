@@ -146,7 +146,7 @@ s = "This is Python"
 print s
 ```
 
-### Task list
+## Task list
 Personally, I love task list more than is probably reasonable for a person but they're the only way I can get things done<br>
 Creating them in Markdown is easy. <br>
 `- [x] Done`<br>
@@ -177,6 +177,14 @@ ___
 This is the code you need to align images to the right:
 <img align="right" width= "50" height="50" src="https://supplyroom.s3.amazonaws.com/F/FS-/FS-P/FS-PA-1_W.png"> <br>
 `<img align="right" width= "50" height="50" src="https://supplyroom.s3.amazonaws.com/F/FS-/FS-P/FS-PA-1_W.png">`
+
+
+If you do nothing it will automatically allign with the middle.
+
+### Changing Font Color
+To make <span style="color:blue">blue</span> or <span style="color:green">green</span> or <span style="color:red">red</span> text you just need to change that setting the code like this. <br>
+`<span style="color:blue">blue text</span>.`
+
 
 # Mathematical and Statistical operations
 As we are in a stat class I think it is only right that I show how to make mathematical formulas
@@ -260,3 +268,5 @@ ___
 
 7. You can also cancel any special character by putting a `\` before it
 `\*I like volleyball\*` should display like **this** <br><br> I like volleyball <br><br> not like **this**<br><br> *I like volleyball*
+
+Thank you!
