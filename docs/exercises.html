@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8. Exercises &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>9. Exercises &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. I Fixed It" href="fixedit.html" />
-    <link rel="prev" title="7.3. Linear and Generalized Linear Models" href="models.html" />
+    <link rel="next" title="10. I Fixed It" href="fixedit.html" />
+    <link rel="prev" title="8.3. Random Forests" href="randomforests.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -181,14 +181,36 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="supervised.html">
+   8. Supervised Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisiontrees.html">
+     8.2. Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforests.html">
+     8.3. Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   8. Exercises
+   9. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   9. I Fixed It
+   10. I Fixed It
   </a>
  </li>
 </ul>
@@ -296,7 +318,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="exercises">
-<span id="id1"></span><h1><span class="section-number">8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
 <li><p>Write a function to demonstrate the Monty Hall problem through
 simulation. The function takes two arguments <code class="docutils literal notranslate"><span class="pre">ndoors</span></code> and
@@ -453,6 +475,27 @@ the contributions of each team member. The team leaders will be
 finalized on Tuesday, March 1.</p></li>
 </ol>
 </li>
+<li><p>Consider a subset of the <a class="reference external" href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">311 service requests data from the NYC Open
+Data</a>,
+which contains the service request created in the week from 12:00 am 01/23 to
+12 pm 01/29, 2022. The dataset in CSV format is now in our repo
+(<code class="docutils literal notranslate"><span class="pre">data/311_012322_013022.csv</span></code>).</p>
+<ol class="simple">
+<li><p>Plot the frequencies of the requests versus the hours they were created
+by borough using <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>.</p></li>
+<li><p>For those requests that are closed, visualize the time period it took to
+close them by the hours they were created.</p></li>
+<li><p>Formulate a hypothesis to test whether there is an association between
+the hours created and the time to close for the requests. State your
+hypothesis, and test it with an appropriate test, and summarize the
+result.</p></li>
+<li><p>Create a binary variable to indicate whether the time to close is longer
+than 24 hours. Note that for many requests that are still open, this
+variable can be calculated. Fit a logistic model to predict this
+variable. Interprete two of the regression coefficients.</p></li>
+<li><p>Overlay the locations of the incidents on a Google map by day.</p></li>
+</ol>
+</li>
 </ol>
 </div>
 
@@ -481,17 +524,17 @@ finalized on Tuesday, March 1.</p></li>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="models.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="randomforests.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7.3. </span>Linear and Generalized Linear Models</p>
+            <p class="prev-next-title"><span class="section-number">8.3. </span>Random Forests</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="fixedit.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>I Fixed It</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>I Fixed It</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

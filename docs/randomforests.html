@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Forests &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>8.3. Random Forests &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Exercises" href="exercises.html" />
+    <link rel="prev" title="8.2. Decision Trees" href="decisiontrees.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +89,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    1. Introduction
@@ -177,14 +179,36 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="supervised.html">
+   8. Supervised Learning
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisiontrees.html">
+     8.2. Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.3. Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
-   8. Exercises
+   9. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   9. I Fixed It
+   10. I Fixed It
   </a>
  </li>
 </ul>
@@ -280,27 +304,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installing-packages">
-   Installing Packages
+   8.3.1. Installing Packages
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-example">
-   Simple Example
+   8.3.2. Simple Example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-forest-for-classification-using-nyc-crash-data">
-   Random Forest for Classification Using NYC Crash Data
+   8.3.3. Random Forest for Classification Using NYC Crash Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-forest-model-for-regression">
-   Random Forest Model for Regression
+   8.3.4. Random Forest Model for Regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sources-and-additional-information">
-   Sources and Additional Information:
+   8.3.5. Sources and Additional Information:
   </a>
  </li>
 </ul>
@@ -325,27 +349,27 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installing-packages">
-   Installing Packages
+   8.3.1. Installing Packages
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simple-example">
-   Simple Example
+   8.3.2. Simple Example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-forest-for-classification-using-nyc-crash-data">
-   Random Forest for Classification Using NYC Crash Data
+   8.3.3. Random Forest for Classification Using NYC Crash Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-forest-model-for-regression">
-   Random Forest Model for Regression
+   8.3.4. Random Forest Model for Regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sources-and-additional-information">
-   Sources and Additional Information:
+   8.3.5. Sources and Additional Information:
   </a>
  </li>
 </ul>
@@ -358,7 +382,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="random-forests">
-<h1>Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">8.3. </span>Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h1>
 <p>Random forests are an ensemble learning method that can be used for
 classification or regression by constructing several individual
 decision trees as opposed to just one.</p>
@@ -383,7 +407,7 @@ decision trees as opposed to just one.</p>
 <li><p>Consumes more time compared to a decision tree algorithm</p></li>
 </ul>
 <div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.1. </span>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
 <p>To utilize random forests in Python, we first need to install the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package.</p>
 <ul class="simple">
 <li><p>pip: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p></li>
@@ -393,7 +417,7 @@ decision trees as opposed to just one.</p>
 done using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">python-graphviz</span></code>.</p>
 </div>
 <div class="section" id="simple-example">
-<h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.2. </span>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Configure the inline figures to svg format</span>
@@ -431,7 +455,7 @@ done using <code class="docutils literal notranslate"><span class="pre">conda</s
 </div>
 </div>
 <div class="section" id="random-forest-for-classification-using-nyc-crash-data">
-<h2>Random Forest for Classification Using NYC Crash Data<a class="headerlink" href="#random-forest-for-classification-using-nyc-crash-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.3. </span>Random Forest for Classification Using NYC Crash Data<a class="headerlink" href="#random-forest-for-classification-using-nyc-crash-data" title="Permalink to this headline">¶</a></h2>
 <p>Using the NYC Motor Vehicle Crash data, we’ll create a random forest model in order to try and
 predict whether a crash results in an injury and/or death to any person. Before fitting the model
 however, we first need to decide which features we’ll want to include in our model. For this example,
@@ -922,7 +946,9 @@ the random forest classifier, so that it’s easier to visualize the tree.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 1: 0.706266318537859
-Accuracy for Forest with Max Depth 2: 0.706266318537859
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 2: 0.706266318537859
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy for Forest with Max Depth 3: 0.706266318537859
@@ -994,7 +1020,7 @@ attribute, which we can plot in a simple bar graph.</p>
 </div>
 </div>
 <div class="section" id="random-forest-model-for-regression">
-<h2>Random Forest Model for Regression<a class="headerlink" href="#random-forest-model-for-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.4. </span>Random Forest Model for Regression<a class="headerlink" href="#random-forest-model-for-regression" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
@@ -1116,7 +1142,7 @@ attribute, which we can plot in a simple bar graph.</p>
 </div>
 </div>
 <div class="section" id="sources-and-additional-information">
-<h2>Sources and Additional Information:<a class="headerlink" href="#sources-and-additional-information" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.5. </span>Sources and Additional Information:<a class="headerlink" href="#sources-and-additional-information" title="Permalink to this headline">¶</a></h2>
 <p>https://scikit-learn.org/stable/modules/ensemble.html#forest</p>
 <p>https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76</p>
 <p>https://towardsdatascience.com/random-forest-in-python-24d0893d51c0</p>
@@ -1149,7 +1175,21 @@ attribute, which we can plot in a simple bar graph.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="decisiontrees.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8.2. </span>Decision Trees</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
