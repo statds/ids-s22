@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. I Fixed It &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>8.4. Bagging versus Boosting &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,7 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="9. Exercises" href="exercises.html" />
+    <link rel="next" title="9. Exercises" href="exercises.html" />
+    <link rel="prev" title="8.3. Random Forests" href="randomforests.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -178,16 +181,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="supervised.html">
    8. Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="decisiontrees.html">
      8.2. Decision Trees
@@ -198,8 +201,8 @@
      8.3. Random Forests
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bagging_vs_boosting.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      8.4. Bagging versus Boosting
     </a>
    </li>
@@ -210,8 +213,8 @@
    9. Exercises
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
    10. I Fixed It
   </a>
  </li>
@@ -255,11 +258,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/fixedit.ipynb"><button type="button"
+            href="../_sources/docs/bagging_vs_boosting.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/fixedit.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/bagging_vs_boosting.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -284,7 +287,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/fixedit.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/bagging_vs_boosting.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -307,36 +310,43 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#typeerror-when-trying-to-build-the-jupyter-book">
-   10.1. TypeError when trying to build the Jupyter Book
+  <a class="reference internal nav-link" href="#bagging">
+   8.4.1. Bagging
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#error-in-question">
-     10.1.1. Error in Question:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-upgrade-a-package">
-     10.1.2. Solution: Upgrade a package
+    <a class="reference internal nav-link" href="#random-forest">
+     8.4.1.1. Random Forest
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modulenotfounderror-when-importing-cartopy-into-jupyter-notebook">
-   10.2. ModuleNotFoundError when importing Cartopy into Jupyter Notebook
+  <a class="reference internal nav-link" href="#boosting">
+   8.4.2. Boosting
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     10.2.1. Error in Question
+    <a class="reference internal nav-link" href="#adaptive-boosting-adaboost">
+     8.4.2.1. Adaptive Boosting (AdaBoost)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-enter-into-a-new-environment">
-     10.2.2. Solution: Enter into a new environment
+    <a class="reference internal nav-link" href="#gradient-boosting">
+     8.4.2.2. Gradient Boosting
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stochastic-gradient-boosting">
+       8.4.2.2.1. Stochastic gradient boosting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extreme-gradient-boosting">
+       8.4.2.2.2. Extreme gradient boosting
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -350,7 +360,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>I Fixed It</h1>
+                <h1>Bagging versus Boosting</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -361,36 +371,43 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#typeerror-when-trying-to-build-the-jupyter-book">
-   10.1. TypeError when trying to build the Jupyter Book
+  <a class="reference internal nav-link" href="#bagging">
+   8.4.1. Bagging
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#error-in-question">
-     10.1.1. Error in Question:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-upgrade-a-package">
-     10.1.2. Solution: Upgrade a package
+    <a class="reference internal nav-link" href="#random-forest">
+     8.4.1.1. Random Forest
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modulenotfounderror-when-importing-cartopy-into-jupyter-notebook">
-   10.2. ModuleNotFoundError when importing Cartopy into Jupyter Notebook
+  <a class="reference internal nav-link" href="#boosting">
+   8.4.2. Boosting
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     10.2.1. Error in Question
+    <a class="reference internal nav-link" href="#adaptive-boosting-adaboost">
+     8.4.2.1. Adaptive Boosting (AdaBoost)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-enter-into-a-new-environment">
-     10.2.2. Solution: Enter into a new environment
+    <a class="reference internal nav-link" href="#gradient-boosting">
+     8.4.2.2. Gradient Boosting
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stochastic-gradient-boosting">
+       8.4.2.2.1. Stochastic gradient boosting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extreme-gradient-boosting">
+       8.4.2.2.2. Extreme gradient boosting
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -403,53 +420,136 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="i-fixed-it">
-<span id="fixedit"></span><h1><span class="section-number">10. </span>I Fixed It<a class="headerlink" href="#i-fixed-it" title="Permalink to this headline">¶</a></h1>
-<p>When something does not work as expected, be sure to read the error
-message carefully. Oftentimes, the problem has been encountered by
-others. A Google search for the quoted error message may lead to an
-existing solution.</p>
-<p>This is a collection of questions and answers during this semester,
-which could be helpful for others with the same problems.</p>
-<div class="section" id="typeerror-when-trying-to-build-the-jupyter-book">
-<h2><span class="section-number">10.1. </span>TypeError when trying to build the Jupyter Book<a class="headerlink" href="#typeerror-when-trying-to-build-the-jupyter-book" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="error-in-question">
-<h3><span class="section-number">10.1.1. </span>Error in Question:<a class="headerlink" href="#error-in-question" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TypeError: asdict() got an unexpected keyword argument &#39;value_serializer&#39;
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="bagging-versus-boosting">
+<h1><span class="section-number">8.4. </span>Bagging versus Boosting<a class="headerlink" href="#bagging-versus-boosting" title="Permalink to this headline">¶</a></h1>
+<p>An ensemble method combines multiple individual models in order to
+produce predictions with better properties. It has been reported that
+an ensemble is often more accurate than any of the single member
+in the ensemble <span id="id1">[]</span>.</p>
+<p>The bias-variance tradeoff is the key motivation. Each single model
+(learner) may have high bias or higher variance or both. An ensemble
+method seeks to reduce bias and/or variance of such weak learners by
+combining several of them together in order to create a strong learner
+(or ensemble model) that achieves better performances.</p>
+<div class="section" id="bagging">
+<h2><span class="section-number">8.4.1. </span>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">¶</a></h2>
+<p>Bagging stands for bootstrap aggregation.
+In bagging, a collection of bootstrap samples of the data in a
+training dataset are generated; a model (e.g., decision tree;
+regression) is fit to each of the bootstrap sample independently; the
+predictions of all the members in the ensemble are aggregated (e.g.,
+majority vote). Bagging reduces the variance of the final prediction
+through aggregation.</p>
+<div class="section" id="random-forest">
+<h3><span class="section-number">8.4.1.1. </span>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
+<p>Random forest is a bagging approach with decision trees as individual
+ensemble members, except that the features used for each tree are a
+random subsample of all the features. The purpose of resampling the
+features it to make the trees less dependent and more robust to
+missing data.</p>
+<p>Tuning parameters for a random forest include:</p>
+<ol class="simple">
+<li><p>number of trees;</p></li>
+<li><p>number of features;</p></li>
+<li><p>tree depth.</p></li>
+</ol>
 </div>
 </div>
-<div class="section" id="solution-upgrade-a-package">
-<h3><span class="section-number">10.1.2. </span>Solution: Upgrade a package<a class="headerlink" href="#solution-upgrade-a-package" title="Permalink to this headline">¶</a></h3>
-<p>The solution that worked for me came from this forum:
-<a class="reference external" href="https://githubhelp.com/executablebooks/sphinx-external-toc/issues/49">https://githubhelp.com/executablebooks/sphinx-external-toc/issues/49</a>.
-In the forum, it’s suggested that the package <code class="docutils literal notranslate"><span class="pre">sphinx-external-toc</span></code>
-may be outdated and the current version does not meet the requirements
-to build the book.</p>
-<p>To solve this, you can use pip to update this package. Enter the
-following into the command line:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install --upgrade sphinx-external-toc
-</pre></div>
+<div class="section" id="boosting">
+<h2><span class="section-number">8.4.2. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h2>
+<p>Boostting is a sequential approach where the training of a model
+learner at a given step applies to “residuals” from the model fitted
+at the previous steps. This way, the current step improves on data
+points where the cumulative performance is not good. Boosting produces
+an ensemble model that in general less biased than the weak learners
+that compose it.</p>
+<p>Unlike bagging, boosting cannot be done in parallel.</p>
+<p>Boosting methods differ on how they create and aggregate the weak
+learners during the sequential process.</p>
+<p>See <a class="reference external" href="https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205">Joseph Rocca’s
+post</a>;
+<a class="reference external" href="https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/">Jason Brownlee’s
+blog</a>.</p>
+<div class="section" id="adaptive-boosting-adaboost">
+<h3><span class="section-number">8.4.2.1. </span>Adaptive Boosting (AdaBoost)<a class="headerlink" href="#adaptive-boosting-adaboost" title="Permalink to this headline">¶</a></h3>
+<p>Adaptive boosting updates the weights attached to each of the training
+dataset observations. The ensemble model is a weighted sum of the weak
+learners. Instead of trying to solve it in one single shot (finding
+all the coefficients and weak learners that give the best overall
+additive model), an iterative optimisation process is that
+is much more tractable, even if it can lead to a sub-optimal solution.</p>
+<p>For illustration, consider a binary classification problem, with <span class="math notranslate nohighlight">\(N\)</span>
+observations and a given family of weak models. To initialize, all the
+observations have the same weights <span class="math notranslate nohighlight">\(1/N\)</span>. Repeat over each weak model:</p>
+<ul class="simple">
+<li><p>fit the best possible weak model with the current observations
+weights;</p></li>
+<li><p>compute the value of the update coefficient that is some kind of
+scalar evaluation metric of the weak learner that indicates how much
+this weak learner should be taken into account into the ensemble
+model;</p></li>
+<li><p>update the strong learner by adding the new weak learner multiplied
+by its update coefficient compute new observations weights that
+expresse which observations we would like to focus on at the next
+iteration (weights of observations wrongly predicted by the
+aggregated model increase and weights of the correctly predicted
+observations decrease).</p></li>
+</ul>
 </div>
-<p>In my case I had to use pip3 install, but the idea should be the
-same. Then, run <code class="docutils literal notranslate"><span class="pre">jb</span> <span class="pre">build</span> <span class="pre">.</span></code> again and the book should build without
-error. This solution worked for me so hopefully it works for anyone
-else who runs into this error!</p>
+<div class="section" id="gradient-boosting">
+<h3><span class="section-number">8.4.2.2. </span>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">¶</a></h3>
+<p>Gradient boosting updates the dataset in eaching step. It casts the
+problem into a gradient descent one: at each iteration we fit a weak
+learner to the negative gradients of the current fitting error
+(pseudo-residuals) with respect to the current ensemble model. In the
+regression setting, the negative gradient is the residual from the
+current ensemble model.</p>
+<p>For illustration, continue with the binary classification
+problem. Initialize the pseudo-residuals as the observation outcomes.
+Repeat over the following steps:</p>
+<ul class="simple">
+<li><p>fit the best possible weak learner to pseudo-residuals (approximate
+the negative gradients with respect to the current strong learner);</p></li>
+<li><p>compute the value of the optimal step size that defines by how much
+we update the ensemble model in the direction of the new weak
+learner;</p></li>
+<li><p>update the ensemble model by adding the new weak learner multiplied
+by the step size (make a step of gradient descent);</p></li>
+<li><p>compute new pseudo-residuals that indicate, for each observation, in
+which direction we would like to update next the ensemble model
+predictions.</p></li>
+</ul>
+<p>Gradient boosting uses a gradient descent approach and can be easily
+adapted to a large number of loss functions. It can be considered as a
+generalization of adaboost to arbitrary differentiable loss functions.</p>
+<div class="section" id="stochastic-gradient-boosting">
+<h4><span class="section-number">8.4.2.2.1. </span>Stochastic gradient boosting<a class="headerlink" href="#stochastic-gradient-boosting" title="Permalink to this headline">¶</a></h4>
+<p>Stochastic gradient boosting (SGD) is a stochastic version of gradient
+boosting. At each iteration, a subsample of the training data is drawn
+at random (without replacement) from the full training dataset. The
+randomly selected subsample is then used, instead of the full sample,
+to fit the base learner. It reduce the dependence between the trees
+in the sequence in gradient boosting models.</p>
 </div>
+<div class="section" id="extreme-gradient-boosting">
+<h4><span class="section-number">8.4.2.2.2. </span>Extreme gradient boosting<a class="headerlink" href="#extreme-gradient-boosting" title="Permalink to this headline">¶</a></h4>
+<p>Extreme gradient boosting is a specific implementation of the gradient
+boosting method which uses more accurate approximations to find the
+best tree model. It employs a number of nifty tricks that make it
+exceptionally successful, particularly with structured data.</p>
+<ul class="simple">
+<li><p>computing second-order gradients, i.e. second partial derivatives of
+the loss function (similar to Newton’s method), which provides more
+information about the direction of gradients and how to get to the
+minimum of our loss function. While regular gradient boosting uses
+the loss function of our base model (e.g. decision tree) as a proxy
+for minimizing the error of the overall model, XGBoost uses the 2nd
+order derivative as an approximation.</p></li>
+<li><p>advanced regularization (L1 &amp; L2), which improves model
+generalization.</p></li>
+<li><p>parallelized.</p></li>
+</ul>
 </div>
-<div class="section" id="modulenotfounderror-when-importing-cartopy-into-jupyter-notebook">
-<h2><span class="section-number">10.2. </span>ModuleNotFoundError when importing Cartopy into Jupyter Notebook<a class="headerlink" href="#modulenotfounderror-when-importing-cartopy-into-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3><span class="section-number">10.2.1. </span>Error in Question<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes when importing Cartopy into jupyter notebook after installing it, we will have an error message:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ModuleNotFoundError: No module named &#39;cartopy&#39;
-</pre></div>
-</div>
-<p>This might be due to a conflict between different environments.</p>
-</div>
-<div class="section" id="solution-enter-into-a-new-environment">
-<h3><span class="section-number">10.2.2. </span>Solution: Enter into a new environment<a class="headerlink" href="#solution-enter-into-a-new-environment" title="Permalink to this headline">¶</a></h3>
-<p>The simplest way is to use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">base</span></code> to enter into the base environment of conda and reinstall Cartopy into that environment. (Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">cartopy</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pip</span></code>. <code class="docutils literal notranslate"><span class="pre">pip</span></code> won’t install all the required dependencies of Cartopy so it will be a mess.) Then you can launch Jupyter Notebook in that environment and hopefully Cartopy can be imported now.</p>
 </div>
 </div>
 </div>
@@ -479,12 +579,19 @@ else who runs into this error!</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="exercises.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="randomforests.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Exercises</p>
+            <p class="prev-next-title"><span class="section-number">8.3. </span>Random Forests</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

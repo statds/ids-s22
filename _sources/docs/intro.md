@@ -178,6 +178,7 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Package cartopy/basemap (Th, Feb. 10: Sam Hughes)
     - Package plotnine (ggplot2 equivalent) (Tu. Feb. 15: Mathew Chandy)
     - Google Maps Plot (Thurs. Feb 17: Robbie Shamirian)
+    - Handling spatial data
 + Statistical tests and models
     - Desribing statistical models with package `patsy`  (Th. Feb. 17:
       Anthony Zeimbekakis) 
