@@ -89,10 +89,33 @@ algorithm, where each row of the matrix represents the instances in an actual
 class while each column represents the instances in a predicted class, or vice
 versa.
 
-+ True positive
-+ False positive
-+ True negative
-+ False negative
++ True positive (TP)
++ False positive (FP)
++ True negative (TN)
++ False negative (FN)
+
+Metrics for evaluating classification:
+
++ Precision:
+  $$\frac{\text{TP}}{\text{TP} + \text{FP}}$$
++ Recall (sensitivity):
+  $$\frac{\textt{TP}}{\text{TP} + \text{FP}}$$
++ F-beta score:
+  $$(1 + \beta^2) \frac{1}{\frac{\beta^2}{\text{recall}} +
+  \frac{1}{\text{recision}}}$$
+  where $\beta$ means that recall is considered $\beta$ times as important as
+  precision. When $\beta = 1$, the two are considered equally important.
+
+
+From Wiki:
+
+> In a classification task, a precision score of 1.0 for a class C means that
+> every item labelled as belonging to class C does indeed belong to class C (but
+> says nothing about the number of items from class C that were not labelled
+> correctly) whereas a recall of 1.0 means that every item from class C was
+> labelled as belonging to class C (but says nothing about how many items from
+> other classes were incorrectly also labelled as belonging to class C). 
+
 
 ## Simple Classification Example
 

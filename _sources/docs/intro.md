@@ -217,7 +217,7 @@ Date    | Presenter            | Topic
 03/10 | Thalia Taffe | Nearest neighbor
 03/10 | Ben Campman | Markown Basics
 03/22 | Zhenyu Xu | K-means clustering
-03/22 | Juncheng Zheng |Neural networks
+03/22 | Juncheng Zheng | Neural networks
 
 
 
