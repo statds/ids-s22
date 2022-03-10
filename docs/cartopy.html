@@ -461,7 +461,8 @@ for detailed instructions.</p>
 </div>
 <div class="section" id="basic-plot">
 <h2><span class="section-number">6.3.1. </span>Basic Plot<a class="headerlink" href="#basic-plot" title="Permalink to this headline">¶</a></h2>
-<p>To create a cartopy plot, simply set a variable (m for map) to <code class="docutils literal notranslate"><span class="pre">plt.axes()</span></code> with a projection argument. Then add coastlines so the graph has a visible element.</p>
+<p>To create a cartopy plot, simply set a variable (m for map) to <code class="docutils literal notranslate"><span class="pre">plt.axes()</span></code> with a projection argument.
+Then add coastlines so the graph has a visible element.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
@@ -470,7 +471,7 @@ for detailed instructions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7fb7c069a520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f16ac994790&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_coastline.zip
@@ -483,7 +484,8 @@ for detailed instructions.</p>
 </div>
 <div class="section" id="advanced-graph">
 <h2><span class="section-number">6.3.2. </span>Advanced Graph<a class="headerlink" href="#advanced-graph" title="Permalink to this headline">¶</a></h2>
-<p>By using <code class="docutils literal notranslate"><span class="pre">add_feature</span></code>, we can add more geographic information to our graph. <code class="docutils literal notranslate"><span class="pre">gridlines</span></code> will add longitude and latitude lines to the graph.</p>
+<p>By using <code class="docutils literal notranslate"><span class="pre">add_feature</span></code>, we can add more geographic information to our graph.
+<code class="docutils literal notranslate"><span class="pre">gridlines</span></code> will add longitude and latitude lines to the graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
@@ -501,7 +503,7 @@ for detailed instructions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.gridliner.Gridliner at 0x7fb786971e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.gridliner.Gridliner at 0x7f1672c6ee50&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/mpl/gridliner.py:549: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
@@ -511,7 +513,9 @@ for detailed instructions.</p>
 &lt;__array_function__ internals&gt;:180: ShapelyDeprecationWarning: The array interface is deprecated and will no longer work in Shapely 2.0. Convert the &#39;.coords&#39; to a numpy array instead.
 /home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/numpy/lib/function_base.py:5392: ShapelyDeprecationWarning: The array interface is deprecated and will no longer work in Shapely 2.0. Convert the &#39;.coords&#39; to a numpy array instead.
   return concatenate((arr, values), axis=axis)
-/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip
   warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
 /home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_ocean.zip
   warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
@@ -519,15 +523,19 @@ for detailed instructions.</p>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
   warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
-/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning: facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning: facecolor will have no effect as it has been defined as &quot;never&quot;.
   warnings.warn(&#39;facecolor will have no effect as it has been &#39;
-/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_lakes.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_lakes.zip
   warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
 /home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_rivers_lake_centerlines.zip
   warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
 </pre></div>
 </div>
-<img alt="../_images/cartopy_5_3.png" src="../_images/cartopy_5_3.png" />
+<img alt="../_images/cartopy_5_6.png" src="../_images/cartopy_5_6.png" />
 </div>
 </div>
 </div>
@@ -567,7 +575,9 @@ for detailed instructions.</p>
 </div>
 <div class="section" id="plotting-specific-locations">
 <h2><span class="section-number">6.3.4. </span>Plotting Specific Locations<a class="headerlink" href="#plotting-specific-locations" title="Permalink to this headline">¶</a></h2>
-<p>If you only want to plot a certain area of the map, you can specify <code class="docutils literal notranslate"><span class="pre">set_extent</span></code>. To do this, specify a list of points <code class="docutils literal notranslate"><span class="pre">[lowest</span> <span class="pre">longitude,</span> <span class="pre">highest</span> <span class="pre">longitude,</span> <span class="pre">lowest</span> <span class="pre">latidude,</span> <span class="pre">highest</span> <span class="pre">latitude]</span></code> as well as the projection (optionally).</p>
+<p>If you only want to plot a certain area of the map, you can specify <code class="docutils literal notranslate"><span class="pre">set_extent</span></code>.
+To do this, specify a list of points <code class="docutils literal notranslate"><span class="pre">[lowest</span> <span class="pre">longitude,</span> <span class="pre">highest</span> <span class="pre">longitude,</span> <span class="pre">lowest</span> <span class="pre">latidude,</span> <span class="pre">highest</span> <span class="pre">latitude]</span></code>
+as well as the projection (optionally).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
@@ -580,7 +590,7 @@ for detailed instructions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7fb7867c8d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f1672b98b80&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_1_states_provinces_lakes.zip
@@ -597,7 +607,8 @@ for detailed instructions.</p>
 </div>
 <div class="section" id="reading-shape-files">
 <h2><span class="section-number">6.3.5. </span>Reading Shape Files<a class="headerlink" href="#reading-shape-files" title="Permalink to this headline">¶</a></h2>
-<p>If you would like to plot one area without the adjacent landscape, you can use a shape file via <code class="docutils literal notranslate"><span class="pre">Reader</span></code> from <code class="docutils literal notranslate"><span class="pre">cartopy.io.shapereader</span></code>.</p>
+<p>If you would like to plot one area without the adjacent landscape,
+you can use a shape file via <code class="docutils literal notranslate"><span class="pre">Reader</span></code> from <code class="docutils literal notranslate"><span class="pre">cartopy.io.shapereader</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get shape file</span>
@@ -617,7 +628,7 @@ for detailed instructions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7fb78663fa00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f1672a38a30&gt;
 </pre></div>
 </div>
 <img alt="../_images/cartopy_11_1.png" src="../_images/cartopy_11_1.png" />
@@ -643,7 +654,7 @@ for detailed instructions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7fb7866e7550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f1672a56610&gt;
 </pre></div>
 </div>
 <img alt="../_images/cartopy_13_1.png" src="../_images/cartopy_13_1.png" />
@@ -846,7 +857,8 @@ for detailed instructions.</p>
 <img alt="../_images/cartopy_17_1.png" src="../_images/cartopy_17_1.png" />
 </div>
 </div>
-<p>Some points have the coordinates <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> so we need to remove them from the dataset. We can also remove the rows in which the longitude/latitude data is missing.</p>
+<p>Some points have the coordinates <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> so we need to remove them from the dataset.
+We can also remove the rows in which the longitude/latitude data is missing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop rows with longitude == 0</span>
@@ -1145,7 +1157,7 @@ memory usage: 1.7+ MB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7fb7865a4b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f166ae476d0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip

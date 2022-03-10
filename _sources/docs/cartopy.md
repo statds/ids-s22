@@ -60,7 +60,8 @@ import seaborn as sns
 
 ## Basic Plot
 
-To create a cartopy plot, simply set a variable (m for map) to `plt.axes()` with a projection argument. Then add coastlines so the graph has a visible element.
+To create a cartopy plot, simply set a variable (m for map) to `plt.axes()` with a projection argument. 
+Then add coastlines so the graph has a visible element.
 
 ```{code-cell} ipython3
 m = plt.axes(projection=ccrs.PlateCarree())
@@ -69,7 +70,8 @@ m.coastlines()
 
 ## Advanced Graph
 
-By using `add_feature`, we can add more geographic information to our graph. `gridlines` will add longitude and latitude lines to the graph.
+By using `add_feature`, we can add more geographic information to our graph. 
+`gridlines` will add longitude and latitude lines to the graph.
 
 ```{code-cell} ipython3
 plt.figure(figsize=(16,12))
@@ -107,7 +109,9 @@ for index, projection in enumerate(projections.items()):
 
 ## Plotting Specific Locations
 
-If you only want to plot a certain area of the map, you can specify `set_extent`. To do this, specify a list of points `[lowest longitude, highest longitude, lowest latidude, highest latitude]` as well as the projection (optionally).
+If you only want to plot a certain area of the map, you can specify `set_extent`. 
+To do this, specify a list of points `[lowest longitude, highest longitude, lowest latidude, highest latitude]` 
+as well as the projection (optionally).
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(14, 14))
@@ -120,7 +124,8 @@ m.coastlines()
 
 ## Reading Shape Files
 
-If you would like to plot one area without the adjacent landscape, you can use a shape file via `Reader` from `cartopy.io.shapereader`.
+If you would like to plot one area without the adjacent landscape, 
+you can use a shape file via `Reader` from `cartopy.io.shapereader`.
 
 ```{code-cell} ipython3
 # get shape file
@@ -172,7 +177,8 @@ As we can see from the plot below, there are some issues with our dataset.
 sns.scatterplot(x="LONGITUDE", y="LATITUDE", data=df, hue = "BOROUGH")
 ```
 
-Some points have the coordinates `(0, 0)` so we need to remove them from the dataset. We can also remove the rows in which the longitude/latitude data is missing.
+Some points have the coordinates `(0, 0)` so we need to remove them from the dataset. 
+We can also remove the rows in which the longitude/latitude data is missing.
 
 ```{code-cell} ipython3
 # drop rows with longitude == 0
