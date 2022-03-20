@@ -71,7 +71,6 @@ the school district map, colored by population.
 path = gplt.datasets.get_path("usa_cities")
 usa_cities = gpd.read_file(path)
 ct_cities = usa_cities[usa_cities.STATE=="CT"]
-ct_d = d[d.STATEFP=="09"]
 
 ax = gplt.polyplot(ct_d)
 gplt.pointplot(ct_cities,
@@ -144,4 +143,8 @@ Alternately, we can use can use the `gplt.kdeplot` function to create a heatmap 
 ax = gplt.polyplot(boroughs)
 gplt.kdeplot(geocrash, cmap="Reds", shade=True, 
              clip=boroughs, ax=ax)
+```
+
+```python
+
 ```
