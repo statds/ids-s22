@@ -24,6 +24,7 @@ chapters:
   sections:
   - file: docs/decisiontrees
   - file: docs/randomforests
+  - file: docs/bagging_vs_boosting
   - file: docs/mysvm
 - file: docs/exercises
 - file: docs/fixedit
