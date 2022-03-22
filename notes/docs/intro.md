@@ -178,6 +178,7 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Package cartopy/basemap (Th, Feb. 10: Sam Hughes)
     - Package plotnine (ggplot2 equivalent) (Tu. Feb. 15: Mathew Chandy)
     - Google Maps Plot (Thurs. Feb 17: Robbie Shamirian)
+    - Handling spatial data
 + Statistical tests and models
     - Desribing statistical models with package `patsy`  (Th. Feb. 17:
       Anthony Zeimbekakis) 
@@ -215,9 +216,9 @@ Date    | Presenter            | Topic
 03/01 | Peter Busa           | support vector machine
 03/03 | Sinchan Sharma  | Random forest
 03/10 | Thalia Taffe | Nearest neighbor
-03/10 |  | 
+03/10 | Ben Campman | Markown Basics
 03/22 | Zhenyu Xu | K-means clustering
-03/22 | Juncheng Zheng |Neural networks
+03/22 | Juncheng Zheng | Neural networks
 
 
 

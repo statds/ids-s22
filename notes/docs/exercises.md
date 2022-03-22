@@ -156,4 +156,22 @@ kernelspec:
        the contributions of each team member. The team leaders will be
        finalized on Tuesday, March 1.
 
+1. Consider a subset of the [311 service requests data from the NYC Open
+   Data](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9),
+   which contains the service request created in the week from 12:00 am 01/23 to
+   12 pm 01/29, 2022. The dataset in CSV format is now in our repo
+   (`data/311_012322_013022.csv`).
+    1. Plot the frequencies of the requests versus the hours they were created
+      by borough using `plotnine`.
+    1. For those requests that are closed, visualize the time period it took to
+       close them by the hours they were created.
+    1. Formulate a hypothesis to test whether there is an association between
+       the hours created and the time to close for the requests. State your
+       hypothesis, and test it with an appropriate test, and summarize the
+       result.
+    1. Create a binary variable to indicate whether the time to close is longer
+       than 24 hours. Note that for many requests that are still open, this
+       variable can be calculated. Fit a logistic model to predict this
+       variable. Interprete two of the regression coefficients.
+    1. Overlay the locations of the incidents on a Google map by day.
 	   
