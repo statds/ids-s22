@@ -660,7 +660,7 @@ for all i</p></li>
 <p>For simplicity, we can consider “longitude” and “latitude” as the covariates,
 so it is reasonable to omit those data points without “location” values. Note that
 the “borough” variable is also concluded in the subset, but this is only for comparison,
-and we are still in the unsupervised framework.</p>
+and we are still under the unsupervised framework.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change data points with latitude and longitude (0,0) into (nan,nan)</span>
@@ -685,7 +685,7 @@ and we are still in the unsupervised framework.</p>
 </div>
 </div>
 </div>
-<p>We first plot the locations by their true borough.</p>
+<p>We first plot their locations by the true borough.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
@@ -705,10 +705,8 @@ and we are still in the unsupervised framework.</p>
 </div>
 <div class="section" id="training-k-means">
 <h3><span class="section-number">9.3.2. </span>Training K-means<a class="headerlink" href="#training-k-means" title="Permalink to this headline">¶</a></h3>
-<p>Now let’s pretend we do not know the true borough of the data,
-and try to predict it with their longitude and latitude.
-Several parameters can be modified in the algorithm, see
-https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</p>
+<p>Now let’s pretend we do not know the true borough of each data point,
+and try to predict it with their longitude and latitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
@@ -724,10 +722,12 @@ https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</p
 </div>
 </div>
 </div>
+<p>Several parameters can be modified in the algorithm, see
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</a></p>
 </div>
 <div class="section" id="results">
 <h3><span class="section-number">9.3.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
-<p>The final predicted centroids can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.cluster_centers_</span></code>.</p>
+<p>The predicted centroids can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.cluster_centers_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
@@ -739,14 +739,14 @@ https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-73.8023004   40.7054554 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-74.13509191  40.59366043]
+ [-73.8023004   40.7054554 ]
  [-73.94633618  40.74074484]
- [-73.89130818  40.84418593]
- [-74.13509191  40.59366043]
- [-73.95188602  40.64601217]]
+ [-73.95188602  40.64601217]
+ [-73.89130818  40.84418593]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc2b1920a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f38a49dd130&gt;
 </pre></div>
 </div>
 <img alt="../_images/k_means_clustering_10_2.png" src="../_images/k_means_clustering_10_2.png" />
@@ -794,7 +794,7 @@ This is reasonable since K-means only minimizes within-cluster variances (square
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 1], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -810,10 +810,13 @@ but there are still some disadvantages.</p>
 In the above problem, we use default parameters <code class="docutils literal notranslate"><span class="pre">init='k-means++'</span></code> and <code class="docutils literal notranslate"><span class="pre">n_init</span> <span class="pre">=</span> <span class="pre">10</span></code>
 to avoid local minimums. See
 <a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
-<li><p>The number K is another important parameter in the algorithm. In our problem we just use <code class="docutils literal notranslate"><span class="pre">k=5</span></code> because
+<li><p>The number K is another important parameter in the algorithm. In our problem we just use <code class="docutils literal notranslate"><span class="pre">k=5</span></code>   because
 there are 5 boroughs in the New York city, but in pratice this can be more complicated.
-A plot of “elbow curve” can be used to determine K. Also see
+A plot of “elbow curve” can be used to determine K. See
 <a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
+<li><p>In cases where the underlying clusters are non-spherical, K-means will perform badly. In such cases,
+the algorithms can be run with “kernel methods”. See
+<a class="reference external" href="https://medium.com/udemy-engineering/understanding-k-means-clustering-and-kernel-methods-afad4eec3c11">https://medium.com/udemy-engineering/understanding-k-means-clustering-and-kernel-methods-afad4eec3c11</a></p></li>
 </ul>
 </div>
 </div>
