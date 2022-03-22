@@ -27,7 +27,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 job_app_data = pd.read_csv("nyc_DobJobApp_2021.csv")
 
-job_app_data = job_app_data[['Doc #', 'Borough', 'Block', 'Proposed Height', 'Job Status']]
+job_app_data = job_app_data[['Doc #', 'Borough', 'Job Status']]
 
 job_app_data['Borough'].replace(['MANHATTAN', 'BRONX', 'BROOKLYN', 'QUEENS', 'STATEN ISLAND'], [1,2,3,4,5], inplace=True)
 
@@ -49,12 +49,12 @@ print(classification_report(y_test))
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3345/3428929094.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3362/3998186814.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      7[0m [0;34m[0m[0m
 [1;32m      8[0m [0;34m[0m[0m
 [0;32m----> 9[0;31m [0mjob_app_data[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m"nyc_DobJobApp_2021.csv"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m     10[0m [0;34m[0m[0m
-[1;32m     11[0m [0mjob_app_data[0m [0;34m=[0m [0mjob_app_data[0m[0;34m[[0m[0;34m[[0m[0;34m'Doc #'[0m[0;34m,[0m [0;34m'Borough'[0m[0;34m,[0m [0;34m'Block'[0m[0;34m,[0m [0;34m'Proposed Height'[0m[0;34m,[0m [0;34m'Job Status'[0m[0;34m][0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m     11[0m [0mjob_app_data[0m [0;34m=[0m [0mjob_app_data[0m[0;34m[[0m[0;34m[[0m[0;34m'Doc #'[0m[0;34m,[0m [0;34m'Borough'[0m[0;34m,[0m [0;34m'Job Status'[0m[0;34m][0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m~/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/pandas/util/_decorators.py[0m in [0;36mwrapper[0;34m(*args, **kwargs)[0m
 [1;32m    309[0m                     [0mstacklevel[0m[0;34m=[0m[0mstacklevel[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m

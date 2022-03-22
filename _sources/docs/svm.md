@@ -109,7 +109,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 job_app_data = pd.read_csv("nyc_DobJobApp_2021.csv")
 
-job_app_data = job_app_data[['Doc #', 'Borough', 'Block', 'Proposed Height', 'Job Status']]
+job_app_data = job_app_data[['Doc #', 'Borough', 'Job Status']]
 
 job_app_data['Borough'].replace(['MANHATTAN', 'BRONX', 'BROOKLYN', 'QUEENS', 'STATEN ISLAND'], [1,2,3,4,5], inplace=True)
 
