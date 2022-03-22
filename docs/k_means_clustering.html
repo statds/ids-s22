@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. K-means Clustering &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Exercises" href="exercises.html" />
+    <link rel="prev" title="8.4. Bagging versus Boosting" href="bagging_vs_boosting.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   2. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   3. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   4. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   5. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   6. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     6.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     6.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     6.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     6.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     6.5. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="statmodels.html">
+   7. Statistical Tests and Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="patsy.html">
+     7.1. Describing Models with Patsy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tests.html">
+     7.2. Hypothesis Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models.html">
+     7.3. Linear and Generalized Linear Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="supervised.html">
+   8. Supervised Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisiontrees.html">
+     8.2. Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforests.html">
+     8.3. Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bagging_vs_boosting.html">
+     8.4. Bagging versus Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. K-means Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   10. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   11. I Fixed It
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/k_means_clustering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/k_means_clustering.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/k_means_clustering.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lloyd-s-algorithm">
+   9.1. Lloyd’s algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   9.2. Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nyc-crash-data">
+   9.3. NYC crash data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-cleaning">
+     9.3.1. Data Cleaning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-k-means">
+     9.3.2. Training K-means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     9.3.3. Results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction">
+     9.3.4. Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comment">
+   9.4. Comment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>K-means Clustering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lloyd-s-algorithm">
+   9.1. Lloyd’s algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   9.2. Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nyc-crash-data">
+   9.3. NYC crash data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-cleaning">
+     9.3.1. Data Cleaning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-k-means">
+     9.3.2. Training K-means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     9.3.3. Results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction">
+     9.3.4. Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comment">
+   9.4. Comment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="k-means-clustering">
+<span id="id1"></span><h1><span class="section-number">9. </span>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h1>
+<p>So far, we have learned a lot of supervised learning algorithms (eg., Decision Tree, Random Forest),
+in which labelled or known outcomes are given. In contrast, unsupervised learning uses unlabeled data
+to discover patterns that help solve for clustering or association problems, and K-means clustering
+is one of the simplest and most popular unsupervised learning algorithms.</p>
+<p>From wiki:</p>
+<blockquote>
+<div><p>Given a set of observations <span class="math notranslate nohighlight">\((\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_n)\)</span>,
+where each observation is a d-dimensional real vector, k-means clustering aims to
+partition the n observations into k (≤ n) sets <span class="math notranslate nohighlight">\(\boldsymbol{S} = \{S_1, S_2, \dots, S_k\}\)</span>
+so as to minimize the within-cluster sum of squares (WCSS) (i.e. variance).
+Formally, the objective is to find:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\underset{S}{\mathrm{argmin}} 
+\sum_{i=1}^{k}\sum_{\boldsymbol{x}\in S_i} \left\|\boldsymbol{x}-\boldsymbol{\mu}_i \right\|^2
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_i\)</span> is the mean of points in <span class="math notranslate nohighlight">\(S_i\)</span>.</p>
+</div></blockquote>
+<div class="section" id="lloyd-s-algorithm">
+<h2><span class="section-number">9.1. </span>Lloyd’s algorithm<a class="headerlink" href="#lloyd-s-algorithm" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Initialize <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_i\)</span> randomly</p></li>
+<li><p>Alternate:</p>
+<ul class="simple">
+<li><p>assignment: <span class="math notranslate nohighlight">\(S_i\)</span> &lt;- <span class="math notranslate nohighlight">\(\underset{S}{\mathrm{argmin}}
+\sum_{i=1}^{k}\sum_{\boldsymbol{x}\in S_i} \left\|\boldsymbol{x}-\boldsymbol{\mu}_i \right\|^2\)</span>
+for all i</p></li>
+<li><p>update: <span class="math notranslate nohighlight">\(\mu_i\)</span> &lt;- <span class="math notranslate nohighlight">\(\frac{1}{|S_i|}\sum_{\boldsymbol{x}_j\in S_i}{\boldsymbol{x}_j}\)</span></p></li>
+</ul>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">iter</span> <span class="pre">=</span> <span class="pre">max_iter</span></code> or when the assignments do not change, algorithm terminates</p></li>
+</ol>
+<p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/K-means_clustering#Gaussian_mixture_model">https://en.wikipedia.org/wiki/K-means_clustering#Gaussian_mixture_model</a></p>
+</div>
+<div class="section" id="implementation">
+<h2><span class="section-number">9.2. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Like many other popular algorithms, K-means can also be implemented by importing the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package</p>
+</div>
+<div class="section" id="nyc-crash-data">
+<h2><span class="section-number">9.3. </span>NYC crash data<a class="headerlink" href="#nyc-crash-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv&#39;</span>
+<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRASH DATE</th>
+      <th>CRASH TIME</th>
+      <th>BOROUGH</th>
+      <th>ZIP CODE</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>LOCATION</th>
+      <th>ON STREET NAME</th>
+      <th>CROSS STREET NAME</th>
+      <th>OFF STREET NAME</th>
+      <th>...</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 2</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 3</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 4</th>
+      <th>CONTRIBUTING FACTOR VEHICLE 5</th>
+      <th>COLLISION_ID</th>
+      <th>VEHICLE TYPE CODE 1</th>
+      <th>VEHICLE TYPE CODE 2</th>
+      <th>VEHICLE TYPE CODE 3</th>
+      <th>VEHICLE TYPE CODE 4</th>
+      <th>VEHICLE TYPE CODE 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01/01/2022</td>
+      <td>7:05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>EAST 128 STREET</td>
+      <td>3 AVENUE BRIDGE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491172</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01/01/2022</td>
+      <td>14:43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.769993</td>
+      <td>-73.915825</td>
+      <td>(40.769993, -73.915825)</td>
+      <td>GRAND CENTRAL PKWY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491406</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01/01/2022</td>
+      <td>21:20</td>
+      <td>QUEENS</td>
+      <td>11414.0</td>
+      <td>40.657230</td>
+      <td>-73.841380</td>
+      <td>(40.65723, -73.84138)</td>
+      <td>91 STREET</td>
+      <td>160 AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491466</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01/01/2022</td>
+      <td>4:30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Southern parkway</td>
+      <td>Jfk expressway</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491626</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01/01/2022</td>
+      <td>7:57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>WESTCHESTER AVENUE</td>
+      <td>SHERIDAN EXPRESSWAY</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4491734</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="data-cleaning">
+<h3><span class="section-number">9.3.1. </span>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h3>
+<p>For simplicity, we can consider “longitude” and “latitude” as the covariates,
+so it is reasonable to omit those data points without “location” values. Note that
+the “borough” variable is also concluded in the subset, but this is only for comparison,
+and we are still in the unsupervised framework.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change data points with latitude and longitude (0,0) into (nan,nan)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># create a subset</span>
+<span class="n">my_nyc</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">(),</span> 
+                       <span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;BOROUGH&quot;</span><span class="p">]]</span>
+<span class="n">my_nyc</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span>
+<span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+
+<span class="c1"># make sure bad latitude values are all removed now</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first plot the locations by their true borough.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
+                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;longitude&#39;, ylabel=&#39;latitude&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/k_means_clustering_6_1.png" src="../_images/k_means_clustering_6_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="training-k-means">
+<h3><span class="section-number">9.3.2. </span>Training K-means<a class="headerlink" href="#training-k-means" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s pretend we do not know the true borough of the data,
+and try to predict it with their longitude and latitude.
+Several parameters can be modified in the algorithm, see
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="n">Kmean</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Kmean</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">my_nyc</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KMeans(n_clusters=5)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="results">
+<h3><span class="section-number">9.3.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>The final predicted centroids can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.cluster_centers_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-73.89130818  40.84418593]
+ [-73.94633618  40.74074484]
+ [-74.13509191  40.59366043]
+ [-73.95188602  40.64601217]
+ [-73.8023004   40.7054554 ]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff32630f460&gt;
+</pre></div>
+</div>
+<img alt="../_images/k_means_clustering_10_2.png" src="../_images/k_means_clustering_10_2.png" />
+</div>
+</div>
+<p>The trained labels can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.labels_</span></code>, and now we can compare them to the true values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                        <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
+                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
+            <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
+                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;pred_label&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;longitude&#39;, ylabel=&#39;latitude&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/k_means_clustering_12_1.png" src="../_images/k_means_clustering_12_1.png" />
+</div>
+</div>
+<p>The algorithm seems to be good yet there are several “misclassified” data, mainly in cluster #4 (“Manhatten”).
+This is reasonable since K-means only minimizes within-cluster variances (squared Euclidean distances).</p>
+</div>
+<div class="section" id="prediction">
+<h3><span class="section-number">9.3.4. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
+<p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">Kmean.predict</span></code> to predict which cluster they belong to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_test</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">74</span><span class="p">,</span> <span class="mf">40.75</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.7</span><span class="p">,</span> <span class="mf">40.8</span><span class="p">]])</span>
+<span class="n">new_data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sample_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+
+<span class="n">Kmean</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 4], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comment">
+<h2><span class="section-number">9.4. </span>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
+<p>K-means is a powerful unsupervised clustering algorithm that can be easily understood and implemented,
+but there are still some disadvantages.</p>
+<ul class="simple">
+<li><p>The algorithm is extremly sensitive to the choice of initial cluster centroids.
+In the above problem, we use default parameters <code class="docutils literal notranslate"><span class="pre">init='k-means++'</span></code> and <code class="docutils literal notranslate"><span class="pre">n_init</span> <span class="pre">=</span> <span class="pre">10</span></code>
+to avoid local minimums. See
+<a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
+<li><p>The number K is another important parameter in the algorithm. In our problem we just use <code class="docutils literal notranslate"><span class="pre">k=5</span></code> because
+there are 5 boroughs in the New York city, but in pratice this can be more complicated.
+A plot of “elbow curve” can be used to determine K. Also see
+<a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="bagging_vs_boosting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8.4. </span>Bagging versus Boosting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
