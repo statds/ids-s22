@@ -71,7 +71,7 @@ nyc_crash.head()
 For simplicity, we can consider "longitude" and "latitude" as the covariates, 
 so it is reasonable to omit those data points without "location" values. Note that 
 the "borough" variable is also concluded in the subset, but this is only for comparison, 
-and we are still in the unsupervised framework.
+and we are still under the unsupervised framework.
 
 
 ```{code-cell} ipython3
@@ -89,7 +89,7 @@ print(my_nyc["longitude"].isna().sum())
 print(my_nyc["latitude"].isna().sum())
 ```
 
-We first plot the locations by their true borough.
+We first plot their locations by the true borough.
 
 
 ```{code-cell} ipython3
@@ -101,10 +101,8 @@ sns.scatterplot(x="longitude", y="latitude", data=my_nyc,
 
 ### Training K-means
 
-Now let's pretend we do not know the true borough of the data, 
+Now let's pretend we do not know the true borough of each data point, 
 and try to predict it with their longitude and latitude. 
-Several parameters can be modified in the algorithm, see
-https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 
 
 ```{code-cell} ipython3
@@ -114,10 +112,13 @@ Kmean = KMeans(n_clusters = 5)
 Kmean.fit(my_nyc.loc[:,["longitude","latitude"]])
 
 ```
+Several parameters can be modified in the algorithm, see
+<https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html>
+
 
 ### Results
 
-The final predicted centroids can be obtained by `Kmean.cluster_centers_`.
+The predicted centroids can be obtained by `Kmean.cluster_centers_`.
 
 
 ```{code-cell} ipython3
@@ -172,8 +173,12 @@ but there are still some disadvantages.
   to avoid local minimums. See 
   <https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.>
   
-- The number K is another important parameter in the algorithm. In our problem we just use `k=5` because 
+- The number K is another important parameter in the algorithm. In our problem we just use `k=5`   because 
   there are 5 boroughs in the New York city, but in pratice this can be more complicated.
-  A plot of "elbow curve" can be used to determine K. Also see
+  A plot of "elbow curve" can be used to determine K. See
   <https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.>
+  
+- In cases where the underlying clusters are non-spherical, K-means will perform badly. In such cases, 
+  the algorithms can be run with "kernel methods". See
+  <https://medium.com/udemy-engineering/understanding-k-means-clustering-and-kernel-methods-afad4eec3c11>
   
