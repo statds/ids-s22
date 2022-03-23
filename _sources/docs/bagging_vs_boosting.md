@@ -46,7 +46,6 @@ features it to make the trees less dependent and more robust to
 missing data.
 
 Tuning parameters for a random forest include:
-
 1. number of trees;
 1. number of features;
 1. tree depth.
@@ -76,14 +75,13 @@ Adaptive boosting updates the weights attached to each of the training
 dataset observations. The ensemble model is a weighted sum of the weak
 learners. Instead of trying to solve it in one single shot (finding
 all the coefficients and weak learners that give the best overall
-additive model), an iterative optimisation process is that
-is much more tractable, even if it can lead to a sub-optimal solution.
+additive model), an iterative optimisation process is
+much more tractable, even if it can lead to a sub-optimal solution.
 
 
 For illustration, consider a binary classification problem, with $N$
 observations and a given family of weak models. To initialize, all the
 observations have the same weights $1/N$. Repeat over each weak model:
-
 + fit the best possible weak model with the current observations
   weights;
 + compute the value of the update coefficient that is some kind of
@@ -91,7 +89,8 @@ observations have the same weights $1/N$. Repeat over each weak model:
   this weak learner should be taken into account into the ensemble
   model;
 + update the strong learner by adding the new weak learner multiplied
-  by its update coefficient compute new observations weights that
+  by its update coefficient;
++ compute new observations weights that
   expresse which observations we would like to focus on at the next
   iteration (weights of observations wrongly predicted by the
   aggregated model increase and weights of the correctly predicted
