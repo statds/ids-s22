@@ -202,23 +202,53 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Using R from Python and vice versa
     - Building a Python module
 
-## Topic Presentation Sign-up
+## First Topic Presentation Sign-up
 
 Date    | Presenter            | Topic
 ----- | ------------- | -----
 02/08 | Taelor McClurg   | package `matplotlib`
-02/10 | Samuel Hughes      | package `cartopy`
+02/10 | Samuel Hughes   | package `cartopy`
 02/15 | Mathew Chandy  | package `plotnine`
 02/17 | Robert Shamirian | package `ggmap`
 02/17 | Anthony Zeimbekakis | package `patsy`
 02/22 | Jun Yan               | package `statsmodels` 
 02/24 | Ryan Schoenfeld | decision trees
-03/01 | Peter Busa           | support vector machine
 03/03 | Sinchan Sharma  | Random forest
-03/10 | Thalia Taffe | Nearest neighbor
 03/10 | Ben Campman | Markown Basics
 03/22 | Zhenyu Xu | K-means clustering
-03/22 | Juncheng Zheng | Neural networks
+~~03/22~~ | ~~Juncheng Zheng~~ | ~~Neural negtworks~~
+03/24 | Peter Busa           | support vector machine
+03/24 | Thalia Taffe        | nearest neighbor 
+
+## Second Topic Presentation Randomization
+
+```{code-cell}
+presenters = ["Aimandi",  "Busa", "Campman", "Chandy", 
+              "Hughes", "Lin", # "Mcclurg-Wong", 
+              "Schoenfeld", "Shamirian",
+              "Sharma", "Taffe", "Xu", "Zeimbekakis", "Zheng"]
+import random
+random.seed(4865973917) # jointly set by the class on March 23, 2022
+random.sample(presenters, len(presenters))
+```
+
+Please identify a topic one week before yor presentation and push your material
+one day before the presentation so I can give some feedback.
+
+Date    | Presenter            | Topic
+----- | ------------- | -----
+03/29 |  Taelor Mcclurg     |  mapping areal data
+03/29 |    | 
+03/31 |    |
+03/31 |    |
+04/05 |    |
+04/05 |    |
+04/07 |    |
+04/07 |    |
+04/12 |    |
+04/12 |    |
+04/14 |    |
+04/14 |    |
 
 
 
