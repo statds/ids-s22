@@ -25,7 +25,7 @@ chapters:
   - file: docs/decisiontrees
   - file: docs/randomforests
   - file: docs/bagging_vs_boosting
-  - file: docs/mysvm
+  - file: docs/svm
 - file: docs/k_means_clustering
 - file: docs/exercises
 - file: docs/fixedit
