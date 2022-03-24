@@ -4,6 +4,7 @@ options:
   numbered: true
 chapters:
 - file: docs/intro
+- file: docs/markdown
 - file: docs/prman
 - file: docs/refresh
 - file: docs/scipy
@@ -29,4 +30,5 @@ chapters:
 - file: docs/k_means_clustering
 - file: docs/exercises
 - file: docs/fixedit
-
+# backmatter
+- file: docs/back

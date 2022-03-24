@@ -27,7 +27,7 @@ binder:
 
 # LaTeX settings
 bibtex_bibfiles:
-  _bibliography/references.bib
+   - _bibliography/references.bib
 latex:
   latex_engine                : "xelatex"
   latex_documents:
