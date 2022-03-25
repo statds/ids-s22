@@ -174,4 +174,6 @@ kernelspec:
        variable can be calculated. Fit a logistic model to predict this
        variable. Interprete two of the regression coefficients.
     1. Overlay the locations of the incidents on a Google map by day.
+
+1. Project proposal. 
 	   
