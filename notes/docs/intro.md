@@ -291,7 +291,7 @@ Date    | Presenter            | Topic
 03/31 |  Peter Busa  |
 04/05 |  Sinchan Sharma   |
 04/05 |  Kristin Blagg | Guest lecture on education data science
-04/07 |  Juncheng Zheng  |
+04/07 |  Juncheng Zheng  | Using R from Python and vice versa
 04/07 |  Anthony Zeimbekakis  |
 04/07 |  Ryan Schoenfeld   |
 04/12 |  Robie Shamirian  |
