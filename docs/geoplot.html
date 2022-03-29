@@ -351,14 +351,14 @@ at https://datacatalog.urban.org/dataset/household-conditions-geographic-school-
 </pre></div>
 </div>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">gpd.read_file</span></code> from GeoPandas to read the
-shapefile, and save it in a variable called <code class="docutils literal notranslate"><span class="pre">d</span></code>. Let’s take a
-look at <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
+shapefile, and save it in a variable called <code class="docutils literal notranslate"><span class="pre">ct_d</span></code>. Let’s take a
+look at <code class="docutils literal notranslate"><span class="pre">ct_d</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ct_d</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Notice the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column. This is the column where
 GeoPandas stores the visual information of the school district,
-which GeoPlot will use to plot.</p>
+which GeoPlot will use to plot. With the exception of the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column, this dataset is otherwise the same as an ordinary Pandas dataset, and all of the pandas operations will work on it as normal. For example, we could take a subset of the file, to obtain a smaller data set. we could then use the GeoPandas <code class="docutils literal notranslate"><span class="pre">to_file()</span></code> function to save this as a new shape file.</p>
 <p>Let’s start by plotting all school districts in  Connecticut
 using the <code class="docutils literal notranslate"><span class="pre">polyplot</span></code> function in Geoplot.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">capture</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">display</span>
