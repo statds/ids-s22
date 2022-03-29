@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.16. K Nearest Neighbor &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14. K-means Clustering" href="k_means_clustering.html" />
+    <link rel="prev" title="13.5. Support Vector Machines" href="svm.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   2. Markdown Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   7. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   8. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   9. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   10. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="visual.html">
+   11. Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     11.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basemap.html">
+     11.2. Basemap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     11.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     11.4. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     11.5. GM Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="statmodels.html">
+   12. Statistical Tests and Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="patsy.html">
+     12.1. Describing Models with Patsy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tests.html">
+     12.2. Hypothesis Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models.html">
+     12.3. Linear and Generalized Linear Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="supervised.html">
+   13. Supervised Learning
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisiontrees.html">
+     13.2. Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforests.html">
+     13.3. Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bagging_vs_boosting.html">
+     13.4. Bagging versus Boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     13.5. Support Vector Machines
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     13.16. K Nearest Neighbor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="k_means_clustering.html">
+   14. K-means Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   15. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   16. I Fixed It
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="back.html">
+   17. Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/nearest_neighbor.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/nearest_neighbor.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/nearest_neighbor.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   13.16.1. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-example">
+   13.16.2. Classification Example
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>K Nearest Neighbor</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   13.16.1. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-example">
+   13.16.2. Classification Example
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="k-nearest-neighbor">
+<h1><span class="section-number">13.16. </span>K Nearest Neighbor<a class="headerlink" href="#k-nearest-neighbor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="algorithm">
+<h2><span class="section-number">13.16.1. </span>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h2>
+<p>The (k) nearest neighbor algorithm is a method of predicting or classifying values
+based on the data values closest to them. In practice, this can be used to estimate
+values for missing variables in a dataset, or to assign new data to existing groups.</p>
+<p>Basic Implementation:</p>
+<ol class="simple">
+<li><p>Choose an arbitrary value for k.</p></li>
+<li><p>Fit the data to the regression or classification model.</p></li>
+<li><p>Using the k nearest training data points, categorize or predict the value of the new data point.</p></li>
+<li><p>Optimize k value from the training data and created model.</p></li>
+</ol>
+<p>In Python, the scikit-learn package contains multiple modules to implement the k
+nearest neighbor algorithm in Python. The example below uses:</p>
+<p><code class="docutils literal notranslate"><span class="pre">model_selection</span></code>, <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>, and <code class="docutils literal notranslate"><span class="pre">metrics</span></code></p>
+</div>
+<div class="section" id="classification-example">
+<h2><span class="section-number">13.16.2. </span>Classification Example<a class="headerlink" href="#classification-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> \
+<span class="s1">&#39;https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_DobJobApp_2021.csv&#39;</span>
+    
+<span class="n">dob_job</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">dob_job</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3172/3937316007.py:6: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+  dob_job = pd.read_csv(url)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 20087 entries, 0 to 20086
+Data columns (total 96 columns):
+ #   Column                         Non-Null Count  Dtype  
+---  ------                         --------------  -----  
+ 0   Job #                          20087 non-null  int64  
+ 1   Doc #                          20087 non-null  int64  
+ 2   Borough                        20087 non-null  object 
+ 3   House #                        20087 non-null  object 
+ 4   Street Name                    20087 non-null  object 
+ 5   Block                          20087 non-null  int64  
+ 6   Lot                            20087 non-null  int64  
+ 7   Bin #                          20087 non-null  int64  
+ 8   Job Type                       20087 non-null  object 
+ 9   Job Status                     20087 non-null  object 
+ 10  Job Status Descrp              20087 non-null  object 
+ 11  Latest Action Date             20087 non-null  object 
+ 12  Building Type                  20087 non-null  object 
+ 13  Community - Board              20086 non-null  float64
+ 14  Cluster                        19926 non-null  object 
+ 15  Landmarked                     20067 non-null  object 
+ 16  Adult Estab                    19961 non-null  object 
+ 17  Loft Board                     19956 non-null  object 
+ 18  City Owned                     2382 non-null   object 
+ 19  Little e                       19930 non-null  object 
+ 20  PC Filed                       40 non-null     object 
+ 21  eFiling Filed                  19874 non-null  object 
+ 22  Plumbing                       1357 non-null   object 
+ 23  Mechanical                     756 non-null    object 
+ 24  Boiler                         142 non-null    object 
+ 25  Fuel Burning                   7 non-null      object 
+ 26  Fuel Storage                   25 non-null     object 
+ 27  Standpipe                      111 non-null    object 
+ 28  Sprinkler                      427 non-null    object 
+ 29  Fire Alarm                     209 non-null    object 
+ 30  Equipment                      862 non-null    object 
+ 31  Fire Suppression               19 non-null     object 
+ 32  Curb Cut                       88 non-null     object 
+ 33  Other                          17420 non-null  object 
+ 34  Other Description              17420 non-null  object 
+ 35  Applicant&#39;s First Name         20087 non-null  object 
+ 36  Applicant&#39;s Last Name          20087 non-null  object 
+ 37  Applicant Professional Title   20087 non-null  object 
+ 38  Applicant License #            19685 non-null  float64
+ 39  Professional Cert              20062 non-null  object 
+ 40  Pre- Filing Date               20087 non-null  object 
+ 41  Paid                           20087 non-null  object 
+ 42  Fully Paid                     20087 non-null  object 
+ 43  Assigned                       18368 non-null  object 
+ 44  Approved                       20087 non-null  object 
+ 45  Fully Permitted                20087 non-null  object 
+ 46  Initial Cost                   20087 non-null  object 
+ 47  Total Est. Fee                 20087 non-null  object 
+ 48  Fee Status                     20087 non-null  object 
+ 49  Existing Zoning Sqft           20087 non-null  int64  
+ 50  Proposed Zoning Sqft           20087 non-null  int64  
+ 51  Horizontal Enlrgmt             769 non-null    object 
+ 52  Vertical Enlrgmt               585 non-null    object 
+ 53  Enlargement SQ Footage         20087 non-null  int64  
+ 54  Street Frontage                20087 non-null  int64  
+ 55  ExistingNo. of Stories         20087 non-null  int64  
+ 56  Proposed No. of Stories        20087 non-null  int64  
+ 57  Existing Height                20087 non-null  int64  
+ 58  Proposed Height                20087 non-null  int64  
+ 59  Existing Dwelling Units        14441 non-null  object 
+ 60  Proposed Dwelling Units        14603 non-null  object 
+ 61  Existing Occupancy             16999 non-null  object 
+ 62  Proposed Occupancy             17211 non-null  object 
+ 63  Site Fill                      17656 non-null  object 
+ 64  Zoning Dist1                   20077 non-null  object 
+ 65  Zoning Dist2                   1509 non-null   object 
+ 66  Zoning Dist3                   71 non-null     object 
+ 67  Special District 1             3087 non-null   object 
+ 68  Special District 2             4241 non-null   object 
+ 69  Owner Type                     20087 non-null  object 
+ 70  Non-Profit                     20087 non-null  object 
+ 71  Owner&#39;s First Name             20087 non-null  object 
+ 72  Owner&#39;s Last Name              20085 non-null  object 
+ 73  Owner&#39;s Business Name          11325 non-null  object 
+ 74  Owner&#39;s House Number           0 non-null      float64
+ 75  Owner&#39;sHouse Street Name       0 non-null      float64
+ 76  City                           0 non-null      float64
+ 77  State                          0 non-null      float64
+ 78  Zip                            0 non-null      float64
+ 79  Owner&#39;sPhone #                 20087 non-null  int64  
+ 80  Job Description                17609 non-null  object 
+ 81  DOBRunDate                     20087 non-null  object 
+ 82  JOB_S1_NO                      20087 non-null  int64  
+ 83  TOTAL_CONSTRUCTION_FLOOR_AREA  20087 non-null  int64  
+ 84  WITHDRAWAL_FLAG                20087 non-null  int64  
+ 85  SIGNOFF_DATE                   6598 non-null   object 
+ 86  SPECIAL_ACTION_STATUS          19934 non-null  object 
+ 87  SPECIAL_ACTION_DATE            36 non-null     object 
+ 88  BUILDING_CLASS                 19998 non-null  object 
+ 89  JOB_NO_GOOD_COUNT              20087 non-null  int64  
+ 90  GIS_LATITUDE                   19974 non-null  float64
+ 91  GIS_LONGITUDE                  19974 non-null  float64
+ 92  GIS_COUNCIL_DISTRICT           19974 non-null  float64
+ 93  GIS_CENSUS_TRACT               19974 non-null  float64
+ 94  GIS_NTA_NAME                   19974 non-null  object 
+ 95  GIS_BIN                        19351 non-null  float64
+dtypes: float64(12), int64(18), object(66)
+memory usage: 14.7+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the below example, we will be using a subset of the DOB Job Application dataset,
+for plumbing jobs that occurred in family homes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plumbing_job</span> <span class="o">=</span> <span class="n">dob_job</span><span class="p">[(</span><span class="n">dob_job</span><span class="p">[</span><span class="s1">&#39;Plumbing&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span> <span class="o">&amp;</span> 
+                       <span class="p">(</span><span class="n">dob_job</span><span class="p">[</span><span class="s1">&#39;Building Type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1-2-3 FAMILY&#39;</span><span class="p">)]</span>
+
+<span class="n">plumbing_job</span> <span class="o">=</span> <span class="n">plumbing_job</span><span class="p">[[</span><span class="s1">&#39;Total Est. Fee&#39;</span><span class="p">,</span> <span class="s1">&#39;Borough&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Status&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;Building Type&#39;</span><span class="p">,</span><span class="s1">&#39;Latest Action Date&#39;</span><span class="p">,</span> <span class="s1">&#39;GIS_LATITUDE&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;GIS_LONGITUDE&#39;</span><span class="p">]]</span>
+
+<span class="n">plumbing_job</span> <span class="o">=</span> <span class="n">plumbing_job</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plumbing_job</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Est. Fee</th>
+      <th>Borough</th>
+      <th>Job Type</th>
+      <th>Job Status</th>
+      <th>Building Type</th>
+      <th>Latest Action Date</th>
+      <th>GIS_LATITUDE</th>
+      <th>GIS_LONGITUDE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>43</th>
+      <td>$526.55</td>
+      <td>BROOKLYN</td>
+      <td>A2</td>
+      <td>X</td>
+      <td>1-2-3 FAMILY</td>
+      <td>08/05/2021</td>
+      <td>40.675306</td>
+      <td>-73.930515</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>$371.80</td>
+      <td>QUEENS</td>
+      <td>A2</td>
+      <td>R</td>
+      <td>1-2-3 FAMILY</td>
+      <td>04/29/2021</td>
+      <td>40.776331</td>
+      <td>-73.912295</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>$400.36</td>
+      <td>QUEENS</td>
+      <td>NB</td>
+      <td>R</td>
+      <td>1-2-3 FAMILY</td>
+      <td>05/27/2021</td>
+      <td>40.759226</td>
+      <td>-73.858075</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>$2740.20</td>
+      <td>MANHATTAN</td>
+      <td>A1</td>
+      <td>R</td>
+      <td>1-2-3 FAMILY</td>
+      <td>04/29/2021</td>
+      <td>40.737608</td>
+      <td>-74.002699</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>$262.60</td>
+      <td>BROOKLYN</td>
+      <td>A2</td>
+      <td>R</td>
+      <td>1-2-3 FAMILY</td>
+      <td>04/29/2021</td>
+      <td>40.588934</td>
+      <td>-73.988155</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We want to try to predict the borough based on the estimated cost of the job.
+First we check for an association between variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
+
+<span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Fee Est.&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Total Est. Fee&#39;</span><span class="p">]]</span>
+<span class="n">est_fee</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Fee Est.&#39;</span><span class="p">],</span> <span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">])</span>
+<span class="n">est_fee</span>
+
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">est_fee</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0002851383836738717
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Fee Est.&#39;</span><span class="p">],</span> <span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Fee Est.&#39;, ylabel=&#39;Borough&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/nearest_neighbor_6_2.png" src="../_images/nearest_neighbor_6_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BROOKLYN&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">name_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">new_value</span> <span class="o">=</span> <span class="n">plumbing_job</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span>
+    <span class="n">name_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>
+    
+<span class="n">name_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;BROOKLYN&#39;: Borough
+ False    380
+ True     180
+ dtype: int64,
+ &#39;QUEENS&#39;: Borough
+ False    335
+ True     225
+ dtype: int64,
+ &#39;MANHATTAN&#39;: Borough
+ False    546
+ True      14
+ dtype: int64,
+ &#39;STATEN ISLAND&#39;: Borough
+ False    446
+ True     114
+ dtype: int64,
+ &#39;BRONX&#39;: Borough
+ False    533
+ True      27
+ dtype: int64}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since there is a signifcant difference in the number of observations for each borough,
+and much of the data appears to overlap, we will create two classifiers, weighted and
+unweighted. This will hopefully help reduce boroughs with fewer observations from being
+hidden by larger boroughs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">plumbing_job</span><span class="p">[[</span><span class="s1">&#39;Fee Est.&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">plumbing_job</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]</span>
+
+<span class="n">xtrain</span><span class="p">,</span> <span class="n">xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># train_test_split = separates data into test and training subsets </span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">750</span><span class="p">]]))</span>
+
+<span class="n">knn_weight</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+<span class="n">knn_weight</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knn_weight</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">750</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BROOKLYN&#39;]
+[&#39;QUEENS&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+  warnings.warn(
+/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">predictions1</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xtest</span><span class="p">)</span>
+<span class="n">predictions2</span> <span class="o">=</span> <span class="n">knn_weight</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xtest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">predictions1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">predictions2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6285714285714286
+0.9
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives the prediction accuracy from the test data. Factoring in weights for
+the data points seems to have greatly improved the accuracy of the classification.</p>
+<p>GridSearchCV is used to find the best k value from a dictionary of potential values.
+It is the alternative to calculating the validation error (RMSE) for all k.
+The value of k must be chosen carefully to avoid overfitting or weakened performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">pars</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 7}
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/neighbors.html">More about nearest neighbor</a><br />
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">More about GridSearchCV</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="svm.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13.5. </span>Support Vector Machines</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="k_means_clustering.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>K-means Clustering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
