@@ -118,6 +118,54 @@ The basic quadratic equation, {math:numref}`quadratic`, allows for the
 construction of all kinds of parabolas
 
 
+
+
+## Data Challenges in Action
+
++ [When Will the Cherry Trees
+  Bloom](https://competition.statistics.gmu.edu/)
+
++ [ASA Data Challenge
+  Expo](https://community.amstat.org/dataexpo/home)
+
+## NYC Open Data Week Event
+
+### Open Data in a Classroom
+The NYC Open Data provides opportunities for data scientists to
+demonstrate what data science can do in real life. Students taking
+Introduction to Data Science (STAT3255/5255) in Spring 2022 at UConn
+are required to work on a project of their choice with any dataset on
+NYC Open Data. The topics will be a mix of instructor recommendations
+and self selections, covering transportation, construction, education,
+finance, and health, among others. Examples are the motor vehicle
+collisions crashes; DOB job application filling. NYC leading causes of
+death. and for students in data science. data science education. Five
+students will be selected from the class to present their works in a
+virtual panel. The presented project will be made public in
+crowd-sourced open class notes, facilitating real-life open data
+projects in data science education.
+
+### Dates
+Four students will present during our lecture hour on
+Tuesday, March 8, 2022, to the general public as part of the NYC Open
+Data Week. A Zoom meeting link will be shared later.
+
+### Preparation Problem
+
+The random seed was set by the class on Tuesday, Feb. 22. The first
+seven after the random permutation work on the NYC collision data and
+the rest eight work on the DOB job application data.
+```{code-cell} ipython3
+import random
+
+presenters = ["Aimandi",  "Busa", "Campman", "Chandy", "Fodderwala",
+              "Hughes", "Lin", "Mcclurg-Wong", "Schoenfeld", "Shamirian",
+              "Sharma", "Taffe", "Xu", "Zeimbekakis", "Zheng"]
+random.seed(370812509)
+random.sample(presenters, 15)
+```
+
+
 ## Wish List
 
 This is a wish list from all members of the class (alphabetical
@@ -202,67 +250,67 @@ order). Add yours; note the syntax of nested list in Markdown.
     - Using R from Python and vice versa
     - Building a Python module
 
-## Topic Presentation Sign-up
+## First Topic Presentation Sign-up
 
-Date    | Presenter            | Topic
------ | ------------- | -----
+Date     | Presenter            | Topic
+-----  |  ------------  | -----
 02/08 | Taelor McClurg   | package `matplotlib`
-02/10 | Samuel Hughes      | package `cartopy`
+02/10 | Samuel Hughes   | package `cartopy`
 02/15 | Mathew Chandy  | package `plotnine`
 02/17 | Robert Shamirian | package `ggmap`
 02/17 | Anthony Zeimbekakis | package `patsy`
 02/22 | Jun Yan               | package `statsmodels` 
 02/24 | Ryan Schoenfeld | decision trees
-03/01 | Peter Busa           | support vector machine
 03/03 | Sinchan Sharma  | Random forest
-03/10 | Thalia Taffe | Nearest neighbor
 03/10 | Ben Campman | Markown Basics
 03/22 | Zhenyu Xu | K-means clustering
-03/22 | Juncheng Zheng | Neural networks
+ ~~03/22~~  |  ~~Juncheng Zheng~~  |  ~~Neural negtworks~~
+03/29 | Peter Busa           | support vector machine
+03/29 | Sakeena Aimandi  |
 
+## Second Topic Presentation Randomization
 
-
-## Data Challenges in Action
-
-+ [When Will the Cherry Trees
-  Bloom](https://competition.statistics.gmu.edu/)
-
-+ [ASA Data Challenge
-  Expo](https://community.amstat.org/dataexpo/home)
-
-## NYC Open Data Week Event
-
-### Open Data in a Classroom
-The NYC Open Data provides opportunities for data scientists to
-demonstrate what data science can do in real life. Students taking
-Introduction to Data Science (STAT3255/5255) in Spring 2022 at UConn
-are required to work on a project of their choice with any dataset on
-NYC Open Data. The topics will be a mix of instructor recommendations
-and self selections, covering transportation, construction, education,
-finance, and health, among others. Examples are the motor vehicle
-collisions crashes; DOB job application filling. NYC leading causes of
-death. and for students in data science. data science education. Five
-students will be selected from the class to present their works in a
-virtual panel. The presented project will be made public in
-crowd-sourced open class notes, facilitating real-life open data
-projects in data science education.
-
-### Dates
-Four students will present during our lecture hour on
-Tuesday, March 8, 2022, to the general public as part of the NYC Open
-Data Week. A Zoom meeting link will be shared later.
-
-### Preparation Problem
-
-The random seed was set by the class on Tuesday, Feb. 22. The first
-seven after the random permutation work on the NYC collision data and
-the rest eight work on the DOB job application data.
-```{code-cell} ipython3
-import random
-
-presenters = ["Aimandi",  "Busa", "Campman", "Chandy", "Fodderwala",
-              "Hughes", "Lin", "Mcclurg-Wong", "Schoenfeld", "Shamirian",
+```{code-cell}
+presenters = ["Aimandi",  "Busa", "Campman", "Chandy", 
+              "Hughes", "Lin", # "Mcclurg-Wong", 
+              "Schoenfeld", "Shamirian",
               "Sharma", "Taffe", "Xu", "Zeimbekakis", "Zheng"]
-random.seed(370812509)
-random.sample(presenters, 15)
+import random
+random.seed(4865973917) # jointly set by the class on March 23, 2022
+random.sample(presenters, len(presenters))
+```
+
+Please identify a topic one week before yor presentation and push your material
+one day before the presentation so I can give some feedback.
+
+Date    | Presenter            | Topic
+----- | ------------- | -----
+03/29 |  Taelor Mcclurg     |  mapping areal data
+03/31 |  Zhenyu Xu  |
+03/31 |  Zhengyi Lin |
+03/31 |  Peter Busa  |
+04/05 |  Sinchan Sharma   |
+04/05 |  Kristin Blagg | Guest lecture on education data science
+04/07 |  Juncheng Zheng  | Using R from Python and vice versa
+04/07 |  Anthony Zeimbekakis  |
+04/07 |  Ryan Schoenfeld   |
+04/12 |  Robie Shamirian  |
+04/12 |  SakeenaAimandi  |
+04/12 |  Sam Hughes  |
+04/14 |  Thaila Taffe  |
+04/14 |  Benjamin Campman |
+04/14 |  Matthew Chandy  |
+
+## Final Presentation Randomization
+
+Only undergraduates are required to do a presentation on the final
+project. Graduate students submit a final report.
+```{code-cell}
+presenters = ["Aimandi",  "Busa", "Campman", "Chandy", 
+              "Hughes", "Lin",
+              "Schoenfeld", "Shamirian",
+              "Taffe", "Zeimbekakis", "Zheng"]
+import random
+random.seed(123) # to be set by the class
+random.sample(presenters, len(presenters))
 ```
