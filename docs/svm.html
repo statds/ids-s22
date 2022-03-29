@@ -722,13 +722,17 @@ side of the hyperplane.</p>
 
 <span class="n">job_app_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_DobJobApp_2021.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
 
-<span class="n">job_app_data</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="p">[[</span><span class="s1">&#39;Doc #&#39;</span><span class="p">,</span> <span class="s1">&#39;Borough&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Status&#39;</span><span class="p">]]</span>
+<span class="n">job_app_data</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="p">[[</span><span class="s1">&#39;Job Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Borough&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Status&#39;</span><span class="p">]]</span>
+<span class="n">job_app_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;job_type&#39;</span><span class="p">,</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="s1">&#39;job_status&#39;</span><span class="p">]</span>
 
-<span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;borough&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+<span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;job_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;job_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Job Status&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;Job Status&#39;</span><span class="p">]</span>
+<span class="n">job_app_data</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;job_status&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">job_app_data</span><span class="p">[</span><span class="s1">&#39;job_status&#39;</span><span class="p">]</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">)</span>
 
@@ -743,10 +747,9 @@ side of the hyperplane.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[   0    1    0    0]
- [   0 2679    0    0]
- [   0   20    0    0]
- [   0 1318    0    0]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[139   0   0]
+ [  0   1   0]
+ [ 60   0   0]]
 </pre></div>
 </div>
 </div>

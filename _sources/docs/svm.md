@@ -225,13 +225,17 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 job_app_data = pd.read_csv("../data/nyc_DobJobApp_2021.csv", dtype = "unicode")
 
-job_app_data = job_app_data[['Doc #', 'Borough', 'Job Status']]
+job_app_data = job_app_data[['Job Type', 'Borough', 'Job Status']]
+job_app_data.columns = ['job_type', 'borough', 'job_status']
 
-job_app_data['Borough'].replace(['MANHATTAN', 'BRONX', 'BROOKLYN', 'QUEENS', 'STATEN ISLAND'], [1,2,3,4,5], inplace=True)
+job_app_data['borough'].replace(['MANHATTAN', 'BRONX', 'BROOKLYN', 'QUEENS', 'STATEN ISLAND'], [1,2,3,4,5], inplace=True)
 
+job_app_data['job_type'] = job_app_data['job_type'].astype('category').cat.codes
 
-X = job_app_data.drop('Job Status', axis=1)
-y = job_app_data['Job Status']
+job_app_data = job_app_data.sample(n=1000)
+
+X = job_app_data.drop('job_status', axis=1)
+y = job_app_data['job_status']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 
@@ -242,6 +246,7 @@ y_pred = svclassifier.predict(X_test)
 
 print(confusion_matrix(y_test, y_pred))
 ## print(classification_report(y_test))
+
 ```
 
 ## For Additional Info
