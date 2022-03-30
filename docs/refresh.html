@@ -229,18 +229,23 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="GMM.html">
+   11. Gaussian Mixture Models
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
-   11. Exercises
+   12. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   12. I Fixed It
+   13. I Fixed It
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="back.html">
-   13. Bibliography
+   14. Bibliography
   </a>
  </li>
 </ul>
@@ -511,8 +516,8 @@ evaluate the density and distributions at these points?</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 16.0 0.0 0.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4.03620023,  5.60446232,  2.39368707, -2.7081206 , -1.25717615,
-       -2.99669558,  0.60572503, -4.6891576 ,  6.39882742,  6.34924793])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.48032361,  1.05965788,  2.80502954, -2.43280968,  3.17830775,
+        0.3288632 ,  6.63429088,  7.56574916, -5.655029  , -4.22860919])
 </pre></div>
 </div>
 </div>
@@ -525,8 +530,8 @@ evaluate the density and distributions at these points?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.08761537, 0.06645452, 0.09925368, 0.04989009, 0.07159212,
-       0.04570943, 0.093857  , 0.02463693, 0.05448061, 0.05522406])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.0988974 , 0.09701735, 0.09773601, 0.05397204, 0.0955008 ,
+       0.09140047, 0.05097713, 0.0378819 , 0.01597922, 0.02967072])
 </pre></div>
 </div>
 </div>
@@ -552,7 +557,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.3 µs ± 22.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.1 µs ± 43.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -579,7 +584,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.92 µs ± 2.26 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.99 µs ± 20.4 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -601,7 +606,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71.4 µs ± 468 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83 µs ± 318 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -640,8 +645,8 @@ object.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140000361218496
-140000361218496
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140490063912128
+140490063912128
 </pre></div>
 </div>
 </div>
@@ -672,8 +677,8 @@ their values cannot be changed in place. One such example is strings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140001366246448
-140000566084592
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140491068978224
+140490600113392
 </pre></div>
 </div>
 </div>

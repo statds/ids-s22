@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Exercises" href="exercises.html" />
+    <link rel="next" title="11. Gaussian Mixture Models" href="GMM.html" />
     <link rel="prev" title="9.16. K Nearest Neighbor" href="nearest_neighbor.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -229,18 +229,23 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="GMM.html">
+   11. Gaussian Mixture Models
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
-   11. Exercises
+   12. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   12. I Fixed It
+   13. I Fixed It
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="back.html">
-   13. Bibliography
+   14. Bibliography
   </a>
  </li>
 </ul>
@@ -759,14 +764,14 @@ and try to predict it with their longitude and latitude.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-73.80225168  40.70547747]
- [-73.94629455  40.74089697]
- [-73.89125212  40.84427843]
- [-73.95183841  40.64607477]
- [-74.13509191  40.59366043]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-73.95188602  40.64601217]
+ [-73.89130818  40.84418593]
+ [-73.8023004   40.7054554 ]
+ [-74.13509191  40.59366043]
+ [-73.94633618  40.74074484]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa6705909d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fdc201b7640&gt;
 </pre></div>
 </div>
 <img alt="../_images/k_means_clustering_10_2.png" src="../_images/k_means_clustering_10_2.png" />
@@ -814,7 +819,7 @@ This is reasonable since K-means only minimizes within-cluster variances (square
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 2], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -873,10 +878,10 @@ the algorithms can be run with “kernel methods”. See
             <p class="prev-next-title"><span class="section-number">9.16. </span>K Nearest Neighbor</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <a class='right-next' id="next-link" href="GMM.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Exercises</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Gaussian Mixture Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
