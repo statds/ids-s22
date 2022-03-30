@@ -29,6 +29,7 @@ chapters:
   - file: docs/svm
   - file: docs/nearest_neighbor
 - file: docs/k_means_clustering
+- file: docs/GMM
 - file: docs/exercises
 - file: docs/fixedit
 # backmatter
