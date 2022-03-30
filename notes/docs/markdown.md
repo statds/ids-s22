@@ -25,7 +25,7 @@ This piece of code would look like this when run throw markdown:
 
 ***
 
-# Now a quick rundown of all the boring things that people should know but aren't worth an entire talk on 
+## Now a quick rundown of all the boring things that people should know but aren't worth an entire talk on 
 
 | What it is?|How You do it?|Example code|Shown example|
 |:---------------:|:----------------:|:-----------:|:-------------:|
@@ -61,7 +61,6 @@ ___
 ## Titles
 Use `#` the pound sign. Each of the numbers correspondes to the number of pound signs
 
-# 11111
 ## 22222
 ### 33333
 #### 44444
@@ -186,7 +185,7 @@ To make <span style="color:blue">blue</span> or <span style="color:green">green<
 `<span style="color:blue">blue text</span>.`
 
 
-# Mathematical and Statistical operations
+## Mathematical and Statistical operations
 As we are in a stat class I think it is only right that I show how to make mathematical formulas
 
 |The Name|the Code|The Image|
@@ -225,7 +224,7 @@ As we are in a stat class I think it is only right that I show how to make mathe
 |Hat|`$\hat{a}$`|$\hat{a}$|
 |Bar|`$\bar{a}$`|$\bar{a}$|
 
-# Other Fun Helpful notes
+## Other Fun Helpful notes
 
 1. Triple *Underscore*, *Asterisk*, or _dash_ gives you a line to break up text
 ___
