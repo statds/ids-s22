@@ -38,8 +38,8 @@ ct_d = gpd.read_file("../data/districts/ct_districts.shp")
 ```
 
 Here we use `gpd.read_file` from GeoPandas to read the 
-shapefile, and save it in a variable called `d`. Let's take a 
-look at `d`.
+shapefile, and save it in a variable called `ct_d`. Let's take a 
+look at `ct_d`.
 
 ```python
 ct_d.head()
@@ -47,7 +47,7 @@ ct_d.head()
 
 Notice the `geometry` column. This is the column where 
 GeoPandas stores the visual information of the school district,
-which GeoPlot will use to plot. 
+which GeoPlot will use to plot. With the exception of the `geometry` column, this dataset is otherwise the same as an ordinary Pandas dataset, and all of the pandas operations will work on it as normal. For example, we could take a subset of the file, to obtain a smaller data set. we could then use the GeoPandas `to_file()` function to save this as a new shape file.
 
 Let's start by plotting all school districts in  Connecticut 
 using the `polyplot` function in Geoplot.

@@ -174,4 +174,18 @@ kernelspec:
        variable can be calculated. Fit a logistic model to predict this
        variable. Interprete two of the regression coefficients.
     1. Overlay the locations of the incidents on a Google map by day.
+
+1. Project proposal. A data science project proposal consists of the following
+   components: 
+    + Problem statement. This is where your research question is
+      formulated. Given background on the research question, why it is
+      interesting, who are interested, what has been known, and some references.
+    + Data. Describe the data sources that you will use to answer the research
+      question you formulated. Make sure the data are available and
+      adequate. Give a summary of the data preparation you expect to do.
+    + Analytic tasks. Give some specific tasks that you plan for your
+      analysis. It could include exploratory analysis, visualizations, modeling,
+      inferences, tests, prediction, and comparison with competing methods,
+      among others.
+	  
 	   
