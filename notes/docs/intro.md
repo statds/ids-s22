@@ -286,7 +286,7 @@ one day before the presentation so I can give some feedback.
 Date    | Presenter            | Topic
 ----- | ------------- | -----
 03/29 |  Taelor Mcclurg     |  mapping areal data
-03/31 |  Zhenyu Xu  |
+03/31 |  Zhenyu Xu  | Gaussian Mixture Models
 03/31 |  Zhengyi Lin |
 03/31 |  Peter Busa       |  MIT App Inventor
 04/05 |  Sinchan Sharma   |
