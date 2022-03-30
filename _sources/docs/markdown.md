@@ -25,7 +25,7 @@ This piece of code would look like this when run throw markdown:
 
 ***
 
-# Now a quick rundown of all the boring things that people should know but aren't worth an entire talk on 
+## Now a quick rundown of all the boring things that people should know but aren't worth an entire talk on 
 
 | What it is?|How You do it?|Example code|Shown example|
 |:---------------:|:----------------:|:-----------:|:-------------:|
@@ -61,7 +61,6 @@ ___
 ## Titles
 Use `#` the pound sign. Each of the numbers correspondes to the number of pound signs
 
-# 11111
 ## 22222
 ### 33333
 #### 44444
@@ -146,7 +145,7 @@ s = "This is Python"
 print s
 ```
 
-### Task list
+## Task list
 Personally, I love task list more than is probably reasonable for a person but they're the only way I can get things done<br>
 Creating them in Markdown is easy. <br>
 `- [x] Done`<br>
@@ -178,7 +177,15 @@ This is the code you need to align images to the right:
 <img align="right" width= "50" height="50" src="https://supplyroom.s3.amazonaws.com/F/FS-/FS-P/FS-PA-1_W.png"> <br>
 `<img align="right" width= "50" height="50" src="https://supplyroom.s3.amazonaws.com/F/FS-/FS-P/FS-PA-1_W.png">`
 
-# Mathematical and Statistical operations
+
+If you do nothing it will automatically allign with the middle.
+
+### Changing Font Color
+To make <span style="color:blue">blue</span> or <span style="color:green">green</span> or <span style="color:red">red</span> text you just need to change that setting the code like this. <br>
+`<span style="color:blue">blue text</span>.`
+
+
+## Mathematical and Statistical operations
 As we are in a stat class I think it is only right that I show how to make mathematical formulas
 
 |The Name|the Code|The Image|
@@ -217,7 +224,7 @@ As we are in a stat class I think it is only right that I show how to make mathe
 |Hat|`$\hat{a}$`|$\hat{a}$|
 |Bar|`$\bar{a}$`|$\bar{a}$|
 
-# Other Fun Helpful notes
+## Other Fun Helpful notes
 
 1. Triple *Underscore*, *Asterisk*, or _dash_ gives you a line to break up text
 ___
@@ -260,3 +267,5 @@ ___
 
 7. You can also cancel any special character by putting a `\` before it
 `\*I like volleyball\*` should display like **this** <br><br> I like volleyball <br><br> not like **this**<br><br> *I like volleyball*
+
+Thank you!
