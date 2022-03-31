@@ -136,13 +136,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cartopy.html">
-     7.2. Cartopy
+    <a class="reference internal" href="plotnine.html">
+     7.2. Plotnine
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="plotnine.html">
-     7.3. Plotnine
+    <a class="reference internal" href="cartopy.html">
+     7.3. Cartopy
     </a>
    </li>
    <li class="toctree-l2">
@@ -216,29 +216,41 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="k_means_clustering.html">
-   10. K-means Clustering
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="unsupervised.html">
+   10. Unsupervised Learning
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GMM.html">
-   11. Gaussian Mixture Models
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="k_means_clustering.html">
+     10.1. K-means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="GMM.html">
+     10.2. Gaussian Mixture Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
-   12. Exercises
+   11. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   13. I Fixed It
+   12. I Fixed It
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="back.html">
-   14. Bibliography
+   13. Bibliography
   </a>
  </li>
 </ul>
@@ -474,7 +486,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3452/772679357.py:4: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3399/772679357.py:4: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
   nyc_jobs = pd.read_csv(&quot;../data/nyc_DobJobApp_2021.csv&quot;)
 </pre></div>
 </div>
@@ -575,7 +587,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3452/1476851890.py:2: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3399/1476851890.py:2: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
 To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
   betas = np.linalg.lstsq(predictors, outcome)[0]
 </pre></div>

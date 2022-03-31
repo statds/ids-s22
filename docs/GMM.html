@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>11. Gaussian Mixture Models &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>10.2. Gaussian Mixture Models &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. Exercises" href="exercises.html" />
-    <link rel="prev" title="10. K-means Clustering" href="k_means_clustering.html" />
+    <link rel="next" title="11. Exercises" href="exercises.html" />
+    <link rel="prev" title="10.1. K-means Clustering" href="k_means_clustering.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -138,13 +138,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cartopy.html">
-     7.2. Cartopy
+    <a class="reference internal" href="plotnine.html">
+     7.2. Plotnine
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="plotnine.html">
-     7.3. Plotnine
+    <a class="reference internal" href="cartopy.html">
+     7.3. Cartopy
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,29 +218,41 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="k_means_clustering.html">
-   10. K-means Clustering
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="unsupervised.html">
+   10. Unsupervised Learning
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   11. Gaussian Mixture Models
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="k_means_clustering.html">
+     10.1. K-means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     10.2. Gaussian Mixture Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
-   12. Exercises
+   11. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="fixedit.html">
-   13. I Fixed It
+   12. I Fixed It
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="back.html">
-   14. Bibliography
+   13. Bibliography
   </a>
  </li>
 </ul>
@@ -336,44 +348,44 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mathematics">
-   11.1. Mathematics
+   10.2.1. Mathematics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#expectation-maximization-algorithm-em">
-   11.2. Expectation - Maximization Algorithm (EM)
+   10.2.2. Expectation - Maximization Algorithm (EM)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementation">
-   11.3. Implementation
+   10.2.3. Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#iris-data">
-   11.4. Iris data
+   10.2.4. Iris data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-gmm">
-     11.4.1. Training GMM
+     10.2.4.1. Training GMM
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#results">
-     11.4.2. Results
+     10.2.4.2. Results
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prediction">
-     11.4.3. Prediction
+     10.2.4.3. Prediction
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-to-k-means">
-   11.5. Comparison to K-means
+   10.2.5. Comparison to K-means
   </a>
  </li>
 </ul>
@@ -398,44 +410,44 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mathematics">
-   11.1. Mathematics
+   10.2.1. Mathematics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#expectation-maximization-algorithm-em">
-   11.2. Expectation - Maximization Algorithm (EM)
+   10.2.2. Expectation - Maximization Algorithm (EM)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementation">
-   11.3. Implementation
+   10.2.3. Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#iris-data">
-   11.4. Iris data
+   10.2.4. Iris data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-gmm">
-     11.4.1. Training GMM
+     10.2.4.1. Training GMM
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#results">
-     11.4.2. Results
+     10.2.4.2. Results
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prediction">
-     11.4.3. Prediction
+     10.2.4.3. Prediction
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-to-k-means">
-   11.5. Comparison to K-means
+   10.2.5. Comparison to K-means
   </a>
  </li>
 </ul>
@@ -448,12 +460,12 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="gaussian-mixture-models">
-<span id="gmm"></span><h1><span class="section-number">11. </span>Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Permalink to this headline">¶</a></h1>
+<span id="gmm"></span><h1><span class="section-number">10.2. </span>Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Permalink to this headline">¶</a></h1>
 <p>The Gaussian Mixture Models (GMM) can be viewed as an extension of K-means. Instead of
 using a hard clustering method to assign each data point to one and only one cluster,
 the Gaussian Mixture Models estimates the probability of a data point coming from each cluster.</p>
 <div class="section" id="mathematics">
-<h2><span class="section-number">11.1. </span>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2.1. </span>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that we have <span class="math notranslate nohighlight">\(N\)</span> observations with <span class="math notranslate nohighlight">\(D\)</span> dimensions.
 The model is a mixture of <span class="math notranslate nohighlight">\(K\)</span> different Gaussian distributions, each with its own
 mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span> and variance <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_k\)</span> such that within each cluster,
@@ -478,7 +490,7 @@ P(z_{k}=1) = \pi_k.
 <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_k\)</span>.</p>
 </div>
 <div class="section" id="expectation-maximization-algorithm-em">
-<h2><span class="section-number">11.2. </span>Expectation - Maximization Algorithm (EM)<a class="headerlink" href="#expectation-maximization-algorithm-em" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2.2. </span>Expectation - Maximization Algorithm (EM)<a class="headerlink" href="#expectation-maximization-algorithm-em" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Initialize <span class="math notranslate nohighlight">\(\theta=(\pi_k, 
 \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\)</span> randomly</p></li>
@@ -497,11 +509,11 @@ based on <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span></p
 <a class="reference external" href="https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0">https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0</a>.</p>
 </div>
 <div class="section" id="implementation">
-<h2><span class="section-number">11.3. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2.3. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>GMM can also be implemented by importing the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package.</p>
 </div>
 <div class="section" id="iris-data">
-<h2><span class="section-number">11.4. </span>Iris data<a class="headerlink" href="#iris-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2.4. </span>Iris data<a class="headerlink" href="#iris-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -562,7 +574,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="section" id="training-gmm">
-<h3><span class="section-number">11.4.1. </span>Training GMM<a class="headerlink" href="#training-gmm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.2.4.1. </span>Training GMM<a class="headerlink" href="#training-gmm" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
@@ -580,7 +592,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="section" id="results">
-<h3><span class="section-number">11.4.2. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.2.4.2. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
 <p>We can plot the Gaussians by using a <code class="docutils literal notranslate"><span class="pre">plot_gmm</span></code> function defined on
 <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html">https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html</a>.</p>
 <div class="cell docutils container">
@@ -643,7 +655,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4993383962563336
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4991548641719723
 8
 </pre></div>
 </div>
@@ -651,7 +663,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="section" id="prediction">
-<h3><span class="section-number">11.4.3. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.2.4.3. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
 <p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">GMM.predict</span></code> to predict which Gaussian they belong to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +682,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="section" id="comparison-to-k-means">
-<h2><span class="section-number">11.5. </span>Comparison to K-means<a class="headerlink" href="#comparison-to-k-means" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2.5. </span>Comparison to K-means<a class="headerlink" href="#comparison-to-k-means" title="Permalink to this headline">¶</a></h2>
 <p>Both GMM and K-means are non-parametric clustering models, but GMM seems to be more robust
 as it introduces probabilities. However, GMM is generally slower than K-Means because
 it takes more iterations to converge. GMM can also quickly converge to a local minimum,
@@ -708,13 +720,13 @@ not the optimal solution.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>K-means Clustering</p>
+            <p class="prev-next-title"><span class="section-number">10.1. </span>K-means Clustering</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="exercises.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Exercises</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Exercises</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

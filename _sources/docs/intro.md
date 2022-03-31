@@ -311,6 +311,6 @@ presenters = ["Aimandi",  "Busa", "Campman", "Chandy",
               "Schoenfeld", "Shamirian",
               "Taffe", "Zeimbekakis", "Zheng"]
 import random
-random.seed(123) # to be set by the class
+random.seed(64017) # to be set by the class
 random.sample(presenters, len(presenters))
 ```
