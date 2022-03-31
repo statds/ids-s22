@@ -12,9 +12,8 @@ chapters:
 - file: docs/visual
   sections:
   - file: docs/matplotlib
-  - file: docs/basemap
-  - file: docs/cartopy
   - file: docs/plotnine
+  - file: docs/cartopy
   - file: docs/gmplot
 - file: docs/statmodels
   sections:
@@ -28,8 +27,10 @@ chapters:
   - file: docs/bagging_vs_boosting
   - file: docs/svm
   - file: docs/nearest_neighbor
-- file: docs/k_means_clustering
-- file: docs/GMM
+- file: docs/unsupervised
+  sections:
+  - file: docs/k_means_clustering
+  - file: docs/GMM
 - file: docs/exercises
 - file: docs/fixedit
 # backmatter
