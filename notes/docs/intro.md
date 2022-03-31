@@ -280,7 +280,7 @@ random.seed(4865973917) # jointly set by the class on March 23, 2022
 random.sample(presenters, len(presenters))
 ```
 
-Please identify a topic one week before yor presentation and push your material
+Please identify a topic one week before your presentation and push your material
 one day before the presentation so I can give some feedback.
 
 Date    | Presenter            | Topic
