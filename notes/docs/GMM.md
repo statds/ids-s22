@@ -57,7 +57,7 @@ $\boldsymbol{\mu}_k$, $\boldsymbol{\Sigma}_k$.
       observation $\boldsymbol{x}_i$ comes from Gaussian $k$
     - M-step: update $\theta$ by maximizing expectation of the log-likelihood 
       based on $\gamma(z_{ik})$
-1. When `iter = max_iter` or when the algorithm converges, terminate.
+1. When the algorithm converges or when `iter = max_iter`, terminate.
 
 For more details about mathematics and the EM algorithm: 
 <https://towardsdatascience.com/gaussian-mixture-models-explained-6986aaf5a95>, 
@@ -82,18 +82,18 @@ iris = pd.read_csv(url)
 iris.info()
 ```
 
-For a more concise visualization later, we just select `sepal_length` and `sepal_width` as the input variables.
-
-```{code-cell} ipython3
-X = iris.iloc[:, [0, 1]].values
-y = iris.iloc[:, 4]
-```
-
 ```{code-cell} ipython3
 sns.FacetGrid(iris,hue="species", height=3).map(sns.histplot,"petal_length").add_legend()
 sns.FacetGrid(iris,hue="species", height=3).map(sns.histplot,"petal_width").add_legend()
 sns.FacetGrid(iris,hue="species", height=3).map(sns.histplot,"sepal_length").add_legend()
 plt.show()
+```
+
+For a more concise visualization later, we just select `sepal_length` and `sepal_width` as the input variables.
+
+```{code-cell} ipython3
+X = iris.iloc[:, [0, 1]].values
+y = iris.iloc[:, 4]
 ```
 
 ### Training GMM
@@ -159,7 +159,7 @@ print(GMM.n_iter_)
 
 ### Prediction
 
-If we have some new data, we can use `Kmean.predict` to predict which Gaussian they belong to.
+If we have some new data, we can use `GMM.predict` to predict which Gaussian they belong to.
 
 ```{code-cell} ipython3
 sample_test=np.array([[5.0, 3.0],[7.0,4.0]])
@@ -167,7 +167,7 @@ sample_test=np.array([[5.0, 3.0],[7.0,4.0]])
 GMM.predict(sample_test)
 ```
 
-## Connection to K-means
+## Comparison to K-means
 
 Both GMM and K-means are non-parametric clustering models, but GMM seems to be more robust 
 as it introduces probabilities. However, GMM is generally slower than K-Means because 
