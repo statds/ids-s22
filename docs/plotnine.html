@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.4. Plotnine &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>7.3. Plotnine &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.5. GM Plot" href="gmplot.html" />
-    <link rel="prev" title="7.3. Cartopy" href="cartopy.html" />
+    <link rel="next" title="7.4. GM Plot" href="gmplot.html" />
+    <link rel="prev" title="7.2. Cartopy" href="cartopy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,23 +136,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basemap.html">
-     7.2. Basemap
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="cartopy.html">
-     7.3. Cartopy
+     7.2. Cartopy
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.4. Plotnine
+     7.3. Plotnine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmplot.html">
-     7.5. GM Plot
+     7.4. GM Plot
     </a>
    </li>
   </ul>
@@ -339,37 +334,37 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install-plotnine">
-   7.4.1. Install Plotnine
+   7.3.1. Install Plotnine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-plotnine">
-   7.4.2. Import Plotnine
+   7.3.2. Import Plotnine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#histograms">
-   7.4.3. Histograms
+   7.3.3. Histograms
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boxplot">
-   7.4.4. Boxplot
+   7.3.4. Boxplot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#violin-plot">
-   7.4.5. Violin Plot
+   7.3.5. Violin Plot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#time-series">
-   7.4.6. Time Series
+   7.3.6. Time Series
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scatter-plot">
-   7.4.7. Scatter Plot
+   7.3.7. Scatter Plot
   </a>
  </li>
 </ul>
@@ -394,37 +389,37 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install-plotnine">
-   7.4.1. Install Plotnine
+   7.3.1. Install Plotnine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-plotnine">
-   7.4.2. Import Plotnine
+   7.3.2. Import Plotnine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#histograms">
-   7.4.3. Histograms
+   7.3.3. Histograms
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boxplot">
-   7.4.4. Boxplot
+   7.3.4. Boxplot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#violin-plot">
-   7.4.5. Violin Plot
+   7.3.5. Violin Plot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#time-series">
-   7.4.6. Time Series
+   7.3.6. Time Series
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scatter-plot">
-   7.4.7. Scatter Plot
+   7.3.7. Scatter Plot
   </a>
  </li>
 </ul>
@@ -437,12 +432,12 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="plotnine">
-<span id="id1"></span><h1><span class="section-number">7.4. </span>Plotnine<a class="headerlink" href="#plotnine" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">7.3. </span>Plotnine<a class="headerlink" href="#plotnine" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>plotnine is an implementation of a grammar of graphics in Python, it is based on ggplot2. The grammar allows users to compose plots by explicitly mapping data to the visual objects that make up the plot. Plotting with a grammar is powerful, it makes custom (and otherwise complex) plots easy to think about and then create, while the simple plots remain simple.</p>
 </div></blockquote>
 <div class="section" id="install-plotnine">
-<h2><span class="section-number">7.4.1. </span>Install Plotnine<a class="headerlink" href="#install-plotnine" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.1. </span>Install Plotnine<a class="headerlink" href="#install-plotnine" title="Permalink to this headline">¶</a></h2>
 <p>To install plotnine with pip, use the command:</p>
 <blockquote>
 <div><p>pip install plotnine</p>
@@ -453,7 +448,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="import-plotnine">
-<h2><span class="section-number">7.4.2. </span>Import Plotnine<a class="headerlink" href="#import-plotnine" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.2. </span>Import Plotnine<a class="headerlink" href="#import-plotnine" title="Permalink to this headline">¶</a></h2>
 <p>First, we need to import pandas, numpy, and plotnine with the following code. We also need to read the actual data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -511,7 +506,7 @@ memory usage: 1.7+ MB
 <p>It is easy to add elements of a plot with plotnine. We can write each necessary function one by one with a ‘+’ sign.</p>
 </div>
 <div class="section" id="histograms">
-<h2><span class="section-number">7.4.3. </span>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.3. </span>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
 <p>With plotnine, we can create histogram plots. We can change how the count is visualized. By default it is the raw count, but it can be set to ncount (raw count normalized to 1), density, proportion (width*density), and percent_format. We must set either binwidth or the number of bins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -527,7 +522,7 @@ memory usage: 1.7+ MB
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/plotnine_3_0.png" src="../_images/plotnine_3_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616342830)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752917057573)&gt;
 </pre></div>
 </div>
 </div>
@@ -546,7 +541,7 @@ memory usage: 1.7+ MB
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/plotnine_5_0.png" src="../_images/plotnine_5_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616206526)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855539794)&gt;
 </pre></div>
 </div>
 </div>
@@ -564,7 +559,7 @@ memory usage: 1.7+ MB
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/plotnine_7_0.png" src="../_images/plotnine_7_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616180700)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855519699)&gt;
 </pre></div>
 </div>
 </div>
@@ -586,14 +581,14 @@ memory usage: 1.7+ MB
 </pre></div>
 </div>
 <img alt="../_images/plotnine_9_1.png" src="../_images/plotnine_9_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616131747)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855464436)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="boxplot">
-<h2><span class="section-number">7.4.4. </span>Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.4. </span>Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">¶</a></h2>
 <p>We can make boxplots with plotnine very easily. In this example, we adjust the angle of the x labels so that they do not overlap.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -608,14 +603,14 @@ memory usage: 1.7+ MB
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/plotnine_11_0.png" src="../_images/plotnine_11_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616183763)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855466737)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="violin-plot">
-<h2><span class="section-number">7.4.5. </span>Violin Plot<a class="headerlink" href="#violin-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.5. </span>Violin Plot<a class="headerlink" href="#violin-plot" title="Permalink to this headline">¶</a></h2>
 <p>Violin plots are similar to boxplots, but they also display the density for the numeric data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -641,14 +636,14 @@ memory usage: 1.7+ MB
 </pre></div>
 </div>
 <img alt="../_images/plotnine_13_3.png" src="../_images/plotnine_13_3.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736615727710)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855059360)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="time-series">
-<h2><span class="section-number">7.4.6. </span>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.6. </span>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
 <p>We can also make time series with plotnine. In our example we need to group the data by day and borough, and then reset the index to use both as a column variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,14 +663,14 @@ memory usage: 1.7+ MB
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/plotnine_15_0.png" src="../_images/plotnine_15_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736615681085)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752855022225)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="scatter-plot">
-<h2><span class="section-number">7.4.7. </span>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3.7. </span>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
 <p>With geom_point, we can make a simple scatter plot of our data. We can set LONGITUDE as X, LATITUDE as y, and we can color each point by BOROUGH. We can also set alpha so that we can visualize the density of the points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,7 +686,7 @@ memory usage: 1.7+ MB
 </pre></div>
 </div>
 <img alt="../_images/plotnine_17_1.png" src="../_images/plotnine_17_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8736616128735)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8752854925975)&gt;
 </pre></div>
 </div>
 </div>
@@ -728,13 +723,13 @@ memory usage: 1.7+ MB
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7.3. </span>Cartopy</p>
+            <p class="prev-next-title"><span class="section-number">7.2. </span>Cartopy</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="gmplot.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.5. </span>GM Plot</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>GM Plot</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
