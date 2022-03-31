@@ -377,8 +377,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connection-to-k-means">
-   11.5. Connection to K-means
+  <a class="reference internal nav-link" href="#comparison-to-k-means">
+   11.5. Comparison to K-means
   </a>
  </li>
 </ul>
@@ -439,8 +439,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connection-to-k-means">
-   11.5. Connection to K-means
+  <a class="reference internal nav-link" href="#comparison-to-k-means">
+   11.5. Comparison to K-means
   </a>
  </li>
 </ul>
@@ -495,7 +495,7 @@ observation <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</spa
 based on <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span></p></li>
 </ul>
 </li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">iter</span> <span class="pre">=</span> <span class="pre">max_iter</span></code> or when the algorithm converges, terminate.</p></li>
+<li><p>When the algorithm converges or when <code class="docutils literal notranslate"><span class="pre">iter</span> <span class="pre">=</span> <span class="pre">max_iter</span></code>, terminate.</p></li>
 </ol>
 <p>For more details about mathematics and the EM algorithm:
 <a class="reference external" href="https://towardsdatascience.com/gaussian-mixture-models-explained-6986aaf5a95">https://towardsdatascience.com/gaussian-mixture-models-explained-6986aaf5a95</a>,
@@ -542,15 +542,6 @@ memory usage: 6.0+ KB
 </div>
 </div>
 </div>
-<p>For a more concise visualization later, we just select <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code> and <code class="docutils literal notranslate"><span class="pre">sepal_width</span></code> as the input variables.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span><span class="s2">&quot;petal_length&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
@@ -561,9 +552,18 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_5_0.png" src="../_images/GMM_5_0.png" />
-<img alt="../_images/GMM_5_1.png" src="../_images/GMM_5_1.png" />
-<img alt="../_images/GMM_5_2.png" src="../_images/GMM_5_2.png" />
+<img alt="../_images/GMM_3_0.png" src="../_images/GMM_3_0.png" />
+<img alt="../_images/GMM_3_1.png" src="../_images/GMM_3_1.png" />
+<img alt="../_images/GMM_3_2.png" src="../_images/GMM_3_2.png" />
+</div>
+</div>
+<p>For a more concise visualization later, we just select <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code> and <code class="docutils literal notranslate"><span class="pre">sepal_width</span></code> as the input variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="training-gmm">
@@ -648,7 +648,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4991548641719723
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4993383962563342
 8
 </pre></div>
 </div>
@@ -657,7 +657,7 @@ memory usage: 6.0+ KB
 </div>
 <div class="section" id="prediction">
 <h3><span class="section-number">11.4.3. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
-<p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">Kmean.predict</span></code> to predict which Gaussian they belong to.</p>
+<p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">GMM.predict</span></code> to predict which Gaussian they belong to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_test</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],[</span><span class="mf">7.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]])</span>
@@ -667,15 +667,15 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1])
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="connection-to-k-means">
-<h2><span class="section-number">11.5. </span>Connection to K-means<a class="headerlink" href="#connection-to-k-means" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparison-to-k-means">
+<h2><span class="section-number">11.5. </span>Comparison to K-means<a class="headerlink" href="#comparison-to-k-means" title="Permalink to this headline">¶</a></h2>
 <p>Both GMM and K-means are non-parametric clustering models, but GMM seems to be more robust
 as it introduces probabilities. However, GMM is generally slower than K-Means because
 it takes more iterations to converge. GMM can also quickly converge to a local minimum,
