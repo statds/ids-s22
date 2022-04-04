@@ -289,7 +289,7 @@ Date    | Presenter            | Topic
 03/31 |  Zhenyu Xu  | Gaussian Mixture Models
 03/31 |  Zhengyi Lin |
 03/31 |  Peter Busa       |  MIT App Inventor
-04/05 |  Sinchan Sharma   |
+04/05 |  Sinchan Sharma   |  Interactive Visualizations
 04/05 |  Kristin Blagg | Guest lecture on education data science
 04/07 |  Juncheng Zheng  | Using R from Python and vice versa
 04/07 |  Anthony Zeimbekakis  |
