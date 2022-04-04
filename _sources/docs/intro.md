@@ -296,7 +296,7 @@ Date    | Presenter            | Topic
 04/07 |  Ryan Schoenfeld   |
 04/12 |  Robie Shamirian  |
 04/12 |  SakeenaAimandi  |
-04/12 |  Sam Hughes  |
+04/12 |  Sam Hughes  | Splines
 04/14 |  Thaila Taffe  |
 04/14 |  Benjamin Campman |
 04/14 |  Matthew Chandy  |
