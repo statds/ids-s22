@@ -29,17 +29,16 @@ From [docs.bokeh.org](https://docs.bokeh.org):
 ```{code-cell} ipython3
 import numpy as np
 import pandas as pd
-from bokeh.io import curdoc, push_notebook, output_notebook
-from bokeh.layouts import column, gridplot, layout, row, widgetbox
+from bokeh.io import curdoc, output_notebook
+from bokeh.layouts import column, gridplot, layout, row
 from bokeh.models import ( 
-    CategoricalColorMapper, CDSView, CheckboxGroup, ColumnDataSource, 
-    Div, RangeSlider, Slider, Spinner, TextInput
+    CategoricalColorMapper, ColumnDataSource, Div, 
+    RangeSlider, Slider, Spinner
 )
 from bokeh.palettes import Spectral6
 from bokeh.plotting import figure, show
 from bokeh.tile_providers import get_provider, Vendors
-from bokeh.transform import factor_cmap, factor_mark, linear_cmap
-from ipywidgets import interact
+from bokeh.transform import factor_cmap, linear_cmap
 ```
 
 ```{code-cell} ipython3
@@ -476,10 +475,8 @@ URL: https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_col
 
 ## Sources and Additional Information
 
-https://docs.bokeh.org/en/latest/
+[Bokeh Webpage](https://docs.bokeh.org/en/latest/)
 
-https://docs.bokeh.org/en/latest/docs/first_steps.html
+[Medium Article](https://medium.com/codex/visualizing-gapminder-data-using-bokeh-1aeeb7c85e6d)
 
-https://medium.com/codex/visualizing-gapminder-data-using-bokeh-1aeeb7c85e6d
-
-https://towardsdatascience.com/creating-an-interactive-map-in-python-using-bokeh-and-pandas-f84414536a06
+[Towards Data Science Article](https://towardsdatascience.com/creating-an-interactive-map-in-python-using-bokeh-and-pandas-f84414536a06)
