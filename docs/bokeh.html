@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.5. Interactive Visualizations Using Bokeh &#8212; Introduction to Data Science, Spring 2022</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Statistical Tests and Models" href="statmodels.html" />
+    <link rel="prev" title="7.4. GM Plot" href="gmplot.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tricircle.pdf" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Data Science, Spring 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   2. Markdown Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prman.html">
+   3. Project Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="refresh.html">
+   4. Python Refreshment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   5. SciPy for Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas.html">
+   6. Data Manipulation with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="visual.html">
+   7. Visualization
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib.html">
+     7.1. Matplotlib: Visualization with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotnine.html">
+     7.2. Plotnine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cartopy.html">
+     7.3. Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmplot.html">
+     7.4. GM Plot
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.5. Interactive Visualizations Using Bokeh
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="statmodels.html">
+   8. Statistical Tests and Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="patsy.html">
+     8.1. Describing Models with Patsy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tests.html">
+     8.2. Hypothesis Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models.html">
+     8.3. Linear and Generalized Linear Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="supervised.html">
+   9. Supervised Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisiontrees.html">
+     9.2. Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="randomforests.html">
+     9.3. Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bagging_vs_boosting.html">
+     9.4. Bagging versus Boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     9.5. Support Vector Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nearest_neighbor.html">
+     9.16. K Nearest Neighbor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="unsupervised.html">
+   10. Unsupervised Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="k_means_clustering.html">
+     10.1. K-means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="GMM.html">
+     10.2. Gaussian Mixture Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   11. Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fixedit.html">
+   12. I Fixed It
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="back.html">
+   13. Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/bokeh.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/bokeh.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/bokeh.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-bokeh">
+   7.5.1. Installing Bokeh
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bokeh-basics">
+   7.5.2. Bokeh Basics:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#widget-interactions">
+   7.5.3. Widget Interactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linked-plots">
+   7.5.4. Linked Plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-nyc-crash-dataset">
+   7.5.5. Working with NYC Crash Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-bokeh-server">
+   7.5.6. Using Bokeh Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-additional-information">
+   7.5.7. Sources and Additional Information
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interactive Visualizations Using Bokeh</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-bokeh">
+   7.5.1. Installing Bokeh
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bokeh-basics">
+   7.5.2. Bokeh Basics:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#widget-interactions">
+   7.5.3. Widget Interactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linked-plots">
+   7.5.4. Linked Plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-nyc-crash-dataset">
+   7.5.5. Working with NYC Crash Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-bokeh-server">
+   7.5.6. Using Bokeh Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-additional-information">
+   7.5.7. Sources and Additional Information
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="interactive-visualizations-using-bokeh">
+<h1><span class="section-number">7.5. </span>Interactive Visualizations Using Bokeh<a class="headerlink" href="#interactive-visualizations-using-bokeh" title="Permalink to this headline">¶</a></h1>
+<p>From <a class="reference external" href="https://docs.bokeh.org">docs.bokeh.org</a>:</p>
+<blockquote>
+<div><p>Bokeh is a Python library for creating interactive visualizations for modern web browsers. It helps you build
+beautiful graphics, ranging from simple plots to complex dashboards with streaming datasets. With Bokeh, you
+can create JavaScript-powered visualizations without writing any JavaScript yourself.</p>
+</div></blockquote>
+<div class="section" id="installing-bokeh">
+<h2><span class="section-number">7.5.1. </span>Installing Bokeh<a class="headerlink" href="#installing-bokeh" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>pip: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bokeh</span></code></p></li>
+<li><p>conda: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">bokeh</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="bokeh-basics">
+<h2><span class="section-number">7.5.2. </span>Bokeh Basics:<a class="headerlink" href="#bokeh-basics" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">curdoc</span><span class="p">,</span> <span class="n">output_notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">column</span><span class="p">,</span> <span class="n">gridplot</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">row</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="p">(</span> 
+    <span class="n">CategoricalColorMapper</span><span class="p">,</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">Div</span><span class="p">,</span> 
+    <span class="n">RangeSlider</span><span class="p">,</span> <span class="n">Slider</span><span class="p">,</span> <span class="n">Spinner</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral6</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.tile_providers</span> <span class="kn">import</span> <span class="n">get_provider</span><span class="p">,</span> <span class="n">Vendors</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span><span class="p">,</span> <span class="n">linear_cmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span> <span class="c1"># Display outputs inside notebook</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Exponential Function&#39;</span><span class="p">,</span> <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+           <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;x^2&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fill_color</span> <span class="o">=</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">line_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, whenever we create a plot, a toolbar containing various buttons will be available to us on the right side. Some of
+these buttons include the ability to move the graph within the plot, zoom in and out using a mouse wheel or trackpad, zoom into
+an area of the plot by creating a box, exporting the current view as a .png file, reseting the view to its default settings,
+etc. You can also learn more about configuring plot tools by clicking on the help button at the bottom.</p>
+<p>We can customize our plots by including different tools in the toolbar as well as changing the theme of our background, among
+many other things.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change theme/background</span>
+<span class="n">curdoc</span><span class="p">()</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;dark_minimal&#39;</span>
+
+<span class="c1"># Generate random points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Create linear color mapper using color palette</span>
+<span class="n">mapper</span> <span class="o">=</span> <span class="n">linear_cmap</span><span class="p">(</span><span class="n">field_name</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">Spectral6</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">high</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Specify tools to include in the toolbar</span>
+<span class="n">tools</span> <span class="o">=</span> <span class="s1">&#39;box_select, lasso_select, poly_select, tap, crosshair, hover, reset, wheel_zoom&#39;</span>
+
+<span class="c1"># Create figure and points to plot</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Random Points&#39;</span><span class="p">,</span> <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> 
+           <span class="n">x_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">sizing_mode</span> <span class="o">=</span> <span class="s1">&#39;stretch_width&#39;</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span> <span class="n">tools</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">line_color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot</span>
+<span class="n">show</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bokeh’s plotting interface also allows us to render/plot multiple glyph types onto the same figure if we want to. Below is an
+example taken from Bokeh’s tutorials, and we’ll add to it by creating an interactive legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare some data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Create a new plot with a title and axis labels</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Multiple glyphs example&quot;</span><span class="p">,</span> <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add multiple renderers</span>
+<span class="n">f</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s2">&quot;Temp.&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">line_width</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="n">y2</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s2">&quot;Rate&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s2">&quot;Objects&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Make the legend interactive when clicked on</span>
+<span class="n">f</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;top_left&quot;</span>
+<span class="n">f</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s2">&quot;mute&quot;</span> <span class="c1"># Can also be set to &#39;hide&#39; to completely hide a glyph</span>
+
+<span class="c1"># Show the results</span>
+<span class="n">show</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="widget-interactions">
+<h2><span class="section-number">7.5.3. </span>Widget Interactions<a class="headerlink" href="#widget-interactions" title="Permalink to this headline">¶</a></h2>
+<p>One of the nice features of Bokeh is that it allows us to easily create widgets that interact with our plots in some way, which
+can help to make our visualizations more interesting and versatile. Here we’ll create a few simple sliders that will allow us
+to adjust the size of the randomly generated points from earlier as well as change the ranges of the x and y axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create some basic sliders</span>
+
+<span class="c1"># Define Div and Spinner object with start and end values</span>
+<span class="n">div</span> <span class="o">=</span> <span class="n">Div</span><span class="p">(</span>
+    <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &lt;p&gt;Select the circle&#39;s size using this control element:&lt;/p&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">ps</span> <span class="o">=</span> <span class="n">Spinner</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Circle size&#39;</span><span class="p">,</span> <span class="n">low</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+             <span class="n">value</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define RangeSlider object with start and end values</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">RangeSlider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Adjust x-axis range&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+                 <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">end</span><span class="p">))</span>
+<span class="n">xs</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">attr_selector</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">xs</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">attr_selector</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ys</span> <span class="o">=</span> <span class="n">RangeSlider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Adjust y-axis range&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+                 <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">end</span><span class="p">))</span>
+<span class="n">ys</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">y_range</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">attr_selector</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ys</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">y_range</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">attr_selector</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">row</span><span class="p">(</span><span class="n">div</span><span class="p">,</span> <span class="n">ps</span><span class="p">),</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">points</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="linked-plots">
+<h2><span class="section-number">7.5.4. </span>Linked Plots<a class="headerlink" href="#linked-plots" title="Permalink to this headline">¶</a></h2>
+<p>Another interesting feature of Bokeh is the ability to create linked visualizations, which lets you add connected interactivity
+between plots. This can be useful if you have multiple plots which you want to apply the same actions to simultaneously. In
+order to create linked plots or other advanced visualization features, we’ll need to convert our data into a Bokeh
+<code class="docutils literal notranslate"><span class="pre">ColumnDataSource</span></code> object. This object is the core to most Bokeh plots, as it provides the data to the glyphs of our plots.
+More information about the <code class="docutils literal notranslate"><span class="pre">ColumnDataSource</span></code> object can be found <a class="reference external" href="https://docs.bokeh.org/en/latest/docs/user_guide/data.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define sin and cos functions</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span><span class="n">y2</span><span class="p">))</span>
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;box_select, box_zoom, lasso_select, pan, reset&#39;</span><span class="p">]</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Sine function&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">,</span> 
+              <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;y1&#39;</span><span class="p">)</span>
+<span class="n">left</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">right</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Cosine Function&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">,</span>
+               <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">x_range</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> 
+               <span class="n">y_range</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">y_range</span><span class="p">)</span>
+<span class="n">right</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Create a gridplot to put the plots side-by-side</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-nyc-crash-dataset">
+<h2><span class="section-number">7.5.5. </span>Working with NYC Crash Dataset<a class="headerlink" href="#working-with-nyc-crash-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Using the NYC Motor Vehicle Crash data, we’ll create a few visualizations that utilize different interactive features to try
+and make them more interesting and impactful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Read in NYC crash data</span>
+<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/nyc_mv_collisions_202201.csv&#39;</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop rows with missing values for the columns below</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCATION&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">LATITUDE</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">LONGITUDE</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create variable HOUR</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;HOUR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CRASH TIME&#39;</span><span class="p">]]</span>
+
+<span class="k">def</span> <span class="nf">timeframes</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;12AM-6AM&#39;</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;6AM-12PM&#39;</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">17</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;12PM-6PM&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;6PM-12AM&#39;</span>
+
+<span class="c1">## Take crash hours and put them into specifc intervals</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;TIMEFRAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;HOUR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">timeframes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we’re going to create some interactive maps of the crashes that took place across the different boroughs. Before we do so,
+something to note is that as opposed to using standard latitude-longitude coordinates, Bokeh plots typically use something
+called <a class="reference external" href="https://en.wikipedia.org/wiki/Web_Mercator_projection">Web Mercator coordinates</a>. Because of this, we’ll have to first
+convert our existing coordinates into these new coordinates, which can be done with the help of the function below. Special
+thanks goes out to this <a class="reference external" href="https://towardsdatascience.com/creating-an-interactive-map-in-python-using-bokeh-and-pandas-f84414536a06">article</a> for the solution to this problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define function to switch from lat/long to mercator coordinates</span>
+<span class="k">def</span> <span class="nf">x_coord</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">r_major</span> <span class="o">=</span> <span class="mf">6378137.000</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r_major</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">lon</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">180.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> 
+        <span class="n">lat</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">scale</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define coord as tuple (lat,long)</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;LOCATION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">],</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;LONGITUDE&#39;</span><span class="p">]))</span>
+<span class="c1"># Obtain list of mercator coordinates</span>
+<span class="n">mercators</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_coord</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;LOCATION&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Create mercator column in our df</span>
+<span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mercators</span>
+<span class="c1"># Split that column out into two separate columns - mercator_x and mercator_y</span>
+<span class="n">nyc_crash</span><span class="p">[[</span><span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve solved the issue of the coordinate systems, we can now create different maps of motor vehicle crashes. In the
+example below, we’ll create side-by-side plots, one plot showing the crashes that took place by <code class="docutils literal notranslate"><span class="pre">BOROUGH</span></code>, and the other one
+showing crashes that took place based on 6-hour intervals as follows:</p>
+<ul class="simple">
+<li><p>12AM through 5:59AM</p></li>
+<li><p>6AM through 11:59AM</p></li>
+<li><p>12PM through 5:59PM</p></li>
+<li><p>6PM through 11:59PM</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interactive Map 1</span>
+
+<span class="c1"># Get map tiling for plot displays</span>
+<span class="n">tile_provider</span> <span class="o">=</span> <span class="n">get_provider</span><span class="p">(</span><span class="n">Vendors</span><span class="o">.</span><span class="n">STAMEN_TONER</span><span class="p">)</span>
+
+<span class="c1"># Color scheme for legend labels</span>
+<span class="n">index_cmap</span> <span class="o">=</span> <span class="n">factor_cmap</span><span class="p">(</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">],</span> 
+                         <span class="n">factors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+<span class="n">boroughs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BRONX&#39;</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create plot figure and glyphs</span>
+<span class="c1"># Range bounds supplied in web mercator coordinates</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Motor Vehicle Crashes in NYC&#39;</span><span class="p">,</span> 
+           <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">8250000</span><span class="p">,</span> <span class="o">-</span><span class="mi">8230000</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">4930000</span><span class="p">,</span> <span class="mi">5010000</span><span class="p">),</span>
+           <span class="n">x_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> <span class="n">y_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> 
+           <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span> <span class="o">==</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span> <span class="o">==</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">)</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span> <span class="o">==</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">)</span>
+<span class="n">r4</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span> <span class="o">==</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">)</span>
+<span class="n">r5</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">BOROUGH</span> <span class="o">==</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">)</span>
+
+<span class="n">p1</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;bottom_right&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s1">&#39;hide&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">add_tile</span><span class="p">(</span><span class="n">tile_provider</span><span class="p">)</span>
+
+<span class="c1"># Interactive Map 2</span>
+
+<span class="c1"># Color scheme for legend labels</span>
+<span class="n">index_cmap2</span> <span class="o">=</span> <span class="n">factor_cmap</span><span class="p">(</span><span class="s1">&#39;TIMEFRAME&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">],</span> 
+                          <span class="n">factors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">TIMEFRAME</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+<span class="n">timeframes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;12AM-6AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6AM-12PM&#39;</span><span class="p">,</span> <span class="s1">&#39;12PM-6PM&#39;</span><span class="p">,</span> <span class="s1">&#39;6PM-12AM&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create plot figure and glyphs</span>
+<span class="c1"># Range bounds supplied in web mercator coordinates</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Motor Vehicle Crashes in NYC By 6-Hour Intervals&#39;</span><span class="p">,</span> 
+           <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">8250000</span><span class="p">,</span> <span class="o">-</span><span class="mi">8230000</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">4930000</span><span class="p">,</span> <span class="mi">5010000</span><span class="p">),</span>
+           <span class="n">x_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> <span class="n">y_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> 
+           <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">TIMEFRAME</span> <span class="o">==</span> <span class="s1">&#39;12AM-6AM&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap2</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;12AM-6AM&#39;</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">TIMEFRAME</span> <span class="o">==</span> <span class="s1">&#39;6AM-12PM&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap2</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;6AM-12PM&#39;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">TIMEFRAME</span> <span class="o">==</span> <span class="s1">&#39;12PM-6PM&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap2</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;12PM-6PM&#39;</span><span class="p">)</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Mercator_x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Mercator_y&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">TIMEFRAME</span> <span class="o">==</span> <span class="s1">&#39;6PM-12AM&#39;</span><span class="p">],</span> 
+             <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">index_cmap2</span><span class="p">,</span> <span class="n">legend_label</span> <span class="o">=</span> <span class="s1">&#39;6PM-12AM&#39;</span><span class="p">)</span>
+
+<span class="n">p2</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;bottom_right&#39;</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s1">&#39;hide&#39;</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">add_tile</span><span class="p">(</span><span class="n">tile_provider</span><span class="p">)</span>
+
+<span class="c1"># Create slider to adjust point size</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Adjust point size&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Link slider to each individual glpyh plotted (5 boroughs, 4 timeframes)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r1</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r2</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r3</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r4</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r5</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">s2</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">s3</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">s4</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">slider</span><span class="p">,</span> <span class="n">row</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we’ll create the same plots as before, but link them together so that they have simultaneous interactivity when using the
+different toolbar features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combined Linked Plots:</span>
+
+<span class="c1"># Interactive Map 1</span>
+
+<span class="n">tile_provider</span> <span class="o">=</span> <span class="n">get_provider</span><span class="p">(</span><span class="n">Vendors</span><span class="o">.</span><span class="n">STAMEN_TONER</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator_x&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator_y&#39;</span><span class="p">]</span>
+<span class="n">borough</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span>
+<span class="n">timeframe</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;TIMEFRAME&#39;</span><span class="p">]</span>
+
+<span class="c1"># Convert dataset to a Bokeh ColumnDataSource</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">borough</span><span class="o">=</span><span class="n">borough</span><span class="p">,</span> <span class="n">timeframe</span><span class="o">=</span><span class="n">timeframe</span><span class="p">))</span>
+
+<span class="c1"># Set tools to add to figure</span>
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;box_select, box_zoom, lasso_select, pan, reset, wheel_zoom&#39;</span><span class="p">]</span>
+<span class="n">boroughs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BRONX&#39;</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">]</span>
+
+<span class="c1"># Color scheme for legend labels, whcih are categorical</span>
+<span class="n">color_mapper</span> <span class="o">=</span> <span class="n">CategoricalColorMapper</span><span class="p">(</span><span class="n">factors</span> <span class="o">=</span> <span class="n">boroughs</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> 
+                                      <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">])</span>
+
+<span class="c1"># Range bounds supplied in web mercator coordinates</span>
+<span class="c1"># Create plotted figure</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Motor Vehicle Crashes in NYC&#39;</span><span class="p">,</span> 
+              <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">8250000</span><span class="p">,</span> <span class="o">-</span><span class="mi">8230000</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">4930000</span><span class="p">,</span> <span class="mi">5010000</span><span class="p">),</span>
+              <span class="n">x_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> <span class="n">y_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> 
+              <span class="n">sizing_mode</span> <span class="o">=</span> <span class="s1">&#39;stretch_width&#39;</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> 
+                 <span class="n">color</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">field</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">color_mapper</span><span class="p">),</span> <span class="n">legend_group</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set legend location and determine its behavior</span>
+<span class="n">left</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;bottom_right&#39;</span>
+<span class="n">left</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s1">&#39;mute&#39;</span>
+
+<span class="c1"># Add map tiling to plot figure</span>
+<span class="n">left</span><span class="o">.</span><span class="n">add_tile</span><span class="p">(</span><span class="n">tile_provider</span><span class="p">)</span>
+
+
+
+<span class="c1"># Interactive Map 2</span>
+
+<span class="n">timeframes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;12AM-6AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6AM-12PM&#39;</span><span class="p">,</span> <span class="s1">&#39;12PM-6PM&#39;</span><span class="p">,</span> <span class="s1">&#39;6PM-12AM&#39;</span><span class="p">]</span>
+<span class="n">color_mapper2</span> <span class="o">=</span> <span class="n">CategoricalColorMapper</span><span class="p">(</span><span class="n">factors</span> <span class="o">=</span> <span class="n">timeframes</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">])</span>
+
+<span class="c1"># Range bounds supplied in web mercator coordinates</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Motor Vehicle Crashes in NYC By 6-Hour Intervals&#39;</span><span class="p">,</span> 
+               <span class="n">x_range</span><span class="o">=</span><span class="n">left</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="n">left</span><span class="o">.</span><span class="n">y_range</span><span class="p">,</span>
+               <span class="n">x_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> <span class="n">y_axis_type</span><span class="o">=</span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span> 
+               <span class="n">sizing_mode</span> <span class="o">=</span> <span class="s1">&#39;stretch_width&#39;</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> 
+              <span class="n">color</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">field</span> <span class="o">=</span> <span class="s1">&#39;timeframe&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">color_mapper2</span><span class="p">),</span> <span class="n">legend_group</span> <span class="o">=</span> <span class="s1">&#39;timeframe&#39;</span><span class="p">)</span>
+
+<span class="n">right</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;bottom_right&#39;</span>
+<span class="n">right</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s1">&#39;mute&#39;</span>
+<span class="n">right</span><span class="o">.</span><span class="n">add_tile</span><span class="p">(</span><span class="n">tile_provider</span><span class="p">)</span>
+
+<span class="c1"># Create slider to adjust point/glyph size</span>
+<span class="n">point_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Adjust point size&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">point_slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+<span class="n">point_slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">row</span><span class="p">(</span><span class="n">point_slider</span><span class="p">),</span> <span class="n">row</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-bokeh-server">
+<h2><span class="section-number">7.5.6. </span>Using Bokeh Server<a class="headerlink" href="#using-bokeh-server" title="Permalink to this headline">¶</a></h2>
+<p>Up until now, we’ve been creating plots that are interactive, but don’t actively change the data being shown when applying
+things like sliders, filters, and other widgets. In order to create these more advanced visualizations, we can use a <a class="reference external" href="https://docs.bokeh.org/en/latest/docs/user_guide/server.html">Bokeh
+Server</a>, which is often used to create interactive web applications that connect front-end UI events to running Python code. To run the app on a Bokeh server, run
+<code class="docutils literal notranslate"><span class="pre">bokeh</span> <span class="pre">serve</span> <span class="pre">--show</span> <span class="pre">file.ext</span></code> in the command line or terminal in the directory where the file is located.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interactive plot using Bokeh Server</span>
+
+<span class="c1"># Convert dataframe columns of interest into a Bokeh ColumnDataSource</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator_x&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;Mercator_y&#39;</span><span class="p">],</span>
+                                      <span class="n">borough</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">],</span> <span class="n">hour</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;HOUR&#39;</span><span class="p">]))</span>
+<span class="n">borough_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BRONX&#39;</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">]</span>
+<span class="n">color_mapper</span> <span class="o">=</span> <span class="n">CategoricalColorMapper</span><span class="p">(</span><span class="n">factors</span> <span class="o">=</span> <span class="n">borough_list</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">])</span>
+<span class="n">tile_provider</span> <span class="o">=</span> <span class="n">get_provider</span><span class="p">(</span><span class="n">Vendors</span><span class="o">.</span><span class="n">STAMEN_TONER</span><span class="p">)</span>
+
+<span class="c1"># Create plotted figure</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;NYC Motor Vehicle Crashes&#39;</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span>
+              <span class="n">x_range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">8250000</span><span class="p">,</span> <span class="o">-</span><span class="mi">8230000</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">4930000</span><span class="p">,</span> <span class="mi">5010000</span><span class="p">),</span>
+              <span class="n">x_axis_type</span> <span class="o">=</span> <span class="s1">&#39;mercator&#39;</span><span class="p">,</span> <span class="n">y_axis_type</span> <span class="o">=</span> <span class="s1">&#39;mercator&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">field</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">color_mapper</span><span class="p">),</span> <span class="n">legend_group</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create slider to adjust point/glyph size</span>
+<span class="n">point_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Adjust point size&#39;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">point_slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set location of legend and determine its behavior</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;bottom_right&#39;</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Longitude&#39;</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Latitude&#39;</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span> <span class="o">=</span> <span class="s1">&#39;mute&#39;</span>
+
+<span class="c1"># Add map tiling to plot figure</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_tile</span><span class="p">(</span><span class="n">tile_provider</span><span class="p">)</span>
+
+<span class="c1"># Function to update data when slider value is changed</span>
+<span class="k">def</span> <span class="nf">update_plot</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">time_slider</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">plot</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Longitude&#39;</span>
+    <span class="n">plot</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Latitude&#39;</span>
+    
+    <span class="n">new_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">HOUR</span> <span class="o">==</span> <span class="n">time</span><span class="p">][</span><span class="s1">&#39;Mercator_x&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">HOUR</span> <span class="o">==</span> <span class="n">time</span><span class="p">][</span><span class="s1">&#39;Mercator_y&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;borough&#39;</span><span class="p">:</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">HOUR</span> <span class="o">==</span> <span class="n">time</span><span class="p">][</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;hour&#39;</span><span class="p">:</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">HOUR</span> <span class="o">==</span> <span class="n">time</span><span class="p">][</span><span class="s1">&#39;HOUR&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">source</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">new_data</span>
+
+<span class="c1"># Create a slider to adjust hour</span>
+<span class="n">time_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Select hour&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">time_slider</span><span class="o">.</span><span class="n">on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">update_plot</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">row</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">point_slider</span><span class="p">,</span> <span class="n">time_slider</span><span class="p">),</span> <span class="n">plot</span><span class="p">)</span>
+
+<span class="n">curdoc</span><span class="p">()</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">curdoc</span><span class="p">()</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;NYC Vehicle Crashes&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To run the code above and see the visualization, go into the terminal/command line and navigate to the directory where this
+file is located, then run <code class="docutils literal notranslate"><span class="pre">bokeh</span> <span class="pre">serve</span> <span class="pre">--show</span> <span class="pre">bokeh.ipynb</span></code>.</p>
+<p>(Note: Because this is actually an .md file, the command above won’t work, as <code class="docutils literal notranslate"><span class="pre">bokeh</span> <span class="pre">serve</span></code> only works with .py and .ipynb
+files. To see the result of the last code block, copy and paste everything here into a Jupyter Notebook file and then run the
+command. It will open a new tab in your web browser where you can see and interact with the visualization. When loading in
+the dataset, you can use the following URL instead of the relative path to the dataset.</p>
+<p>URL: https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv)</p>
+</div>
+<div class="section" id="sources-and-additional-information">
+<h2><span class="section-number">7.5.7. </span>Sources and Additional Information<a class="headerlink" href="#sources-and-additional-information" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.bokeh.org/en/latest/">Bokeh Webpage</a></p>
+<p><a class="reference external" href="https://medium.com/codex/visualizing-gapminder-data-using-bokeh-1aeeb7c85e6d">Medium Article</a></p>
+<p><a class="reference external" href="https://towardsdatascience.com/creating-an-interactive-map-in-python-using-bokeh-and-pandas-f84414536a06">Towards Data Science Article</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="gmplot.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.4. </span>GM Plot</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="statmodels.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Statistical Tests and Models</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jun Yan and students in STAT 5255/3255, Spring 2022<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
