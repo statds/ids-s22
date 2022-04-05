@@ -13,27 +13,54 @@ kernelspec:
 
 # K Nearest Neighbor
 
-## Algorithm
+## Algorithm/Concept
 
-The (k) nearest neighbor algorithm is a method of predicting or classifying values 
-based on the data values closest to them. In practice, this can be used to estimate
-values for missing variables in a dataset, or to assign new data to existing groups.
+The (k) nearest neighbor algorithm is a supervised learning method based on the idea that 
+that closer data points are more similar, and is commonly used in both regression and
+classification. In practice, this can be used to estimate missing information or predict new variables.
 
+In the regression case, values are predicted from an average of the k values closest to the data.
+For example, if you wanted to predict the weight of a new subject based on their height, from the 
+k heights closest to them you would take the average of their weights as the subject's weight.
+
+For classification, assignment is based on a majority rule. If .55$k$ of the $k$ data points belong 
+to Group A, the new point will also be classified as Group A. 
 
 Basic Implementation:
-1. Choose an arbitrary value for k.
-2. Fit the data to the regression or classification model.
+1. Choose an arbitrary value for k (often between 5 and 10).
+2. Fit the data to the classification or regression model.
 3. Using the k nearest training data points, categorize or predict the value of the new data point.
 4. Optimize k value from the training data and created model.
 
+## Unsupervised Nearest Neighbor
 
-In Python, the scikit-learn package contains multiple modules to implement the k 
+While we focus on the supervised methodology, there is also an unsupervised version which uses 
+different algorithms (`brute` force, `ball_tree`, or `kd_tree`) to find the k nearest neighbors, where 
+efficiency is based on number of sample, value of k, data structure, etc.
+
+In Python: [`sklearn.neighbors.NearestNeighbors`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors)
+
+> Notes: 
+>
+> An issue with k nearest neighbor is that if there is a significant difference in the number of observations 
+in each group, then larger classes to to overpower smaller ones. The most common solution is to weight each 
+observation, such that closer observations hold more deciding power than those further away. While this 
+is especially problematic in classification, weights can be applied to regression aswell.
+>
+> The algorithm is also very sensitive to the value of k. A particularly small value of k increases the 
+liklihood of overfitting the to the training data, and too large a k reduces the accuracy of the model all 
+around. The model should be optimized for a value of k that minimizes error rate (RMSE or MSE).
+>
+> Categorical data would need to be encoded - converted into numerical data before use.
+
+
+In Python, the scikit-learn library contains multiple packages to implement the k 
 nearest neighbor algorithm in Python. The example below uses:
 
 `model_selection`, `neighbors`, and `metrics`
 
 
-## Classification Example
+## Classification Example (Supervised)
 
 ```{code-cell} ipython3
 import pandas as pd
