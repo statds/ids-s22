@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. Statistical Tests and Models &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>4. Building a Python Module &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.1. Describing Models with Patsy" href="patsy.html" />
-    <link rel="prev" title="8.5. Interactive Visualizations Using Bokeh" href="bokeh.html" />
+    <link rel="next" title="5. Python Refreshment" href="refresh.html" />
+    <link rel="prev" title="3. Project Management" href="prman.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,8 +105,8 @@
    3. Project Management
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="module.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    4. Building a Python Module
   </a>
  </li>
@@ -162,11 +162,11 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="statmodels.html">
    9. Statistical Tests and Models
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -303,11 +303,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/statmodels.ipynb"><button type="button"
+            href="../_sources/docs/module.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/statmodels.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/module.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -332,7 +332,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/statmodels.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/module.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -356,7 +356,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Statistical Tests and Models</h1>
+                <h1>Building a Python Module</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -367,27 +367,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="statistical-tests-and-models">
-<span id="statmodels"></span><h1><span class="section-number">9. </span>Statistical Tests and Models<a class="headerlink" href="#statistical-tests-and-models" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p><a class="reference external" href="https://www.statsmodels.org/stable/about.html#about-statsmodels"><code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a>
-is a Python module that provides classes and functions for the
-estimation of many different statistical models, as well as for
-conducting statistical tests, and statistical data exploration. An
-extensive list of result statistics are available for each
-estimator. The results are tested against existing statistical
-packages to ensure that they are correct. The package is released
-under the open source Modified BSD (3-clause) license. The online
-documentation is hosted at &lt;statsmodels.org&gt;.</p>
-</div></blockquote>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> supports specifying models using R-style formulas and
-<code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrames</span></code>.</p>
-</div></blockquote>
-<p>There are multiple Python libraries/packages that allow you to perform
-complex statistical tests and build various models.</p>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="building-a-python-module">
+<span id="module"></span><h1><span class="section-number">4. </span>Building a Python Module<a class="headerlink" href="#building-a-python-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -415,17 +396,17 @@ complex statistical tests and build various models.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="bokeh.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="prman.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.5. </span>Interactive Visualizations Using Bokeh</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Project Management</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="patsy.html" title="next page">
+    <a class='right-next' id="next-link" href="refresh.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.1. </span>Describing Models with Patsy</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Python Refreshment</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
