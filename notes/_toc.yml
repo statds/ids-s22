@@ -6,6 +6,7 @@ chapters:
 - file: docs/intro
 - file: docs/markdown
 - file: docs/prman
+- file: docs/module
 - file: docs/refresh
 - file: docs/scipy
 - file: docs/pandas
