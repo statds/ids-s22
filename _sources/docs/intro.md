@@ -155,6 +155,7 @@ Data Week. A Zoom meeting link will be shared later.
 The random seed was set by the class on Tuesday, Feb. 22. The first
 seven after the random permutation work on the NYC collision data and
 the rest eight work on the DOB job application data.
+
 ```{code-cell} ipython3
 import random
 
@@ -164,7 +165,6 @@ presenters = ["Aimandi",  "Busa", "Campman", "Chandy", "Fodderwala",
 random.seed(370812509)
 random.sample(presenters, 15)
 ```
-
 
 ## Wish List
 
@@ -270,7 +270,7 @@ Date     | Presenter            | Topic
 
 ## Second Topic Presentation Randomization
 
-```{code-cell}
+```{code-cell} ipython3
 presenters = ["Aimandi",  "Busa", "Campman", "Chandy", 
               "Hughes", "Lin", # "Mcclurg-Wong", 
               "Schoenfeld", "Shamirian",
@@ -292,7 +292,7 @@ Date    | Presenter            | Topic
 04/05 |  Sinchan Sharma   |  Interactive Visualizations
 04/05 |  Kristin Blagg | Guest lecture on education data science
 04/07 |  Juncheng Zheng  | Using R from Python and vice versa
-04/07 |  Anthony Zeimbekakis  |
+04/07 |  Anthony Zeimbekakis  | Building a Python module
 04/07 |  Ryan Schoenfeld   | XGBoost
 04/12 |  Robie Shamirian  |
 04/12 |  SakeenaAimandi  |
@@ -305,7 +305,8 @@ Date    | Presenter            | Topic
 
 Only undergraduates are required to do a presentation on the final
 project. Graduate students submit a final report.
-```{code-cell}
+
+```{code-cell} ipython3
 presenters = ["Aimandi",  "Busa", "Campman", "Chandy", 
               "Hughes", "Lin",
               "Schoenfeld", "Shamirian",
