@@ -177,6 +177,7 @@ spopt==0.2.1
 spreg==1.2.4
 spvcm==0.3.0
 SQLAlchemy==1.4.31
+stat3255tutorial==0.2.0
 statsmodels==0.13.2
 sympy==1.10
 tenacity==8.0.1
