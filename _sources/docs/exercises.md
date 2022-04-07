@@ -188,4 +188,36 @@ kernelspec:
       inferences, tests, prediction, and comparison with competing methods,
       among others.
 	  
-	   
+1. Interim project discussion. Please sign up a 20-minute slot to discuss your
+   final project with me on Thursday, 04/14 and Friday, 04/15.
+
+Date    |  Time              |  Name
+------|------------|------
+04/14 | 10:40--11:00 | First Last
+           | 11:00--11:20 | First Last
+           | 11:20--11:40 | First Last
+           | 11:40--12:00 | First Last
+           | 12:00--12:20 | First Last
+           | 12:20--12:40 | First Last
+           | 12:40--13:00 | First Last
+           | 13:00--13:20 | First Last
+           | 13:20--13:40 | First Last
+           | 13:40--14:00 | First Last
+		   | 14:00--14:20 | First Last
+04/15 | 09:00--09:20 | First Last
+           | 09:20--09:40 | First Last
+           | 09:40--10:00 | First Last
+           | 10:00--10:20 | First Last
+           | 10:20--10:40 | First Last
+           | 10:40--11:00 | First Last
+           | 11:00--11:20 | First Last
+           | 11:20--11:40 | First Last
+           | 11:40--12:00 | First Last
+           | 14:00--14:20 | First Last
+           | 14:20--15:40 | First Last
+           | 14:40--15:00 | First Last
+           | 15:00--15:20 | First Last
+           | 15:20--15:40 | First Last
+           | 15:40--16:00 | First Last
+           | 16:00--16:20 | First Last
+           | 16:20--16:40 | First Last

@@ -261,12 +261,14 @@ Date     | Presenter            | Topic
 02/17 | Anthony Zeimbekakis | package `patsy`
 02/22 | Jun Yan               | package `statsmodels` 
 02/24 | Ryan Schoenfeld | decision trees
-03/03 | Sinchan Sharma  | Random forest
-03/10 | Ben Campman | Markown Basics
+03/03 | Sinchan Sharma  | random forest
+03/10 | Ben Campman | markown Basics
 03/22 | Zhenyu Xu | K-means clustering
  ~~03/22~~  |  ~~Juncheng Zheng~~  |  ~~Neural negtworks~~
+03/24 |      |  (power outage)
 03/29 | Peter Busa           | support vector machine
-03/29 | Sakeena Aimandi  |
+03/29 | Sakeena Aimandi | bagging and boosting in action
+04/
 
 ## Second Topic Presentation Randomization
 

@@ -61,7 +61,7 @@ nyc_crash['injury'] = nyc_crash.apply(injury, axis = 1)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3572/2965031827.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3961/2965031827.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m#nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mnyc_crash[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m"/content/nyc_mv_collisions_202201.csv"[0m[0;34m)[0m [0;31m#- path I used but its wrong[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0;34m[0m[0m
