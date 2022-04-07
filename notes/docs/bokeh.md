@@ -33,7 +33,7 @@ from bokeh.io import curdoc, output_notebook
 from bokeh.layouts import column, gridplot, layout, row
 from bokeh.models import ( 
     CategoricalColorMapper, ColumnDataSource, Div, 
-    RangeSlider, Slider, Spinner
+    RangeSlider, Select, Slider, Spinner
 )
 from bokeh.palettes import Spectral6
 from bokeh.plotting import figure, show
@@ -212,6 +212,17 @@ def timeframes(x):
 
 ## Take crash hours and put them into specifc intervals
 nyc_crash['TIMEFRAME'] = nyc_crash['HOUR'].apply(timeframes)
+
+contributing_factors = ['CONTRIBUTING FACTOR VEHICLE 1', 'CONTRIBUTING FACTOR VEHICLE 2',
+                        'CONTRIBUTING FACTOR VEHICLE 3', 'CONTRIBUTING FACTOR VEHICLE 4',
+                        'CONTRIBUTING FACTOR VEHICLE 5']
+
+## Calculate number of vehicles involved in each crash
+nyc_crash['NUM VEHICLES INVOLVED'] = len(nyc_crash[contributing_factors].columns) - nyc_crash[
+                                          contributing_factors].isnull().sum(axis = 1)
+
+## Drop missing values from 'CONTRIBUTING FACTOR VEHICLE 1'
+nyc_crash.dropna(subset = ['CONTRIBUTING FACTOR VEHICLE 1'], inplace = True)
 ```
 
 Here we're going to create some interactive maps of the crashes that took place across the different boroughs. Before we do so, 
@@ -412,20 +423,29 @@ Server](https://docs.bokeh.org/en/latest/docs/user_guide/server.html), which is 
 
 # Convert dataframe columns of interest into a Bokeh ColumnDataSource
 source = ColumnDataSource(data = dict(x = nyc_crash['Mercator_x'], y = nyc_crash['Mercator_y'],
-                                      borough = nyc_crash['BOROUGH'], hour = nyc_crash['HOUR']))
+                                      borough = nyc_crash['BOROUGH'], hour = nyc_crash['HOUR'],
+                                      vehicles = nyc_crash['NUM VEHICLES INVOLVED']))
+
 borough_list = ['BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']
 color_mapper = CategoricalColorMapper(factors = borough_list, palette = ['red', 'blue', 'green', 'orange', 'purple'])
+
+TOOLS = ['box_select, box_zoom, hover, lasso_select, pan, reset, wheel_zoom']
+TOOLTIPS = [('index', '$index'), ('(x, y)', '(@x, @y)'), 
+            ('# Vehicles Involved', '@vehicles'), ('Hour', '@hour'),
+            ('Borough', '@borough')]
+
 tile_provider = get_provider(Vendors.STAMEN_TONER)
 
 # Create plotted figure
-plot = figure(title = 'NYC Motor Vehicle Crashes', height = 600, width = 600,
+plot = figure(title = 'NYC Motor Vehicle Crashes', sizing_mode = 'scale_both',
               x_range = (-8250000, -8230000), y_range=(4930000, 5010000),
-              x_axis_type = 'mercator', y_axis_type = 'mercator')
+              x_axis_type = 'mercator', y_axis_type = 'mercator',
+              tooltips = TOOLTIPS, tools = TOOLS)
 r = plot.circle(x = 'x', y = 'y', fill_alpha = 0.5, source = source,
             color = dict(field = 'borough', transform = color_mapper), legend_group = 'borough')
 
 # Create slider to adjust point/glyph size
-point_slider = Slider(title = 'Adjust point size', start = 100, end = 500, step = 10, value = 300)
+point_slider = Slider(title = 'Adjust Point Size', start = 100, end = 500, step = 10, value = 300)
 point_slider.js_link('value', r.glyph, 'radius')
 
 # Set location of legend and determine its behavior
@@ -437,25 +457,87 @@ plot.legend.click_policy = 'mute'
 # Add map tiling to plot figure
 plot.add_tile(tile_provider)
 
-# Function to update data when slider value is changed
-def update_plot(attr, old, new):
-    time = time_slider.value
+# Define functions to update data based on slider values
+def update_hour(attr, old, new):
+    hour = hour_slider.value
     plot.xaxis.axis_label = 'Longitude'
     plot.yaxis.axis_label = 'Latitude'
     
+    current = nyc_crash[nyc_crash.HOUR == hour]
+    
     new_data = {
-        'x': nyc_crash[nyc_crash.HOUR == time]['Mercator_x'],
-        'y': nyc_crash[nyc_crash.HOUR == time]['Mercator_y'],
-        'borough': nyc_crash[nyc_crash.HOUR == time]['BOROUGH'],
-        'hour': nyc_crash[nyc_crash.HOUR == time]['HOUR']
+        'x': current['Mercator_x'],
+        'y': current['Mercator_y'],
+        'borough': current['BOROUGH'],
+        'hour': current['HOUR'],
+        'vehicles': current['NUM VEHICLES INVOLVED']
     }
     source.data = new_data
 
-# Create a slider to adjust hour
-time_slider = Slider(title = 'Select hour', value = 12, start = 0, end = 23, step = 1)
-time_slider.on_change('value', update_plot)
+def update_hour_range(attr, old, new):
+    hour_range = hour_range_slider.value
+    plot.xaxis.axis_label = 'Longitude'
+    plot.yaxis.axis_label = 'Latitude'
+    
+    current = nyc_crash[(nyc_crash.HOUR >= hour_range[0]) & (nyc_crash.HOUR <= hour_range[1])]
+    
+    new_data = {
+        'x': current['Mercator_x'],
+        'y': current['Mercator_y'],
+        'borough': current['BOROUGH'],
+        'hour': current['HOUR'],
+        'vehicles': current['NUM VEHICLES INVOLVED']
+    }
+    source.data = new_data
+    
+def update_vehicles(attr, old, new):
+    vehicles = vehicles_spinner.value
+    plot.xaxis.axis_label = 'Longitude'
+    plot.yaxis.axis_label = 'Latitude'
+    
+    current = nyc_crash[nyc_crash['NUM VEHICLES INVOLVED'] == vehicles]
+    
+    new_data = {
+        'x': current['Mercator_x'],
+        'y': current['Mercator_y'],
+        'borough': current['BOROUGH'],
+        'hour': current['HOUR'],
+        'vehicles': current['NUM VEHICLES INVOLVED']
+    }
+    source.data = new_data
+    
+def update_borough(attr, old, new):
+    bs = borough_select.value
+    plot.xaxis.axis_label = 'Longitude'
+    plot.yaxis.axis_label = 'Latitude'
+    
+    current = nyc_crash[nyc_crash.BOROUGH == bs]
+    
+    new_data = {
+        'x': current['Mercator_x'],
+        'y': current['Mercator_y'],
+        'borough': current['BOROUGH'],
+        'hour': current['HOUR'],
+        'vehicles': current['NUM VEHICLES INVOLVED']
+    }
+    source.data = new_data
 
-layout = row(column(point_slider, time_slider), plot)
+# Create sliders to adjust hour, hour ranges, vehicles involved, and boroughs
+hour_slider = Slider(title = 'Select Hour', value = 12, start = 0, end = 23, step = 1)
+hour_slider.on_change('value', update_hour)
+
+hour_range_slider = RangeSlider(title = 'Select Range of Hours', value = (0, 12), start = 0, end = 23, step = 1)
+hour_range_slider.on_change('value_throttled', update_hour_range)
+
+vehicles_spinner = Spinner(title = 'Number of Vehicles Involved', value = 1, low = 1, high = 5, step = 1, width = 80)
+vehicles_spinner.on_change('value', update_vehicles)
+
+initial_borough = 'BRONX'
+borough_select = Select(value = initial_borough, title = 'Select Borough', options = borough_list)
+borough_select.on_change('value', update_borough)
+
+# Customize layout of everything
+layout = row(plot, column(point_slider, hour_slider, hour_range_slider, vehicles_spinner, borough_select))
 
 curdoc().add_root(layout)
 curdoc().title = 'NYC Vehicle Crashes'
