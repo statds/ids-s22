@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XGBoost &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>10.17. XGBoost &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Unsupervised Learning" href="unsupervised.html" />
+    <link rel="prev" title="10.16. K Nearest Neighbor" href="nearest_neighbor.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +89,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    1. Introduction
@@ -187,16 +189,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="supervised.html">
    10. Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="decisiontrees.html">
      10.2. Decision Trees
@@ -220,6 +222,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="nearest_neighbor.html">
      10.16. K Nearest Neighbor
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     10.17. XGBoost
     </a>
    </li>
   </ul>
@@ -354,49 +361,49 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   XGBoost
+   10.17. XGBoost
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-packages">
-     Installing Packages
+     10.17.1. Installing Packages
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-import-and-data-cleaning">
-     Data Import and Data Cleaning
+     10.17.2. Data Import and Data Cleaning
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-xgboost-model">
-     Classification XGBoost Model
+     10.17.3. Classification XGBoost Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuning-the-paramaters-grid-search">
-   Tuning the Paramaters - Grid Search
+   10.18. Tuning the Paramaters - Grid Search
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#feature-importance">
-     Feature Importance
+     10.18.1. Feature Importance
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-xgboost-model">
-     Regression XGBoost Model
+     10.18.2. Regression XGBoost Model
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tuning-the-parameters-grid-search">
-     Tuning the Parameters - Grid Search
+     10.18.3. Tuning the Parameters - Grid Search
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       Feature Importance
+       10.18.3.1. Feature Importance
       </a>
      </li>
     </ul>
@@ -425,49 +432,49 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   XGBoost
+   10.17. XGBoost
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-packages">
-     Installing Packages
+     10.17.1. Installing Packages
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-import-and-data-cleaning">
-     Data Import and Data Cleaning
+     10.17.2. Data Import and Data Cleaning
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-xgboost-model">
-     Classification XGBoost Model
+     10.17.3. Classification XGBoost Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuning-the-paramaters-grid-search">
-   Tuning the Paramaters - Grid Search
+   10.18. Tuning the Paramaters - Grid Search
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#feature-importance">
-     Feature Importance
+     10.18.1. Feature Importance
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-xgboost-model">
-     Regression XGBoost Model
+     10.18.2. Regression XGBoost Model
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tuning-the-parameters-grid-search">
-     Tuning the Parameters - Grid Search
+     10.18.3. Tuning the Parameters - Grid Search
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       Feature Importance
+       10.18.3.1. Feature Importance
       </a>
      </li>
     </ul>
@@ -484,7 +491,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="xgboost">
-<h1>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">10.17. </span>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">¶</a></h1>
 <p>XGBoost = Extreme Gradient Boosting. It is an implementation of gradient boosted decision trees. There are many other types of gradient boosting libraries such as Catboost and LightGBM.</p>
 <p><strong>Pros:</strong></p>
 <ol class="simple">
@@ -503,12 +510,12 @@
 <li><p>Doesn’t easily work with categorical variables</p></li>
 </ol>
 <div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.17.1. </span>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">xgboost</span></code> to install</p>
 <p>Can also use the graphviz package to visualize the trees in the same way we could for decision trees</p>
 </div>
 <div class="section" id="data-import-and-data-cleaning">
-<h2>Data Import and Data Cleaning<a class="headerlink" href="#data-import-and-data-cleaning" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.17.2. </span>Data Import and Data Cleaning<a class="headerlink" href="#data-import-and-data-cleaning" title="Permalink to this headline">¶</a></h2>
 <p>We have to do a lot of data cleaning in order to add columns that we can use to be able to model easily with the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,7 +625,7 @@
 </div>
 </div>
 <div class="section" id="classification-xgboost-model">
-<h2>Classification XGBoost Model<a class="headerlink" href="#classification-xgboost-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.17.3. </span>Classification XGBoost Model<a class="headerlink" href="#classification-xgboost-model" title="Permalink to this headline">¶</a></h2>
 <p>In this model we are trying to predict if someone was injured or not in the crash. The variables that we will predict it with are the number of vehicles, season, time of day, bourough and the cause of the crash.</p>
 <p>XGBoost needs a DMatrix to be created in order to run <code class="docutils literal notranslate"><span class="pre">xgb.train</span></code> but we will use the fit function here which accepts a pandas dataframe. A DMatrix can be easily created and it helps to increase memory efficiency and training speed.</p>
 <p>A DMatrix can be created with <code class="docutils literal notranslate"><span class="pre">data_dmatrix</span> <span class="pre">=</span> <span class="pre">xgb.DMatrix(data=,label=)</span></code></p>
@@ -654,7 +661,7 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="tuning-the-paramaters-grid-search">
-<h1>Tuning the Paramaters - Grid Search<a class="headerlink" href="#tuning-the-paramaters-grid-search" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">10.18. </span>Tuning the Paramaters - Grid Search<a class="headerlink" href="#tuning-the-paramaters-grid-search" title="Permalink to this headline">¶</a></h1>
 <p>An important aspect of XGBoost is tuning the parameters to make the parameters more successful in training the model. One way we can do this is by using Grid Search to search over every combination of specified parameter values and find out which one is the best.</p>
 <p>There are other ways to find the best parameters but we will just focus on Grid Search here.</p>
 <p>For this specific example running the actual model only takes seconds but this Grid Search took about 8 minutes.</p>
@@ -697,7 +704,7 @@
 </div>
 </div>
 <div class="section" id="feature-importance">
-<h2>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.18.1. </span>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
 <p>Here we see how much each variable is affecting the overall prediction</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,7 +719,7 @@
 </div>
 </div>
 <div class="section" id="regression-xgboost-model">
-<h2>Regression XGBoost Model<a class="headerlink" href="#regression-xgboost-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.18.2. </span>Regression XGBoost Model<a class="headerlink" href="#regression-xgboost-model" title="Permalink to this headline">¶</a></h2>
 <p>Almost exactly the same as the classification model except we are predicting the number of people injured instead of if someone was injured.</p>
 <p>The only difference is we use <code class="docutils literal notranslate"><span class="pre">xgb.XGBRegressor</span></code></p>
 <div class="cell docutils container">
@@ -758,7 +765,7 @@
 </div>
 </div>
 <div class="section" id="tuning-the-parameters-grid-search">
-<h2>Tuning the Parameters - Grid Search<a class="headerlink" href="#tuning-the-parameters-grid-search" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.18.3. </span>Tuning the Parameters - Grid Search<a class="headerlink" href="#tuning-the-parameters-grid-search" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -803,7 +810,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h3>Feature Importance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.18.3.1. </span>Feature Importance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xgb</span><span class="o">.</span><span class="n">plot_importance</span><span class="p">(</span><span class="n">xg_reg</span><span class="p">)</span>
@@ -841,7 +848,21 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="nearest_neighbor.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">10.16. </span>K Nearest Neighbor</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Unsupervised Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

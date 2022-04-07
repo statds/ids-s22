@@ -226,6 +226,11 @@
      10.16. K Nearest Neighbor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="XGBoost.html">
+     10.17. XGBoost
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -533,8 +538,8 @@ evaluate the density and distributions at these points?</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 16.0 0.0 0.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.92447676,  5.57414212,  4.16654968, -0.31439844, -2.19112673,
-        3.75244148,  3.16833496, -0.84612952, -2.74669122,  2.44321938])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.34428958,  5.26547848,  5.02586754,  6.50797022,  4.86976546,
+        3.11427789,  4.3760298 , -6.81326764, -0.86612995,  2.64551945])
 </pre></div>
 </div>
 </div>
@@ -547,8 +552,8 @@ evaluate the density and distributions at these points?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.09619467, 0.06690807, 0.0861282 , 0.0843634 , 0.05760441,
-       0.09060886, 0.09557067, 0.07743069, 0.04932476, 0.09912518])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.02835234, 0.07147107, 0.07491853, 0.05285045, 0.07710448,
+       0.0959399 , 0.08360472, 0.00880412, 0.07715474, 0.09844526])
 </pre></div>
 </div>
 </div>
@@ -574,7 +579,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.9 µs ± 13.1 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.1 µs ± 45.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -601,7 +606,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.78 µs ± 0.403 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.97 µs ± 25.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -623,7 +628,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73.2 µs ± 45.5 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71.8 µs ± 68.4 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -662,8 +667,8 @@ object.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139644826105088
-139644826105088
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140479392451584
+140479392451584
 </pre></div>
 </div>
 </div>
@@ -694,8 +699,8 @@ their values cannot be changed in place. One such example is strings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139644986119280
-139644001531824
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140479535690928
+140478551156400
 </pre></div>
 </div>
 </div>

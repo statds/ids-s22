@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Unsupervised Learning" href="unsupervised.html" />
+    <link rel="next" title="10.17. XGBoost" href="XGBoost.html" />
     <link rel="prev" title="10.5. Support Vector Machines" href="svm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -224,6 +224,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      10.16. K Nearest Neighbor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="XGBoost.html">
+     10.17. XGBoost
     </a>
    </li>
   </ul>
@@ -472,6 +477,10 @@ nearest neighbor algorithm in Python. The example below uses:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3880/3937316007.py:6: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+  dob_job = pd.read_csv(url)
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 20087 entries, 0 to 20086
 Data columns (total 96 columns):
@@ -575,10 +584,6 @@ Data columns (total 96 columns):
  95  GIS_BIN                        19351 non-null  float64
 dtypes: float64(12), int64(18), object(66)
 memory usage: 14.7+ MB
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3690/3937316007.py:6: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
-  dob_job = pd.read_csv(url)
 </pre></div>
 </div>
 </div>
@@ -883,10 +888,10 @@ The value of k must be chosen carefully to avoid overfitting or weakened perform
             <p class="prev-next-title"><span class="section-number">10.5. </span>Support Vector Machines</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">
+    <a class='right-next' id="next-link" href="XGBoost.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Unsupervised Learning</p>
+        <p class="prev-next-title"><span class="section-number">10.17. </span>XGBoost</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
