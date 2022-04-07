@@ -48,8 +48,7 @@ import numpy as np
 
 
 ```{code-cell} ipython3
-#nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
-nyc_crash = pd.read_csv("/content/nyc_mv_collisions_202201.csv") #- path I used but its wrong
+nyc_crash = pd.read_csv("../data/nyc_mv_collisions_202201.csv")
 
 nyc_crash["time"] = [x.split(":")[0] for x in nyc_crash["CRASH TIME"]]
 nyc_crash["time"] = [int(x) for x in nyc_crash["time"]]
