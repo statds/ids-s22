@@ -29,6 +29,7 @@ chapters:
   - file: docs/bagging_vs_boosting
   - file: docs/svm
   - file: docs/nearest_neighbor
+  - file: docs/XGBoost
 - file: docs/unsupervised
   sections:
   - file: docs/k_means_clustering
