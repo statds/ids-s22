@@ -472,10 +472,6 @@ nearest neighbor algorithm in Python. The example below uses:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3430/3937316007.py:6: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
-  dob_job = pd.read_csv(url)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 20087 entries, 0 to 20086
 Data columns (total 96 columns):
@@ -579,6 +575,10 @@ Data columns (total 96 columns):
  95  GIS_BIN                        19351 non-null  float64
 dtypes: float64(12), int64(18), object(66)
 memory usage: 14.7+ MB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3690/3937316007.py:6: DtypeWarning: Columns (23,24,25,26,29,31,32,59,60) have mixed types. Specify dtype option on import or set low_memory=False.
+  dob_job = pd.read_csv(url)
 </pre></div>
 </div>
 </div>
