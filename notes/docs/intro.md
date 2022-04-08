@@ -268,7 +268,7 @@ Date     | Presenter            | Topic
 03/24 |      |  (power outage)
 03/29 | Peter Busa           | support vector machine
 03/29 | Sakeena Aimandi | bagging and boosting in action
-04/
+04/07 | Thalia  | k nearest neighbor
 
 ## Second Topic Presentation Randomization
 
