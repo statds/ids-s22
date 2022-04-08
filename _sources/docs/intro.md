@@ -301,7 +301,7 @@ Date    | Presenter            | Topic
 04/12 |  Sam Hughes  | Splines
 04/14 |  Thaila Taffe  |
 04/14 |  Benjamin Campman |
-04/14 |  Mathew Chandy  | Web Scraping
+04/14 |  Matthew Chandy  |
 
 ## Final Presentation Randomization
 
