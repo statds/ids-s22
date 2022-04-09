@@ -3,8 +3,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -219,5 +221,9 @@ kernelspec:
 |           | 15:00--15:20 | 
 |           | 15:20--15:40 | 
 |           | 15:40--16:00 | 
-|           | 16:00--16:20 | 
-|           | 16:20--16:40 | 
+|           | 16:00--16:20 | Taelor McClurg
+|           | 16:20--16:40 |
+
+```{code-cell} ipython3
+
+```
