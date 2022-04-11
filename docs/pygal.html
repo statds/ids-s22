@@ -531,6 +531,15 @@ gauge.range = [30,42]
 display(HTML(base_html.format(rendered_chart=gauge.render(is_unicode=True))))
 </pre></div>
 </div>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>radar_plot = pygal.Radar(human_readable=True)
+radar_plot.add(&quot;Bronx&quot;, bronx_injured)
+radar_plot.add(&quot;Brooklyn&quot;, brooklyn_injured)
+radar_plot.add(&quot;Manhattan&quot;, manhattan_injured)
+radar_plot.add(&quot;Queens&quot;, queens_injured)
+radar_plot.add(&quot;Staten Island&quot;, staten_island_injured)
+display(HTML(base_html.format(rendered_chart=radar_plot.render(is_unicode=True))))
+</pre></div>
+</div>
 </div>
 </div>
 

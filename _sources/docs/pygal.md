@@ -118,3 +118,12 @@ gauge.range = [30,42]
 display(HTML(base_html.format(rendered_chart=gauge.render(is_unicode=True))))
 ```
 
+```{code cell} ipython3
+radar_plot = pygal.Radar(human_readable=True)
+radar_plot.add("Bronx", bronx_injured)
+radar_plot.add("Brooklyn", brooklyn_injured)
+radar_plot.add("Manhattan", manhattan_injured)
+radar_plot.add("Queens", queens_injured)
+radar_plot.add("Staten Island", staten_island_injured)
+display(HTML(base_html.format(rendered_chart=radar_plot.render(is_unicode=True))))
+```
