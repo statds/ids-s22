@@ -49,69 +49,43 @@ Source: <https://en.wikipedia.org/wiki/K-means_clustering#Gaussian_mixture_model
 
 Like many other popular algorithms, K-means can also be implemented by importing the `scikit-learn` package
 
-## NYC crash data
-
+## Iris data
 
 ```{code-cell} ipython3
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn import datasets
 ```
 
-
 ```{code-cell} ipython3
-url = 'https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv'
-nyc_crash = pd.read_csv(url)
-nyc_crash.head()
+iris = datasets.load_iris()
+X = iris.data[:, :2]  # we only take the first two features.
+y = iris.target
 ```
 
-### Data Cleaning
-
-For simplicity, we can consider "longitude" and "latitude" as the covariates, 
-so it is reasonable to omit those data points without "location" values. Note that 
-the "borough" variable is also concluded in the subset, but this is only for comparison, 
-and we are still under the unsupervised framework.
-
+We first plot the observations by their true species.
 
 ```{code-cell} ipython3
-# change data points with latitude and longitude (0,0) into (nan,nan)
-nyc_crash.loc[nyc_crash["LONGITUDE"] == 0, ["LONGITUDE","LATITUDE"]] = np.nan
-
-# create a subset
-my_nyc = nyc_crash.loc[nyc_crash["LONGITUDE"].notna(), 
-                       ["LONGITUDE","LATITUDE","BOROUGH"]]
-my_nyc.columns = ["longitude","latitude","borough"]
-my_nyc["borough"] = my_nyc["borough"].astype("category")
-
-# make sure bad latitude values are all removed now
-print(my_nyc["longitude"].isna().sum())
-print(my_nyc["latitude"].isna().sum())
-```
-
-We first plot their locations by the true borough.
-
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(14, 14))
-
-sns.scatterplot(x="longitude", y="latitude", data=my_nyc,
-                hue = 'borough', alpha = 0.5)
+fig, ax = plt.subplots()
+scatter = ax.scatter(X[:,0], X[:,1], c=y)
+ax.legend(*scatter.legend_elements(),
+          loc="upper left", title="Species")
+plt.show()
 ```
 
 ### Training K-means
 
 Now let's pretend we do not know the true borough of each data point, 
-and try to predict it with their longitude and latitude. 
-
+and try to predict it with their longitude and latitude.
 
 ```{code-cell} ipython3
 from sklearn.cluster import KMeans
 
-Kmean = KMeans(n_clusters = 5)
-Kmean.fit(my_nyc.loc[:,["longitude","latitude"]])
-
+Kmean = KMeans(n_clusters = 3)
+Kmean.fit(X)
 ```
+
 Several parameters can be modified in the algorithm, see
 <https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html>
 
@@ -120,47 +94,44 @@ Several parameters can be modified in the algorithm, see
 
 The predicted centroids can be obtained by `Kmean.cluster_centers_`.
 
-
 ```{code-cell} ipython3
 print(Kmean.cluster_centers_)
 
 fig = plt.figure()
 
-plt.scatter(Kmean.cluster_centers_[:,0], Kmean.cluster_centers_[:,1], s=200, c=range(5), marker='s')
+plt.scatter(Kmean.cluster_centers_[:,0], Kmean.cluster_centers_[:,1], c="black", s=200, marker='s')
+plt.show()
 ```
 
 The trained labels can be obtained by `Kmean.labels_`, and now we can compare them to the true values.
 
-
 ```{code-cell} ipython3
-my_nyc["pred_label"] = Kmean.labels_
-my_nyc["pred_label"] = my_nyc["pred_label"].astype("category")
-
 fig, axs = plt.subplots(ncols=2, nrows=1, figsize=(10, 5),
                         constrained_layout=True)
 
-sns.scatterplot(x="longitude", y="latitude", data=my_nyc,
-                hue = 'borough', alpha = 0.1, ax=axs[0])
+axs[0].scatter(X[:,0], X[:,1], c = y, alpha = 0.5)
+axs[0].set_title("Plot by True Labels")
 
-plt.scatter(Kmean.cluster_centers_[:,0], Kmean.cluster_centers_[:,1], 
-            marker = "+", c = "black", s = 200, alpha = 1)
-sns.scatterplot(x="longitude", y="latitude", data=my_nyc,
-                hue = 'pred_label', alpha = 0.1, ax=axs[1])
+axs[1].scatter(Kmean.cluster_centers_[:,0], Kmean.cluster_centers_[:,1], 
+                marker = "s", c = "black", s = 400, alpha = 1) # plot predicted centroids
+axs[1].scatter(X[:,0], X[:,1], c = Kmean.labels_, alpha = 0.5) 
+axs[1].set_title("Plot by Predicted Labels")
+
+plt.show()
 ```
 
-The algorithm seems to be good yet there are several "misclassified" data, mainly in cluster #4 ("Manhatten"). 
+The algorithm seems to be good yet there are several "misclassified" data points, 
+mainly in the two clusters that are more mixed (non-separable).
 This is reasonable since K-means only minimizes within-cluster variances (squared Euclidean distances).
 
 ### Prediction
 
 If we have some new data, we can use `Kmean.predict` to predict which cluster they belong to.
 
-
 ```{code-cell} ipython3
-sample_test=np.array([[-74, 40.75], [-73.7, 40.8]])
-new_data=pd.DataFrame(sample_test.reshape(2, -1), columns = ["longitude","latitude"])
+sample_test=np.array([[3, 4], [7, 4]])
 
-Kmean.predict(new_data)
+Kmean.predict(sample_test)
 ```
 
 ## Comment
@@ -173,12 +144,15 @@ but there are still some disadvantages.
   to avoid local minimums. See 
   <https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.>
   
-- The number K is another important parameter in the algorithm. In our problem we just use `k=5`   because 
-  there are 5 boroughs in the New York city, but in pratice this can be more complicated.
+- The number K is another important parameter in the algorithm. In our problem we just use `k=3`   because 
+  there are 3 species in the data set, but in pratice this can be more complicated.
   A plot of "elbow curve" can be used to determine K. See
   <https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.>
   
 - In cases where the underlying clusters are non-spherical, K-means will perform badly. In such cases, 
   the algorithms can be run with "kernel methods". See
   <https://medium.com/udemy-engineering/understanding-k-means-clustering-and-kernel-methods-afad4eec3c11>
-  
+
+```{code-cell} ipython3
+
+```
