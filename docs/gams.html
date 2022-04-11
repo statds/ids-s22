@@ -406,7 +406,7 @@
 <p><strong>Two important terms</strong></p>
 <ul class="simple">
 <li><p>lambda: smooths regression line to prevent overfitting</p></li>
-<li><p>knots: controls the piecewise equations and how much the model changes its regression curvature</p></li>
+<li><p>knots: controls amount of sub-functions in piecewise equation, also related to overfitting</p></li>
 </ul>
 <p><strong>Assumptions</strong></p>
 <ul class="simple">
@@ -414,6 +414,7 @@
 <li><p>Correct smoothing</p></li>
 <li><p>Correct link function</p></li>
 <li><p>Minimal outliers</p></li>
+<li><p>No multicollinearity between predictors</p></li>
 </ul>
 <p>Source: http://www.medicine.mcgill.ca/epidemiology/goldberg/gam_class_part4.pdf</p>
 <p><strong>Pros</strong></p>
@@ -421,7 +422,7 @@
 <li><p>Linear model on steroids</p></li>
 <li><p>More understandable than other methods such as XGBoost</p></li>
 <li><p>Continuity of second derivative</p></li>
-<li><p>Can use not just linear models, but also logistic and poisson (anything in exponential distribution family)</p></li>
+<li><p>Can be used on not just linear models, but also logistic, poisson, etc.</p></li>
 </ul>
 <p><strong>Cons</strong></p>
 <ul class="simple">
@@ -542,7 +543,9 @@
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_rb</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;rank_adp&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;avg_scoring&quot;</span><span class="p">))</span> <span class="o">+</span>
-    <span class="n">geom_point</span><span class="p">()</span>
+    <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Running Back Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -575,7 +578,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_rb</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;rank_adp&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;avg_scoring&quot;</span><span class="p">))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
-    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_lin&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_lin&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Running Back Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -591,7 +596,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_rb</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;rank_adp&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;avg_scoring&quot;</span><span class="p">))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
-    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Running Back Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -620,7 +627,9 @@ This means that are model is likely overfitting.</p>
     <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_lin&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
     <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
     <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam_n&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam_lam&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam_lam&quot;</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Running Back Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -655,7 +664,9 @@ This causes <code class="docutils literal notranslate"><span class="pre">gridsea
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;rank_adp&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;avg_scoring&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;pos&quot;</span><span class="p">))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam&quot;</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam&quot;</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -665,11 +676,15 @@ This causes <code class="docutils literal notranslate"><span class="pre">gridsea
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<p>This formula will create 1000 sets of two lambda parameters between 0.000 and 1000</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lams</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+<p>This formula will create a matrix of shape (1000, 2) with each value between <span class="math notranslate nohighlight">\(10^{-3}\)</span> and <span class="math notranslate nohighlight">\(10^3\)</span>.
+We can use these as potential lambda values to optimize our GAM.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">lams</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">lams</span>
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">gridsearch</span></code> method uses the above matrix as well as cross validation
+(or another specified criteria) to determine the best values of lambda.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gam_grid</span> <span class="o">=</span> <span class="n">LinearGAM</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">gridsearch</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">lams</span><span class="p">)</span>
 <span class="n">gam_grid</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
@@ -680,7 +695,9 @@ This causes <code class="docutils literal notranslate"><span class="pre">gridsea
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;rank_adp&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;avg_scoring&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;pos&quot;</span><span class="p">))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam_grid&quot;</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;prediction_gam_grid&quot;</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average by ADP&quot;</span><span class="p">,</span> 
+         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Draft Ranking&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Scoring Average&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>

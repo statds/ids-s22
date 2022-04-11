@@ -32,7 +32,7 @@ The same equation as a GAM would be $y~=~\alpha~+~f$<sub>1</sub>$(x$<sub>1</sub>
 
 **Two important terms**
 - lambda: smooths regression line to prevent overfitting
-- knots: controls the piecewise equations and how much the model changes its regression curvature
+- knots: controls amount of sub-functions in piecewise equation, also related to overfitting
 
 
 **Assumptions**
@@ -41,6 +41,7 @@ The same equation as a GAM would be $y~=~\alpha~+~f$<sub>1</sub>$(x$<sub>1</sub>
 - Correct smoothing
 - Correct link function
 - Minimal outliers
+- No multicollinearity between predictors
 
 Source: http://www.medicine.mcgill.ca/epidemiology/goldberg/gam_class_part4.pdf
 
@@ -49,7 +50,7 @@ Source: http://www.medicine.mcgill.ca/epidemiology/goldberg/gam_class_part4.pdf
 - Linear model on steroids
 - More understandable than other methods such as XGBoost
 - Continuity of second derivative
-- Can use not just linear models, but also logistic and poisson (anything in exponential distribution family)
+- Can be used on not just linear models, but also logistic, poisson, etc. 
 
 **Cons**
 - Not as understandable as a linear model
@@ -202,7 +203,9 @@ from plotnine import *
 ```python
 (
     ggplot(data = df_rb, mapping = aes(x = "rank_adp", y = "avg_scoring")) +
-    geom_point()
+    geom_point() +
+    labs(title = "Running Back Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
@@ -247,7 +250,9 @@ df_rb.head()
 (
     ggplot(data = df_rb, mapping = aes(x = "rank_adp", y = "avg_scoring")) +
     geom_point() +
-    geom_line(aes(y = "prediction_lin"), color = "blue", size = 3)
+    geom_line(aes(y = "prediction_lin"), color = "blue", size = 3) +
+    labs(title = "Running Back Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
@@ -267,7 +272,9 @@ df_rb.head()
 (
     ggplot(data = df_rb, mapping = aes(x = "rank_adp", y = "avg_scoring")) +
     geom_point() +
-    geom_line(aes(y = "prediction_gam"), color = "red", size = 3)
+    geom_line(aes(y = "prediction_gam"), color = "red", size = 3) +
+    labs(title = "Running Back Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
@@ -304,7 +311,9 @@ df_rb.head()
     geom_line(aes(y = "prediction_lin"), color = "blue", size = 3, alpha = 0.75) +
     geom_line(aes(y = "prediction_gam"), color = "red", size = 3, alpha = 0.75) +
     geom_line(aes(y = "prediction_gam_n"), color = "orange", size = 3, alpha = 0.75) +
-    geom_line(aes(y = "prediction_gam_lam"), color = "green", size = 3, alpha = 0.75)
+    geom_line(aes(y = "prediction_gam_lam"), color = "green", size = 3, alpha = 0.75) +
+    labs(title = "Running Back Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
@@ -351,7 +360,9 @@ df["prediction_gam"] = gam.predict(X)
 (
     ggplot(data = df, mapping = aes(x = "rank_adp", y = "avg_scoring", color = "pos")) +
     geom_point(alpha = 0.25) +
-    geom_line(aes(y = "prediction_gam"), size = 3, alpha = 0.75)
+    geom_line(aes(y = "prediction_gam"), size = 3, alpha = 0.75) +
+    labs(title = "Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
@@ -365,12 +376,17 @@ To counteract this, we can create an array with random terms to use for lambda.
 import numpy as np
 ```
 
-This formula will create 1000 sets of two lambda parameters between 0.000 and 1000
+This formula will create a matrix of shape (1000, 2) with each value between $10^{-3}$ and $10^3$. 
+We can use these as potential lambda values to optimize our GAM. 
 
 ```python
+np.random.seed(123)
 lams = 10 ** (np.random.rand(1000, 2) * 6 - 3)
 lams
 ```
+
+The `gridsearch` method uses the above matrix as well as cross validation
+(or another specified criteria) to determine the best values of lambda. 
 
 ```python
 gam_grid = LinearGAM(s(0) + f(1)).gridsearch(X, y, lam = lams)
@@ -385,7 +401,9 @@ df["prediction_gam_grid"] = gam_grid.predict(X)
 (
     ggplot(data = df, mapping = aes(x = "rank_adp", y = "avg_scoring", color = "pos")) +
     geom_point(alpha = 0.25) +
-    geom_line(aes(y = "prediction_gam_grid"), size = 3, alpha = 0.75)
+    geom_line(aes(y = "prediction_gam_grid"), size = 3, alpha = 0.75) +
+    labs(title = "Scoring Average by ADP", 
+         x = "Draft Ranking", y = "Scoring Average")
 )
 ```
 
