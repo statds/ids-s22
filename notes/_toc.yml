@@ -30,6 +30,7 @@ chapters:
   - file: docs/svm
   - file: docs/nearest_neighbor
   - file: docs/XGBoost
+  - file: docs/gams
 - file: docs/unsupervised
   sections:
   - file: docs/k_means_clustering
