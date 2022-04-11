@@ -22,6 +22,7 @@ chapters:
   - file: docs/patsy
   - file: docs/tests
   - file: docs/models
+  - file: docs/gams
 - file: docs/supervised
   sections:
   - file: docs/decisiontrees
@@ -30,7 +31,6 @@ chapters:
   - file: docs/svm
   - file: docs/nearest_neighbor
   - file: docs/XGBoost
-  - file: docs/gams
 - file: docs/unsupervised
   sections:
   - file: docs/k_means_clustering
