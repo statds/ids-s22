@@ -127,3 +127,13 @@ radar_plot.add("Queens", queens_injured)
 radar_plot.add("Staten Island", staten_island_injured)
 display(HTML(base_html.format(rendered_chart=radar_plot.render(is_unicode=True))))
 ```
+
+```{code cell} ipython3
+sb = pygal.StackedBar(human_readable=True)
+sb.add("Bronx", bronx_injured)
+sb.add("Brooklyn", brooklyn_injured)
+sb.add("Manhattan", manhattan_injured)
+sb.add("Queens", queens_injured)
+sb.add("Staten Island", staten_island_injured)
+display(HTML(base_html.format(rendered_chart=sb.render(is_unicode=True))))
+```
