@@ -296,7 +296,7 @@ Date    | Presenter            | Topic
 04/07 |  Juncheng Zheng  | Using R from Python and vice versa
 04/07 |  Anthony Zeimbekakis  | Building a Python module
 04/07 |  Ryan Schoenfeld   | XGBoost
-04/12 |  Robie Shamirian  |
+04/12 |  Robbie Shamirian  | Pygal Visualizations
 04/12 |  SakeenaAimandi  |
 04/12 |  Sam Hughes  | Splines
 04/14 |  Thaila Taffe  |
