@@ -540,6 +540,15 @@ radar_plot.add(&quot;Staten Island&quot;, staten_island_injured)
 display(HTML(base_html.format(rendered_chart=radar_plot.render(is_unicode=True))))
 </pre></div>
 </div>
+<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span>sb = pygal.StackedBar(human_readable=True)
+sb.add(&quot;Bronx&quot;, bronx_injured)
+sb.add(&quot;Brooklyn&quot;, brooklyn_injured)
+sb.add(&quot;Manhattan&quot;, manhattan_injured)
+sb.add(&quot;Queens&quot;, queens_injured)
+sb.add(&quot;Staten Island&quot;, staten_island_injured)
+display(HTML(base_html.format(rendered_chart=sb.render(is_unicode=True))))
+</pre></div>
+</div>
 </div>
 </div>
 
