@@ -516,9 +516,9 @@ P(z_{k}=1) = \pi_k.
 \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\)</span> randomly</p></li>
 <li><p>Alternate:</p>
 <ul class="simple">
-<li><p>E-step: based on <span class="math notranslate nohighlight">\(\theta\)</span>, estimate <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span>, the poterior probability that
-observation <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> comes from Gaussian <span class="math notranslate nohighlight">\(k\)</span></p></li>
-<li><p>M-step: update <span class="math notranslate nohighlight">\(\theta\)</span> by maximizing expectation of the log-likelihood
+<li><p>E-step: based on <span class="math notranslate nohighlight">\(\theta\)</span>, calculate the expectation of log-likelihood and estimate <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span>,
+the poterior probability that observation <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> comes from Gaussian <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p>M-step: update <span class="math notranslate nohighlight">\(\theta\)</span> by maximizing the expectation of log-likelihood
 based on <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span></p></li>
 </ul>
 </li>
@@ -540,14 +540,16 @@ based on <span class="math notranslate nohighlight">\(\gamma(z_{ik})\)</span></p
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/IRIS.csv&#39;</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="s2">&quot;petal_width&quot;</span><span class="p">])</span>
+<span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris_data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 <span class="n">iris</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -562,9 +564,9 @@ Data columns (total 5 columns):
  1   sepal_width   150 non-null    float64
  2   petal_length  150 non-null    float64
  3   petal_width   150 non-null    float64
- 4   species       150 non-null    object 
-dtypes: float64(4), object(1)
-memory usage: 6.0+ KB
+ 4   species       150 non-null    int64  
+dtypes: float64(4), int64(1)
+memory usage: 6.0 KB
 </pre></div>
 </div>
 </div>
@@ -675,7 +677,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.499338396256334
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4987505566235166
 8
 </pre></div>
 </div>
@@ -687,14 +689,30 @@ memory usage: 6.0+ KB
 <p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">GMM.predict</span></code> to predict which Gaussian they belong to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_test</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],[</span><span class="mf">7.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
 
-<span class="n">GMM</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample_test</span><span class="p">)</span>
+<span class="c1"># first choose the clusters for 4 new data points</span>
+<span class="n">draw</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">GMM</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
+
+<span class="c1"># sample the new data points within their chosen cluster</span>
+<span class="n">sample_test</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">)):</span> 
+    <span class="n">n</span> <span class="o">=</span> <span class="n">draw</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sample_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">GMM</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">GMM</span><span class="o">.</span><span class="n">covariances_</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GMM</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0])
 </pre></div>
 </div>
 </div>
@@ -703,7 +721,7 @@ memory usage: 6.0+ KB
 </div>
 <div class="section" id="comparison-to-k-means">
 <h2><span class="section-number">11.2.5. </span>Comparison to K-means<a class="headerlink" href="#comparison-to-k-means" title="Permalink to this headline">¶</a></h2>
-<p>Both GMM and K-means are non-parametric clustering models, but GMM seems to be more robust
+<p>Both GMM and K-means are unsupervised clustering models, but GMM seems to be more robust
 as it introduces probabilities. However, GMM is generally slower than K-Means because
 it takes more iterations to converge. GMM can also quickly converge to a local minimum,
 not the optimal solution.</p>

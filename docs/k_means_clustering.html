@@ -377,28 +377,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nyc-crash-data">
-   11.1.3. NYC crash data
+  <a class="reference internal nav-link" href="#iris-data">
+   11.1.3. Iris data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning">
-     11.1.3.1. Data Cleaning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-k-means">
-     11.1.3.2. Training K-means
+     11.1.3.1. Training K-means
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#results">
-     11.1.3.3. Results
+     11.1.3.2. Results
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prediction">
-     11.1.3.4. Prediction
+     11.1.3.3. Prediction
     </a>
    </li>
   </ul>
@@ -439,28 +434,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nyc-crash-data">
-   11.1.3. NYC crash data
+  <a class="reference internal nav-link" href="#iris-data">
+   11.1.3. Iris data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning">
-     11.1.3.1. Data Cleaning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-k-means">
-     11.1.3.2. Training K-means
+     11.1.3.1. Training K-means
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#results">
-     11.1.3.3. Results
+     11.1.3.2. Results
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prediction">
-     11.1.3.4. Prediction
+     11.1.3.3. Prediction
     </a>
    </li>
   </ul>
@@ -519,257 +509,57 @@ for all i</p></li>
 <h2><span class="section-number">11.1.2. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Like many other popular algorithms, K-means can also be implemented by importing the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package</p>
 </div>
-<div class="section" id="nyc-crash-data">
-<h2><span class="section-number">11.1.3. </span>NYC crash data<a class="headerlink" href="#nyc-crash-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="iris-data">
+<h2><span class="section-number">11.1.3. </span>Iris data<a class="headerlink" href="#iris-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv&#39;</span>
-<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">nyc_crash</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># we only take the first two features.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CRASH DATE</th>
-      <th>CRASH TIME</th>
-      <th>BOROUGH</th>
-      <th>ZIP CODE</th>
-      <th>LATITUDE</th>
-      <th>LONGITUDE</th>
-      <th>LOCATION</th>
-      <th>ON STREET NAME</th>
-      <th>CROSS STREET NAME</th>
-      <th>OFF STREET NAME</th>
-      <th>...</th>
-      <th>CONTRIBUTING FACTOR VEHICLE 2</th>
-      <th>CONTRIBUTING FACTOR VEHICLE 3</th>
-      <th>CONTRIBUTING FACTOR VEHICLE 4</th>
-      <th>CONTRIBUTING FACTOR VEHICLE 5</th>
-      <th>COLLISION_ID</th>
-      <th>VEHICLE TYPE CODE 1</th>
-      <th>VEHICLE TYPE CODE 2</th>
-      <th>VEHICLE TYPE CODE 3</th>
-      <th>VEHICLE TYPE CODE 4</th>
-      <th>VEHICLE TYPE CODE 5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>01/01/2022</td>
-      <td>7:05</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>EAST 128 STREET</td>
-      <td>3 AVENUE BRIDGE</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4491172</td>
-      <td>Sedan</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>01/01/2022</td>
-      <td>14:43</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>40.769993</td>
-      <td>-73.915825</td>
-      <td>(40.769993, -73.915825)</td>
-      <td>GRAND CENTRAL PKWY</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4491406</td>
-      <td>Sedan</td>
-      <td>Sedan</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>01/01/2022</td>
-      <td>21:20</td>
-      <td>QUEENS</td>
-      <td>11414.0</td>
-      <td>40.657230</td>
-      <td>-73.841380</td>
-      <td>(40.65723, -73.84138)</td>
-      <td>91 STREET</td>
-      <td>160 AVENUE</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4491466</td>
-      <td>Sedan</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>01/01/2022</td>
-      <td>4:30</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Southern parkway</td>
-      <td>Jfk expressway</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>Unspecified</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4491626</td>
-      <td>Sedan</td>
-      <td>Sedan</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>01/01/2022</td>
-      <td>7:57</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WESTCHESTER AVENUE</td>
-      <td>SHERIDAN EXPRESSWAY</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4491734</td>
-      <td>Sedan</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 29 columns</p>
-</div></div></div>
 </div>
-<div class="section" id="data-cleaning">
-<h3><span class="section-number">11.1.3.1. </span>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h3>
-<p>For simplicity, we can consider “longitude” and “latitude” as the covariates,
-so it is reasonable to omit those data points without “location” values. Note that
-the “borough” variable is also concluded in the subset, but this is only for comparison,
-and we are still under the unsupervised framework.</p>
+<p>We first plot the observations by their true species.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change data points with latitude and longitude (0,0) into (nan,nan)</span>
-<span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-
-<span class="c1"># create a subset</span>
-<span class="n">my_nyc</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">(),</span> 
-                       <span class="p">[</span><span class="s2">&quot;LONGITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;LATITUDE&quot;</span><span class="p">,</span><span class="s2">&quot;BOROUGH&quot;</span><span class="p">]]</span>
-<span class="n">my_nyc</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span>
-<span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;borough&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-
-<span class="c1"># make sure bad latitude values are all removed now</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(),</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-0
-</pre></div>
-</div>
-</div>
-</div>
-<p>We first plot their locations by the true borough.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
-                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;longitude&#39;, ylabel=&#39;latitude&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/k_means_clustering_6_1.png" src="../_images/k_means_clustering_6_1.png" />
-</div>
+<img alt="../_images/k_means_clustering_4_0.png" src="../_images/k_means_clustering_4_0.png" />
 </div>
 </div>
 <div class="section" id="training-k-means">
-<h3><span class="section-number">11.1.3.2. </span>Training K-means<a class="headerlink" href="#training-k-means" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3.1. </span>Training K-means<a class="headerlink" href="#training-k-means" title="Permalink to this headline">¶</a></h3>
 <p>Now let’s pretend we do not know the true borough of each data point,
 and try to predict it with their longitude and latitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 
-<span class="n">Kmean</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">Kmean</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">my_nyc</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">]])</span>
+<span class="n">Kmean</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Kmean</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KMeans(n_clusters=5)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KMeans(n_clusters=3)
 </pre></div>
 </div>
 </div>
@@ -778,7 +568,7 @@ and try to predict it with their longitude and latitude.</p>
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</a></p>
 </div>
 <div class="section" id="results">
-<h3><span class="section-number">11.1.3.3. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3.2. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
 <p>The predicted centroids can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.cluster_centers_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,67 +576,59 @@ and try to predict it with their longitude and latitude.</p>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-73.89134514  40.84416468]
- [-73.80235043  40.70543631]
- [-73.95193753  40.64589824]
- [-73.94633185  40.74058963]
- [-74.13509191  40.59366043]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5.006      3.428     ]
+ [6.81276596 3.07446809]
+ [5.77358491 2.69245283]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f4c5c7fa3d0&gt;
-</pre></div>
-</div>
-<img alt="../_images/k_means_clustering_10_2.png" src="../_images/k_means_clustering_10_2.png" />
+<img alt="../_images/k_means_clustering_8_1.png" src="../_images/k_means_clustering_8_1.png" />
 </div>
 </div>
 <p>The trained labels can be obtained by <code class="docutils literal notranslate"><span class="pre">Kmean.labels_</span></code>, and now we can compare them to the true values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">labels_</span>
-<span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_nyc</span><span class="p">[</span><span class="s2">&quot;pred_label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
                         <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
-                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;borough&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Plot by True Labels&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
-            <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">my_nyc</span><span class="p">,</span>
-                <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;pred_label&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
+                <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># plot predicted centroids</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Kmean</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span> 
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Plot by Predicted Labels&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;longitude&#39;, ylabel=&#39;latitude&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/k_means_clustering_12_1.png" src="../_images/k_means_clustering_12_1.png" />
+<img alt="../_images/k_means_clustering_10_0.png" src="../_images/k_means_clustering_10_0.png" />
 </div>
 </div>
-<p>The algorithm seems to be good yet there are several “misclassified” data, mainly in cluster #4 (“Manhatten”).
+<p>The algorithm seems to be good yet there are several “misclassified” data points,
+mainly in the two clusters that are more mixed (non-separable).
 This is reasonable since K-means only minimizes within-cluster variances (squared Euclidean distances).</p>
 </div>
 <div class="section" id="prediction">
-<h3><span class="section-number">11.1.3.4. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3.3. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
 <p>If we have some new data, we can use <code class="docutils literal notranslate"><span class="pre">Kmean.predict</span></code> to predict which cluster they belong to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_test</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">74</span><span class="p">,</span> <span class="mf">40.75</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.7</span><span class="p">,</span> <span class="mf">40.8</span><span class="p">]])</span>
-<span class="n">new_data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sample_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_test</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 
-<span class="n">Kmean</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+<span class="n">Kmean</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 1], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -862,8 +644,8 @@ but there are still some disadvantages.</p>
 In the above problem, we use default parameters <code class="docutils literal notranslate"><span class="pre">init='k-means++'</span></code> and <code class="docutils literal notranslate"><span class="pre">n_init</span> <span class="pre">=</span> <span class="pre">10</span></code>
 to avoid local minimums. See
 <a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
-<li><p>The number K is another important parameter in the algorithm. In our problem we just use <code class="docutils literal notranslate"><span class="pre">k=5</span></code>   because
-there are 5 boroughs in the New York city, but in pratice this can be more complicated.
+<li><p>The number K is another important parameter in the algorithm. In our problem we just use <code class="docutils literal notranslate"><span class="pre">k=3</span></code>   because
+there are 3 species in the data set, but in pratice this can be more complicated.
 A plot of “elbow curve” can be used to determine K. See
 <a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/#h2_9.</a></p></li>
 <li><p>In cases where the underlying clusters are non-spherical, K-means will perform badly. In such cases,

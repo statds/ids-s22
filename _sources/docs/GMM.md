@@ -53,9 +53,9 @@ $\boldsymbol{\mu}_k$, $\boldsymbol{\Sigma}_k$.
 1. Initialize $\theta=(\pi_k, 
 \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ randomly
 1. Alternate:
-    - E-step: based on $\theta$, estimate $\gamma(z_{ik})$, the poterior probability that 
-      observation $\boldsymbol{x}_i$ comes from Gaussian $k$
-    - M-step: update $\theta$ by maximizing expectation of the log-likelihood 
+    - E-step: based on $\theta$, calculate the expectation of log-likelihood and estimate $\gamma(z_{ik})$, 
+      the poterior probability that observation $\boldsymbol{x}_i$ comes from Gaussian $k$
+    - M-step: update $\theta$ by maximizing the expectation of log-likelihood 
       based on $\gamma(z_{ik})$
 1. When the algorithm converges or when `iter = max_iter`, terminate.
 
@@ -74,11 +74,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn import datasets
 ```
 
 ```{code-cell} ipython3
-url = 'https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/IRIS.csv'
-iris = pd.read_csv(url)
+iris_data = datasets.load_iris()
+iris = pd.DataFrame(iris_data.data,columns=["sepal_length","sepal_width","petal_length","petal_width"])
+iris['species'] = pd.Series(iris_data.target)
 iris.info()
 ```
 
@@ -162,14 +164,27 @@ print(GMM.n_iter_)
 If we have some new data, we can use `GMM.predict` to predict which Gaussian they belong to.
 
 ```{code-cell} ipython3
-sample_test=np.array([[5.0, 3.0],[7.0,4.0]])
+from numpy.random import choice
+from numpy.random import multivariate_normal
 
+# first choose the clusters for 4 new data points
+draw = choice(range(3), 4, p=GMM.weights_)
+
+# sample the new data points within their chosen cluster
+sample_test=[]
+for i in range(len(draw)): 
+    n = draw[i]
+    sample_test.append(
+        multivariate_normal(GMM.means_[n],GMM.covariances_[n]))
+```
+
+```{code-cell} ipython3
 GMM.predict(sample_test)
 ```
 
 ## Comparison to K-means
 
-Both GMM and K-means are non-parametric clustering models, but GMM seems to be more robust 
+Both GMM and K-means are unsupervised clustering models, but GMM seems to be more robust 
 as it introduces probabilities. However, GMM is generally slower than K-Means because 
 it takes more iterations to converge. GMM can also quickly converge to a local minimum, 
 not the optimal solution.
