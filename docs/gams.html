@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10.19. Generalized Additive Models &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>9.5. Generalized Additive Models &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Unsupervised Learning" href="unsupervised.html" />
-    <link rel="prev" title="10.17. XGBoost" href="XGBoost.html" />
+    <link rel="next" title="10. Supervised Learning" href="supervised.html" />
+    <link rel="prev" title="9.3. Linear and Generalized Linear Models" href="models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -164,16 +164,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="statmodels.html">
    9. Statistical Tests and Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="patsy.html">
      9.1. Describing Models with Patsy
@@ -189,18 +189,23 @@
      9.3. Linear and Generalized Linear Models
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     9.5. Generalized Additive Models
+    </a>
+   </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="supervised.html">
    10. Supervised Learning
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="decisiontrees.html">
      10.2. Decision Trees
@@ -229,11 +234,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="XGBoost.html">
      10.17. XGBoost
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     10.19. Generalized Additive Models
     </a>
    </li>
   </ul>
@@ -348,12 +348,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#background">
-   10.19.1. Background
+   9.5.1. Background
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python">
-   10.19.2. Python
+   9.5.2. Python
   </a>
  </li>
 </ul>
@@ -378,12 +378,12 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#background">
-   10.19.1. Background
+   9.5.1. Background
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python">
-   10.19.2. Python
+   9.5.2. Python
   </a>
  </li>
 </ul>
@@ -396,9 +396,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="generalized-additive-models">
-<h1><span class="section-number">10.19. </span>Generalized Additive Models<a class="headerlink" href="#generalized-additive-models" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9.5. </span>Generalized Additive Models<a class="headerlink" href="#generalized-additive-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="background">
-<h2><span class="section-number">10.19.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>Generalized Additive Models (abbreviated as GAM) are a regression technique used to model nonlinear variables.</p>
 <p>GAMs use piecewise equations to create a regression line that is continuous in the second derivative.</p>
 <p>A simple linear regression equation is <span class="math notranslate nohighlight">\(y~=~\beta\)</span><sub>0</sub><span class="math notranslate nohighlight">\(~+~\beta\)</span><sub>1</sub><span class="math notranslate nohighlight">\(x\)</span><sub>1</sub><span class="math notranslate nohighlight">\(~+~\epsilon\)</span></p>
@@ -432,7 +432,7 @@
 </ul>
 </div>
 <div class="section" id="python">
-<h2><span class="section-number">10.19.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Resources</p>
 <ul class="simple">
 <li><p>https://pygam.readthedocs.io/en/latest/notebooks/tour_of_pygam.html</p></li>
@@ -716,17 +716,17 @@ This causes <code class="docutils literal notranslate"><span class="pre">gridsea
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="XGBoost.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="models.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10.17. </span>XGBoost</p>
+            <p class="prev-next-title"><span class="section-number">9.3. </span>Linear and Generalized Linear Models</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">
+    <a class='right-next' id="next-link" href="supervised.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Unsupervised Learning</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Supervised Learning</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
