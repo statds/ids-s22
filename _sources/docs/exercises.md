@@ -218,12 +218,8 @@ kernelspec:
 |           | 14:00--14:20 | Zhenyu Xu
 |           | 14:20--14:40 | Sinchan Sharma
 |           | 14:40--15:00 | Robbie Shamirian
-|           | 15:00--15:20 | 
+|           | 15:00--15:20 | Pranav Tavildar
 |           | 15:20--15:40 | 
 |           | 15:40--16:00 | 
 |           | 16:00--16:20 | Taelor McClurg
 |           | 16:20--16:40 |
-
-```{code-cell} ipython3
-
-```
