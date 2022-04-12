@@ -18,7 +18,7 @@ jupyter:
 ### Background
 
 
-Generalized Additive Models (abbreviated as GAM) are a regression technique used to model nonlinear variables. 
+Generalized Additive Models (abbreviated as GAM) are a regression technique used to model nonlinear variable relationships. 
 
 
 GAMs use piecewise equations to create a regression line that is continuous in the second derivative. 
@@ -30,9 +30,9 @@ A simple linear regression equation is $y~=~\beta$<sub>0</sub>$~+~\beta$<sub>1</
 The same equation as a GAM would be $y~=~\alpha~+~f$<sub>1</sub>$(x$<sub>1</sub>$)~+~\epsilon$
 
 
-**Two important terms**
-- lambda: smooths regression line to prevent overfitting
-- knots: controls amount of sub-functions in piecewise equation, also related to overfitting
+**Two Important Terms**
+- **lambda**: smooths regression line to prevent overfitting
+- **knots**: controls amount of sub-functions in piecewise equation, also related to overfitting
 
 
 **Assumptions**
