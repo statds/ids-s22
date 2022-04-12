@@ -299,7 +299,7 @@ Date    | Presenter            | Topic
 04/12 |  Robbie Shamirian  | Pygal Visualizations
 04/12 |  SakeenaAimandi  |
 04/12 |  Sam Hughes  | Splines
-04/14 |  Thaila Taffe  |
+04/14 |  Thaila Taffe  | Tensorflow
 04/14 |  Benjamin Campman |
 04/14 |  Mathew Chandy  | Web Scraping
 
