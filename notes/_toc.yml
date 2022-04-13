@@ -35,6 +35,9 @@ chapters:
   sections:
   - file: docs/k_means_clustering
   - file: docs/GMM
+- file: docs/miscellaneous
+  sections:
+  - file: docs/web_scraping
 - file: docs/exercises
 - file: docs/fixedit
 # backmatter
