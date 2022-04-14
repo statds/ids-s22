@@ -14,7 +14,8 @@ jupyter:
 
 # Web Scraping with Beautiful Soup
 More information about webscraping can be found at this site:
-https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c4d9cef76e8
+https://towardsdatascience.com/a-step-by-
+step-guide-to-web-scraping-in-python-5c4d9cef76e8
 
 First, we need to install BeautifulSoup, we can use 
 `pip install beautifulsoup4`
@@ -40,7 +41,9 @@ We can navigate any part of the html tree using the specific tag we want.
 soup.title
 ```
 
-We can find any part of the html tree in a similar way, but it will default to the first appearance of that tag. We can specify that we want the text component.
+We can find any part of the html tree in a similar way, but it will default to 
+the first appearance of that tag. 
+We can specify that we want the text component.
 
 
 ```python
@@ -55,7 +58,8 @@ for x in soup.find_all('h2'):
     print(x.text)
 ```
 
-If we we just want a table as a dataframe, the easiest way to do this is with pandas.
+If we we just want a table as a dataframe, 
+the easiest way to do this is with pandas.
 
 
 ```python
@@ -69,7 +73,11 @@ df = dfs[1]
 df.info()
 ```
 
-However, if we want to get information from different webpages, this method is not sufficient. In this example, we use Beautiful Soup to create an easy way to access information of CT towns. We first start by going through the table to create a list of links for the towns of Connecticut. Then we will extract some information from each page's infobox.
+However, if we want to get information from different webpages, this method is 
+not sufficient. In this example, we use Beautiful Soup to create an easy way to 
+access information of CT towns. We first start by going through the table to 
+create a list of links for the towns of Connecticut. Then we will extract some 
+information from each page's infobox.
 
 
 ```python
@@ -101,7 +109,8 @@ def get_county(link):
 get_county('https://en.wikipedia.org/wiki/Andover,_Connecticut')
 ```
 
-We could do a separate function for each piece of information, or we could do things a little faster.
+We could do a separate function for each piece of information, or we could do 
+things a little faster.
 
 
 ```python
@@ -109,7 +118,7 @@ def get_info(link):
     link_page = rq.get(link).text
     link_soup = bs(link_page)
     table = link_soup.find('table')
-    rows = table.find_all('tr', {'class' : 'mergedrow'}) # Many pieces of information are stored in these 'mergedrows'
+    rows = table.find_all('tr', {'class' : 'mergedrow'}) 
     town_info = [link_soup.find('h1').text]
     for row in rows:
         r = row.find('td', {'class' : 'infobox-data'})
