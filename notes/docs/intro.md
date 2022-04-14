@@ -259,16 +259,14 @@ Date     | Presenter            | Topic
 02/15 | Mathew Chandy  | package `plotnine`
 02/17 | Robert Shamirian | package `ggmap`
 02/17 | Anthony Zeimbekakis | package `patsy`
-02/22 | Jun Yan               | package `statsmodels` 
 02/24 | Ryan Schoenfeld | decision trees
 03/03 | Sinchan Sharma  | random forest
 03/10 | Ben Campman | markown Basics
 03/22 | Zhenyu Xu | K-means clustering
- ~~03/22~~  |  ~~Juncheng Zheng~~  |  ~~Neural negtworks~~
-03/24 |      |  (power outage)
 03/29 | Peter Busa           | support vector machine
 03/29 | Sakeena Aimandi | bagging and boosting in action
 04/07 | Thalia  | k nearest neighbor
+04/21 | Juncheng Zheng | neural network
 
 ## Second Topic Presentation Randomization
 
@@ -289,16 +287,14 @@ Date    | Presenter            | Topic
 ----- | ------------- | -----
 03/29 |  Taelor Mcclurg     |  mapping areal data
 03/31 |  Zhenyu Xu  | Gaussian Mixture Models
-03/31 |  Zhengyi Lin |
-03/31 |  Peter Busa       |  MIT App Inventor
 04/05 |  Sinchan Sharma   |  Interactive Visualizations
-04/05 |  Kristin Blagg | Guest lecture on education data science
-04/07 |  Juncheng Zheng  | Using R from Python and vice versa
-04/07 |  Anthony Zeimbekakis  | Building a Python module
+04/07 |  Peter Busa  | MIT app inventor
 04/07 |  Ryan Schoenfeld   | XGBoost
 04/12 |  Robbie Shamirian  | Pygal Visualizations
-04/12 |  SakeenaAimandi  |
-04/12 |  Sam Hughes  | Splines
+04/12 |  Sam Hughes  | Generalized additive model
+04/12 |  Anthony Zeimbekakis  | Building a Python module  
+04/14 |  Juncheng Zheng  | Using R from Python and vice versa
+04/14 |  SakeenaAimandi  | 
 04/14 |  Thaila Taffe  | Tensorflow
 04/14 |  Benjamin Campman |
 04/14 |  Mathew Chandy  | Web Scraping
