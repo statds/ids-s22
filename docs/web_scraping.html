@@ -377,7 +377,8 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="web-scraping-with-beautiful-soup">
 <h1><span class="section-number">12.1. </span>Web Scraping with Beautiful Soup<a class="headerlink" href="#web-scraping-with-beautiful-soup" title="Permalink to this headline">¶</a></h1>
 <p>More information about webscraping can be found at this site:
-https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c4d9cef76e8</p>
+https://towardsdatascience.com/a-step-by-
+step-guide-to-web-scraping-in-python-5c4d9cef76e8</p>
 <p>First, we need to install BeautifulSoup, we can use
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">beautifulsoup4</span></code></p>
 <p>We can read any webpage with BeautifulSoup using the following method.</p>
@@ -395,7 +396,9 @@ https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">title</span>
 </pre></div>
 </div>
-<p>We can find any part of the html tree in a similar way, but it will default to the first appearance of that tag. We can specify that we want the text component.</p>
+<p>We can find any part of the html tree in a similar way, but it will default to
+the first appearance of that tag.
+We can specify that we want the text component.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 </div>
@@ -404,7 +407,8 @@ https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If we we just want a table as a dataframe, the easiest way to do this is with pandas.</p>
+<p>If we we just want a table as a dataframe,
+the easiest way to do this is with pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract tables</span>
 <span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -415,7 +419,11 @@ https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>However, if we want to get information from different webpages, this method is not sufficient. In this example, we use Beautiful Soup to create an easy way to access information of CT towns. We first start by going through the table to create a list of links for the towns of Connecticut. Then we will extract some information from each page’s infobox.</p>
+<p>However, if we want to get information from different webpages, this method is
+not sufficient. In this example, we use Beautiful Soup to create an easy way to
+access information of CT towns. We first start by going through the table to
+create a list of links for the towns of Connecticut. Then we will extract some
+information from each page’s infobox.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s2">&quot;wikitable sortable&quot;</span><span class="p">})</span> <span class="c1"># Finds table</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Finds all rows of the table</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org&#39;</span> <span class="c1"># base_url to which the href will be added</span>
@@ -441,12 +449,13 @@ https://towardsdatascience.com/a-step-by-step-guide-to-web-scraping-in-python-5c
 <span class="n">get_county</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/Andover,_Connecticut&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We could do a separate function for each piece of information, or we could do things a little faster.</p>
+<p>We could do a separate function for each piece of information, or we could do
+things a little faster.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
     <span class="n">link_page</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
     <span class="n">link_soup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">link_page</span><span class="p">)</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">link_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;mergedrow&#39;</span><span class="p">})</span> <span class="c1"># Many pieces of information are stored in these &#39;mergedrows&#39;</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;mergedrow&#39;</span><span class="p">})</span> 
     <span class="n">town_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">link_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span> <span class="p">:</span> <span class="s1">&#39;infobox-data&#39;</span><span class="p">})</span>
