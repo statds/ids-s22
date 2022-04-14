@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10.4. Bagging versus Boosting &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>10.19. Tensorflow &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -53,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10.5. Support Vector Machines" href="svm.html" />
-    <link rel="prev" title="10.3. Random Forests" href="randomforests.html" />
+    <link rel="next" title="11. Unsupervised Learning" href="unsupervised.html" />
+    <link rel="prev" title="10.17. XGBoost" href="XGBoost.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -216,8 +214,8 @@
      10.3. Random Forests
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bagging_vs_boosting.html">
      10.4. Bagging versus Boosting
     </a>
    </li>
@@ -236,8 +234,8 @@
      10.17. XGBoost
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Tensorflow.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      10.19. Tensorflow
     </a>
    </li>
@@ -337,11 +335,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/bagging_vs_boosting.ipynb"><button type="button"
+            href="../_sources/docs/Tensorflow.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/bagging_vs_boosting.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/Tensorflow.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -366,7 +364,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/bagging_vs_boosting.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/Tensorflow.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -389,45 +387,14 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bagging">
-   10.4.1. Bagging
+  <a class="reference internal nav-link" href="#background">
+   10.19.1. Background
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forest">
-     10.4.1.1. Random Forest
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boosting">
-   10.4.2. Boosting
+  <a class="reference internal nav-link" href="#installation-and-python-implementation">
+   10.19.2. Installation and Python Implementation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adaptive-boosting-adaboost">
-     10.4.2.1. Adaptive Boosting (AdaBoost)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gradient-boosting">
-     10.4.2.2. Gradient Boosting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stochastic-gradient-boosting">
-       10.4.2.2.1. Stochastic gradient boosting
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extreme-gradient-boosting">
-       10.4.2.2.2. Extreme gradient boosting
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -439,7 +406,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bagging versus Boosting</h1>
+                <h1>Tensorflow</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -450,45 +417,14 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bagging">
-   10.4.1. Bagging
+  <a class="reference internal nav-link" href="#background">
+   10.19.1. Background
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forest">
-     10.4.1.1. Random Forest
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boosting">
-   10.4.2. Boosting
+  <a class="reference internal nav-link" href="#installation-and-python-implementation">
+   10.19.2. Installation and Python Implementation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adaptive-boosting-adaboost">
-     10.4.2.1. Adaptive Boosting (AdaBoost)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gradient-boosting">
-     10.4.2.2. Gradient Boosting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stochastic-gradient-boosting">
-       10.4.2.2.1. Stochastic gradient boosting
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extreme-gradient-boosting">
-       10.4.2.2.2. Extreme gradient boosting
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -499,136 +435,88 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bagging-versus-boosting">
-<h1><span class="section-number">10.4. </span>Bagging versus Boosting<a class="headerlink" href="#bagging-versus-boosting" title="Permalink to this headline">¶</a></h1>
-<p>An ensemble method combines multiple individual models in order to
-produce predictions with better properties. It has been reported that
-an ensemble is often more accurate than any of the single member
-in the ensemble <span id="id1">[<a class="reference internal" href="back.html#id2">Bühlmann, 2012</a>, <a class="reference internal" href="back.html#id5">Opitz and Maclin, 1999</a>]</span>.</p>
-<p>The bias-variance tradeoff is the key motivation. Each single model
-(learner) may have high bias or higher variance or both. An ensemble
-method seeks to reduce bias and/or variance of such weak learners by
-combining several of them together in order to create a strong learner
-(or ensemble model) that achieves better performances.</p>
-<div class="section" id="bagging">
-<h2><span class="section-number">10.4.1. </span>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">¶</a></h2>
-<p>Bagging stands for bootstrap aggregation.
-In bagging, a collection of bootstrap samples of the data in a
-training dataset are generated; a model (e.g., decision tree;
-regression) is fit to each of the bootstrap sample independently; the
-predictions of all the members in the ensemble are aggregated (e.g.,
-majority vote). Bagging reduces the variance of the final prediction
-through aggregation.</p>
-<div class="section" id="random-forest">
-<h3><span class="section-number">10.4.1.1. </span>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
-<p>Random forest is a bagging approach with decision trees as individual
-ensemble members, except that the features used for each tree are a
-random subsample of all the features. The purpose of resampling the
-features it to make the trees less dependent and more robust to
-missing data.</p>
-<p>Tuning parameters for a random forest include:</p>
-<ol class="simple">
-<li><p>number of trees;</p></li>
-<li><p>number of features;</p></li>
-<li><p>tree depth.</p></li>
-</ol>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tensorflow">
+<span id="id1"></span><h1><span class="section-number">10.19. </span>Tensorflow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">¶</a></h1>
+<p>Tensorflow is a software library commonly used for developing machine learning applications
+including detecting objects, recognizing images, and creating sequential models.</p>
+<p>Offers:
+- building and training models with Keras
+- impressive graphing capabilities
+- supports powerful add on libraries
+- good for large projects and complex work flows
+- share trained models without including the full code</p>
+<p>Downsides:
+- slower than similar programs like PyTorch	
+- only fully supports Python</p>
+<div class="section" id="background">
+<h2><span class="section-number">10.19.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Tensor = multidimensional array, where
+- n-d tensor = n indicies to access single value of interest
+- ‘n = 0’: scalar, ‘n = 1’: vector, etc.</p>
+<p>Flow - successive execution of an operation through n-d tensor
+- dataflow graphs - structures describing how data moves through graph/series</p>
+</div>
+<div class="section" id="installation-and-python-implementation">
+<h2><span class="section-number">10.19.2. </span>Installation and Python Implementation<a class="headerlink" href="#installation-and-python-implementation" title="Permalink to this headline">¶</a></h2>
+<p>‘pip install tensorflow’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">url</span> <span class="o">=</span> \
+<span class="s2">&quot;https://raw.githubusercontent.com/statds/ids-s22/main/notes/data/nyc_mv_collisions_202201.csv&quot;</span>
+    
+<span class="n">nyc_crash</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">nyc_crash</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="boosting">
-<h2><span class="section-number">10.4.2. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h2>
-<p>Boostting is a sequential approach where the training of a model
-learner at a given step applies to “residuals” from the model fitted
-at the previous steps. This way, the current step improves on data
-points where the cumulative performance is not good. Boosting produces
-an ensemble model that in general less biased than the weak learners
-that compose it.</p>
-<p>Unlike bagging, boosting cannot be done in parallel.</p>
-<p>Boosting methods differ on how they create and aggregate the weak
-learners during the sequential process.</p>
-<p>See <a class="reference external" href="https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205">Joseph Rocca’s
-post</a>;
-<a class="reference external" href="https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/">Jason Brownlee’s
-blog</a>.</p>
-<div class="section" id="adaptive-boosting-adaboost">
-<h3><span class="section-number">10.4.2.1. </span>Adaptive Boosting (AdaBoost)<a class="headerlink" href="#adaptive-boosting-adaboost" title="Permalink to this headline">¶</a></h3>
-<p>Adaptive boosting updates the weights attached to each of the training
-dataset observations. The ensemble model is a weighted sum of the weak
-learners. Instead of trying to solve it in one single shot (finding
-all the coefficients and weak learners that give the best overall
-additive model), an iterative optimisation process is
-much more tractable, even if it can lead to a sub-optimal solution.</p>
-<p>For illustration, consider a binary classification problem, with <span class="math notranslate nohighlight">\(N\)</span>
-observations and a given family of weak models. To initialize, all the
-observations have the same weights <span class="math notranslate nohighlight">\(1/N\)</span>. Repeat over each weak model:</p>
-<ul class="simple">
-<li><p>fit the best possible weak model with the current observations
-weights;</p></li>
-<li><p>compute the value of the update coefficient that is some kind of
-scalar evaluation metric of the weak learner that indicates how much
-this weak learner should be taken into account into the ensemble
-model;</p></li>
-<li><p>update the strong learner by adding the new weak learner multiplied
-by its update coefficient;</p></li>
-<li><p>compute new observations weights that
-expresse which observations we would like to focus on at the next
-iteration (weights of observations wrongly predicted by the
-aggregated model increase and weights of the correctly predicted
-observations decrease).</p></li>
-</ul>
 </div>
-<div class="section" id="gradient-boosting">
-<h3><span class="section-number">10.4.2.2. </span>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">¶</a></h3>
-<p>Gradient boosting updates the dataset in eaching step. It casts the
-problem into a gradient descent one: at each iteration we fit a weak
-learner to the negative gradients of the current fitting error
-(pseudo-residuals) with respect to the current ensemble model. In the
-regression setting, the negative gradient is the residual from the
-current ensemble model.</p>
-<p>For illustration, continue with the binary classification
-problem. Initialize the pseudo-residuals as the observation outcomes.
-Repeat over the following steps:</p>
-<ul class="simple">
-<li><p>fit the best possible weak learner to pseudo-residuals (approximate
-the negative gradients with respect to the current strong learner);</p></li>
-<li><p>compute the value of the optimal step size that defines by how much
-we update the ensemble model in the direction of the new weak
-learner;</p></li>
-<li><p>update the ensemble model by adding the new weak learner multiplied
-by the step size (make a step of gradient descent);</p></li>
-<li><p>compute new pseudo-residuals that indicate, for each observation, in
-which direction we would like to update next the ensemble model
-predictions.</p></li>
-</ul>
-<p>Gradient boosting uses a gradient descent approach and can be easily
-adapted to a large number of loss functions. It can be considered as a
-generalization of adaboost to arbitrary differentiable loss functions.</p>
-<div class="section" id="stochastic-gradient-boosting">
-<h4><span class="section-number">10.4.2.2.1. </span>Stochastic gradient boosting<a class="headerlink" href="#stochastic-gradient-boosting" title="Permalink to this headline">¶</a></h4>
-<p>Stochastic gradient boosting (SGD) is a stochastic version of gradient
-boosting. At each iteration, a subsample of the training data is drawn
-at random (without replacement) from the full training dataset. The
-randomly selected subsample is then used, instead of the full sample,
-to fit the base learner. It reduce the dependence between the trees
-in the sequence in gradient boosting models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="p">[</span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Driver Inattention/Distraction&#39;</span><span class="p">]</span>
+</pre></div>
 </div>
-<div class="section" id="extreme-gradient-boosting">
-<h4><span class="section-number">10.4.2.2.2. </span>Extreme gradient boosting<a class="headerlink" href="#extreme-gradient-boosting" title="Permalink to this headline">¶</a></h4>
-<p>Extreme gradient boosting is a specific implementation of the gradient
-boosting method which uses more accurate approximations to find the
-best tree model. It employs a number of nifty tricks that make it
-exceptionally successful, particularly with structured data.</p>
-<ul class="simple">
-<li><p>computing second-order gradients, i.e. second partial derivatives of
-the loss function (similar to Newton’s method), which provides more
-information about the direction of gradients and how to get to the
-minimum of our loss function. While regular gradient boosting uses
-the loss function of our base model (e.g. decision tree) as a proxy
-for minimizing the error of the overall model, XGBoost uses the 2nd
-order derivative as an approximation.</p></li>
-<li><p>advanced regularization (L1 &amp; L2), which improves model
-generalization.</p></li>
-<li><p>parallelized.</p></li>
-</ul>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;DISTRACTED DRIVING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Driver Inattention/Distraction&#39;</span> <span class="k">else</span> <span class="mi">0</span> 
+                                   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 1&#39;</span><span class="p">]]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">nyc_crash</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ZIP CODE&#39;</span><span class="p">,</span> <span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;COLLISION_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCATION&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;CRASH DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;CRASH TIME&#39;</span><span class="p">,</span> <span class="s1">&#39;ON STREET NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CROSS STREET NAME&#39;</span><span class="p">,</span> 
+                                   <span class="s1">&#39;OFF STREET NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;VEHICLE TYPE CODE 1&#39;</span><span class="p">,</span> <span class="s1">&#39;VEHICLE TYPE CODE 2&#39;</span><span class="p">,</span> 
+                                  <span class="s1">&#39;VEHICLE TYPE CODE 3&#39;</span><span class="p">,</span> <span class="s1">&#39;VEHICLE TYPE CODE 4&#39;</span><span class="p">,</span> <span class="s1">&#39;VEHICLE TYPE CODE 5&#39;</span><span class="p">,</span> 
+                                  <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 2&#39;</span><span class="p">,</span> <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 3&#39;</span><span class="p">,</span> 
+                                  <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 4&#39;</span><span class="p">,</span> <span class="s1">&#39;CONTRIBUTING FACTOR VEHICLE 5&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">nyc_crash</span><span class="p">[</span><span class="s1">&#39;DISTRACTED DRIVING&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">load_model</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># Sequential Models</span>
+<span class="c1">#    - one input tensor to one output tensor</span>
+
+<span class="n">ddriving</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -659,17 +547,17 @@ generalization.</p></li>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="randomforests.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="XGBoost.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10.3. </span>Random Forests</p>
+            <p class="prev-next-title"><span class="section-number">10.17. </span>XGBoost</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="svm.html" title="next page">
+    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10.5. </span>Support Vector Machines</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Unsupervised Learning</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
