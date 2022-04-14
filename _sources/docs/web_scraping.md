@@ -23,6 +23,7 @@ We can read any webpage with BeautifulSoup using the following method.
 
 
 ```python
+import pandas as pd
 import requests as rq
 from bs4 import BeautifulSoup as bs
 from IPython.core.display import display, HTML
@@ -175,15 +176,22 @@ df1
 ```python
 import numpy as np
 df1[df1.elevation == ' '] = np.nan
-df2['town_name'] = [x.split(',')[0] for x in df2['town']]
-df2['elevation_feet'] = [int(x.split(' ')[0].replace(',', '')) for x in df2['elevation']]
-df2 = df2[df2['elevation_feet'] >= 700]
-df2 = df2.sort_values(by = 'elevation_feet', ascending = False)
-df2
+df1 = df1.dropna()
+df1.info()
 ```
 
 
 ```python
-plt.figure(figsize=(30,30))
-plt.bar(df2['town_name'], df2['elevation_feet'], align='center', alpha=0.5)
+df1['town_name'] = [x.split(',')[0] for x in df1['town']]
+df1['elevation_feet'] = [int(x.split(' ')[0].replace(',', '')) for x in df1['elevation']]
+df1 = df1[df1['elevation_feet'] >= 700]
+df1 = df1.sort_values(by = 'elevation_feet', ascending = False)
+df1
+```
+
+
+```python
+import matplotlib.pyplot as plt
+plt.figure(figsize = (30, 30))
+plt.bar(df1['town_name'], df1['elevation_feet'], align = 'center', alpha = 0.5)
 ```
