@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Building a Python Module &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>12. Miscellaneous &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Python Refreshment" href="refresh.html" />
-    <link rel="prev" title="3. Project Management" href="prman.html" />
+    <link rel="next" title="12.1. Web Scraping with Beautiful Soup" href="web_scraping.html" />
+    <link rel="prev" title="11.2. Gaussian Mixture Models" href="GMM.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,8 +105,8 @@
    3. Project Management
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="module.html">
    4. Building a Python Module
   </a>
  </li>
@@ -258,11 +258,11 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="miscellaneous.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    12. Miscellaneous
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
@@ -330,11 +330,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/module.ipynb"><button type="button"
+            href="../_sources/docs/miscellaneous.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/module.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/miscellaneous.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -359,7 +359,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/module.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/miscellaneous.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -376,44 +376,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure">
-   4.1. File Structure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#init-py">
-   4.2. __init__.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-py">
-   4.3. setup.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pypi">
-   4.4. PyPi
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-our-package">
-   4.5. Installing Our Package
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-information">
-   4.6. More Information
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -421,133 +383,20 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Building a Python Module</h1>
+                <h1>Miscellaneous</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure">
-   4.1. File Structure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#init-py">
-   4.2. __init__.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-py">
-   4.3. setup.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pypi">
-   4.4. PyPi
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-our-package">
-   4.5. Installing Our Package
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-information">
-   4.6. More Information
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="building-a-python-module">
-<span id="module"></span><h1><span class="section-number">4. </span>Building a Python Module<a class="headerlink" href="#building-a-python-module" title="Permalink to this headline">¶</a></h1>
-<p>This is a basic tutorial on how to build your own a Python module, or package. There are a few required downloads necessary and strict steps to follow.</p>
-<div class="section" id="file-structure">
-<h2><span class="section-number">4.1. </span>File Structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">¶</a></h2>
-<p>The file structure for this example is as follows:</p>
-<p>–&gt; <code class="docutils literal notranslate"><span class="pre">base_stat3255tutorial</span></code></p>
-<p>——–&gt; <code class="docutils literal notranslate"><span class="pre">stat3255tutorial</span></code></p>
-<p>—————-&gt; <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p>
-<p>—————-&gt; <code class="docutils literal notranslate"><span class="pre">add.py</span></code></p>
-<p>——–&gt; <code class="docutils literal notranslate"><span class="pre">setup.py</span></code></p>
-<p>You always want to have a base folder that houses your actual module. <code class="docutils literal notranslate"><span class="pre">add.py</span></code> contains the code and functions that we would like to package.</p>
-</div>
-<div class="section" id="init-py">
-<h2><span class="section-number">4.2. </span>__init__.py<a class="headerlink" href="#init-py" title="Permalink to this headline">¶</a></h2>
-<p>In the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, we want to import the functions from the file that we stored them. It tells Python to treat the directory as a module. You would need an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in every sub-folder of the directory if you had a more complex directory.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stat3255tutorial.add</span> <span class="kn">import</span> <span class="n">add</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="setup-py">
-<h2><span class="section-number">4.3. </span>setup.py<a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> goes in the base directory alongside your actual module. This file has information about the package, like the name, version, dependencies, etc.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span><span class="p">,</span> <span class="n">setup</span>
-<span class="n">setup</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stat3255tutorial&#39;</span><span class="p">,</span>
-    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
-    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Tutorial Python library for STAT 3255&#39;</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Anthony Zeimbekakis&#39;</span><span class="p">,</span>
-    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;license&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>Now, we need to run the following command in the terminal.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel
-</pre></div>
-</div>
-<p>This command builds a source distribution and a wheel. The source distribution contains source code and the wheel makes the installation faster.</p>
-</div>
-<div class="section" id="pypi">
-<h2><span class="section-number">4.4. </span>PyPi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
-<p>From <a class="reference external" href="https://pypi.org">PyPi</a>, “the Python Package Index (PyPI) is a repository of software for the Python programming language.” Anyone and everyone can make a Python package and upload it to the repository for download. Note that you must have a PyPi account in order to upload a package.</p>
-<p>The files that we are actually uploading are the ones that were generated when we ran <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>. In order to upload, the <code class="docutils literal notranslate"><span class="pre">twine</span></code> package is required and can be installed with a simple command.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install twine
-</pre></div>
-</div>
-<p>With that good to go, run the following command in the terminal. You will need your username and password.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>twine upload dist/*
-</pre></div>
-</div>
-<p>This uploads all the contents in the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder which was created by <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>. Now, we can install our very own Python package!</p>
-</div>
-<div class="section" id="installing-our-package">
-<h2><span class="section-number">4.5. </span>Installing Our Package<a class="headerlink" href="#installing-our-package" title="Permalink to this headline">¶</a></h2>
-<p>We can now install our package just like any other that we’ve done before.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install stat3255tutorial
-</pre></div>
-</div>
-<p>Now, Python should recognize the package and we can access the functions inside.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stat3255tutorial</span> <span class="k">as</span> <span class="nn">stat</span>
-
-<span class="n">stat</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="more-information">
-<h2><span class="section-number">4.6. </span>More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
-<p>The package <code class="docutils literal notranslate"><span class="pre">stat3255tutorial</span></code> is very bare bones and lacks much of what you would need for an actual package release. The <a class="reference external" href="https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/">Python Packaging Authority</a> has a much more in-depth tutorial that contains information on licensing, versioning, and other topics and should be the first resource consulted.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="miscellaneous">
+<span id="id1"></span><h1><span class="section-number">12. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -576,17 +425,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="prman.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="GMM.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>Project Management</p>
+            <p class="prev-next-title"><span class="section-number">11.2. </span>Gaussian Mixture Models</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="refresh.html" title="next page">
+    <a class='right-next' id="next-link" href="web_scraping.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Python Refreshment</p>
+        <p class="prev-next-title"><span class="section-number">12.1. </span>Web Scraping with Beautiful Soup</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
