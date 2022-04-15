@@ -295,7 +295,7 @@ Date    | Presenter            | Topic
 04/12 |  Anthony Zeimbekakis  | Building a Python module  
 04/14 |  Juncheng Zheng  | Using R from Python and vice versa
 04/14 |  SakeenaAimandi  | 
-04/14 |  Thaila Taffe  | Tensorflow
+04/14 |  Thalia Taffe  | Tensorflow
 04/14 |  Benjamin Campman |
 04/14 |  Mathew Chandy  | Web Scraping
 
