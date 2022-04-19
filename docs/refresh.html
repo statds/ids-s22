@@ -194,6 +194,11 @@
      9.5. Generalized Additive Models
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stepwise_regression.html">
+     9.6. Stepwise Regression
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -565,8 +570,8 @@ evaluate the density and distributions at these points?</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 16.0 0.0 0.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4.55929749,  2.48008522,  2.8098211 , -2.13879753,  2.81463659,
-        1.59815944, -0.67784491, -5.02043323, -1.48617375,  8.69027446])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5.43043839,  2.78208681,  0.4111719 ,  5.50658833,  5.43311623,
+       -0.90097272,  2.3068358 ,  4.46726953, -0.8828238 , -1.60163212])
 </pre></div>
 </div>
 </div>
@@ -579,8 +584,8 @@ evaluate the density and distributions at these points?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.0812747 , 0.0990198 , 0.09771238, 0.05839446, 0.0976885 ,
-       0.09923356, 0.07971304, 0.02137709, 0.06821936, 0.02462543])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.06904616, 0.09784729, 0.09217009, 0.06791571, 0.06900651,
+       0.07667177, 0.09944257, 0.08245812, 0.07692369, 0.06649688])
 </pre></div>
 </div>
 </div>
@@ -606,7 +611,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12 µs ± 38.7 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.1 µs ± 64.1 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -633,7 +638,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.97 µs ± 4.39 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.99 µs ± 7.43 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -655,7 +660,7 @@ We are going to use 3 ways to solve the problems.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72.3 µs ± 212 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71 µs ± 907 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -694,8 +699,8 @@ object.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140272644235456
-140272644235456
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139959004955136
+139959004955136
 </pre></div>
 </div>
 </div>
@@ -726,8 +731,8 @@ their values cannot be changed in place. One such example is strings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140273684690032
-140272664751728
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139960045962352
+139959026065648
 </pre></div>
 </div>
 </div>

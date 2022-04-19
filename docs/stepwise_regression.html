@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stepwise Regression &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>9.6. Stepwise Regression &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Supervised Learning" href="supervised.html" />
+    <link rel="prev" title="9.5. Generalized Additive Models" href="gams.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +89,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    1. Introduction
@@ -160,16 +162,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="statmodels.html">
    9. Statistical Tests and Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="patsy.html">
      9.1. Describing Models with Patsy
@@ -188,6 +190,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="gams.html">
      9.5. Generalized Additive Models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     9.6. Stepwise Regression
     </a>
    </li>
   </ul>
@@ -366,52 +373,52 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-scrubbing">
-   Data scrubbing
+   9.6.1. Data scrubbing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-bronx-is-removed">
-   The Bronx is removed
+   9.6.2. The Bronx is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#staten-island-is-removed">
-   Staten island is removed
+   9.6.3. Staten island is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#brooklyn-is-removed">
-   Brooklyn is removed
+   9.6.4. Brooklyn is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#persons-killed-is-removed">
-   Persons Killed is removed
+   9.6.5. Persons Killed is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manhattan-is-removed">
-   Manhattan is removed
+   9.6.6. Manhattan is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#start-by-adding-hour">
-   Start by adding Hour
+   9.6.7. Start by adding Hour
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-date">
-   Add Date
+   9.6.8. Add Date
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-bronx">
-   Add Bronx
+   9.6.9. Add Bronx
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-brooklyn">
-   Add Brooklyn
+   9.6.10. Add Brooklyn
   </a>
  </li>
 </ul>
@@ -436,52 +443,52 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-scrubbing">
-   Data scrubbing
+   9.6.1. Data scrubbing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-bronx-is-removed">
-   The Bronx is removed
+   9.6.2. The Bronx is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#staten-island-is-removed">
-   Staten island is removed
+   9.6.3. Staten island is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#brooklyn-is-removed">
-   Brooklyn is removed
+   9.6.4. Brooklyn is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#persons-killed-is-removed">
-   Persons Killed is removed
+   9.6.5. Persons Killed is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manhattan-is-removed">
-   Manhattan is removed
+   9.6.6. Manhattan is removed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#start-by-adding-hour">
-   Start by adding Hour
+   9.6.7. Start by adding Hour
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-date">
-   Add Date
+   9.6.8. Add Date
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-bronx">
-   Add Bronx
+   9.6.9. Add Bronx
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#add-brooklyn">
-   Add Brooklyn
+   9.6.10. Add Brooklyn
   </a>
  </li>
 </ul>
@@ -494,7 +501,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="stepwise-regression">
-<h1>Stepwise Regression<a class="headerlink" href="#stepwise-regression" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9.6. </span>Stepwise Regression<a class="headerlink" href="#stepwise-regression" title="Permalink to this headline">¶</a></h1>
 <p>In a stepwise regression, variables are added and removed from the model based on significance. You can have a forward selection stepwise which adds variables if they are statistically significant until all the variables outside the model are not significant, a backwards elimination stepwise regression which puts in all the variables and then removes those that are not statistically significant until only statistically significant ones remain, and a bidirectional elimination which both adds and removes until all the variables inside are significant AND all those outside are not significant.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -674,7 +681,7 @@
 <p>5 rows × 38 columns</p>
 </div>
 <div class="section" id="data-scrubbing">
-<h2>Data scrubbing<a class="headerlink" href="#data-scrubbing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.1. </span>Data scrubbing<a class="headerlink" href="#data-scrubbing" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/nyc_mv_collisions_202201.csv&quot;</span><span class="p">)</span>
 
 <span class="n">zeros</span> <span class="o">=</span> <span class="p">[]</span>
@@ -824,7 +831,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="the-bronx-is-removed">
-<h2>The Bronx is removed<a class="headerlink" href="#the-bronx-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.2. </span>The Bronx is removed<a class="headerlink" href="#the-bronx-is-removed" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rem_high</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -863,7 +870,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="staten-island-is-removed">
-<h2>Staten island is removed<a class="headerlink" href="#staten-island-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.3. </span>Staten island is removed<a class="headerlink" href="#staten-island-is-removed" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rem_high</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -901,7 +908,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="brooklyn-is-removed">
-<h2>Brooklyn is removed<a class="headerlink" href="#brooklyn-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.4. </span>Brooklyn is removed<a class="headerlink" href="#brooklyn-is-removed" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rem_high</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -938,7 +945,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="persons-killed-is-removed">
-<h2>Persons Killed is removed<a class="headerlink" href="#persons-killed-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.5. </span>Persons Killed is removed<a class="headerlink" href="#persons-killed-is-removed" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rem_high</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -974,7 +981,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="manhattan-is-removed">
-<h2>Manhattan is removed<a class="headerlink" href="#manhattan-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.6. </span>Manhattan is removed<a class="headerlink" href="#manhattan-is-removed" title="Permalink to this headline">¶</a></h2>
 <p>From here we can see all variables are under the .05 threshold established previously. Our formula would come out to be <br>
 y = date * .0017 + hour * .0137 - QUEENS * .0515 + lat * .2052</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_col</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1249,7 +1256,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="start-by-adding-hour">
-<h2>Start by adding Hour<a class="headerlink" href="#start-by-adding-hour" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.7. </span>Start by adding Hour<a class="headerlink" href="#start-by-adding-hour" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crunch_nums</span><span class="p">():</span>
     <span class="n">p_val</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">location</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1474,7 +1481,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="add-date">
-<h2>Add Date<a class="headerlink" href="#add-date" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.8. </span>Add Date<a class="headerlink" href="#add-date" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crunch_nums</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1678,7 +1685,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="add-bronx">
-<h2>Add Bronx<a class="headerlink" href="#add-bronx" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.9. </span>Add Bronx<a class="headerlink" href="#add-bronx" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crunch_nums</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1717,7 +1724,7 @@ Notes:
 </div>
 </div>
 <div class="section" id="add-brooklyn">
-<h2>Add Brooklyn<a class="headerlink" href="#add-brooklyn" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.10. </span>Add Brooklyn<a class="headerlink" href="#add-brooklyn" title="Permalink to this headline">¶</a></h2>
 <p>In the new model we have Hour, Date, Bronx, and Brooklyn. A very different outcome than we saw with the other style of selection</p>
 </div>
 </div>
@@ -1746,7 +1753,21 @@ Notes:
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="gams.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9.5. </span>Generalized Additive Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="supervised.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Supervised Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
