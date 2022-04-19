@@ -23,6 +23,7 @@ chapters:
   - file: docs/tests
   - file: docs/models
   - file: docs/gams
+  - file: docs/stepwise_regression
 - file: docs/supervised
   sections:
   - file: docs/decisiontrees
