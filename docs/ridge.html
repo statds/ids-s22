@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.2. Hypothesis Tests &#8212; Introduction to Data Science, Spring 2022</title>
+    <title>9.7. Ridge Regression &#8212; Introduction to Data Science, Spring 2022</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.3. Linear and Generalized Linear Models" href="models.html" />
-    <link rel="prev" title="9.1. Describing Models with Patsy" href="patsy.html" />
+    <link rel="next" title="10. Supervised Learning" href="supervised.html" />
+    <link rel="prev" title="9.6. Stepwise Regression" href="stepwise_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -179,8 +179,8 @@
      9.1. Describing Models with Patsy
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="tests.html">
      9.2. Hypothesis Tests
     </a>
    </li>
@@ -199,8 +199,8 @@
      9.6. Stepwise Regression
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ridge.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      9.7. Ridge Regression
     </a>
    </li>
@@ -347,11 +347,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/docs/tests.ipynb"><button type="button"
+            href="../_sources/docs/ridge.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/tests.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/ridge.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -376,7 +376,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/tests.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/statds/ids-s22/master?urlpath=tree/notes/docs/ridge.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -399,13 +399,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zero-correlation-tests">
-   9.2.1. Zero-Correlation Tests
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#association-test-for-categorical-variables">
-   9.2.2. Association Test for Categorical Variables
+  <a class="reference internal nav-link" href="#in-python">
+   9.7.1. In Python
   </a>
  </li>
 </ul>
@@ -418,7 +413,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Hypothesis Tests</h1>
+                <h1>Ridge Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -429,13 +424,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zero-correlation-tests">
-   9.2.1. Zero-Correlation Tests
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#association-test-for-categorical-variables">
-   9.2.2. Association Test for Categorical Variables
+  <a class="reference internal nav-link" href="#in-python">
+   9.7.1. In Python
   </a>
  </li>
 </ul>
@@ -447,114 +437,305 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-tests">
-<span id="hypotest"></span><h1><span class="section-number">9.2. </span>Hypothesis Tests<a class="headerlink" href="#hypothesis-tests" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="zero-correlation-tests">
-<h2><span class="section-number">9.2.1. </span>Zero-Correlation Tests<a class="headerlink" href="#zero-correlation-tests" title="Permalink to this headline">¶</a></h2>
-<p>This is the same as independence test.</p>
-<p>Correlation tests
-<code class="docutils literal notranslate"><span class="pre">scipy.stats.pearsonr()</span></code>
-<code class="docutils literal notranslate"><span class="pre">scipy.stats.spearmanr()</span></code>
-<code class="docutils literal notranslate"><span class="pre">scipy.stats.kendalltau()</span></code></p>
+  <div class="section" id="ridge-regression">
+<h1><span class="section-number">9.7. </span>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h1>
+<p>Ridge regression is a method of linear regression that helps prevent overfitting a
+model in the case of high correlation between variables. It is a regularization
+method - a method specifically designed to reduce overfitting a model.</p>
+<p>While OLS regression minimizes the Residual Sum of Squares, Ridge regression is the
+Residual Sum Squares + Shrinkage Penalty: <span class="math notranslate nohighlight">\(λΣβj^2\)</span></p>
+<p>A larger λ means a harsher penalty and smaller coefficients, but at a certain point,
+the coefficients will become underestimated, greatly increasing bias in the model.
+Following the variance-bias tradeoff, the λ chosen must be one that introduces some
+bias while minimizing the variance and MSE.</p>
+<p>Basic Steps (for models with known multicollinearity):</p>
+<ol class="simple">
+<li><p>Standardize each predictor variable</p></li>
+<li><p>Fit model and choose λ (either through ridge trace plot or MSE of each λ)</p></li>
+<li><p>Test model accuracy</p></li>
+</ol>
+<p>Biggest Drawback: no variable selection = final model includes all predictors</p>
+<ul class="simple">
+<li><p>makes coefficients very close to 0 if not significant</p></li>
+</ul>
+<p>Better predictions, but harder to interpret</p>
+<ul class="simple">
+<li><p>good for models where most/all variables significant</p></li>
+</ul>
+<div class="section" id="in-python">
+<h2><span class="section-number">9.7.1. </span>In Python<a class="headerlink" href="#in-python" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> and <code class="docutils literal notranslate"><span class="pre">RidgeCV</span></code> () are availble through <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RidgeCV</span></code>:</p></li>
+</ul>
+<ul class="simple">
+<li><p>Ridge with a cross-validation option</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">nobs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
-<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
-<span class="n">ss</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
-<span class="n">ss</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="n">flowers</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<span class="n">flowers</span> <span class="o">=</span> <span class="n">flowers</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;species&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">flowers</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KendalltauResult(correlation=0.46666666666666673, pvalue=6.0084174616895e-12)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">flowers_corr</span> <span class="o">=</span> <span class="n">flowers</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">flowers_corr</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+
+<span class="n">flowers_corr</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.0373915365219363, 0.7118716850925632)
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sepal_length</th>
+      <td>1.000000</td>
+      <td>-0.117570</td>
+      <td>0.871754</td>
+      <td>0.817941</td>
+    </tr>
+    <tr>
+      <th>sepal_width</th>
+      <td>-0.117570</td>
+      <td>1.000000</td>
+      <td>-0.428440</td>
+      <td>-0.366126</td>
+    </tr>
+    <tr>
+      <th>petal_length</th>
+      <td>0.871754</td>
+      <td>-0.428440</td>
+      <td>1.000000</td>
+      <td>0.962865</td>
+    </tr>
+    <tr>
+      <th>petal_width</th>
+      <td>0.817941</td>
+      <td>-0.366126</td>
+      <td>0.962865</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/ridge_2_1.png" src="../_images/ridge_2_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="association-test-for-categorical-variables">
-<h2><span class="section-number">9.2.2. </span>Association Test for Categorical Variables<a class="headerlink" href="#association-test-for-categorical-variables" title="Permalink to this headline">¶</a></h2>
-<p>Pearson’s Chi-squared test
-<code class="docutils literal notranslate"><span class="pre">scipy.stats.chi2_contingency()</span></code></p>
-<p>Fisher’s exact tests
-<code class="docutils literal notranslate"><span class="pre">scipy.stats.fisher_exact()</span></code></p>
-<p>Let’s create categorical variables by cutting continuous variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for pd.cut</span>
-<span class="c1">## y&#39;s are dependent</span>
-<span class="n">ybins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
-<span class="n">y1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
-<span class="n">y2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">flowers</span><span class="p">[[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_length&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">flowers</span><span class="p">[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">]</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">Xs</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We know <code class="docutils literal notranslate"><span class="pre">y1</span></code> and <code class="docutils literal notranslate"><span class="pre">y2</span></code> are dependent. Let’s test it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ytab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">y1b</span><span class="p">,</span> <span class="n">y2b</span><span class="p">)</span>
-<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">ytab</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0007569474131195999
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5310770203976507
 </pre></div>
 </div>
 </div>
 </div>
-<p>We know <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> are independent. Let’s test it by dichotomizing
-them.</p>
+<p>Then we run the model again using regular OLS regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## x&#39;s are independent</span>
-<span class="n">xbins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">x1b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
-<span class="n">x2b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
-<span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">x1b</span><span class="p">,</span> <span class="n">x2b</span><span class="p">)</span>
-<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Since this is a <span class="math notranslate nohighlight">\(2\times 2\)</span> table, we can use Fisher’s exact test.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## only for 2x2 tables</span>
-<span class="n">oddsratio</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fisher_exact</span><span class="p">(</span><span class="n">xtab</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">&#39;sepal_width ~ sepal_length + petal_width + petal_length&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">flowers</span><span class="p">)</span>
+
+<span class="n">fit2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit2</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>sepal_width</td>   <th>  R-squared:         </th> <td>   0.524</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.514</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   53.58</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Sun, 01 May 2022</td> <th>  Prob (F-statistic):</th> <td>2.06e-23</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>11:26:07</td>     <th>  Log-Likelihood:    </th> <td> -32.100</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   150</td>      <th>  AIC:               </th> <td>   72.20</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   146</td>      <th>  BIC:               </th> <td>   84.24</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+        <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>    <td>    1.0431</td> <td>    0.271</td> <td>    3.855</td> <td> 0.000</td> <td>    0.508</td> <td>    1.578</td>
+</tr>
+<tr>
+  <th>sepal_length</th> <td>    0.6071</td> <td>    0.062</td> <td>    9.765</td> <td> 0.000</td> <td>    0.484</td> <td>    0.730</td>
+</tr>
+<tr>
+  <th>petal_width</th>  <td>    0.5580</td> <td>    0.123</td> <td>    4.553</td> <td> 0.000</td> <td>    0.316</td> <td>    0.800</td>
+</tr>
+<tr>
+  <th>petal_length</th> <td>   -0.5860</td> <td>    0.062</td> <td>   -9.431</td> <td> 0.000</td> <td>   -0.709</td> <td>   -0.463</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 0.738</td> <th>  Durbin-Watson:     </th> <td>   1.889</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.691</td> <th>  Jarque-Bera (JB):  </th> <td>   0.426</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.102</td> <th>  Prob(JB):          </th> <td>   0.808</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.163</td> <th>  Cond. No.          </th> <td>    82.1</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-</div>
+<p>The R-squared value is 0.524, so for this particular model, multicollinearity does not appear to have a significant effect.</p>
+<p>More on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html?highlight=ridge#sklearn.linear_model.Ridge">Ridge</a> and <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html?highlight=ridgecv#sklearn.linear_model.RidgeCV">RidgeCV</a></p>
 </div>
 </div>
 
@@ -583,17 +764,17 @@ them.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="patsy.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="stepwise_regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.1. </span>Describing Models with Patsy</p>
+            <p class="prev-next-title"><span class="section-number">9.6. </span>Stepwise Regression</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="models.html" title="next page">
+    <a class='right-next' id="next-link" href="supervised.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.3. </span>Linear and Generalized Linear Models</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Supervised Learning</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
