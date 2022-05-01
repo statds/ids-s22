@@ -24,6 +24,7 @@ chapters:
   - file: docs/models
   - file: docs/gams
   - file: docs/stepwise_regression
+  - file: docs/ridge
 - file: docs/supervised
   sections:
   - file: docs/decisiontrees
