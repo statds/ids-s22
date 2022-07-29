@@ -7,7 +7,7 @@ Traceback (most recent call last):
     return just_run(coro(*args, **kwargs))
   File "/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+  File "/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
     return future.result()
   File "/home/runner/work/ids-s22/ids-s22/env/lib/python3.9/site-packages/nbclient/client.py", line 551, in async_execute
     await self.async_execute_cell(
@@ -29,7 +29,7 @@ ddriving = Sequential()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_4199/1787800278.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_4214/1787800278.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mkeras[0m[0;34m.[0m[0mmodels[0m [0;32mimport[0m [0mSequential[0m[0;34m,[0m [0mload_model[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mkeras[0m[0;34m.[0m[0mlayers[0m [0;32mimport[0m [0mDense[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mmetrics[0m [0;32mimport[0m [0maccuracy_score[0m[0;34m[0m[0;34m[0m[0m
